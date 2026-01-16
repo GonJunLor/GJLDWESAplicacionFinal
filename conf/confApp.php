@@ -1,12 +1,12 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 11/01/2026
+* @since: 16/01/2026
 */
 
 require_once 'core/231018libreriaValidacion.php';
 
-require_once 'conf/EDconfDBPDO.php';
+require_once 'conf/confDBPDO.php';
 
 //Cargamos la definición de la clase
 require_once 'model/Usuario.php'; 
@@ -46,6 +46,5 @@ $titulo=[
     'registro' => 'Registro',
     'cuenta' => 'Cuenta de Usuario'
 ];
-$textoBotonIniciarSesion = 'Iniciar Sesión';
-$estadoBarraNavegacion = 'visible';
+
 ?>

@@ -1,14 +1,25 @@
 :root {
-    --colorFondo1: #ffffff;
-    --colorFondo2: #f3f3f3;
-    --colorFondo3: #bfc9cd;
-    --colorFondo4: black;
+    --color1: #CB333B;
+    --color2: #ffffff;
+    --color3: #f9f9f9;
+    --color4: #333333;
+    --colorPie: #F3F2F2;
+
+    --colorBoton1: #CC292B;
+    --colorBotonMarcado1: #980F10;
+    --colorboton2: #FFFFFF;
+    --colorBoton3: #CB333B;
+    --colorBotonMarcado2y3: #999999;
   
-    --colorBorde: #c5c5c5;
+    --colorBorde1: #dbdbdb;
+    --colorBorde2: #555555;
     --radioBorde: 6px;
     --anchoBorde: 1px;
   
-    --colorTexto: #000000;
+    --colorTexto1: #3B3A3B;
+    --colorTexto2: #CB333B;
+    --colorTexto3: #00716A;
+    --colorTexto4: #FFFFFF;
     --tamanoTexto: 16px;
     --fuenteTexto1: Sofia,sans-serif;
     --fuenteTexto2: Arial,sans-serif;

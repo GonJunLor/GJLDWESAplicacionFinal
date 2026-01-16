@@ -1,10 +1,10 @@
 /**
  * Author:  gonzalo.junlor
- * Created: 16 nov. 2025
+ * Created: 16/01/2026
  * Script de carga incial de base de datos
  */
 
-use DBGJLDWESLoginLogoff;
+use DBGJLDWESAplicacionFinal;
 
 insert into T02_Departamento values
         ('INF','Departamento de informatica.',now(),1235.5,null),
@@ -13,7 +13,6 @@ insert into T02_Departamento values
         ('MAT','Departamento de matematicas.',now(),735.2,null),
         ('ING','Departamento de ingles.',now(),235.9,now())
 ;
-
 
 INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario)
                 VALUES
@@ -30,10 +29,6 @@ INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario)
         ('oscar',SHA2('oscarpaso',256),'Oscar Pozuelo'),
         ('jesus',SHA2('jesuspaso',256),'Enrique Nieto'),
         ('amor',SHA2('amorpaso',256),'Amor Rodriguez'),
-        ('albertoB',SHA2('albertoBpaso',256),'Alberto Bahillo'),
-        ('antonio',SHA2('antoniopaso',256),'Antonio Jañez'),
-        ('jorge',SHA2('jorgepaso',256),'Jorge Corral'),
-        ('claudio',SHA2('claudiopaso',256),'Claudio Lozano'),
-        ('gisela',SHA2('giselapaso',256),'Gisela Folgueral')
+        ('albertoB',SHA2('albertoBpaso',256),'Alberto Bahillo')
 ;
 

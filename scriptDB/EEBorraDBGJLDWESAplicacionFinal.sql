@@ -1,6 +1,6 @@
 /**
  * Author:  gonzalo.junlor
- * Created: 16 nov. 2025
+ * Created: 16/01/2026
  * Script de borrado de base de datos
  */
 

@@ -1,11 +1,11 @@
 /**
  * Author:  gonzalo.junlor
- * Created: 16 nov. 2025
+ * Created: 16/01/2026
  * Script de creación de base de datos
  */
-create database if not exists DBGJLDWESLoginLogoff;
+create database if not exists DBGJLDWESAplicacionFinal;
 
-create table if not exists DBGJLDWESLoginLogoff.T02_Departamento(
+create table if not exists DBGJLDWESAplicacionFinal.T02_Departamento(
     T02_CodDepartamento varchar(3) primary key,
     T02_DescDepartamento varchar(255),
     T02_FechaCreacionDepartamento datetime not null,
@@ -13,7 +13,7 @@ create table if not exists DBGJLDWESLoginLogoff.T02_Departamento(
     T02_FechaBajaDepartamento datetime null
 )engine=innodb;
 
-create table if not exists DBGJLDWESLoginLogoff.T01_Usuario(
+create table if not exists DBGJLDWESAplicacionFinal.T01_Usuario(
     T01_CodUsuario varchar(10) not null primary key,
     T01_Password varchar(64) not null,
     T01_DescUsuario varchar(255) not null,
@@ -23,9 +23,9 @@ create table if not exists DBGJLDWESLoginLogoff.T01_Usuario(
     T01_ImagenUsuario BLOB default null
 )engine=innodb;
 
-create user if not exists 'userGJLDWESLoginLogoff'@'%' identified by '5813Libro-Puro';
--- create user if not exists 'userGJLDWESLoginLogoffTema5'@'%' identified by 'paso';
+create user if not exists 'userGJLDWESAplicacionFinal'@'%' identified by '5813Libro-Puro';
+-- create user if not exists 'userGJLDWESAplicacionFinal'@'%' identified by 'paso';
 
-grant all privileges on *.* to 'userGJLDWESLoginLogoff'@'%' with grant option;
+grant all privileges on *.* to 'userGJLDWESAplicacionFinal'@'%' with grant option;
 
 flush privileges;

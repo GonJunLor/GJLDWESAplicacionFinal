@@ -20,11 +20,9 @@
 <body>
     <div id="aviso">Login Logoff</div>
     <nav class="<?php echo $estadoBarraNavegacion ?>">
-        <form action="" method="post">
-            <a name="inicio" class="botonLogo">
-                <img src="webroot/media/images/logo_appFinal.svg" alt="logo">
-            </a>
-        </form>
+        
+        <img src="webroot/media/images/logo_appFinal.svg" alt="logo">
+        
         <a href="./index.php"></a>
         <h2><?php echo $titulo[$_SESSION['paginaEnCurso']]; ?></h2>
         <form action="" method="post">
