@@ -21,11 +21,11 @@
     <div id="aviso">Login Logoff</div>
     <nav class="<?php echo $estadoBarraNavegacion ?>">
         <form action="" method="post">
-            <button name="inicio" class="botonLogo">
-                <img src="webroot/media/images/logo.png" alt="logo">
-            </button>
+            <a name="inicio" class="botonLogo">
+                <img src="webroot/media/images/logo_appFinal.svg" alt="logo">
+            </a>
         </form>
-        <a href="./indexLoginLogoff.php"></a>
+        <a href="./index.php"></a>
         <h2><?php echo $titulo[$_SESSION['paginaEnCurso']]; ?></h2>
         <form action="" method="post">
             <button type="submit" name="idioma" value="ES" id="ES" 
@@ -56,7 +56,7 @@
             <address style="display: inline;">Gonzalo Junquera Lorenzo</address>
             </a>
             <time datetime="2025-12-15">15-12-2025.</time>
-            <a href="https://mogutable.com/" id="webImitada" target="_blank">Web imitada</a>
+            <a href="https://www.kiwoko.com/" id="webImitada" target="_blank">Web imitada</a>
         </div>
     </footer>
 </body>

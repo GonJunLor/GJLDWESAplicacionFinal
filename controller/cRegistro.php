@@ -7,7 +7,7 @@
 if (isset($_REQUEST['cancelar'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -60,7 +60,7 @@ if ($entradaOK) {
 
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 
 }

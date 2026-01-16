@@ -24,7 +24,7 @@ final class DBPDO{
             $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
             $_SESSION['paginaEnCurso'] = 'error';
             $_SESSION['error'] = new ErrorApp($miExceptionPDO->getCode(),$miExceptionPDO->getMessage(),$miExceptionPDO->getFile(),$miExceptionPDO->getLine());
-            header('Location: indexLoginLogoff.php');
+            header('Location: index.php');
             exit;
         } finally {
             unset($miDB);

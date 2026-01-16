@@ -7,7 +7,7 @@
 if (isset($_REQUEST['volver'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -17,15 +17,15 @@ if (isset($_REQUEST['cerrarSesion'])) {
     $_SESSION['paginaEnCurso'] = 'inicioPublico';
     // Destruye la sesión
     session_destroy();
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 }
 
-// Volvemoa al inicio público pero sin cerrar sesión
+// Volvemos al inicio público pero sin cerrar sesión
 if (isset($_REQUEST['inicio'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -33,7 +33,7 @@ if (isset($_REQUEST['inicio'])) {
 if (isset($_REQUEST['cambiarContrasena'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'wip';
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -92,7 +92,7 @@ if ($entradaOK) {
 
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
-    header('Location: indexLoginLogoff.php');
+    header('Location: index.php');
     exit;
 
 }
