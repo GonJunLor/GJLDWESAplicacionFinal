@@ -1,0 +1,6 @@
+.vscode
+nbproject/
+conf/confDBPDO.php
+scriptBD/BorraDBGJLDWESLoginLogoff.sql
+scriptBD/CargaInicialDBGJLDWESLoginLogoff.sql
+scriptBD/CreaDBGJLDWESLoginLogoff.sql
