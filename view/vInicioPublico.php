@@ -4,14 +4,9 @@
 * @since: 15/12/2025
 */
 ?>
-<form action="" method="post">
-    <button name="iniciarSesion" class="boton">
-        <!-- Iniciar Sesion -->
-        <span><?php echo $textoBotonIniciarSesion; ?></span>
-    </button>
-</form>
-</nav>
-<main>
+<main id="inicioPublico">
+
+</main>
 <div class="imagenesCentrales">
     <a href="webroot/media/images/Clases.png"><img src="webroot/media/images/Clases.png" alt=""></a>
     <a href="webroot/media/images/usoSesion.png"><img src="webroot/media/images/usoSesion.png" alt=""></a>

@@ -11,50 +11,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="webroot/media/images/logo.png">
+    <link rel="icon" type="image/png" href="webroot/media/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="webroot/css/fonts.css">
     <link rel="stylesheet" href="webroot/css/estilos.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" type="text/css" rel="stylesheet">
     <title>Gonzalo Junquera Lorenzo</title>
 </head>
 <body>
-    <div id="aviso">Login Logoff</div>
-    <nav class="<?php echo $estadoBarraNavegacion ?>">
-        
-        <img src="webroot/media/images/logo_appFinal.svg" alt="logo">
-        
-        <a href="./index.php"></a>
-        <h2><?php echo $titulo[$_SESSION['paginaEnCurso']]; ?></h2>
+    <div id="aviso">Aplicación Final 2026</div>
+    <nav id="cabecera">
         <form action="" method="post">
-            <button type="submit" name="idioma" value="ES" id="ES" 
-            style="background-color:<?php echo $_COOKIE["idioma"]=="ES"? '#c2bcb9' : 'white';?>">
-                <img src="webroot/media/images/banderaEs.png" alt="es">
-            </button>
-            <button type="submit" name="idioma" value="EN" id="EN"
-            style="background-color:<?php echo $_COOKIE["idioma"]=="EN"? '#c2bcb9' : 'white';?>">
-                <img src="webroot/media/images/banderaGb.png" alt="en">
-            </button>
-            <button type="submit" name="idioma" value="FR" id="FR"
-            style="background-color:<?php echo $_COOKIE["idioma"]=="FR"? '#c2bcb9' : 'white';?>">
-                <img src="webroot/media/images/banderaFr.png" alt="fr">
-            </button>
+            <ul class="menuCabecera">
+                <li>
+                    <button name="inicio" class="botonLogo">
+                        <img src="webroot/media/images/logo_appFinal.svg" alt="logo">
+                    </button>
+                </li>
+                <li>
+                    <h2><?php echo $titulo[$_SESSION['paginaEnCurso']]; ?></h2>
+                </li>
+                <li class="menuIdioma">
+                    <button type="submit" name="idioma" value="ES" id="ES" >
+                        <p>ES</p>
+                        <img class="<?php echo $_COOKIE["idioma"]=="ES"? 'visible' : 'oculto';?>" src="webroot/media/images/ubicacion.svg" alt="logo">
+                    </button>
+                    <button type="submit" name="idioma" value="EN" id="EN">
+                        <p>EN</p>
+                        <img class="<?php echo $_COOKIE["idioma"]=="EN"? 'visible' : 'oculto';?>" src="webroot/media/images/ubicacion.svg" alt="logo">
+                    </button>
+                    <button type="submit" name="idioma" value="FR" id="FR">
+                        <p>FR</p>
+                        <img class="<?php echo $_COOKIE["idioma"]=="FR"? 'visible' : 'oculto';?>" src="webroot/media/images/ubicacion.svg" alt="logo">
+                    </button>
+                </li>
+                <li class="menuIniciarSesion">
+                    <button name="iniciarSesion" class="botonIniciarSesion">
+                        <img src="webroot/media/images/usuario.svg" alt="logo">
+                    </button>
+                    <ul class="submenuIniciarSesion">
+                        <li><button name="iniciarSesion" class="enlaceIniciarSesion">Iniciar Sesion</button></li>
+                        <li><button name="registrarse" class="enlaceRegistrarse">Registrarse</button></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="visible" name="cerrarSesion" class="botonCerrarSesion">
+                        <img src="webroot/media/images/salir.svg" alt="logo">
+                    </button>
+                </li>
+            </ul>
         </form>
-        
+    </nav>
     <?php require_once $view[$_SESSION['paginaEnCurso']]; ?>
-    </main>
     <footer id="pie">
-        <div>
-            <a href="https://github.com/GonJunLor/GJLDWESLoginLogoff.git" target="_blank">
-                <i class="fa-brands fa-github"></i>
-            </a>
-        </div>
-        2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados. 
         <div>
             <a href="https://gonzalojunlor.ieslossauces.es/" target="_blank">
             <address style="display: inline;">Gonzalo Junquera Lorenzo</address>
             </a>
-            <time datetime="2025-12-15">15-12-2025.</time>
-            <a href="https://www.kiwoko.com/" id="webImitada" target="_blank">Web imitada</a>
+        </div>
+        <div class="derechos">
+            <p>2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados. </p>
+            <!-- <time datetime="2025-12-15">15-12-2025.</time> -->
+        </div>
+        <div>
+            <a id="iconoGithub" href="https://github.com/GonJunLor/GJLDWESLoginLogoff.git" target="_blank">
+                <img src="webroot/media/images/github.png" alt="">
+            </a>
+            <a id="webImitada" href="https://www.kiwoko.com/"  target="_blank">
+                <img src="webroot/media/images/kiwoko.png" alt="">
+            </a>
         </div>
     </footer>
 </body>
