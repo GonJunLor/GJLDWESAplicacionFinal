@@ -29,10 +29,21 @@
     margin: 0;
     font-family: Open Sans, sans-serif;
     color: var(--colorTexto1);
-    /* font-size: var(--tamanoTexto); */
     list-style: none;
 }
-
+/* Estilos comunes para todas las paginas */
+main{
+    min-height: 75vh;
+}
+button {
+    background-color: var(--color2);
+    border: 0px;
+    cursor: pointer;
+}
+.oculto{visibility: hidden;}
+.visible{visibility: visible;}
+.rojo{color: var(--color1);}
+.enlace{text-decoration: underline;}
 /* Barra superior*/
 #aviso{
     background-color: var(--color1);
@@ -58,21 +69,16 @@
 #cabecera img{
     height: 40px;
 }
-#cabecera button {
-    background-color: var(--color2);
-    border: 0px;
-    cursor: pointer;
-}
 #cabecera h2{
     display: inline-block;
     text-align: center;
     padding-top: 6px;
     width: 100%;
 }
-.menuIdioma button{
+#cabecera .menuIdioma button{
     position: relative;
 }
-.menuIdioma p{
+#cabecera .menuIdioma p{
     position: absolute;
     top: 6px;
     left: 5px;
@@ -99,33 +105,196 @@
 }
 #cabecera li:hover .submenuIniciarSesion{display: block;}
 
-/* Estilos comunes para todas las paginas */
-main{
-    min-height: 75vh;
-}
-main>h1{
-    text-align: center;
-    margin: 10px;
-}
-main>h2{
-    text-align: center;
-    margin: 5px;
-}
-img{
-    max-width: 50dvw;
-}
-.oculto{visibility: hidden;}
-.visible{visibility: visible;}
 
 /* Inicio Público */
-#inicioPublico .imagenesCentrales img{
+#vInicioPublico .imagenesCentrales img{
     width: 400px;
-    border: 1px solid rgb(213, 183, 183);
-    border-radius: 10px;
+    border: var(--anchoBorde) solid var(--colorBorde1);
 }
 
+/* Login */
+#vLogin #login{
+    margin: 50px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+#vLogin #login #registro{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vLogin #login h2{
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+#vLogin #login>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vLogin #login>div{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+        margin-bottom: 16px;
+    }
+}
+#vLogin #login>div input{
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    background-color: #fff1de;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vLogin #entrar{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vLogin #cancelar{
+    height: 60px;
+    border: 2px solid var(--colorBorde2);
+    margin-top: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    & span{
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vLogin #entrar:hover{background-color: var(--colorBotonMarcado2y3);}
+#vLogin #cancelar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 0px;
+    & span{
+        color: var(--colorTexto4);
+    } 
+}
 
+/* Registro */
+#vRegistro #registro{
+    margin: 50px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+#vRegistro #registro h2{
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+#vRegistro #registro #iniciarSesion{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vRegistro #registro>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vRegistro #registro>div{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+    }
+}
+#vRegistro #registro>div label{
+    display: block;
+    margin-top: 16px;
+}
+#vRegistro #registro>div input{
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    background-color: #fff1de;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vRegistro .error{
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+#vRegistro .cuadroRojo{
+    border-color: var(--color1);
+}
+#vRegistro #entrar{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 50px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vRegistro #entrar:hover{background-color: var(--colorBotonMarcado2y3);}
 
+/* Inicio Privado */
+#vInicioPrivado{background-color: var(--color3);}
+#vInicioPrivado>form{
+    padding: 16px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2,1fr);
+}
+#vInicioPrivado>form>div:first-child{
+    grid-column: 1/span 2;
+}
+#vInicioPrivado>form>div:first-child button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vInicioPrivado>form>div:first-child button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vInicioPrivado .tarjeta{
+    background-color: var(--color2);
+    border: var(--anchoBorde) solid var(--colorBorde1);
+    border-radius: var(--radioBorde);
+    padding-bottom: 16px;
+    margin: 8px 4px;
+    display: inline-block;
+    width: 100%;
+}
+
+#vInicioPrivado .tarjeta div:nth-of-type(1){
+    border-bottom: var(--anchoBorde) solid var(--colorBorde1);
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    & *{
+        font-size: 1rem;
+        display: inline-block;
+        /* font-weight: bold; */
+    }
+}
+#vInicioPrivado .tarjeta div:nth-of-type(2){
+    padding-left: 16px;
+    padding-right: 16px;
+}
 
 /* Para página detalle, modificar el phpinfo */
 .detalle>h3{
@@ -163,10 +332,10 @@ img{
     text-align: center;
     margin: 10px;
 }
-body {
-    background-color: white !important; /* Fuerza el fondo a blanco */
-    color: black !important; /* Fuerza el texto a negro */
-}
+/* body {
+    background-color: white !important;
+    color: black !important;
+} */
 #phpinfo{
     background-color: white; 
     color: black;
@@ -177,9 +346,8 @@ body {
 
 /* Pie de pagína */
 #pie{
-    background-color: var(--color3);
+    background-color: var(--colorPie);
     border-top: var(--anchoBorde) solid var(--colorBorde1);
-    margin-top: 20px;
     padding: 40px 0px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

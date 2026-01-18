@@ -24,7 +24,7 @@ if (isset($_REQUEST['iniciarSesion'])) {
     exit;
 }
 
-// comprubea si existe una cookie de idioma y si no existe la crea en español
+// comprueba si existe una cookie de idioma y si no existe la crea en español
 if (!isset($_COOKIE['idioma'])) {
     setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
     header('Location: ./index.php');

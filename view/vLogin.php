@@ -5,21 +5,21 @@
 */
 
 ?>
+<main id="vLogin">
+    <form id="login" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
+        <button name="registro" class="boton" id="registro">
+            <h2>REGÍSTRATE</h2>
+        </button>
+        <h2>INICIA SESIÓN</h2>
+        <div>
+            <p>Bienvenid@ de nuevo! ¡Ya te echábamos de menos!</p>
+            <label for="usuario"><span class="rojo">*</span> Usuario</label>
+            <input type="text" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>">
+            <label for="contrasena"><span class="rojo">*</span> Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>">
+            <button name="entrar" class="boton" id="entrar"><span>Aceptar</span></button>
+            <button name="cancelar" class="boton" id="cancelar"><span>Cancelar</span></button>
+        </div>
 
-</nav>
-<main>
-<div id="login">
-    <h2>INICIO SESIÓN</h2>
-    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
-        <input type="text" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>" placeholder="Usuario">
-        <br>
-        <input type="password" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>" placeholder="Contraseña">
-        <br>   
-        <button name="entrar" class="boton" id="entrar"><span>Entrar</span></button>
-        <button name="cancelar" class="boton" id="cancelar"><span>Cancelar</span></button>
-        <br>
-        <hr>
-        <p>¿No tienes cuenta?</p>
-        <input type="submit" value="Registrarse" name="registro" class="boton" id="registro">
     </form>
-</div>
+</main>

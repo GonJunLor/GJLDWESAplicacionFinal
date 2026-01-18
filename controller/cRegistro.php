@@ -4,7 +4,7 @@
 * @since: 11/01/2026
 */
 
-if (isset($_REQUEST['cancelar'])) {
+if (isset($_REQUEST['iniciarSesion'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
