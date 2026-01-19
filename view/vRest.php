@@ -6,22 +6,28 @@
 ?>
 <main id="vRest">
     <form action="" method="post">
-    <div>
-        <button name="volver" class="boton"><span>Volver</span></button> 
-    </div>
+        <div>
+            <button name="volver" class="boton"><span>Volver</span></button> 
+        </div>
+    </form>
     <div class="columna1">
         <div class="tarjeta">
             <div><h2>API NASA</h2></div>
-            <div>
-                <label for="fechaNasa">Fecha</label>
-                <!-- <input type="date" id="fechaNasa" name="fechaNasa" value="<?php echo $avRest['fechaNasa']??'12/12/2012' ?>"> -->
-                <input type="date" id="fechaNasa" name="fechaNasa" value="12/12/2012">
-                <span class="error rojo"><?php echo $aErrores['fechaNasa'] ?></span>
-                <button name="entrar" class="boton" id="entrar"><span>VER</span></button>
+            <div class="contenidoNasa">
+                <form action="">
+                    <div>
+                        <label for="fechaNasa">Fecha: </label>
+                        <input type="date" id="fechaNasa" name="fechaNasa" value="<?php echo $avRest['fechaNasa'] ?>">
+                        <span class="error rojo"><?php echo $aErrores['fechaNasa'] ?></span>
+                    </div>
+                    <div>
+                        <button name="entrar" class="boton" id="entrar"><span>VER</span></button>
+                    </div>
                     
-                <?php echo $avRest['fotoNasa']->getTitulo(); ?>
+                </form> 
+                <br><hr><br>
+                <p><?php echo $avRest['fotoNasa']->getTitulo(); ?></p>
                 <img src="<?php echo $avRest['fotoNasa']->getUrl(); ?>" alt="Foto de la NASA">
-                 
             </div>
         </div>
     </div>
@@ -41,6 +47,4 @@
             </div>
         </div>
     </div>
-
-</form>
 </main>

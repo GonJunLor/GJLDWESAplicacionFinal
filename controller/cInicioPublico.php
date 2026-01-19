@@ -24,6 +24,13 @@ if (isset($_REQUEST['iniciarSesion'])) {
     exit;
 }
 
+if (isset($_REQUEST['registrarse'])) {
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'registro';
+    header('Location: index.php');
+    exit;
+}
+
 // comprueba si existe una cookie de idioma y si no existe la crea en español
 if (!isset($_COOKIE['idioma'])) {
     setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana

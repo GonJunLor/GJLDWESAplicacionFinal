@@ -6,12 +6,14 @@
 
 ?>
 <main id="vRegistro">
-    <form id="registro" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
+    <div id="registro">
         <h2>REGÍSTRATE</h2>
-        <button name="iniciarSesion" class="boton" id="iniciarSesion">
-            <h2>INICIA SESIÓN</h2>
-        </button>
-        <div>
+        <form id="iniciarSesion" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
+            <button name="iniciarSesion" class="boton" >
+                <h2>INICIA SESIÓN</h2>
+            </button>
+        </form>
+        <form class="contenido" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
             <label for="usuario"><span class="rojo">*</span>Usuario</label>
             <input type="text" class="<?php echo $aErrores['usuario']?'cuadroRojo':'' ?>" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>">
             <span class="error rojo"><?php echo $aErrores['usuario'] ?></span>
@@ -22,6 +24,6 @@
             <input type="password" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>">
             <span class="error rojo"><?php echo $aErrores['contrasena'] ?></span>
             <button name="entrar" class="boton" id="entrar"><span>CREAR CUENTA</span></button>
-        </div>
-    </form>
+        </form>
+    </div>       
 </main>

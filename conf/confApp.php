@@ -50,7 +50,7 @@ $titulo=[
     'login' => 'Login',
     'inicioPrivado' => 'Inicio Privado',
     'detalle' => 'Detalle',
-    'registro' => 'Registr<o',
+    'registro' => 'Registro',
     'cuenta' => 'Cuenta de Usuario',
     'rest' => 'REST'
 ];

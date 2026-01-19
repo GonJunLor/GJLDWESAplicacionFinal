@@ -6,12 +6,14 @@
 
 ?>
 <main id="vLogin">
-    <form id="login" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
-        <button name="registro" class="boton" id="registro">
-            <h2>REGÍSTRATE</h2>
-        </button>
+    <div id="login" >
+        <form id="registro" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
+            <button name="registro" class="boton" >
+                <h2>REGÍSTRATE</h2>
+            </button>
+        </form>
         <h2>INICIA SESIÓN</h2>
-        <div>
+        <form class="contenido" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <p>Bienvenid@ de nuevo! ¡Ya te echábamos de menos!</p>
             <label for="usuario"><span class="rojo">*</span> Usuario</label>
             <input type="text" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>">
@@ -19,7 +21,6 @@
             <input type="password" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>">
             <button name="entrar" class="boton" id="entrar"><span>Aceptar</span></button>
             <button name="cancelar" class="boton" id="cancelar"><span>Cancelar</span></button>
-        </div>
-
-    </form>
+        </form>
+    </div>
 </main>
