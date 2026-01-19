@@ -10,7 +10,8 @@
     <div>
         <button name="detalle" class="boton"><span>Detalle</span></button>
         <button name="error" class="boton"><span>Error</span></button>
-        <button name="departamento" class="boton"><span>Mantenimiento de Departamento</span></button> 
+        <button name="departamento" class="boton"><span>Mantenimiento de Departamento</span></button>
+        <button name="rest" class="boton"><span>REST</span></button>  
     </div>
     <div class="columna1">
         <div class="tarjeta">

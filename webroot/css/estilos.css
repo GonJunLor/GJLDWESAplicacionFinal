@@ -296,6 +296,57 @@ button {
     padding-right: 16px;
 }
 
+/* REST */
+#vRest{background-color: var(--color3);}
+#vRest>form{
+    padding: 16px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3,1fr);
+}
+#vRest>form>div:first-child{
+    grid-column: 1/span 3;
+}
+#vRest>form>div:first-child button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vRest>form>div:first-child button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vRest .tarjeta{
+    background-color: var(--color2);
+    border: var(--anchoBorde) solid var(--colorBorde1);
+    border-radius: var(--radioBorde);
+    padding-bottom: 16px;
+    margin: 8px 4px;
+    display: inline-block;
+    width: 100%;
+}
+
+#vRest .tarjeta div:nth-of-type(1){
+    border-bottom: var(--anchoBorde) solid var(--colorBorde1);
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    & *{
+        font-size: 1rem;
+        display: inline-block;
+        /* font-weight: bold; */
+    }
+}
+#vRest .tarjeta div:nth-of-type(2){
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
 /* Para página detalle, modificar el phpinfo */
 .detalle>h3{
     text-align: center;

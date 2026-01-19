@@ -40,6 +40,14 @@ if (isset($_REQUEST['departamento'])) {
     exit;
 }
 
+// vamos a la página detalle
+if (isset($_REQUEST['rest'])) {
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'rest';
+    header('Location: index.php');
+    exit;
+}
+
 // vamos a la página de cuenta del usuario
 if (isset($_REQUEST['cuenta'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
@@ -86,6 +94,8 @@ $avInicioPrivado=[
     'numConexiones' => $_SESSION['usuarioGJLDWESLoginLogoff']->getNumAccesos(),
     'fechaHoraUltimaConexionAnterior' => $_SESSION['usuarioGJLDWESLoginLogoff']->getFechaHoraUltimaConexionAnterior()
 ];
+
+
 
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web
 require_once $view['layout'];
