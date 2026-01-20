@@ -23,11 +23,11 @@
                     <div>
                         <button name="entrar" class="boton" id="entrar"><span>VER</span></button>
                     </div>
-                    
                 </form> 
                 <br><hr><br>
                 <p><?php echo $avRest['fotoNasa']->getTitulo(); ?></p>
                 <img src="<?php echo $avRest['fotoNasa']->getUrl(); ?>" alt="Foto de la NASA">
+                
             </div>
         </div>
     </div>

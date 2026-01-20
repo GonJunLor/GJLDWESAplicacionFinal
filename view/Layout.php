@@ -78,6 +78,9 @@
             <a id="webImitada" href="https://www.kiwoko.com/"  target="_blank">
                 <img src="webroot/media/images/kiwoko.png" alt="">
             </a>
+            <a id="cv" href="doc/pdf/cv.pdf" target="_blank">          
+                <img src="webroot/media/images/cv.png" alt="cv gonzalo" height="35" >        
+            </a>
         </div>
     </footer>
 </body>

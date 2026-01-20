@@ -379,51 +379,64 @@ button {
 }
 
 /* Para página detalle, modificar el phpinfo */
-.detalle>h3{
+#vDetalle {
+    padding: 16px;
+    background-color: var(--color2);
+}
+#vDetalle button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vDetalle button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vDetalle .detalle>h3{
     text-align: center;
     padding: 1em;
     margin-top: 2em;
 }
-.detalle{
-    margin: 20px 20px 20px 20px;
+#vDetalle .detalle{
+    margin: 0px 20px 20px 20px;
+    padding: 0;
 }
-.detalle table{
+#vDetalle .detalle table{
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
     overflow: auto;
 }
-.detalle th{
+#vDetalle .detalle th{
     background-color: gainsboro;
     border: 1px solid black;
     padding: 3px;
 }
-.detalle td{
+#vDetalle .detalle td{
     border: 1px solid black;
     padding: 3px;
-    /* word-break: break-all; */
     overflow-wrap: break-word;
 }
-.detalle tr td:first-child{
+#vDetalle .detalle tr td:first-child{
     background-color: #8db7faff;
     font-weight: bold;
 }
-.detalle tr td:first-child, th:first-child{width: 30%;}
-.detalle tr td:nth-of-type(2), th:nth-of-type(2){width: 69%;}
-.detalle h3{
+#vDetalle .detalle tr td:first-child, th:first-child{width: 30%;}
+#vDetalle .detalle tr td:nth-of-type(2), th:nth-of-type(2){width: 69%;}
+#vDetalle .detalle h3{
     text-align: center;
     margin: 10px;
 }
-/* body {
-    background-color: white !important;
-    color: black !important;
-} */
-#phpinfo{
+#vDetalle #phpinfo{
     background-color: white; 
     color: black;
 }
-#phpinfo .v{background-color: white;}
-#phpinfo .e{background-color: #8db7faff;}
+#vDetalle #phpinfo .v{background-color: white;}
+#vDetalle #phpinfo .e{background-color: #8db7faff;}
 
 
 /* Pie de pagína */
@@ -446,11 +459,8 @@ button {
     place-items: center;
 }
 #pie .derechos{font-size: 0.8rem;}
-#pie #iconoGithub img{
+#pie img{
     height: 35px;
     margin-right: 10px;
-}
-#pie #webImitada img{
-    height: 36px;
 }
 
