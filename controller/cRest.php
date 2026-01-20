@@ -52,7 +52,7 @@ if (isset($_REQUEST['inicio'])) {
 }
 
 // Para control de la fecha, por defecto creamos la fecha de hoy
-$oFechaNasa = null; // Variable para el objeto fechaNasa
+$oFechaNasa = new DateTime(); // Variable para el objeto fechaNasa
 if (isset($_SESSION["fechaNasa"])) {
     // si ya hay una fecha en la sesión se usa esa en vez de la actual
     $oFechaNasa = $_SESSION["fechaNasa"];
