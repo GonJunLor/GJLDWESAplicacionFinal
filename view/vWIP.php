@@ -1,17 +1,21 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 14/01/2026
+* @since: 21/01/2026
 */
 ?>
-
-</nav>
-<main>
-<div>
-    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
-        <button name="volver" class="boton" id="volver"><span>Volver</span></button>
+<main id="vWIP">
+    <form action="" method="post">
+        <div>
+            <button name="volver" class="boton"><span>Volver</span></button> 
+        </div>
+        <div class="columna1">
+            <div class="tarjeta">
+                <?php
+                    echo '<div><h2>PÁGINA EN CONSTRUCCIÓN</h2></div>';
+                    echo '<div><p>Lo sentimos, el enlace que has seguido no está disponible en este momento.</p></div>';
+                ?>
+            </div>
+        </div>
     </form>
-</div>
-<h2>PÁGINA EN CONSTRUCCIÓN</h2>
-<br>
-<p>Lo sentimos, el enlace que has seguido no está disponible en este momento.</p>
+</main>

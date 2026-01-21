@@ -52,7 +52,9 @@ $titulo=[
     'detalle' => 'Detalle',
     'registro' => 'Registro',
     'cuenta' => 'Cuenta de Usuario',
-    'rest' => 'REST'
+    'rest' => 'REST',
+    'error' => 'VENTANA DE ERROR',
+    'wip' => 'VENTANA DE MANTENIMIENTO'
 ];
 
 ?>

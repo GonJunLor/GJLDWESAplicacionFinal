@@ -26,8 +26,9 @@
                 </form> 
                 <br><hr><br>
                 <p><?php echo $avRest['fotoNasa']->getTitulo(); ?></p>
-                <img src="<?php echo $avRest['fotoNasa']->getUrl(); ?>" alt="Foto de la NASA">
-                
+                <a href="<?php echo $avRest['fotoNasa']->getUrl(); ?>" target="_blank">
+                    <img src="<?php echo $avRest['fotoNasa']->getUrl(); ?>" alt="Foto de la NASA">
+                </a>
             </div>
         </div>
     </div>

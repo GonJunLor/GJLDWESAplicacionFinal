@@ -1,0 +1,82 @@
+#vCuenta #cuenta{
+    margin: 50px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+#vCuenta button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vCuenta>form>div:first-child{
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+#vCuenta>form>div:first-child button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vCuenta #cuenta h2{
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+#vCuenta #cuenta>span{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vCuenta #cuenta #iniciarSesion button{
+    width: 100%;
+}
+#vCuenta #cuenta>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vCuenta #cuenta .contenido{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+    }
+}
+#vCuenta #cuenta .contenido label{
+    display: block;
+    margin-top: 16px;
+}
+#vCuenta #cuenta .contenido input{
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vCuenta .error{
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+#vCuenta .cuadroRojo{
+    border-color: var(--color1);
+}
+#vCuenta #entrar, #cambiarContrasena, #volver{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 50px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vCuenta #entrar:hover{background-color: var(--colorBotonMarcado2y3);}

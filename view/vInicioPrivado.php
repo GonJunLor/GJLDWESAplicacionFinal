@@ -51,22 +51,22 @@
                 <button name="cuenta" class="boton"><span class="enlace">Ver</span></button>
             </div>
             <div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium quam eius, repudiandae eos ducimus, ipsa fugiat in esse lib</p>
+                <p>Aquí aparecerán los datos del usuario</p>
             </div>
         </div>
     </div>
     <div class="columna2">
         <div class="tarjeta">
-            <div><h2>tarjeta 2</h2></div>
+            <div><h2>Usuarios</h2></div>
             <div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium quam eius, repudiandae eos ducimus, ipsa fugiat in esse libero molestias autem magni consequuntur earum maiores quibusdam ut aliquid necessitatibus? Distinctio!</p>
+                <p>Espacio reservado para la futura función de mantenimiento de usuarios</p>
             </div>
         </div>
         
         <div class="tarjeta">
-            <div><h2>tarjeta 4</h2></div>
+            <div><h2>Cuestiones</h2></div>
             <div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium quam eius, repudiandae eos ducimus, ipsa fugiat in esse libero molestias autem magni consequuntur earum maiores quibusdam ut aliquid necessitatibus? Distinctio!</p>
+                <p>Espacio reservado para la futura función de mantenimiento de cuestiones</p>
             </div>
         </div>
     </div>

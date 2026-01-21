@@ -5,29 +5,27 @@
 */
 
 ?>
-<form action="" method="post">
-    <button name="cerrarSesion" class="boton">
-        <span>Cerrar Sesión</span>
-    </button>
-</form>
-</nav>
-<main>
-<div id="login">
-    <h2>DATOS PERSONALES</h2>
-    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
-        Usuario:
-        <input type="text" id="usuario" name="usuario" value="<?php echo $avCuenta['codUsuario'] ?>" disabled>
-        <br>
-        Nombre y apellidos:
-        <input type="text" id="descUsuario" name="descUsuario" value="<?php echo $avCuenta['descUsuario'] ?>">
-        <span class="error"><?php echo $aErrores['descUsuario'] ?></span>
-        <br>  
-        Perfil: 
-        <input type="text" id="perfil" name="perfil" value="<?php echo $avCuenta['perfil'] ?>" disabled>
-        <br>
-        <button name="guardar" class="boton" id="entrar"><span>Guardar</span></button>
-        <button name="volver" class="boton" id="cancelar"><span>Volver</span></button>
-        <br>
-        <button name="cambiarContrasena" class="boton" id="cambiarContrasena"><span>Cambiar contraseña</span></button>
+<main id="vCuenta">
+    <form action="" method="post">
+        <div>
+            <button name="volver" class="boton"><span>Volver</span></button> 
+        </div>
     </form>
-</div>
+    <div id="cuenta">
+        <h2>DATOS PERSONALES</h2>
+        <span></span>
+        <form class="contenido" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" value="<?php echo $avCuenta['codUsuario'] ?>" disabled>
+            <span class="error rojo"><?php echo $aErrores['usuario'] ?></span>
+            <label for="descUsuario">Nombre y Apellidos</label>
+            <input type="text" id="descUsuario" name="descUsuario" value="<?php echo $avCuenta['descUsuario'] ?>">
+            <span class="error rojo"><?php echo $aErrores['descUsuario'] ?></span>
+            <label for="perfil">Perfil</label>
+            <input type="password" id="perfil" name="perfil" value="<?php echo $avCuenta['perfil'] ?>" disabled>
+            <span class="error rojo"><?php echo $aErrores['contrasena'] ?></span>
+            <button name="entrar" class="boton" id="entrar"><span>GUARDAR</span></button>
+            <button name="cambiarContrasena" class="boton" id="cambiarContrasena"><span>Cambiar contraseña</span></button>
+        </form>
+    </div>       
+</main>

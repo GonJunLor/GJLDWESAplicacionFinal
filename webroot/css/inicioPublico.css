@@ -1,0 +1,5 @@
+/* Inicio Público */
+#vInicioPublico .imagenesCentrales img{
+    width: 400px;
+    border: var(--anchoBorde) solid var(--colorBorde1);
+}

@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" href="webroot/media/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="webroot/css/fonts.css">
     <link rel="stylesheet" href="webroot/css/estilos.css">
+    <link rel="stylesheet" href="webroot/css/<?php echo $_SESSION['paginaEnCurso']; ?>.css">
     <title>Gonzalo Junquera Lorenzo</title>
 </head>
 <body>
