@@ -4,9 +4,11 @@
 * @since: 15/12/2025
 */
 
+
 // comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
 if (isset($_SESSION["usuarioGJLDWESLoginLogoff"])) {
-    $textoBotonIniciarSesion = 'Hola '.$_SESSION["usuarioGJLDWESLoginLogoff"]->getCodUsuario();
+    $estadoBotonSalir = 'activo';
+    $estadoBotonIniciarSesion = 'inactivo';
 
     // si está la sesión iniciada redirigimos directamente al inicio privado
     if (isset($_REQUEST['iniciarSesion'])) {
@@ -42,6 +44,16 @@ if (!isset($_COOKIE['idioma'])) {
 if (isset($_REQUEST['idioma'])) {
     setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
     header('Location: ./index.php');
+    exit;
+}
+
+// Volvemos al índice general destruyendo la sesión
+if (isset($_REQUEST['cerrarSesion'])) {
+    $_SESSION['paginaAnterior'] = '';
+    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    // Destruye la sesión
+    session_destroy();
+    header('Location: index.php');
     exit;
 }
 

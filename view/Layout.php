@@ -49,12 +49,14 @@
                         <img src="webroot/media/images/usuario.svg" alt="logo">
                     </button>
                     <ul class="submenuIniciarSesion">
-                        <li><button name="iniciarSesion" class="enlaceIniciarSesion">Iniciar Sesion</button></li>
-                        <li><button name="registrarse" class="enlaceRegistrarse">Registrarse</button></li>
+                        <li class="<?php echo $estadoBotonIniciarSesion; ?>"><button name="iniciarSesion" class="enlaceIniciarSesion">Iniciar Sesion</button></li>
+                        <li class="<?php echo $estadoBotonSalir; ?>"><button name="cuenta" class="enlaceCuenta">Mi Cuenta</button></li>
+                        <li class="<?php echo $estadoBotonIniciarSesion; ?>"><button name="registrarse" class="enlaceRegistrarse">Registrarse</button></li>
+                        <li class="<?php echo $estadoBotonSalir; ?>"><button name="cerrarSesion" class="enlaceCerrarSesion">Salir</button></li>
                     </ul>
                 </li>
                 <li>
-                    <button class="visible" name="cerrarSesion" class="botonCerrarSesion">
+                    <button class="<?php echo $estadoBotonSalir; ?>" name="cerrarSesion" class="botonCerrarSesion">
                         <img src="webroot/media/images/salir.svg" alt="logo">
                     </button>
                 </li>

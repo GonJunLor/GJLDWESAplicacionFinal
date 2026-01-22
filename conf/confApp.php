@@ -57,4 +57,6 @@ $titulo=[
     'wip' => 'VENTANA DE MANTENIMIENTO'
 ];
 
+$estadoBotonSalir = 'inactivo';
+$estadoBotonIniciarSesion = 'activo';
 ?>
