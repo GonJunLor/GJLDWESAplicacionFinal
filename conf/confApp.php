@@ -59,4 +59,5 @@ $titulo=[
 
 $estadoBotonSalir = 'inactivo';
 $estadoBotonIniciarSesion = 'activo';
+
 ?>

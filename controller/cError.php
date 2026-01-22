@@ -50,5 +50,7 @@ $avError=[
     'line' => $_SESSION['error']->getLine()
 ];
 
+$estadoBotonSalir = 'inactivo';
+$estadoBotonIniciarSesion = 'inactivo';
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web
 require_once $view['layout'];
