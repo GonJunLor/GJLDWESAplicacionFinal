@@ -5,7 +5,7 @@
 */
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
-if (isset($_SESSION["usuarioDAW205AppLoginLogoff"])) {
+if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
@@ -90,9 +90,9 @@ if (isset($_REQUEST['idioma'])) {
 
 //Se crea un array con los datos del usuario para pasarlos a la vista
 $avInicioPrivado=[
-    'descUsuario' => $_SESSION['usuarioGJLDWESLoginLogoff']->getDescUsuario(),
-    'numConexiones' => $_SESSION['usuarioGJLDWESLoginLogoff']->getNumAccesos(),
-    'fechaHoraUltimaConexionAnterior' => $_SESSION['usuarioGJLDWESLoginLogoff']->getFechaHoraUltimaConexionAnterior()
+    'descUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getDescUsuario(),
+    'numConexiones' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getNumAccesos(),
+    'fechaHoraUltimaConexionAnterior' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()
 ];
 
 

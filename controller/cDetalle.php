@@ -5,7 +5,7 @@
 */
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
-if (isset($_SESSION["usuarioDAW205AppLoginLogoff"])) {
+if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');

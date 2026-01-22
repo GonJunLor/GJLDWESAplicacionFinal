@@ -6,7 +6,7 @@
 
 
 // comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
-if (isset($_SESSION["usuarioGJLDWESLoginLogoff"])) {
+if (isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
     $estadoBotonSalir = 'activo';
     $estadoBotonIniciarSesion = 'inactivo';
 

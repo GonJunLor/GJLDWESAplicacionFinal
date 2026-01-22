@@ -76,7 +76,7 @@ if ($entradaOK) {
 
     $oUsuario = UsuarioPDO::registrarUltimaConexion($oUsuario);
     
-    $_SESSION['usuarioGJLDWESLoginLogoff'] = $oUsuario;
+    $_SESSION['usuarioGJLDWESAplicacionFinal'] = $oUsuario;
 
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     header('Location: index.php');

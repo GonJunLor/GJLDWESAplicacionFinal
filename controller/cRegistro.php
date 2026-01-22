@@ -72,7 +72,7 @@ if ($entradaOK) {
 
     $oUsuario = UsuarioPDO::altaUsuario($_REQUEST['usuario'], $_REQUEST['contrasena'], $_REQUEST['descUsuario']);
 
-    $_SESSION['usuarioGJLDWESLoginLogoff'] = $oUsuario;
+    $_SESSION['usuarioGJLDWESAplicacionFinal'] = $oUsuario;
 
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';

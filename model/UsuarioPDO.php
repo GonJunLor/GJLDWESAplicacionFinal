@@ -143,15 +143,13 @@ final class UsuarioPDO {
     /**
      * Cambia datos de un usuario existente
      * @param Usuario $oUsuario Objeto del usuario actual
-     * @param string $nuevoCodUsuario Nuevo codigo de usuario
      * @param string $nuevoDescUsuario Nuevo nombre y apellidos
      * @param string $nuevoPerfil Nuevo perfil
      * @return Usuario|null El objeto usuario actualizado o null si falla
      */
-    public static function modificarUsuario($oUsuario, $nuevoCodUsuario, $nuevoDescUsuario, $nuevoPerfil){
+    public static function modificarUsuario($oUsuario, $nuevoDescUsuario, $nuevoPerfil){
         $sql = <<<SQL
             UPDATE T01_Usuario SET 
-                T01_CodUsuario = :nuevoCodUsuario,
                 T01_DescUsuario = :nuevoDescUsuario,
                 T01_Perfil = :nuevoPerfil
             WHERE T01_CodUsuario = :codUsuarioAntiguo
@@ -161,7 +159,6 @@ final class UsuarioPDO {
         Un usuario malintencionado podría enviar código SQL en lugar de un nombre. 
         Usar :parametro hace que PDO limpie los datos automáticamente. */
         $parametros = [
-            ':nuevoCodUsuario' => $nuevoCodUsuario,
             ':nuevoDescUsuario' => $nuevoDescUsuario,
             ':nuevoPerfil' => $nuevoPerfil,
             ':codUsuarioAntiguo' => $oUsuario->getCodUsuario()
@@ -169,7 +166,6 @@ final class UsuarioPDO {
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
 
         if ($consulta) {
-            $oUsuario->setCodUsuario($nuevoCodUsuario);
             $oUsuario->setDescUsuario($nuevoDescUsuario);
             $oUsuario->setPerfil($nuevoPerfil);
             return $oUsuario;
