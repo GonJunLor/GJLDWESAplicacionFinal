@@ -52,25 +52,25 @@ if (isset($_REQUEST['inicio'])) {
 }
 
 // Para control de la fecha, por defecto creamos la fecha de hoy
-$oFechaNasa = new DateTime(); // Variable para el objeto fechaNasa
-if (isset($_SESSION["fechaNasa"])) {
+$oFechaNasaEnCurso = new DateTime(); // Variable para el objeto fechaNasa
+if (isset($_SESSION["fechaNasaEnCurso"])) {
     // si ya hay una fecha en la sesión se usa esa en vez de la actual
-    $oFechaNasa = $_SESSION["fechaNasa"];
+    $oFechaNasaEnCurso = $_SESSION["fechaNasaEnCurso"];
 }
 
 /* Para que al cargar la pagina aparezca directamente la foto de la nasa
 cargamos aqui el objeto fotoNasa. En caso de error en la api lo controlamos 
 justo antes de cargar el layout */
-$fechaNasaFormateada = $oFechaNasa->format('Y-m-d');
+$fechaNasaFormateada = $oFechaNasaEnCurso->format('Y-m-d');
 //se llama a la api con la fecha formateada
-$oFotoNasa = REST::apiNasa($fechaNasaFormateada);
+$oFotoNasaEnCurso = REST::apiNasa($fechaNasaFormateada);
 
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
-    'fechaNasa' => ''
+    'fechaNasaEnCurso' => ''
 ];
 $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
-    'fechaNasa' => ''
+    'fechaNasaEnCurso' => ''
 ]; 
 
 //Para cada campo del formulario: Validar entrada y actuar en consecuencia
@@ -79,7 +79,7 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     // Validamos los datos del formulario
     $ofechaActual = new DateTime(); // creamos la fecha actual para pasarla al validarfecha
     $ofechaMinima = new DateTime('1995-06-16'); // creamos la fecha minima para pasarla al validarfecha
-    $aErrores['fechaNasa']= validacionFormularios::validarFecha($_REQUEST['fechaNasa'],$ofechaActual->format('m/d/Y'),$ofechaMinima->format('m/d/Y'));
+    $aErrores['fechaNasaEnCurso']= validacionFormularios::validarFecha($_REQUEST['fechaNasaEnCurso'],$ofechaActual->format('m/d/Y'),$ofechaMinima->format('m/d/Y'));
     
     foreach($aErrores as $campo => $valor){
         if(!empty($valor)){ // Comprobar si el valor es válido
@@ -89,15 +89,18 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     
     // Comprobamos que el servidor de la api este bien, que responda, etc.
     if ($entradaOK) {
-        $oFotoNasa = REST::apiNasa($fechaHoyFormateada);
+        $oFotoNasaEnCurso = REST::apiNasa($fechaHoyFormateada);
 
         // guardamos en la sesion la fecha que viene del formulario para recordarla después.
-        $_SESSION['fechaNasa'] = new DateTime($_REQUEST['fechaNasa']);
+        $_SESSION['fechaNasaEnCurso'] = new DateTime($_REQUEST['fechaNasaEnCurso']);
 
         // aqui entramos en caso de algo haya ido mal al usar la api de la nasa
-        if (!isset($oFotoNasa)) {
+        if (!isset($oFotoNasaEnCurso)) {
             $entradaOK = false;
-            $aErrores['fechaNasa'] = "Error al cargar la api de la NASA";
+            $aErrores['fechaNasaEnCurso'] = "Error al cargar la api de la NASA";
+        } else {
+            // guardamos en la sesion el objeto fotoNasa que viene de la api para no tener que usarla constantemente al recargar paginas
+            $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
         }
     }
     
@@ -116,19 +119,22 @@ if ($entradaOK) {
 
 /* Para que se vea bien la fecha en la vista, ya que sino se me cambia a la anterior aunque es sólo
 visual ya que en la sesión esta la fecha nueva pero en el input no aparece */
-if (isset($_SESSION["fechaNasa"])) {
+if (isset($_SESSION["fechaNasaEnCurso"])) {
     // si ya hay una fecha en la sesión se usa esa en vez de la actual
-    $oFechaNasa = $_SESSION["fechaNasa"];
+    $oFechaNasaEnCurso = $_SESSION["fechaNasaEnCurso"];
 }
 
-// Para controlar si el objeto fotoNasa se ha creado correctamente, sino creamos uno para que no de error la vista
-if (!isset($oFotoNasa)) {
-    $oFotoNasa = new FotoNasa('No hay foto del dia','webroot/media/images/banderaEs.png','1990-04-24');
+// Para controlar si el objeto fotoNasa se ha creado correctamente lo guardamos en la sesion
+if (isset($oFotoNasaEnCurso)) {
+    $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
+} else { // sino creamos uno para que no de error la vista
+    $oFotoNasaEnCurso = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
 }
+
 
 $avRest = [
-    'fechaNasa'=>$oFechaNasa->format('Y-m-d'),
-    'fotoNasa'=>$oFotoNasa
+    'fechaNasaEnCurso'=>$oFechaNasaEnCurso->format('Y-m-d'),
+    'fotoNasaEnCurso'=>$oFotoNasaEnCurso
 ];
 
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web

@@ -5,23 +5,35 @@
 */
 
 class FotoNasa {
+
+    private $fecha;
+    private $descripcion;
+    private $urlHD;
     private $titulo;
     private $url;
-    private $fecha;
-
-    public function __construct($titulo, $url, $fecha) {
+    
+    public function __construct($fecha, $descripcion, $urlHD, $titulo, $url) {
+        $this->fecha = $fecha;  
+        $this->descripcion = $descripcion;
+        $this->urlHD = $urlHD;  
         $this->titulo = $titulo;
         $this->url = $url;
-        $this->fecha = $fecha;
     }
     
+    public function getfecha() { 
+        return $this->fecha; 
+    }
+    public function getDescripcion() { 
+        return $this->descripcion; 
+    }
+    public function getUrlHD() { 
+        return $this->urlHD; 
+    }
     public function getTitulo() { 
         return $this->titulo; 
     }
     public function getUrl() { 
         return $this->url; 
     }
-    public function getfecha() { 
-        return $this->fecha; 
-    }
+    
 }

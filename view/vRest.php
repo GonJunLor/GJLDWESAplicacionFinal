@@ -16,18 +16,18 @@
             <div class="contenidoNasa">
                 <form action="">
                     <div>
-                        <label for="fechaNasa">Fecha: </label>
-                        <input type="date" id="fechaNasa" name="fechaNasa" value="<?php echo $avRest['fechaNasa'] ?>">
-                        <span class="error rojo"><?php echo $aErrores['fechaNasa'] ?></span>
+                        <label for="fechaNasaEnCurso">Fecha: </label>
+                        <input type="date" id="fechaNasaEnCurso" name="fechaNasaEnCurso" value="<?php echo $avRest['fechaNasaEnCurso'] ?>">
+                        <span class="error rojo"><?php echo $aErrores['fechaNasaEnCurso'] ?></span>
                     </div>
                     <div>
                         <button name="entrar" class="boton" id="entrar"><span>VER</span></button>
                     </div>
                 </form> 
                 <br><hr><br>
-                <p><?php echo $avRest['fotoNasa']->getTitulo(); ?></p>
-                <a href="<?php echo $avRest['fotoNasa']->getUrl(); ?>" target="_blank">
-                    <img src="<?php echo $avRest['fotoNasa']->getUrl(); ?>" alt="Foto de la NASA">
+                <p><?php echo $avRest['fotoNasaEnCurso']->getTitulo(); ?></p>
+                <a href="<?php echo $avRest['fotoNasaEnCurso']->getUrlHD(); ?>" target="_blank">
+                    <img src="<?php echo $avRest['fotoNasaEnCurso']->getUrl(); ?>" alt="Foto de la NASA">
                 </a>
             </div>
         </div>
