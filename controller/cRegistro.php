@@ -54,10 +54,9 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     }
 
     if ($entradaOK) {
-        $oUsuario = UsuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['contrasena']);
 
         // si esta en la BBDD ponemos a false
-        if (isset($oUsuario)) {
+        if (UsuarioPDO::validarCodNoExiste($_REQUEST['usuario'])) {
             $entradaOK = false;
             $aErrores['usuario'] = "El nombre de usuario ya existe.";
         }

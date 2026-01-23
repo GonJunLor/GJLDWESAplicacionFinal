@@ -15,6 +15,8 @@ require_once 'model/DBPDO.php';
 require_once 'model/ErrorApp.php';
 require_once 'model/REST.php';
 require_once 'model/FotoNasa.php';
+require_once 'model/Departamento.php'; 
+require_once 'model/DepartamentoPDO.php';
 
 // constante para acceder a la api de la nasa con una clave privada mia
 const API_KEY_NASA = 'uwcgeJsRXJe8JY2SPm26LWceI9GHg8bNXynfkq9s';
@@ -28,7 +30,8 @@ $controller=[
     'registro' => 'controller/cRegistro.php',
     'wip' => 'controller/cWIP.php',
     'cuenta' => 'controller/cCuenta.php',
-    'rest' => 'controller/cRest.php'
+    'rest' => 'controller/cRest.php',
+    'mtoDepartamentos' => 'controller/cMtoDepartamentos.php'
 ];
 
 $view=[
@@ -41,7 +44,8 @@ $view=[
     'registro' => 'view/vRegistro.php',
     'wip' => 'view/vWIP.php',
     'cuenta' => 'view/vCuenta.php',
-    'rest' => 'view/vRest.php'
+    'rest' => 'view/vRest.php',
+    'mtoDepartamentos' => 'view/vMtoDepartamentos.php'
 ];
 
 $titulo=[
@@ -54,7 +58,8 @@ $titulo=[
     'cuenta' => 'Cuenta de Usuario',
     'rest' => 'REST',
     'error' => 'VENTANA DE ERROR',
-    'wip' => 'VENTANA DE MANTENIMIENTO'
+    'wip' => 'VENTANA DE MANTENIMIENTO',
+    'mtoDepartamentos' => 'Mantenimiento de departamentos'
 ];
 
 $estadoBotonSalir = 'inactivo';

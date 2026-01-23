@@ -35,7 +35,7 @@ if (isset($_REQUEST['error'])) {
 if (isset($_REQUEST['departamento'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     // como no la tenemos vamos a la pagina en construcción
-    $_SESSION['paginaEnCurso'] = 'wip';
+    $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
     header('Location: index.php');
     exit;
 }
@@ -90,9 +90,13 @@ if (isset($_REQUEST['idioma'])) {
 
 //Se crea un array con los datos del usuario para pasarlos a la vista
 $avInicioPrivado=[
+    'codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
     'descUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getDescUsuario(),
     'numConexiones' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getNumAccesos(),
-    'fechaHoraUltimaConexionAnterior' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()
+    'fechaHoraUltimaConexion' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexion()->format("d-m-Y H:i:s"),
+    'fechaHoraUltimaConexionSaludo' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexion(),
+    'fechaHoraUltimaConexionAnterior' => ($_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()? $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()->format("d-m-Y H:i:s"):""),
+    'perfil' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil()
 ];
 
 $estadoBotonSalir = 'activo';
