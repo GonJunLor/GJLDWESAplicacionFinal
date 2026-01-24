@@ -22,7 +22,7 @@
             <input type="text" id="descUsuario" name="descUsuario" value="<?php echo $avCuenta['descUsuario'] ?>">
             <span class="error rojo"><?php echo $aErrores['descUsuario'] ?></span>
             <label for="perfil">Perfil</label>
-            <input type="password" id="perfil" name="perfil" value="<?php echo $avCuenta['perfil'] ?>" disabled>
+            <input type="text" id="perfil" name="perfil" value="<?php echo $avCuenta['perfil'] ?>" disabled>
             <span class="error rojo"><?php echo $aErrores['contrasena'] ?></span>
             <button name="guardar" class="boton" id="guardar"><span>GUARDAR</span></button>
             <button name="cambiarContrasena" class="boton" id="cambiarContrasena"><span>Cambiar contraseña</span></button>

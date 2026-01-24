@@ -1,11 +1,11 @@
 /* Página de Mantenimiento */
 /* Página de Error */
 #vMtoDepartamentos{background-color: var(--color3);}
-#vMtoDepartamentos>form{
+#vMtoDepartamentos{
     padding: 16px;
-    display: grid;
+    /* display: grid;
     gap: 15px;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; */
 }
 #vMtoDepartamentos>form>div:first-child{
     grid-column: 1/span 1;
@@ -49,9 +49,36 @@
         /* font-weight: bold; */
     }
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2){
+#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form{
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form input{
+    height: 30px;
+    margin-left: 5px;
+}
+#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vMtoDepartamentos .tarjeta div:nth-of-type(2)>table{
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
 }

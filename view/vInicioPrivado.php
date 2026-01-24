@@ -22,8 +22,9 @@
                     echo '<div><h2>Bienvenido '.$avInicioPrivado['descUsuario'].'.</h2></div>';
                     echo '<div><p>Esta el la '.$avInicioPrivado['numConexiones'].' vez que se conecta.</p>';
                     if (($avInicioPrivado['numConexiones'])>1) {
-                        echo '<p>Usted se conectó por última vez el '.strftime("%d de %B de %Y a las %H:%M:%S", $avInicioPrivado['fechaHoraUltimaConexionSaludo']->getTimestamp()).'.</p></div>';
-                    }     
+                        echo '<p>Usted se conectó por última vez el '.strftime("%d de %B de %Y a las %H:%M:%S", $avInicioPrivado['fechaHoraUltimaConexionSaludo']->getTimestamp()).'.</p>';
+                    } 
+                    echo '</div>';    
                 }
                 if ($_COOKIE["idioma"]=="EN") {
                     setlocale(LC_TIME, 'en_GB.utf8');
@@ -31,8 +32,9 @@
                     echo '<div><h2>Welcome '.$avInicioPrivado['descUsuario'].'.</h2></div>';
                     echo '<div><p>This is the '.$avInicioPrivado['numConexiones'].' time you have connected.</p>';
                     if (($avInicioPrivado['numConexiones'])>1) {
-                        echo '<p>You were last connected on '.strftime("%d de %B de %Y a las %H:%M:%S", $avInicioPrivado['fechaHoraUltimaConexionSaludo']->getTimestamp()).'.</p></div>';
+                        echo '<p>You were last connected on '.strftime("%d de %B de %Y a las %H:%M:%S", $avInicioPrivado['fechaHoraUltimaConexionSaludo']->getTimestamp()).'.</p>';
                     }
+                    echo '</div>';
                 }
                 if ($_COOKIE["idioma"]=="FR") {
                     setlocale(LC_TIME, 'fr_FR.UTF-8');
@@ -40,8 +42,9 @@
                     echo '<div><h2>Bienvenue '.$avInicioPrivado['descUsuario'].'.</h2></div>';
                     echo '<div><p>Voici votre '.$avInicioPrivado['numConexiones'].' e connexion.</p>';
                     if (($avInicioPrivado['numConexiones'])>1) {
-                        echo '<p>Votre dernière connexion remonte au '.strftime("%d de %B de %Y a las %H:%M:%S", $avInicioPrivado['fechaHoraUltimaConexionSaludo']->getTimestamp()).'.</p></div>';
+                        echo '<p>Votre dernière connexion remonte au '.strftime("%d de %B de %Y a las %H:%M:%S", $avInicioPrivado['fechaHoraUltimaConexionSaludo']->getTimestamp()).'.</p>';
                     }
+                    echo '</div>';
                 }   
             ?>
         </div>

@@ -43,11 +43,9 @@ if (isset($_REQUEST['cerrarSesion'])) {
 }
 
 $terminoBusqueda = '%%'; // termino de busqueda explicado al usarlo
-$oDepartamento = null; // Objeto para guardar el departamento que viene de la BBDD    
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
-    'DescDepartamentoBuscado' => '',
-    'control' => ''
+    'DescDepartamentoBuscado' => ''
 ];
 $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
     'DescDepartamentoBuscado' => ''
@@ -66,7 +64,6 @@ if (isset($_REQUEST["buscar"])) {//Código que se ejecuta cuando se envía el fo
                 $entradaOK = false;
             } 
         }
-
     }
     
 } else {//Código que se ejecuta antes de rellenar el formulario
@@ -85,27 +82,34 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
     // Si la descripción está vacía, el término será '%%', devolviendo todos los resultados.
     $terminoBusqueda = '%'.strtolower($aRespuestas['DescDepartamentoBuscado']).'%';
     // Usamos LOWER() en el campo de la DB y en el término de búsqueda para garantizar que la búsqueda sea insensible a mayúsculas/minúsculas.
-    
-    $oDepartamento = DepartamentoPDO::buscaDepartamentosPorDesc('Departamento de automocion');
-    $aErrores['control'] = $oDepartamento;
+}
+ 
+
+// Objeto para guardar el departamento que viene de la BBDD 
+$oDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($terminoBusqueda);
+
+$avMtoDepartamentos=[];
+if (!is_null($oDepartamentos) && is_array($oDepartamentos)) {
+    foreach ($oDepartamentos as $departamento) {
+
+        // Creamos las fechas que vienen del objeto Departamento para formatearlas antes de pasarlas a la vista
+        $fechaCreacion = new DateTime($departamento->getFechaCreacionDepartamento());
+        $fechaBajaFormateada = '';
+        if (!is_null($departamento->getFechaBajaDepartamento())) {
+            $fechaBaja = new DateTime($departamento->getFechaBajaDepartamento());
+            $fechaBajaFormateada = $fechaBaja->format('d/m/Y');
+        }
+
+        $avMtoDepartamentos[] = [
+            'codDepartamento'           => $departamento->getCodDepartamento(),
+            'descDepartamento'          => $departamento->getDescDepartamento(),
+            'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
+            'volumenDeNegocio'          => (number_format($departamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
+            'fechaBajaDepartamento'     => $fechaBajaFormateada
+        ];
+    }
 }
 
-
-// $avMtoDepartamentos=[
-//     'codDepartamento' => $oDepartamento->getCodDepartamento(),
-//     'descDepartamento' => $oDepartamento->getDescDepartamento(),
-//     'fechaCreacionDepartamento' => $oDepartamento->getFechaCreacionDepartamento(),
-//     'volumenDeNegocio' => $oDepartamento->getVolumenDeNegocio(),
-//     'fechaBajaDepartamento' => $oDepartamento->getFechaBajaDepartamento()
-// ];
-
-$avMtoDepartamentos=[
-    'codDepartamento' => !isset($oDepartamento)?"es nulo":'lo que sea',
-    'descDepartamento' => '',
-    'fechaCreacionDepartamento' => '',
-    'volumenDeNegocio' => '',
-    'fechaBajaDepartamento' => ''
-];
 
 $estadoBotonSalir = 'activo';
 $estadoBotonIniciarSesion = 'inactivo';

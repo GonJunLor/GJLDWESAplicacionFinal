@@ -7,7 +7,6 @@
 final class DepartamentoPDO {
 
     public static function buscaDepartamentosPorDesc($descDepartamento){
-        $oDepartamento = null;
 
         $sql = <<<SQL
             SELECT * FROM T02_Departamento
@@ -19,21 +18,21 @@ final class DepartamentoPDO {
         ];
 
         $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
-        
-        // si encuentra el Departamento en la BBDD creamos el objeto Departamento
-        while ($DepartamentoBD = $consulta->fetchObject()) {
 
-            $oDepartamento = new Departamento(
+        // si encuentra algo en la BBDD creamos el array con los departamentos
+        $aDepartamentos = [];
+        while ($DepartamentoBD = $consulta->fetchObject()) {
+            $aDepartamentos[] = new Departamento(
                 $DepartamentoBD->T02_CodDepartamento,
                 $DepartamentoBD->T02_DescDepartamento,
                 $DepartamentoBD->T02_FechaCreacionDepartamento,
                 $DepartamentoBD->T02_VolumenDeNegocio,
                 $DepartamentoBD->T02_FechaBajaDepartamento
             );
-
         }
 
-        return $oDepartamento;
+        return $aDepartamentos;
+        // return $consulta;
     }
 
 }
