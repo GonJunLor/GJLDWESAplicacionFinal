@@ -78,3 +78,23 @@
     font-size: 0.8rem;
     margin-top: 5px;
 }
+
+#vRest .contenidoNasa{
+    position: relative;
+}
+#vRest .descripcionNasa{
+    position: absolute;
+    left: 95%;
+    top: 10%;
+    width: 60dvw;
+    /* display: none; */
+    visibility: hidden;
+}
+#vRest .fotoNasa:hover .descripcionNasa{
+    /* display: default; */
+    visibility: visible;
+    background-color: var(--color2);
+    border: var(--anchoBorde) solid var(--colorBorde1);
+    padding: 16px;
+    border-radius: var(--radioBorde);
+}

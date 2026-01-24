@@ -62,8 +62,6 @@ if (isset($_SESSION["fechaNasaEnCurso"])) {
 cargamos aqui el objeto fotoNasa. En caso de error en la api lo controlamos 
 justo antes de cargar el layout */
 $fechaNasaFormateada = $oFechaNasaEnCurso->format('Y-m-d');
-//se llama a la api con la fecha formateada
-$oFotoNasaEnCurso = REST::apiNasa($fechaNasaFormateada);
 
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
@@ -89,10 +87,13 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     
     // Comprobamos que el servidor de la api este bien, que responda, etc.
     if ($entradaOK) {
-        $oFotoNasaEnCurso = REST::apiNasa($fechaHoyFormateada);
+        $oFechaNasaEnCurso = new DateTime($_REQUEST['fechaNasaEnCurso']); // Variable para el objeto fechaNasa
+        $fechaNasaFormateada = $oFechaNasaEnCurso->format('Y-m-d');
+
+        $oFotoNasaEnCurso = REST::apiNasa($fechaNasaFormateada);
 
         // guardamos en la sesion la fecha que viene del formulario para recordarla después.
-        $_SESSION['fechaNasaEnCurso'] = new DateTime($_REQUEST['fechaNasaEnCurso']);
+        $_SESSION['fechaNasaEnCurso'] = $oFechaNasaEnCurso;
 
         // aqui entramos en caso de algo haya ido mal al usar la api de la nasa
         if (!isset($oFotoNasaEnCurso)) {
@@ -101,6 +102,7 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
         } else {
             // guardamos en la sesion el objeto fotoNasa que viene de la api para no tener que usarla constantemente al recargar paginas
             $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
+            $_SESSION['fechaNasaEnCurso'] = new DateTime($_REQUEST['fechaNasaEnCurso']);
         }
     }
     
@@ -108,7 +110,7 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     $entradaOK = false;
 }
 
-// Si la validación de datos es correcta comprobamos cargamos los datos de la nasa
+// Si la validación de datos es correcta cargamos los datos de la nasa
 if ($entradaOK) {
 
     $_SESSION['paginaEnCurso'] = 'rest';
@@ -124,17 +126,28 @@ if (isset($_SESSION["fechaNasaEnCurso"])) {
     $oFechaNasaEnCurso = $_SESSION["fechaNasaEnCurso"];
 }
 
-// Para controlar si el objeto fotoNasa se ha creado correctamente lo guardamos en la sesion
-if (isset($oFotoNasaEnCurso)) {
+// Si ya hay un objeto en la sesion usamos éste en vez de pedir otro
+if (isset($_SESSION['fotoNasaEnCurso'])) {
+    $oFotoNasaEnCurso = $_SESSION['fotoNasaEnCurso'];
+} else {
+    //se llama a la api con la fecha formateada
+    $oFotoNasaEnCurso = REST::apiNasa($fechaNasaFormateada);
     $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
-} else { // sino creamos uno para que no de error la vista
+}
+
+// Para controlar si el objeto fotoNasa se ha creado correctamente, sino creamos uno para que no de error la vista
+if (!isset($oFotoNasaEnCurso)) {
     $oFotoNasaEnCurso = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
 }
 
 
 $avRest = [
     'fechaNasaEnCurso'=>$oFechaNasaEnCurso->format('Y-m-d'),
-    'fotoNasaEnCurso'=>$oFotoNasaEnCurso
+    'fotoNasaEnCursoTitulo'=>$oFotoNasaEnCurso->getTitulo(),
+    'fotoNasaEnCursoFecha'=>$oFotoNasaEnCurso->getfecha(),
+    'fotoNasaEnCursoDescripcion'=>$oFotoNasaEnCurso->getDescripcion(),
+    'fotoNasaEnCursoUrl'=>$oFotoNasaEnCurso->getUrl(),
+    'fotoNasaEnCursoUrlHD'=>$oFotoNasaEnCurso->getUrlHD()
 ];
 
 $estadoBotonSalir = 'activo';

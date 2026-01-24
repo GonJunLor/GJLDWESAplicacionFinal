@@ -25,10 +25,22 @@
                     </div>
                 </form> 
                 <br><hr><br>
-                <p><?php echo $avRest['fotoNasaEnCurso']->getTitulo(); ?></p>
-                <a href="<?php echo $avRest['fotoNasaEnCurso']->getUrlHD(); ?>" target="_blank">
-                    <img src="<?php echo $avRest['fotoNasaEnCurso']->getUrl(); ?>" alt="Foto de la NASA">
+                <h3><?php echo $avRest['fotoNasaEnCursoTitulo']; ?></h4>
+                <a class="fotoNasa" href="<?php echo $avRest['fotoNasaEnCursoUrlHD']; ?>" target="_blank">
+                    <img src="<?php echo $avRest['fotoNasaEnCursoUrl']; ?>" alt="Foto de la NASA">
+                    <p class="descripcionNasa"><?php echo $avRest['fotoNasaEnCursoDescripcion']; ?></p>
                 </a>
+                <br><br>
+                <h3>Instrucciones:</h3>
+                <p>- Pedimos la key en <strong><a href="https://api.nasa.gov/">api.nasa.gov</a></strong></p>
+                <br>
+                <p>Construimos la url con 3 partes, url, fecha y key:</p>
+                <p>- <strong>https://api.nasa.gov/planetary/apod?</strong></p>
+                <p>- <strong>date=$fecha</strong> (en $fecha esta la fecha del formulario)</p>
+                <p>- <strong>&api_key=API_KEY_NASA</strong></p>
+                <br>
+                <p>Con <strong>file_get_contents(url)</strong> obtenemos la respuesta json de la API</p>
+                <p>Con <strong>json_decode(archivoJson, true)</strong> transformamos a array la respuesta para poder usarlo</p>
             </div>
         </div>
     </div>

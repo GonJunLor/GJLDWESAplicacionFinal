@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 19/01/2026
+* @since: 24/01/2026
 */
 class REST{
 
@@ -10,7 +10,7 @@ class REST{
 
         // El @ evita que el Warning salga en pantalla
         $resultado = @file_get_contents("https://api.nasa.gov/planetary/apod?date=$fecha&api_key=" . API_KEY_NASA);
-
+        
         if ($resultado === false) {
             return null;
         }
@@ -28,4 +28,59 @@ class REST{
         return $oFotoNasa;
     }
 
+    // // Codigo alternativo por si no funciona el anterior en el servidor, este es más seguro.
+    // public static function apiNasa($fecha) {
+    //     $oFotoNasa = null;
+    //     $url = "https://api.nasa.gov/planetary/apod?date=$fecha&api_key=" . API_KEY_NASA;
+
+    //     // 1. Iniciamos cURL
+    //     $ch = curl_init();
+
+    //     // 2. Configuramos las opciones
+    //     curl_setopt($ch, CURLOPT_URL, $url);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Devuelve el resultado como string
+    //     curl_setopt($ch, CURLOPT_TIMEOUT, 10);          // Timeout de 10 segundos
+        
+    //     // ESTO ES CLAVE PARA EL NAS:
+    //     // Ignora la verificación de certificados si el NAS no tiene los bundles actualizados
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    //     // 3. Ejecutamos la petición
+    //     $resultado = curl_exec($ch);
+        
+    //     // 4. Control de errores de conexión
+    //     if (curl_errno($ch)) {
+    //         // Si quieres ver el error real, podrías hacer un: echo curl_error($ch);
+    //         curl_close($ch);
+    //         return null;
+    //     }
+
+    //     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    //     curl_close($ch);
+
+    //     // Si el código no es 200 (OK), algo ha ido mal (ej. fecha incorrecta o API KEY mal)
+    //     if ($httpCode !== 200) {
+    //         return null;
+    //     }
+
+    //     // 5. Procesamos el JSON
+    //     $archivoApi = json_decode($resultado, true);
+
+    //     if (isset($archivoApi) && !isset($archivoApi['error'])) {
+    //         if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
+    //             $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];
+                
+    //             $oFotoNasa = new FotoNasa(
+    //                 $archivoApi['date'], 
+    //                 $archivoApi['explanation'], 
+    //                 $hdurl, 
+    //                 $archivoApi['title'], 
+    //                 $archivoApi['url']
+    //             );
+    //         }
+    //     }
+
+    //     return $oFotoNasa;
+    // }
 }
