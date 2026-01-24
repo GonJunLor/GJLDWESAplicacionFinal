@@ -19,7 +19,7 @@
             <input type="text" id="usuario" name="usuario" value="<?php echo $avCuenta['codUsuario'] ?>" disabled>
             <span class="error rojo"><?php echo $aErrores['usuario'] ?></span>
             <label for="descUsuario">Nombre y Apellidos</label>
-            <input type="text" id="descUsuario" name="descUsuario" value="<?php echo $avCuenta['descUsuario'] ?>">
+            <input type="text" class="obligatorio" id="descUsuario" name="descUsuario" value="<?php echo $avCuenta['descUsuario'] ?>">
             <span class="error rojo"><?php echo $aErrores['descUsuario'] ?></span>
             <label for="perfil">Perfil</label>
             <input type="text" id="perfil" name="perfil" value="<?php echo $avCuenta['perfil'] ?>" disabled>

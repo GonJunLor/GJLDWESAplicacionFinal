@@ -1,11 +1,7 @@
 /* Página de Mantenimiento */
-/* Página de Error */
 #vMtoDepartamentos{background-color: var(--color3);}
 #vMtoDepartamentos{
     padding: 16px;
-    /* display: grid;
-    gap: 15px;
-    grid-template-columns: 1fr; */
 }
 #vMtoDepartamentos>form>div:first-child{
     grid-column: 1/span 1;

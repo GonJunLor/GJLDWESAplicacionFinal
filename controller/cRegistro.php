@@ -26,6 +26,13 @@ if (isset($_REQUEST['idioma'])) {
     exit;
 }
 
+// Volvemoa al inicio público pero sin cerrar sesión
+if (isset($_REQUEST['inicio'])) {
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    header('Location: index.php');
+    exit;
+}
 
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error

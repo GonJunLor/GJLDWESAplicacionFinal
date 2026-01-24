@@ -15,13 +15,13 @@
         </form>
         <form class="contenido" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
             <label for="usuario"><span class="rojo">*</span>Usuario</label>
-            <input type="text" class="<?php echo $aErrores['usuario']?'cuadroRojo':'' ?>" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>">
+            <input type="text" class="obligatorio <?php echo $aErrores['usuario']?'cuadroRojo':'' ?>" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>">
             <span class="error rojo"><?php echo $aErrores['usuario'] ?></span>
             <label for="descUsuario"><span class="rojo">*</span> Nombre y Apellidos</label>
-            <input type="text" id="descUsuario" name="descUsuario" value="<?php echo $_REQUEST['descUsuario']??'' ?>">
+            <input type="text" class="obligatorio" id="descUsuario" name="descUsuario" value="<?php echo $_REQUEST['descUsuario']??'' ?>">
             <span class="error rojo"><?php echo $aErrores['descUsuario'] ?></span>
             <label for="contrasena"><span class="rojo">*</span>Contraseña</label>
-            <input type="password" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>">
+            <input type="password" class="obligatorio" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>">
             <span class="error rojo"><?php echo $aErrores['contrasena'] ?></span>
             <button name="entrar" class="boton" id="entrar"><span>CREAR CUENTA</span></button>
         </form>

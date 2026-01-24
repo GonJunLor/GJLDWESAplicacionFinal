@@ -25,6 +25,14 @@ if (isset($_REQUEST['idioma'])) {
     exit;
 }
 
+// Volvemoa al inicio público pero sin cerrar sesión
+if (isset($_REQUEST['inicio'])) {
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    header('Location: index.php');
+    exit;
+}
+
 
 // vamos a la pagina de registro
 if (isset($_REQUEST['registro'])) {

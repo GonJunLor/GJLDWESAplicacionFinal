@@ -47,6 +47,7 @@ button {
 .activo{display: default;}
 .rojo{color: var(--color1);}
 .enlace{text-decoration: underline;}
+.obligatorio{background-color: #fff1de;}
 /* Barra superior*/
 #aviso{
     background-color: var(--color1);
