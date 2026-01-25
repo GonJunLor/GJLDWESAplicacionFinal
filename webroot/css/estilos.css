@@ -1,0 +1,137 @@
+/* CSS para todas las páginas y el layout */
+:root {
+    --color1: #CB333B;
+    --color2: #ffffff;
+    --color3: #f9f9f9;
+    --color4: #333333;
+    --colorPie: #F3F2F2;
+
+    --colorBoton1: #CC292B;
+    --colorBotonMarcado1: #980F10;
+    --colorboton2: #FFFFFF;
+    --colorBoton3: #CB333B;
+    --colorBotonMarcado2y3: #999999;
+  
+    --colorBorde1: #cccccc;
+    --colorBorde2: #555555;
+    --radioBorde: 6px;
+    --anchoBorde: 1px;
+  
+    --colorTexto1: #3B3A3B;
+    --colorTexto2: #CB333B;
+    --colorTexto3: #00716A;
+    --colorTexto4: #FFFFFF;
+    --tamanoTexto: 16px;
+    --fuenteTexto1: Open Sans, sans-serif;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Open Sans, sans-serif;
+    color: var(--colorTexto1);
+    list-style: none;
+}
+/* Estilos comunes para todas las paginas */
+main{
+    min-height: 75vh;
+}
+button {
+    background-color: var(--color2);
+    border: 0px;
+    cursor: pointer;
+}
+.oculto{visibility: hidden;}
+.visible{visibility: visible;}
+.inactivo{display: none;}
+.activo{display: default;}
+.rojo{color: var(--color1);}
+.enlace{text-decoration: underline;}
+.obligatorio{background-color: #fff1de;}
+/* Barra superior*/
+#aviso{
+    background-color: var(--color1);
+    color: var(--colorTexto4);
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 9px;
+    text-transform: uppercase;
+    width: 100%;
+}
+/* Cabecera */
+#cabecera{
+    background-color: var(--color2);
+    border-bottom: var(--colorBorde1) solid var(--anchoBorde);
+    padding: 15px 0px 15px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+}
+#cabecera img{
+    height: 40px;
+}
+#cabecera h2{
+    display: inline-block;
+    text-align: center;
+    padding-top: 6px;
+    width: 100%;
+}
+#cabecera .menuIdioma button{
+    position: relative;
+}
+#cabecera .menuIdioma p{
+    position: absolute;
+    top: 6px;
+    left: 5px;
+}
+#cabecera .enlaceIniciarSesion{font-weight: bold;}
+#cabecera .enlaceIniciarSesion:hover, #cabecera .enlaceRegistrarse:hover,
+#cabecera .enlaceCuenta:hover, #cabecera .enlaceCerrarSesion:hover {
+    text-decoration: underline;
+}
+#cabecera .menuCabecera{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr 100px 50px 50px;
+}
+#cabecera .menuIniciarSesion{position: relative;}
+#cabecera .submenuIniciarSesion{
+    position: absolute;
+    width: 111px;
+    top: 40px;
+    left: -40px;
+    background-color: var(--color2);
+    padding: 15px;
+    border: 1px solid var(--colorBorde1);
+    display: none;
+}
+#cabecera li:hover .submenuIniciarSesion{display: block;}
+
+/* Pie de pagína */
+#pie{
+    background-color: var(--colorPie);
+    border-top: var(--anchoBorde) solid var(--colorBorde1);
+    padding: 40px 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+#pie div{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: baseline;
+    height: 40px;
+}
+#pie div a{
+    display: grid;
+    place-items: center;
+}
+#pie .derechos{font-size: 0.8rem;}
+#pie img{
+    height: 35px;
+    margin-right: 10px;
+}
+

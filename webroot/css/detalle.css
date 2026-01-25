@@ -1,0 +1,66 @@
+
+/* Para página detalle, modificar el phpinfo */
+#vDetalle {
+    padding: 16px;
+    background-color: var(--color2);
+}
+#vDetalle>form{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 10px;
+}
+#vDetalle button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vDetalle button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vDetalle .detalle>h3{
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+}
+#vDetalle .detalle{
+    margin: 0px 20px 20px 20px;
+    padding: 0;
+}
+#vDetalle .detalle table{
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    overflow: auto;
+}
+#vDetalle .detalle th{
+    background-color: gainsboro;
+    border: 1px solid black;
+    padding: 3px;
+}
+#vDetalle .detalle td{
+    border: 1px solid black;
+    padding: 3px;
+    overflow-wrap: break-word;
+}
+#vDetalle .detalle tr td:first-child{
+    background-color: #8db7faff;
+    font-weight: bold;
+}
+#vDetalle .detalle tr td:first-child, th:first-child{width: 30%;}
+#vDetalle .detalle tr td:nth-of-type(2), th:nth-of-type(2){width: 69%;}
+#vDetalle .detalle h3{
+    text-align: center;
+    margin: 10px;
+}
+#vDetalle #phpinfo{
+    background-color: white; 
+    color: black;
+}
+#vDetalle #phpinfo .v{background-color: white;}
+#vDetalle #phpinfo .e{background-color: #8db7faff;}

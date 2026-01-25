@@ -1,0 +1,64 @@
+/* Registro */
+#vRegistro #registro{
+    margin: 50px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+#vRegistro #registro h2{
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+#vRegistro #registro #iniciarSesion{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vRegistro #registro #iniciarSesion button{
+    width: 100%;
+}
+#vRegistro #registro>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vRegistro #registro .contenido{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+    }
+}
+#vRegistro #registro .contenido label{
+    display: block;
+    margin-top: 16px;
+}
+#vRegistro #registro .contenido input{
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vRegistro .error{
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+#vRegistro .cuadroRojo{
+    border-color: var(--color1);
+}
+#vRegistro #entrar{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 50px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vRegistro #entrar:hover{background-color: var(--colorBotonMarcado2y3);}

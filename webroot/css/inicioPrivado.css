@@ -1,0 +1,54 @@
+/* Inicio Privado */
+#vInicioPrivado{background-color: var(--color3);}
+#vInicioPrivado>form{
+    padding: 16px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2,1fr);
+}
+#vInicioPrivado>form>div:first-child{
+    grid-column: 1/span 2;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 10px;
+}
+#vInicioPrivado>form>div:first-child button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vInicioPrivado>form>div:first-child button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vInicioPrivado .tarjeta{
+    background-color: var(--color2);
+    border: var(--anchoBorde) solid var(--colorBorde1);
+    border-radius: var(--radioBorde);
+    padding-bottom: 16px;
+    margin: 8px 4px;
+    display: inline-block;
+    width: 100%;
+}
+
+#vInicioPrivado .tarjeta div:nth-of-type(1){
+    border-bottom: var(--anchoBorde) solid var(--colorBorde1);
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    & *{
+        font-size: 1rem;
+        display: inline-block;
+        /* font-weight: bold; */
+    }
+}
+#vInicioPrivado .tarjeta div:nth-of-type(2){
+    padding-left: 16px;
+    padding-right: 16px;
+}
