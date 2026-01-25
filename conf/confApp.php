@@ -50,7 +50,7 @@ $view=[
 
 $titulo=[
     'layout' => 'Layout',
-    'inicioPublico' => 'Inicio Público',
+    'inicioPublico' => 'Inicio Publico',
     'login' => 'Login',
     'inicioPrivado' => 'Inicio Privado',
     'detalle' => 'Detalle',
