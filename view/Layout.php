@@ -50,7 +50,7 @@
                     </button>
                     <ul class="submenuIniciarSesion">
                         <li class="<?php echo $estadoBotonIniciarSesion; ?>"><button name="iniciarSesion" class="enlaceIniciarSesion">Iniciar Sesion</button></li>
-                        <li class="<?php echo $estadoBotonSalir; ?>"><button name="cuenta" class="enlaceCuenta">Mi Cuenta</button></li>
+                        <li class="<?php echo $estadoBotonSalir; ?>"><button name="miCuenta" class="enlaceCuenta">Mi Cuenta</button></li>
                         <li class="<?php echo $estadoBotonIniciarSesion; ?>"><button name="registrarse" class="enlaceRegistrarse">Registrarse</button></li>
                         <li class="<?php echo $estadoBotonSalir; ?>"><button name="cerrarSesion" class="enlaceCerrarSesion">Salir</button></li>
                     </ul>

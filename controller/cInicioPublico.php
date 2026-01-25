@@ -5,18 +5,19 @@
 */
 
 
-// comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
+// comprobamos que existe la sesion para este usuario para redirigir a las paginas correctas
 if (isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
     $estadoBotonSalir = 'activo';
     $estadoBotonIniciarSesion = 'inactivo';
 
     // si está la sesión iniciada redirigimos directamente al inicio privado
-    if (isset($_REQUEST['iniciarSesion'])) {
+    if (isset($_REQUEST['iniciarSesion']) || isset($_REQUEST['miCuenta'])) {
         $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso'] = 'inicioPrivado';
         header('Location: index.php');
         exit;
     }
+
 }
 
 if (isset($_REQUEST['iniciarSesion'])) {
