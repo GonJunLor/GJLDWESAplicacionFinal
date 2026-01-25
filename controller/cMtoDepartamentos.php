@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 23/01/2026
+* @since: 24/01/2026
 */
 
 if (isset($_REQUEST['volver'])) {
