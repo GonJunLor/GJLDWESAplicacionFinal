@@ -75,7 +75,7 @@
             <!-- <time datetime="2025-12-15">15-12-2025.</time> -->
         </div>
         <div>
-            <a id="iconoGithub" href="https://github.com/GonJunLor/GJLDWESLoginLogoff.git" target="_blank">
+            <a id="iconoGithub" href="https://github.com/GonJunLor/GJLDWESAplicacionFinal.git target="_blank">
                 <img src="webroot/media/images/github.png" alt="">
             </a>
             <a id="webImitada" href="https://www.kiwoko.com/"  target="_blank">
