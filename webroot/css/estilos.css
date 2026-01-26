@@ -34,7 +34,7 @@
 }
 /* Estilos comunes para todas las paginas */
 main{
-    min-height: 75vh;
+    min-height: 70vh;
 }
 button {
     background-color: var(--color2);
@@ -67,8 +67,25 @@ button {
     padding: 15px 0px 15px 15px;
     position: sticky;
     top: 0;
-    z-index: 2000;
+    z-index: 2001;
     width: 100%;
+}
+/* Creamos la sombra como un elemento separado */
+#sombra {
+    position: sticky;
+    top: 75px; /* Se sitúa justo al terminar la cabecera */
+    left: 0;
+    width: 100%;
+    height: 15px; /* Altura de la sombra */
+    
+    /* Graduado que simula la sombra difuminada hacia abajo */
+    background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.15) 0%, 
+                rgba(0,0,0,0) 100%);
+    
+    /* Importante: queda detrás del contenido que viene después */
+    z-index: 2000; 
+    pointer-events: none;
 }
 #cabecera img{
     height: 40px;

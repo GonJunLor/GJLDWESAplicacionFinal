@@ -1,5 +1,83 @@
 /* Inicio Público */
-#vInicioPublico .imagenesCentrales img{
-    width: 400px;
-    border: var(--anchoBorde) solid var(--colorBorde1);
+#vInicioPublico{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+#vInicioPublico .menu{
+    display: flex;
+    width: 100dvw;
+    /* max-width: 1200px; */
+    padding: 16px 32px;
+    justify-content: space-between;
+    border-bottom: var(--colorBorde1) solid var(--anchoBorde);
+}
+#vInicioPublico .menu label{
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--colorTexto1);
+}
+#vInicioPublico .menu label:hover{
+    text-decoration: underline;
+}
+#vInicioPublico .imagenesCentrales{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+#vInicioPublico .imagenesCentrales img, 
+#vInicioPublico .imagenesCentrales iframe{
+    width: 100%;
+    display: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    scroll-margin-top: 200px;
+    margin: 16px;
+    border: var(--colorBorde1) solid var(--anchoBorde);
+    border-radius: var(--radioBorde);
+}
+#vInicioPublico .imagenesCentrales iframe{
+    height: 100dvh;
+}
+#vInicioPublico #vInicioPublico07{
+    width: 336px;
+    height: 503px;
+}
+#vInicioPublico input:checked ~ label{
+    background-color: #87cefa;
+}
+#vInicioPublico input:checked ~ label + article{z-index: 10;}
+
+/* Ocultar los inputs radio de la vista */
+#vInicioPublico input[type="radio"] {
+    display: none;
+}
+
+/* 1. Estilo para el Label seleccionado */
+#btn1:checked ~ .menu label[for="btn1"],
+#btn2:checked ~ .menu label[for="btn2"],
+#btn3:checked ~ .menu label[for="btn3"],
+#btn4:checked ~ .menu label[for="btn4"],
+#btn5:checked ~ .menu label[for="btn5"],
+#btn6:checked ~ .menu label[for="btn6"],
+#btn7:checked ~ .menu label[for="btn7"] {
+    color: var(--colorTexto2);
+    font-weight: bold;
+}
+
+/* Mostramos el elemento correspondiente según el radio pulsado */
+#btn1:checked ~ .imagenesCentrales #vInicioPublico01,
+#btn2:checked ~ .imagenesCentrales #vInicioPublico02,
+#btn3:checked ~ .imagenesCentrales #vInicioPublico03,
+#btn4:checked ~ .imagenesCentrales #vInicioPublico04,
+#btn5:checked ~ .imagenesCentrales #vInicioPublico05,
+#btn6:checked ~ .imagenesCentrales #vInicioPublico06,
+#btn7:checked ~ .imagenesCentrales #vInicioPublico07 {
+    display: block;
 }

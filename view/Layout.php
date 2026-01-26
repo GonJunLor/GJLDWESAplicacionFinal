@@ -19,6 +19,7 @@
 </head>
 <body>
     <div id="aviso">Aplicación Final 2026</div>
+    <div id="sombra"></div>
     <nav id="cabecera">
         <form action="" method="post">
             <ul class="menuCabecera">
