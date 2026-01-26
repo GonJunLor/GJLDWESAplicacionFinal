@@ -19,24 +19,6 @@ if (isset($_REQUEST['volver'])) {
     exit;
 }
 
-// Volvemos al índice general destruyendo la sesión
-if (isset($_REQUEST['cerrarSesion'])) {
-    $_SESSION['paginaAnterior'] = '';
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    // Destruye la sesión
-    session_destroy();
-    header('Location: index.php');
-    exit;
-}
-
-// Volvemos al inicio público pero sin cerrar sesión
-if (isset($_REQUEST['inicio'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    header('Location: index.php');
-    exit;
-}
-
 // Vamos a pagina de cambiar contraseña, de momento a pag en construccion
 if (isset($_REQUEST['cambiarContrasena'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];

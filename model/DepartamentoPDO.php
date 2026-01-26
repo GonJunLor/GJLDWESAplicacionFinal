@@ -14,7 +14,7 @@ final class DepartamentoPDO {
         SQL;
         
         $parametros = [
-            ':departamento' => $descDepartamento
+            ':departamento' => '%'.$descDepartamento.'%'
         ];
 
         $consulta = DBPDO::ejecutarConsulta($sql,$parametros);

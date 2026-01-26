@@ -17,7 +17,7 @@
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                     <label for="DescDepartamentoBuscado">Introduce Departamento a Buscar: </label>
                     <br>
-                    <input type="text" name="DescDepartamentoBuscado" value="<?php echo $_REQUEST['DescDepartamentoBuscado']??'' ?>">
+                    <input type="text" name="DescDepartamentoBuscado" value="<?php echo $_SESSION['descDepartamentoBuscadaEnCurso']??'' ?>">
                     <span class="error"><?php echo $aErrores['DescDepartamentoBuscado'] ?></span>
                     <br>
                     <button name="buscar" class="boton" id="buscar"><span>Buscar</span></button>
@@ -30,8 +30,8 @@
                 <?php 
                     echo '<table>';
                     echo '<tr>';
-                    echo '<th>Código▼</th>';
-                    echo '<th>Departamento</th>';
+                    echo '<th>Código</th>';
+                    echo '<th>Departamento▼</th>';
                     echo '<th>Fecha de Creacion</th>';
                     echo '<th>Volumen de Negocio</th>';
                     echo '<th>Fecha de Baja</th>';
