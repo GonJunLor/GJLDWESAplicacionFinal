@@ -5,7 +5,23 @@
 */
 
 if (isset($_REQUEST['volver'])) {
-    $_SESSION['paginaEnCurso'] = $_SESSION['paginaAnterior'];
+    $_SESSION['paginaEnCurso'] = 'inicioPrivado';
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_REQUEST['editar'])) {
+    // Guardamos el código del departamento que queremos editar
+    $codDepartamentoAEditar = $_REQUEST['editar'];
+    
+    // Lo guardamos en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $codDepartamentoAEditar;
+    
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    // $_SESSION['paginaEnCurso'] = 'consultarModificarDepartamento';
+    $_SESSION['paginaEnCurso'] = 'wip';
+    
     header('Location: index.php');
     exit;
 }

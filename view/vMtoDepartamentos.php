@@ -27,6 +27,7 @@
         <div class="tarjeta">
             <div><h2>Resultado</h2></div>
             <div>
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                 <?php 
                     echo '<table>';
                     echo '<tr>';
@@ -44,10 +45,15 @@
                         echo '<td>' . $aDepartamento['fechaCreacionDepartamento'] . '</td>';
                         echo '<td>' . $aDepartamento['volumenDeNegocio'] . '</td>';
                         echo '<td>' . $aDepartamento['fechaBajaDepartamento'] . '</td>';
+                        echo '<td><button name="editar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="editar"><span>Editar</span></button></td>';
+                        echo '<td><button name="mostrar" values="'.$aDepartamento['codDepartamento'].'" class="boton" id="mostrar"><span>Mostrar</span></button></td>';
+                        echo '<td><button name="borrar" values="'.$aDepartamento['codDepartamento'].'" class="boton" id="borrar"><span>Borrar</span></button></td>';
+                        echo '<td><button name="bajaAlta" values="'.$aDepartamento['codDepartamento'].'" class="boton" id="bajaAlta"><span>Baja/Alta</span></button></td>';
                         echo '</tr>';
                     }
                     echo '</table>';
                 ?>
+                </form>
             </div>
         </div>
     </div>
