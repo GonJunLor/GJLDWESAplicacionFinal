@@ -20,7 +20,7 @@ if (isset($_REQUEST['editar'])) {
     // Cambiamos la página en curso y redirigimos
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     // $_SESSION['paginaEnCurso'] = 'consultarModificarDepartamento';
-    $_SESSION['paginaEnCurso'] = 'wip';
+    $_SESSION['paginaEnCurso'] = 'consultarModificarDepartamento';
     
     header('Location: index.php');
     exit;

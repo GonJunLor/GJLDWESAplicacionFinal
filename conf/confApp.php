@@ -31,7 +31,8 @@ $controller=[
     'wip' => 'controller/cWIP.php',
     'cuenta' => 'controller/cCuenta.php',
     'rest' => 'controller/cRest.php',
-    'mtoDepartamentos' => 'controller/cMtoDepartamentos.php'
+    'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
+    'consultarModificarDepartamento' => 'controller/cConsultarModificarDepartamento.php'
 ];
 
 $view=[
@@ -45,7 +46,8 @@ $view=[
     'wip' => 'view/vWIP.php',
     'cuenta' => 'view/vCuenta.php',
     'rest' => 'view/vRest.php',
-    'mtoDepartamentos' => 'view/vMtoDepartamentos.php'
+    'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
+    'consultarModificarDepartamento' => 'view/vConsultarModificarDepartamento.php'
 ];
 
 $titulo=[
@@ -59,7 +61,8 @@ $titulo=[
     'rest' => 'REST',
     'error' => 'VENTANA DE ERROR',
     'wip' => 'VENTANA DE MANTENIMIENTO',
-    'mtoDepartamentos' => 'Mantenimiento de departamentos'
+    'mtoDepartamentos' => 'Mantenimiento de departamentos',
+    'consultarModificarDepartamento' => 'Consultar o Modificar Departamento'
 ];
 
 $estadoBotonSalir = 'inactivo';
