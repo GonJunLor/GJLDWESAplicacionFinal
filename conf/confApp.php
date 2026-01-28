@@ -32,7 +32,8 @@ $controller=[
     'cuenta' => 'controller/cCuenta.php',
     'rest' => 'controller/cRest.php',
     'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
-    'consultarModificarDepartamento' => 'controller/cConsultarModificarDepartamento.php'
+    'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
+    'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php'
 ];
 
 $view=[
@@ -47,7 +48,8 @@ $view=[
     'cuenta' => 'view/vCuenta.php',
     'rest' => 'view/vRest.php',
     'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
-    'consultarModificarDepartamento' => 'view/vConsultarModificarDepartamento.php'
+    'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
+    'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php'
 ];
 
 $titulo=[
@@ -62,7 +64,8 @@ $titulo=[
     'error' => 'VENTANA DE ERROR',
     'wip' => 'VENTANA DE MANTENIMIENTO',
     'mtoDepartamentos' => 'Mantenimiento de departamentos',
-    'consultarModificarDepartamento' => 'Consultar o Modificar Departamento'
+    'modificarDepartamento' => 'Modificar Departamento',
+    'consultarDepartamento' => 'Consultar Departamento'
 ];
 
 $estadoBotonSalir = 'inactivo';

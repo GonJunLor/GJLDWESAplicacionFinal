@@ -21,15 +21,6 @@
         <label for="btn6">Catálogo de requisitos</label>
         <label for="btn7">Modelo de datos</label>
     </div>
-    <!-- <div class="menu">
-        <a href="#vInicioPublico01">Arbol de navegación</a>
-        <a href="#vInicioPublico02">Casos de uso</a>
-        <a href="#vInicioPublico03">Relacion de fichero</a>
-        <a href="#vInicioPublico04">Diagrama de clases</a>
-        <a href="#vInicioPublico05">Uso de sesión</a>
-        <a href="#vInicioPublico06">Catálogo de requisitos</a>
-        <a href="#vInicioPublico07">Modelo de datos</a>
-    </div> -->
     <div class="imagenesCentrales">
         <img id="vInicioPublico01" src="doc/pdf/arbol.svg" alt="">
         <img id="vInicioPublico02" src="doc/pdf/casosUso.svg" alt="">

@@ -65,7 +65,7 @@ if ($entradaOK) {
     // modificamos los datos del departamento en la BBDD 
     $oDepartamento = DepartamentoPDO::modificaDepartamento(
         $oDepartamento, 
-        $_REQUEST['descDepartamento'], 
+        'Departamento de '.$_REQUEST['descDepartamento'], 
         str_replace(',', '.', $_REQUEST['volumenDeNegocio'])
     );
 
@@ -88,12 +88,14 @@ if (!is_null($oDepartamento->getFechaBajaDepartamento())) {
 //Se crea un array con los datos del usuario para pasarlos a la vista
 $avDepartamento = [
     'codDepartamento'           => $oDepartamento->getCodDepartamento(),
-    'descDepartamento'          => $oDepartamento->getDescDepartamento(),
+    'descDepartamento'          => $_REQUEST['descDepartamento']??str_replace('Departamento de ','',$oDepartamento->getDescDepartamento()),
     'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
-    'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.')),
+    'volumenDeNegocio'          => $_REQUEST['volumenDeNegocio']??(number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '')),
     'fechaBajaDepartamento'     => $fechaBajaFormateada
 ];
 
+$estadoInputs = $_SESSION['paginaEnCurso']=='consultarDepartamento'?'disabled':'';
+$estadoBotonModificar = $_SESSION['paginaEnCurso']=='consultarDepartamento'?'inactivo':'activo';
 $estadoBotonSalir = 'activo';
 $estadoBotonIniciarSesion = 'inactivo';
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web

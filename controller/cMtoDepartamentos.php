@@ -11,22 +11,31 @@ if (isset($_REQUEST['volver'])) {
 }
 
 if (isset($_REQUEST['editar'])) {
-    // Guardamos el código del departamento que queremos editar
-    $codDepartamentoAEditar = $_REQUEST['editar'];
-    
-    // Lo guardamos en la sesión para que el controlador de la ventana de edición sepa qué cargar
-    $_SESSION['codDepartamentoEnCurso'] = $codDepartamentoAEditar;
+
+    // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['editar'];
     
     // Cambiamos la página en curso y redirigimos
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    // $_SESSION['paginaEnCurso'] = 'consultarModificarDepartamento';
-    $_SESSION['paginaEnCurso'] = 'consultarModificarDepartamento';
+    $_SESSION['paginaEnCurso'] = 'modificarDepartamento';
     
     header('Location: index.php');
     exit;
 }
 
-// $terminoBusqueda = '%%'; // termino de busqueda explicado al usarlo
+if (isset($_REQUEST['mostrar'])) {
+    
+    // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['mostrar'];
+    
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'consultarDepartamento';
+    
+    header('Location: index.php');
+    exit;
+}
+
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
     'DescDepartamentoBuscado' => ''
