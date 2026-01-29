@@ -48,7 +48,7 @@
                 }   
             ?>
         </div>
-        <div class="tarjeta">
+        <div class="tarjeta <?php echo $estadoElementoAdministrador ?>">
             <div><h2>Cuestiones</h2></div>
             <div>
                 <p>Espacio reservado para la futura función de mantenimiento de cuestiones</p>
@@ -70,7 +70,7 @@
                 <p>Perfil: <strong><?php echo $avInicioPrivado['perfil'] ?></strong></p>
             </div>
         </div>
-        <div class="tarjeta">
+        <div class="tarjeta <?php echo $estadoElementoAdministrador ?>">
             <div><h2>Usuarios</h2></div>
             <div>
                 <p>Espacio reservado para la futura función de mantenimiento de usuarios</p>

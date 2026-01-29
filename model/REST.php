@@ -30,7 +30,7 @@ class REST{
 
     // Codigo alternativo por si no funciona el anterior en el servidor, este es más seguro.
     public static function apiNasa($fecha) {
-        $oFotoNasa = null;
+        
         $url = "https://api.nasa.gov/planetary/apod?date=$fecha&api_key=" . API_KEY_NASA;
 
         // 1. Iniciamos cURL
@@ -64,9 +64,11 @@ class REST{
             return null;
         }
 
+        
         // 5. Procesamos el JSON
         $archivoApi = json_decode($resultado, true);
 
+        $oFotoNasa = null;
         if (isset($archivoApi) && !isset($archivoApi['error'])) {
             if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
                 $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];

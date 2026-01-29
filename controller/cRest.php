@@ -19,6 +19,13 @@ if (isset($_REQUEST['volver'])) {
     exit;
 }
 
+// vamos a pagina de detalle de la foto del dia
+if (isset($_REQUEST['detalle'])) {
+    $_SESSION['paginaEnCurso'] = 'detalleNasa';
+    header('Location: index.php');
+    exit;
+}
+
 // Para control de la fecha, por defecto creamos la fecha de hoy
 $oFechaNasaEnCurso = new DateTime(); // Variable para el objeto fechaNasa
 if (isset($_SESSION["fechaNasaEnCurso"])) {
@@ -67,6 +74,7 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
         if (!isset($oFotoNasaEnCurso)) {
             $entradaOK = false;
             $aErrores['fechaNasaEnCurso'] = "Error al cargar la api de la NASA";
+            $_SESSION['fotoNasaEnCurso'] = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
         } else {
             // guardamos en la sesion el objeto fotoNasa que viene de la api para no tener que usarla constantemente al recargar paginas
             $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;

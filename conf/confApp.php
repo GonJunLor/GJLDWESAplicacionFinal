@@ -34,7 +34,8 @@ $controller=[
     'rest' => 'controller/cRest.php',
     'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
     'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
-    'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php'
+    'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
+    'detalleNasa' => 'controller/cDetalleNasa.php'
 ];
 
 $view=[
@@ -50,7 +51,8 @@ $view=[
     'rest' => 'view/vRest.php',
     'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
     'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
-    'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php'
+    'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php',
+    'detalleNasa' => 'view/vDetalleNasa.php'
 ];
 
 $titulo=[
@@ -66,7 +68,8 @@ $titulo=[
     'wip' => 'VENTANA DE MANTENIMIENTO',
     'mtoDepartamentos' => 'Mantenimiento de departamentos',
     'modificarDepartamento' => 'Modificar Departamento',
-    'consultarDepartamento' => 'Consultar Departamento'
+    'consultarDepartamento' => 'Consultar Departamento',
+    'detalleNasa' => 'Detalle foto Nasa'
 ];
 
 $estadoBotonSalir = 'inactivo';

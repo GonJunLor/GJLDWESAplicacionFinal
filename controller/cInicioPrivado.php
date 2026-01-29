@@ -68,6 +68,10 @@ $avInicioPrivado=[
     'perfil' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil()
 ];
 
+$estadoElementoAdministrador = 'inactivo';
+if ($_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil()=='administrador') {
+    $estadoElementoAdministrador = 'activo';
+}
 $estadoBotonSalir = 'activo';
 $estadoBotonIniciarSesion = 'inactivo';
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web
