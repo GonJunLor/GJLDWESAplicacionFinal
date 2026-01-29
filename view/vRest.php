@@ -35,13 +35,15 @@
                 <h3>Instrucciones:</h3>
                 <p>- Pedimos la key en <strong><a href="https://api.nasa.gov/" target="_blank">api.nasa.gov</a></strong></p>
                 <br>
-                <p>Construimos la url con 3 partes, url, fecha y key:</p>
+                <p>Construimos la <strong>$url</strong> con 3 partes, url, fecha y key:</p>
                 <p>- <strong>https://api.nasa.gov/planetary/apod?</strong></p>
                 <p>- <strong>date=$fecha</strong> (en $fecha esta la fecha del formulario)</p>
                 <p>- <strong>&api_key=API_KEY_NASA</strong></p>
                 <br>
-                <p>Con <strong>file_get_contents(url)</strong> obtenemos la respuesta json de la API</p>
-                <p>Con <strong>json_decode(archivoJson, true)</strong> transformamos a array la respuesta para poder usarlo</p>
+                <p>Con <strong>$ch = curl_init()</strong> Iniciamos el cURL</p>
+                <p>Con <strong>curl_setopt($ch, CURLOPT_URL, $url)</strong> Configuramos opciones para el cURL.</p>
+                <p>Con <strong>$resultado = curl_exec($ch)</strong> ejecutamos la petición</p>
+                <p>Con <strong>json_decode($resultado, true)</strong> transformamos a array la respuesta para poder usarlo</p>
             </div>
         </div>
     </div>

@@ -53,10 +53,6 @@
     width: 336px;
     height: 503px;
 }
-#vInicioPublico input:checked ~ label{
-    background-color: #87cefa;
-}
-#vInicioPublico input:checked ~ label + article{z-index: 10;}
 
 /* Ocultar los inputs radio de la vista */
 #vInicioPublico input[type="radio"] {

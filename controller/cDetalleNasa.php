@@ -14,14 +14,14 @@ if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
 
 if (isset($_REQUEST['volver'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPrivado';
+    $_SESSION['paginaEnCurso'] = 'rest';
     header('Location: index.php');
     exit;
 }
 
 $oFotoNasaEnCurso = $_SESSION['fotoNasaEnCurso'];
 $avDetalleNasa = [
-    'fechaNasaEnCurso'=>$_SESSION["fechaNasaEnCurso"]->format('Y-m-d'),
+    'fechaNasaEnCurso'=>$_SESSION["fechaNasaEnCurso"]->format('d-m-Y'),
     'fotoNasaEnCursoTitulo'=>$oFotoNasaEnCurso->getTitulo(),
     'fotoNasaEnCursoFecha'=>$oFotoNasaEnCurso->getfecha(),
     'fotoNasaEnCursoDescripcion'=>$oFotoNasaEnCurso->getDescripcion(),

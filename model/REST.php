@@ -30,7 +30,8 @@ class REST{
 
     // Codigo alternativo por si no funciona el anterior en el servidor, este es más seguro.
     public static function apiNasa($fecha) {
-        
+        $oFotoNasa = null;
+
         $url = "https://api.nasa.gov/planetary/apod?date=$fecha&api_key=" . API_KEY_NASA;
 
         // 1. Iniciamos cURL
@@ -53,7 +54,7 @@ class REST{
         if (curl_errno($ch)) {
             // Si quieres ver el error real, podrías hacer un: echo curl_error($ch);
             curl_close($ch);
-            return null;
+            $oFotoNasa = null;
         }
 
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -61,14 +62,13 @@ class REST{
 
         // Si el código no es 200 (OK), algo ha ido mal (ej. fecha incorrecta o API KEY mal)
         if ($httpCode !== 200) {
-            return null;
+            $oFotoNasa = null;
         }
 
         
         // 5. Procesamos el JSON
         $archivoApi = json_decode($resultado, true);
 
-        $oFotoNasa = null;
         if (isset($archivoApi) && !isset($archivoApi['error'])) {
             if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
                 $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];
@@ -83,6 +83,10 @@ class REST{
             }
         }
 
+        // si ha habido un error en vez de devolver null, devolvemos un objeto falso para que el programa siga funcionando
+        if ($oFotoNasa == null) {
+            $oFotoNasa = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
+        }
         return $oFotoNasa;
     }
 }

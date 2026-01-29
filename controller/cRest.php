@@ -69,17 +69,18 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
 
         // guardamos en la sesion la fecha que viene del formulario para recordarla después.
         $_SESSION['fechaNasaEnCurso'] = $oFechaNasaEnCurso;
+        $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
 
         // aqui entramos en caso de algo haya ido mal al usar la api de la nasa
-        if (!isset($oFotoNasaEnCurso)) {
-            $entradaOK = false;
-            $aErrores['fechaNasaEnCurso'] = "Error al cargar la api de la NASA";
-            $_SESSION['fotoNasaEnCurso'] = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
-        } else {
-            // guardamos en la sesion el objeto fotoNasa que viene de la api para no tener que usarla constantemente al recargar paginas
-            $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
-            $_SESSION['fechaNasaEnCurso'] = new DateTime($_REQUEST['fechaNasaEnCurso']);
-        }
+        // if (!isset($oFotoNasaEnCurso)) {
+        //     $entradaOK = false;
+        //     $aErrores['fechaNasaEnCurso'] = "Error al cargar la api de la NASA";
+        //     $_SESSION['fotoNasaEnCurso'] = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
+        // } else {
+        //     // guardamos en la sesion el objeto fotoNasa que viene de la api para no tener que usarla constantemente al recargar paginas
+        //     $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
+        //     $_SESSION['fechaNasaEnCurso'] = new DateTime($_REQUEST['fechaNasaEnCurso']);
+        // }
     }
     
 } else {//Código que se ejecuta antes de rellenar el formulario
@@ -112,9 +113,9 @@ if (isset($_SESSION['fotoNasaEnCurso'])) {
 }
 
 // Para controlar si el objeto fotoNasa se ha creado correctamente, sino creamos uno para que no de error la vista
-if (!isset($oFotoNasaEnCurso)) {
-    $oFotoNasaEnCurso = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
-}
+// if (!isset($oFotoNasaEnCurso)) {
+//     $oFotoNasaEnCurso = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
+// }
 
 
 $avRest = [

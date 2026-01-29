@@ -5,8 +5,8 @@
 */
 ?>
 <main id="vInicioPublico">
-    <input type="radio" name="btn" id="btn1" checked>
-    <input type="radio" name="btn" id="btn2">
+    <input type="radio" name="btn" id="btn1">
+    <input type="radio" name="btn" id="btn2" checked>
     <input type="radio" name="btn" id="btn3">
     <input type="radio" name="btn" id="btn4">
     <input type="radio" name="btn" id="btn5">
