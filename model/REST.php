@@ -73,20 +73,44 @@ class REST{
             if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
                 $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];
                 
+                $rutaDestino = self::descargarImagen($hdurl);
+
                 $oFotoNasa = new FotoNasa(
                     $archivoApi['date'], 
                     $archivoApi['explanation'], 
-                    $hdurl, 
+                    $rutaDestino, 
                     $archivoApi['title'], 
-                    $archivoApi['url']
+                    $rutaDestino
                 );
             }
         }
 
         // si ha habido un error en vez de devolver null, devolvemos un objeto falso para que el programa siga funcionando
         if ($oFotoNasa == null) {
-            $oFotoNasa = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
+            $oFotoNasa = new FotoNasa(
+                '1990-04-24',
+                '',
+                'webroot/media/images/banderaEs.png',
+                'No hay foto del dia',
+                'webroot/media/images/banderaEs.png'
+            );
         }
         return $oFotoNasa;
+    }
+
+    private static function descargarImagen($url) {
+        $rutaDestino = "tmp/imagenNasaHD";
+        
+        // Descargamos la imagen usando cURL
+        $ch = curl_init($url);
+        $fp = fopen($rutaDestino, 'wb');
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_exec($ch);
+        curl_close($ch);
+        fclose($fp);
+
+        return $rutaDestino;
     }
 }
