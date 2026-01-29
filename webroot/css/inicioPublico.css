@@ -8,10 +8,14 @@
 }
 
 #vInicioPublico .menu{
+    position: sticky;
+    background-color: white;
+    top: 70px;
     display: flex;
     width: 100dvw;
-    /* max-width: 1200px; */
+    height: 50px;
     padding: 16px 32px;
+    z-index: 20;
     justify-content: space-between;
     border-bottom: var(--colorBorde1) solid var(--anchoBorde);
 }

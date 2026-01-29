@@ -15,12 +15,16 @@ $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
     'usuario' => '', 
     'contrasena'=>'',
-    'descUsuario'=>''
+    'descUsuario'=>'',
+    'palabraSeguridad'=>'',
+    'repiteContrasena'=>''
 ];
 $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
     'usuario' => '',  
     'contrasena'=>'',
-    'descUsuario'=>''
+    'descUsuario'=>'',
+    'palabraSeguridad'=>'',
+    'repiteContrasena'=>''
 ]; 
 
 //Para cada campo del formulario: Validar entrada y actuar en consecuencia
@@ -30,7 +34,13 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,4,1);
     $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2,1);
     $aErrores['descUsuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['descUsuario'],255,4,1,);
+    $aErrores['palabraSeguridad']= validacionFormularios::comprobarAlfabetico($_REQUEST['palabraSeguridad'],255,4,1,);
+    $aErrores['repiteContrasena'] = validacionFormularios::validarPassword($_REQUEST['repiteContrasena'],20,4,2,1);
     
+    if ($_REQUEST['contrasena']!=$_REQUEST['repiteContrasena']){
+        $aErrores['repiteContrasena'] = 'Las contraseñas no son iguales';
+    }
+
     foreach($aErrores as $campo => $valor){
         if(!empty($valor)){ // Comprobar si el valor es válido
             $entradaOK = false;
@@ -44,6 +54,12 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
             $entradaOK = false;
             $aErrores['usuario'] = "El nombre de usuario ya existe.";
         }
+
+        if ($_REQUEST['palabraSeguridad']!=PALABRASEGURIDAD){
+            $entradaOK = false;
+            $aErrores['palabraSeguridad'] = 'Palabra de seguridad incorrecta';
+        }
+
     }
     
 } else {//Código que se ejecuta antes de rellenar el formulario

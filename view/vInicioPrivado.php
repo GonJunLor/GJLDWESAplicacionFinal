@@ -49,6 +49,14 @@
             ?>
         </div>
         <div class="tarjeta">
+            <div><h2>Cuestiones</h2></div>
+            <div>
+                <p>Espacio reservado para la futura función de mantenimiento de cuestiones</p>
+            </div>
+        </div>
+    </div>
+    <div class="columna2">
+        <div class="tarjeta">
             <div>
                 <h2>Mis datos</h2>
                 <button name="cuenta" class="boton"><span class="enlace">Ver</span></button>
@@ -62,19 +70,10 @@
                 <p>Perfil: <strong><?php echo $avInicioPrivado['perfil'] ?></strong></p>
             </div>
         </div>
-    </div>
-    <div class="columna2">
         <div class="tarjeta">
             <div><h2>Usuarios</h2></div>
             <div>
                 <p>Espacio reservado para la futura función de mantenimiento de usuarios</p>
-            </div>
-        </div>
-        
-        <div class="tarjeta">
-            <div><h2>Cuestiones</h2></div>
-            <div>
-                <p>Espacio reservado para la futura función de mantenimiento de cuestiones</p>
             </div>
         </div>
     </div>

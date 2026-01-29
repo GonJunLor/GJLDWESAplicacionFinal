@@ -23,6 +23,12 @@
             <label for="contrasena"><span class="rojo">*</span>Contraseña</label>
             <input type="password" class="obligatorio" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>">
             <span class="error rojo"><?php echo $aErrores['contrasena'] ?></span>
+            <label for="repiteContrasena"><span class="rojo">*</span>Repite Contraseña</label>
+            <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena" value="<?php echo $_REQUEST['repiteContrasena']??'' ?>">
+            <span class="error rojo"><?php echo $aErrores['repiteContrasena'] ?></span>
+            <label for="usuario"><span class="rojo">*</span>Palabra de Seguridad</label>
+            <input type="text" class="obligatorio <?php echo $aErrores['palabraSeguridad']?'cuadroRojo':'' ?>" id="palabraSeguridad" name="palabraSeguridad" value="<?php echo $_REQUEST['palabraSeguridad']??'' ?>">
+            <span class="error rojo"><?php echo $aErrores['palabraSeguridad'] ?></span>
             <button name="entrar" class="boton" id="entrar"><span>CREAR CUENTA</span></button>
         </form>
     </div>       
