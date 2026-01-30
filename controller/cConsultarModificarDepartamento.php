@@ -19,14 +19,6 @@ if (isset($_REQUEST['volver'])) {
     exit;
 }
 
-// Vamos a pagina de cambiar contraseña, de momento a pag en construccion
-if (isset($_REQUEST['cambiarContrasena'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'wip';
-    header('Location: index.php');
-    exit;
-}
-
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
     'descDepartamento' => '', 
