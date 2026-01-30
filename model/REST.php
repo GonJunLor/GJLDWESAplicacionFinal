@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 24/01/2026
+* @since: 30/01/2026
 */
 class REST{
 
@@ -73,14 +73,14 @@ class REST{
             if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
                 $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];
                 
-                $rutaDestino = self::descargarImagen($hdurl);
+                $imagenSerializada = self::serializarImagen($hdurl);
 
                 $oFotoNasa = new FotoNasa(
                     $archivoApi['date'], 
                     $archivoApi['explanation'], 
-                    $rutaDestino, 
+                    $imagenSerializada, 
                     $archivoApi['title'], 
-                    $rutaDestino
+                    $imagenSerializada
                 );
             }
         }
@@ -98,19 +98,19 @@ class REST{
         return $oFotoNasa;
     }
 
-    private static function descargarImagen($url) {
-        $rutaDestino = "tmp/imagenNasaHD";
-        
-        // Descargamos la imagen usando cURL
+    public static function serializarImagen($url) {
+        // Obtenemos el contenido de la imagen
         $ch = curl_init($url);
-        $fp = fopen($rutaDestino, 'wb');
-        curl_setopt($ch, CURLOPT_FILE, $fp);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_exec($ch);
+        $datosImagen = curl_exec($ch);
+        $tipoMime = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
         curl_close($ch);
-        fclose($fp);
 
-        return $rutaDestino;
+        // Convertimos a base64
+        $base64 = base64_encode($datosImagen);
+        
+        // Retornamos el formato listo para el atributo 'src' de una <img>
+        return "data:$tipoMime;base64,$base64";
     }
 }

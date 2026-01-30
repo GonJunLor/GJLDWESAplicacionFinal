@@ -19,9 +19,9 @@
                 </div>
                 <div>
                     <?php echo '<p>'.$avDetalleNasa['fechaNasaEnCurso'].'</p>'; ?>
-                    <a href="<?php echo $avDetalleNasa['fotoNasaEnCursoUrlHD']; ?>" target="_blank">
+                    <!-- <a href="<?php echo $avDetalleNasa['fotoNasaEnCursoUrlHD']; ?>" target="_blank"> -->
                         <img src="<?php echo $avDetalleNasa['fotoNasaEnCursoUrlHD']; ?>" alt="">
-                    </a>
+                    <!-- </a> -->
                 </div>
                 
             </div>
