@@ -40,11 +40,11 @@
 
                     foreach ($avMtoDepartamentos as $aDepartamento){
                         echo '<tr>';
-                        echo '<td>' . $aDepartamento['codDepartamento'] . '</td>';
-                        echo '<td>' . $aDepartamento['descDepartamento'] . '</td>';
-                        echo '<td>' . $aDepartamento['fechaCreacionDepartamento'] . '</td>';
-                        echo '<td>' . $aDepartamento['volumenDeNegocio'] . '</td>';
-                        echo '<td>' . $aDepartamento['fechaBajaDepartamento'] . '</td>';
+                        echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['codDepartamento'] . '</td>';
+                        echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['descDepartamento'] . '</td>';
+                        echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['fechaCreacionDepartamento'] . '</td>';
+                        echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['volumenDeNegocio'] . '</td>';
+                        echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['fechaBajaDepartamento'] . '</td>';
                         echo '<td><button name="editar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="editar"><span>Editar</span></button></td>';
                         echo '<td><button name="mostrar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="mostrar"><span>Mostrar</span></button></td>';
                         echo '<td><button name="borrar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="borrar"><span>Borrar</span></button></td>';

@@ -1,8 +1,15 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 11/01/2026
+* @since: 30/01/2026
 */
+
+// volvemos al index principal al dar a cancelar
+if (isset($_REQUEST['cancelar'])) {
+    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    header('Location: index.php');
+    exit;
+}
 
 if (isset($_REQUEST['iniciarSesion'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
@@ -33,8 +40,8 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     // Validamos los datos del formulario
     $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,4,1);
     $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2,1);
-    $aErrores['descUsuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['descUsuario'],255,4,1,);
-    $aErrores['palabraSeguridad']= validacionFormularios::comprobarAlfabetico($_REQUEST['palabraSeguridad'],255,4,1,);
+    $aErrores['descUsuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['descUsuario'],255,4,1);
+    $aErrores['palabraSeguridad']= validacionFormularios::comprobarAlfabetico($_REQUEST['palabraSeguridad'],255,4,1);
     $aErrores['repiteContrasena'] = validacionFormularios::validarPassword($_REQUEST['repiteContrasena'],20,4,2,1);
     
     if ($_REQUEST['contrasena']!=$_REQUEST['repiteContrasena']){

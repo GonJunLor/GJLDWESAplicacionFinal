@@ -31,11 +31,14 @@ $controller=[
     'registro' => 'controller/cRegistro.php',
     'wip' => 'controller/cWIP.php',
     'cuenta' => 'controller/cCuenta.php',
+    'cambiarContrasena' => 'controller/cCambiarPassword.php',
+    'borrarCuenta' => 'controller/cBorrarCuenta.php',
     'rest' => 'controller/cRest.php',
     'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
     'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'detalleNasa' => 'controller/cDetalleNasa.php'
+
 ];
 
 $view=[
@@ -48,6 +51,8 @@ $view=[
     'registro' => 'view/vRegistro.php',
     'wip' => 'view/vWIP.php',
     'cuenta' => 'view/vCuenta.php',
+    'cambiarContrasena' => 'view/vCambiarPassword.php',
+    'borrarCuenta' => 'view/vBorrarCuenta.php',
     'rest' => 'view/vRest.php',
     'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
     'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
@@ -63,6 +68,8 @@ $titulo=[
     'detalle' => 'Detalle',
     'registro' => 'Registro',
     'cuenta' => 'Cuenta de Usuario',
+    'cambiarContrasena' => 'Cuenta de Usuario',
+    'borrarCuenta' => 'Eliminar cuenta',
     'rest' => 'REST',
     'error' => 'VENTANA DE ERROR',
     'wip' => 'VENTANA DE MANTENIMIENTO',
@@ -71,6 +78,19 @@ $titulo=[
     'consultarDepartamento' => 'Consultar Departamento',
     'detalleNasa' => 'Detalle foto Nasa'
 ];
+
+// adjudicación de permisos según el perfil
+$permisos=[
+    'pagDetalle' => ['administrador','usuario'],
+    'pagError' => ['administrador','usuario'],
+    'pagRest' => ['administrador','usuario'],
+    'mtoDepartamentos' => ['administrador','usuario'],
+    'mtoCuenta' => ['administrador','usuario'],
+    'mtoUsuarios' => ['administrador'],
+    'mtoCuestiones' => ['administrador']
+];
+/* de momento solo controlo los elementos exlusivos del administrador 
+para que no carguen en la pagina del usuario normal */
 
 $estadoBotonSalir = 'inactivo';
 $estadoBotonIniciarSesion = 'activo';

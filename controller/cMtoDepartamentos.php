@@ -96,7 +96,8 @@ if (!is_null($aDepartamentos) && is_array($aDepartamentos)) {
             'descDepartamento'          => $oDepartamento->getDescDepartamento(),
             'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
             'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
-            'fechaBajaDepartamento'     => $fechaBajaFormateada
+            'fechaBajaDepartamento'     => $fechaBajaFormateada,
+            'estadoDepartamento'        => $fechaBajaFormateada==''?'':'gris'
         ];
     }
 }

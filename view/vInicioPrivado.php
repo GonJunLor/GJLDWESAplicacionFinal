@@ -48,12 +48,15 @@
                 }   
             ?>
         </div>
-        <div class="tarjeta <?php echo $estadoElementoAdministrador ?>">
+        <!-- Si el perfil esta en el array de permisos carga el mto de cuestiones, sino no -->
+        <?php if(in_array($avInicioPrivado['perfil'],$permisos['mtoCuestiones'])): ?>
+        <div class="tarjeta">
             <div><h2>Cuestiones</h2></div>
             <div>
                 <p>Espacio reservado para la futura función de mantenimiento de cuestiones</p>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <div class="columna2">
         <div class="tarjeta">
@@ -62,6 +65,7 @@
                 <button name="cuenta" class="boton"><span class="enlace">Ver</span></button>
             </div>
             <div>
+                <img class="fotoUsuario" src="<?php echo $avInicioPrivado['fotoUsuario'] ?>" alt="Foto Usuario">
                 <p>Codigo de Usuario: <strong><?php echo $avInicioPrivado['codUsuario'] ?></strong></p>
                 <p>Nombre y apellidos: <strong><?php echo $avInicioPrivado['descUsuario'] ?></strong></p>
                 <p>Nº conexiones: <strong><?php echo $avInicioPrivado['numConexiones'] ?></strong></p>
@@ -70,12 +74,15 @@
                 <p>Perfil: <strong><?php echo $avInicioPrivado['perfil'] ?></strong></p>
             </div>
         </div>
-        <div class="tarjeta <?php echo $estadoElementoAdministrador ?>">
+        <!-- Si el perfil esta en el array de permisos carga el mto de usuarios, sino no -->
+        <?php if(in_array($avInicioPrivado['perfil'],$permisos['mtoUsuarios'])): ?>
+        <div class="tarjeta">
             <div><h2>Usuarios</h2></div>
             <div>
                 <p>Espacio reservado para la futura función de mantenimiento de usuarios</p>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     
 

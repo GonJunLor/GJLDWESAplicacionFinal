@@ -21,11 +21,11 @@ if (isset($_REQUEST['registrarse'])) {
 $entradaOK = true; //Variable que nos indica que todo va bien
 $oUsuario = null; // Variable para el objeto usuario
 $aErrores = [  //Array donde recogemos los mensajes de error
-    'nombre' => '', 
+    'usuario' => '', 
     'contrasena'=>''
 ];
 $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
-    'nombre' => '',  
+    'usuario' => '',  
     'contrasena'=>''
 ]; 
 
@@ -33,8 +33,8 @@ $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
 if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el formulario
 
     // Validamos los datos del formulario
-    $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,0,1,);
-    $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2);
+    $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,0,1);
+    $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2,1);
     
     foreach($aErrores as $campo => $valor){
         if(!empty($valor)){ // Comprobar si el valor es válido

@@ -52,3 +52,7 @@
     padding-left: 16px;
     padding-right: 16px;
 }
+#vInicioPrivado .tarjeta div:nth-of-type(2) .fotoUsuario{
+    max-width: 25%;
+    border-radius: 10%;
+}

@@ -49,7 +49,7 @@ if (isset($_REQUEST["modificar"])) {//Código que se ejecuta cuando se envía el
     $entradaOK = false;
 }
 
-// Si la validación de datos es correcta procedemos a crear el usuario
+// Si la validación de datos es correcta procedemos a buscar el departamento en la BBDD
 if ($entradaOK) {
     // cargamos el objeto departamento de la BBDD
     $oDepartamento = DepartamentoPDO::buscaDepartamentoPorCod($_SESSION['codDepartamentoEnCurso']);
@@ -58,11 +58,12 @@ if ($entradaOK) {
     $oDepartamento = DepartamentoPDO::modificaDepartamento(
         $oDepartamento, 
         'Departamento de '.$_REQUEST['descDepartamento'], 
-        str_replace(',', '.', $_REQUEST['volumenDeNegocio'])
+        // compruebo si el input esta vacio para asignarle 0 para evitar error en ejecutar consulta
+        str_replace(',', '.', $_REQUEST['volumenDeNegocio']==''?0:$_REQUEST['volumenDeNegocio'])
     );
 
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'consultarModificarDepartamento';
+    $_SESSION['paginaEnCurso'] = 'modificarDepartamento';
     header('Location: index.php');
     exit;
 
@@ -88,6 +89,7 @@ $avDepartamento = [
 
 $estadoInputs = $_SESSION['paginaEnCurso']=='consultarDepartamento'?'disabled':'';
 $estadoBotonModificar = $_SESSION['paginaEnCurso']=='consultarDepartamento'?'inactivo':'activo';
+$estadoBotonVolver = $_SESSION['paginaEnCurso']=='consultarDepartamento'?'activo':'inactivo';
 $estadoBotonSalir = 'activo';
 $estadoBotonIniciarSesion = 'inactivo';
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web

@@ -56,6 +56,10 @@ if (isset($_REQUEST['cuenta'])) {
     exit;
 }
 
+$fotoUsuario = 'webroot/media/images/fotoUsuario.png';
+if ($_SESSION['usuarioGJLDWESAplicacionFinal']->getImagenUsuario()!=null) {
+    $fotoUsuario = 'data:image/png;base64,'.base64_encode($_SESSION['usuarioGJLDWESAplicacionFinal']->getImagenUsuario());
+}
 
 //Se crea un array con los datos del usuario para pasarlos a la vista
 $avInicioPrivado=[
@@ -65,13 +69,10 @@ $avInicioPrivado=[
     'fechaHoraUltimaConexion' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexion()->format("d-m-Y H:i:s"),
     'fechaHoraUltimaConexionSaludo' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexion(),
     'fechaHoraUltimaConexionAnterior' => ($_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()? $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()->format("d-m-Y H:i:s"):""),
-    'perfil' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil()
+    'perfil' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil(),
+    'fotoUsuario' => $fotoUsuario
 ];
 
-$estadoElementoAdministrador = 'inactivo';
-if ($_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil()=='administrador') {
-    $estadoElementoAdministrador = 'activo';
-}
 $estadoBotonSalir = 'activo';
 $estadoBotonIniciarSesion = 'inactivo';
 // cargamos el layout principal, ya éste cargará cada página a parte de la estructura principal de la web

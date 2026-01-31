@@ -8,7 +8,7 @@
 <main id="vConsultarModificarDepartamento">
     <form action="" method="post">
         <div>
-            <button name="volver" class="boton"><span>Volver</span></button> 
+            <button name="volver" class="boton <?php echo $estadoBotonVolver ?>"><span>Volver</span></button> 
         </div>
     </form>
     <div id="consultarModificarDepartamento">
@@ -31,6 +31,7 @@
             <label for="fechaBajaDepartamento">Fecha de Baja</label>
             <input type="text" id="fechaBajaDepartamento" name="fechaBajaDepartamento" value="<?php echo $avDepartamento['fechaBajaDepartamento'] ?>" disabled>
             <button name="modificar" class="boton <?php echo $estadoBotonModificar ?>" id="modificar"><span>MODIFICAR</span></button>
+            <button name="volver" class="boton <?php echo $estadoBotonModificar ?>" id="cancelar"><span>CANCELAR</span></button> 
         </form>
     </div>       
 </main>

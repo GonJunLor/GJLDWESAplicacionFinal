@@ -48,6 +48,10 @@ button {
 .rojo{color: var(--color1);}
 .enlace{text-decoration: underline;}
 .obligatorio{background-color: #fff1de;}
+.gris{
+    color: lightgray;
+    /* background-color: lightgray; */
+}
 /* Barra superior*/
 #aviso{
     background-color: var(--color1);
@@ -156,7 +160,7 @@ button {
 /* **** Estilos para consultar/modificar **** */
 /* ****************************************** */
 #vConsultarModificarDepartamento #consultarModificarDepartamento{
-    margin: 50px calc((100dvw - 550px)/2);
+    margin: 5px calc((100dvw - 550px)/2);
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
@@ -187,9 +191,6 @@ button {
 }
 #vConsultarModificarDepartamento #consultarModificarDepartamento>span{
     border-bottom: var(--anchoBorde) solid var(--colorBorde2);
-}
-#vConsultarModificarDepartamento #consultarModificarDepartamento #iniciarSesion button{
-    width: 100%;
 }
 #vConsultarModificarDepartamento #consultarModificarDepartamento>h2{
     border-left: var(--anchoBorde) solid var(--colorBorde2);
@@ -225,7 +226,7 @@ button {
 #vConsultarModificarDepartamento .cuadroRojo{
     border-color: var(--color1);
 }
-#vConsultarModificarDepartamento #modificar, #cambiarContrasena, #volver{
+#vConsultarModificarDepartamento #modificar, #volver{
     background-color: var(--colorBoton3);
     height: 60px;
     margin-top: 50px;
@@ -248,4 +249,24 @@ button {
     margin-right: 100px;
     margin-left: 10px;
     font-size: calc(var(--tamanoTexto)*1.4);
+}
+#vConsultarModificarDepartamento #cancelar{
+    height: 60px;
+    background-color: var(--colorboton2);
+    border: 2px solid var(--colorBorde2);
+    margin-top: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    & span{
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        color: var(--colorTexto1);
+    } 
+}
+#vConsultarModificarDepartamento #cancelar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 0px;
+    & span{
+        color: var(--colorTexto4);
+    } 
 }
