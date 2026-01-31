@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 11/01/2026
+* @since: 31/01/2026
 */
 
 final class UsuarioPDO {

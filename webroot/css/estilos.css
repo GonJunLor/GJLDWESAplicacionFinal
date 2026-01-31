@@ -48,10 +48,6 @@ button {
 .rojo{color: var(--color1);}
 .enlace{text-decoration: underline;}
 .obligatorio{background-color: #fff1de;}
-.gris{
-    color: lightgray;
-    /* background-color: lightgray; */
-}
 /* Barra superior*/
 #aviso{
     background-color: var(--color1);

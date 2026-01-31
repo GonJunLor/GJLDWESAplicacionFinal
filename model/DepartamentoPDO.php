@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 28/01/2026
+* @since: 31/01/2026
 */
 
 final class DepartamentoPDO {
@@ -86,5 +86,79 @@ final class DepartamentoPDO {
         return null;
     }
 
+    /**
+     * Elimina un departamento de la base de datos
+     * @param Departamento $codDepartamento Código del departamento a eliminar
+     * @return boolean True si se borró correctamente, false si no se borró
+     */
+    public static function bajaFisicaDepartamento($codDepartamento){
+        $sql = 'DELETE FROM T02_Departamento WHERE T02_CodDepartamento = "'.$codDepartamento.'"';
+
+        return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
+    }
     
+    public static function bajaLogicaDepartamento($codDepartamento){
+        $sql = <<<SQL
+            UPDATE T02_Departamento SET 
+                T02_FechaBajaDepartamento = now()
+            WHERE T02_CodDepartamento = :codDepartamento
+        SQL;
+
+        $parametros = [
+            ':codDepartamento' => $codDepartamento
+        ];
+        $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
+
+        if ($consulta) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function rehabilitaDepartamento($codDepartamento){
+        $sql = <<<SQL
+            UPDATE T02_Departamento SET 
+                T02_FechaBajaDepartamento = null
+            WHERE T02_CodDepartamento = :codDepartamento
+        SQL;
+
+        $parametros = [
+            ':codDepartamento' => $codDepartamento
+        ];
+        $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
+
+        if ($consulta) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function altaDepartamento($codDepartamento, $descDepartamento, $volumenDeNegocio){
+        $oDepartamento = null;
+
+        // SQL para insertar el nuevo registro
+        $sql = <<<SQL
+            INSERT INTO T02_Departamento
+            VALUES (:codDepartamento, :descDepartamento, now(), :volumenDeNegocio, null)
+        SQL;
+
+        $consulta = DBPDO::ejecutarConsulta($sql, [
+            ':codDepartamento' => $codDepartamento,
+            ':descDepartamento' => $descDepartamento,
+            ':volumenDeNegocio' => $volumenDeNegocio
+        ]);
+
+        if ($consulta) {
+            // Si la inserción tiene éxito, se valida al usuario para obtener el objeto completo
+            $oDepartamento = self::buscaDepartamentoPorCod($codDepartamento);
+        }
+
+        return $oDepartamento;
+    }
+
+    public static function validaCodNoExiste($codDepartamento){
+        $sql = "SELECT T02_CodDepartamento FROM T02_Departamento WHERE T02_CodDepartamento = '$codDepartamento'";
+
+        return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
+    }
 }

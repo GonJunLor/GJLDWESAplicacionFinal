@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 30/01/2026
+* @since: 31/01/2026
 */
 
 ?>
@@ -27,7 +27,7 @@
                             src="<?php echo $avCuenta['fotoUsuario'] ?>" 
                             alt="Foto Usuario"
                         >
-                        <div class="mensajeFoto">Pulsar para cambiar foto y guardar para que se cambie.</div>
+                        <div class="mensajeFoto">Pulsar para cargar foto y guardar para que se cambie.</div>
                     </label>
                     <input type="file" name="fotoUsuario" id="fotoUsuario" accept="image/*">
                 </div>

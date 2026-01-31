@@ -48,7 +48,7 @@
                         echo '<td><button name="editar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="editar"><span>Editar</span></button></td>';
                         echo '<td><button name="mostrar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="mostrar"><span>Mostrar</span></button></td>';
                         echo '<td><button name="borrar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="borrar"><span>Borrar</span></button></td>';
-                        echo '<td><button name="bajaAlta" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="bajaAlta"><span>Baja/Alta</span></button></td>';
+                        echo '<td><button name="bajaAlta" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="bajaAlta"><span>'.$aDepartamento['estadoDepartamento'].'</span></button></td>';
                         echo '</tr>';
                     }
                     echo '</table>';

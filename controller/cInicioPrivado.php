@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 24/01/2026
+* @since: 31/01/2026
 */
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login

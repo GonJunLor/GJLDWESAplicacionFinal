@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 19/01/2026
+* @since: 31/01/2026
 */
 
 require_once 'core/231018libreriaValidacion.php';
@@ -34,11 +34,11 @@ $controller=[
     'cambiarContrasena' => 'controller/cCambiarPassword.php',
     'borrarCuenta' => 'controller/cBorrarCuenta.php',
     'rest' => 'controller/cRest.php',
+    'detalleNasa' => 'controller/cDetalleNasa.php',
     'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
     'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
-    'detalleNasa' => 'controller/cDetalleNasa.php'
-
+    'eliminarDepartamento' => 'controller/cEliminarDepartamento.php'
 ];
 
 $view=[
@@ -54,10 +54,11 @@ $view=[
     'cambiarContrasena' => 'view/vCambiarPassword.php',
     'borrarCuenta' => 'view/vBorrarCuenta.php',
     'rest' => 'view/vRest.php',
+    'detalleNasa' => 'view/vDetalleNasa.php',
     'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
     'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php',
-    'detalleNasa' => 'view/vDetalleNasa.php'
+    'eliminarDepartamento' => 'view/vEliminarDepartamento.php'  
 ];
 
 $titulo=[
@@ -71,12 +72,13 @@ $titulo=[
     'cambiarContrasena' => 'Cuenta de Usuario',
     'borrarCuenta' => 'Eliminar cuenta',
     'rest' => 'REST',
+    'detalleNasa' => 'Detalle foto Nasa',
     'error' => 'VENTANA DE ERROR',
     'wip' => 'VENTANA DE MANTENIMIENTO',
     'mtoDepartamentos' => 'Mantenimiento de departamentos',
     'modificarDepartamento' => 'Modificar Departamento',
     'consultarDepartamento' => 'Consultar Departamento',
-    'detalleNasa' => 'Detalle foto Nasa'
+    'eliminarDepartamento' => 'Eliminar Departamento'
 ];
 
 // adjudicación de permisos según el perfil

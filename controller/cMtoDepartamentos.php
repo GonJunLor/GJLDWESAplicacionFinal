@@ -36,6 +36,41 @@ if (isset($_REQUEST['mostrar'])) {
     exit;
 }
 
+if (isset($_REQUEST['borrar'])) {
+    
+    // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['borrar'];
+    
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'eliminarDepartamento';
+    
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_REQUEST['bajaAlta'])) {
+
+    // buscamos el departamento en la BBDD
+    $oDepartamentoAltaBaja = DepartamentoPDO::buscaDepartamentoPorCod($_REQUEST['bajaAlta']);
+
+    // Comprobamos si esta de alta o de baja lógica en función de si la fecha de baja es null
+    if (is_null($oDepartamentoAltaBaja->getFechaBajaDepartamento())) {
+        // el departamento es de alta
+        DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['bajaAlta']);
+    } else {
+        // el departamento está de baja
+        DepartamentoPDO::rehabilitaDepartamento($_REQUEST['bajaAlta']);
+    }
+
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
+    
+    header('Location: index.php');
+    exit;
+}
+
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
     'DescDepartamentoBuscado' => ''
@@ -97,7 +132,7 @@ if (!is_null($aDepartamentos) && is_array($aDepartamentos)) {
             'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
             'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
             'fechaBajaDepartamento'     => $fechaBajaFormateada,
-            'estadoDepartamento'        => $fechaBajaFormateada==''?'':'gris'
+            'estadoDepartamento'        => $fechaBajaFormateada==''?'baja':'alta'
         ];
     }
 }
