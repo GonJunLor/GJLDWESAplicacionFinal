@@ -63,7 +63,7 @@ if ($entradaOK) {
     );
 
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'modificarDepartamento';
+    $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
     header('Location: index.php');
     exit;
 

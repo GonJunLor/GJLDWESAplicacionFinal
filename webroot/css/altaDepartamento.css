@@ -1,0 +1,96 @@
+#vAltaDepartamento #altaDepartamento{
+    margin: 5px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+#vAltaDepartamento button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vAltaDepartamento #altaDepartamento h2{
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+#vAltaDepartamento #altaDepartamento>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vAltaDepartamento #altaDepartamento>span{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vAltaDepartamento #altaDepartamento .contenido{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    padding-top: 0;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+    }
+}
+#vAltaDepartamento #altaDepartamento .contenido label{
+    display: block;
+    margin-top: 16px;
+}
+#vAltaDepartamento #altaDepartamento .contenido input{
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vAltaDepartamento #crear, #cancelar{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 50px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vAltaDepartamento #crear:hover{
+    background-color: var(--colorBotonMarcado2y3);
+}
+#vAltaDepartamento #cajaVolumenDeNegocio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vAltaDepartamento #cajaVolumenDeNegocio span{
+    margin-right: 100px;
+    margin-left: 10px;
+    font-size: calc(var(--tamanoTexto)*1.4);
+}
+#vAltaDepartamento #cancelar{
+    height: 60px;
+    background-color: var(--colorboton2);
+    border: 2px solid var(--colorBorde2);
+    margin-top: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    & span{
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        color: var(--colorTexto1);
+    } 
+}
+#vAltaDepartamento #cancelar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 0px;
+    & span{
+        color: var(--colorTexto4);
+    } 
+}

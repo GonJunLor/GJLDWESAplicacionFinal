@@ -10,6 +10,12 @@ if (isset($_REQUEST['volver'])) {
     exit;
 }
 
+if (isset($_REQUEST['altaDepartamento'])) {
+    $_SESSION['paginaEnCurso'] = 'altaDepartamento';
+    header('Location: index.php');
+    exit;
+}
+
 if (isset($_REQUEST['editar'])) {
 
     // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar

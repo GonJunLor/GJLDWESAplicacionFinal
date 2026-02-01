@@ -8,6 +8,7 @@
     <form action="" method="post">
         <div>
             <button name="volver" class="boton"><span>Volver</span></button> 
+            <button name="altaDepartamento" class="boton"><span>Alta Departamento</span></button> 
         </div>
     </form>
     <div class="columna1">

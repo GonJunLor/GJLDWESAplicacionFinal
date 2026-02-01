@@ -38,7 +38,8 @@ $controller=[
     'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
     'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
-    'eliminarDepartamento' => 'controller/cEliminarDepartamento.php'
+    'eliminarDepartamento' => 'controller/cEliminarDepartamento.php',
+    'altaDepartamento' => 'controller/cAltaDepartamento.php'
 ];
 
 $view=[
@@ -58,7 +59,8 @@ $view=[
     'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
     'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php',
-    'eliminarDepartamento' => 'view/vEliminarDepartamento.php'  
+    'eliminarDepartamento' => 'view/vEliminarDepartamento.php',
+    'altaDepartamento' => 'view/vAltaDepartamento.php' 
 ];
 
 $titulo=[
@@ -78,7 +80,8 @@ $titulo=[
     'mtoDepartamentos' => 'Mantenimiento de departamentos',
     'modificarDepartamento' => 'Modificar Departamento',
     'consultarDepartamento' => 'Consultar Departamento',
-    'eliminarDepartamento' => 'Eliminar Departamento'
+    'eliminarDepartamento' => 'Eliminar Departamento',
+    'altaDepartamento' => 'Alta Departamento'
 ];
 
 // adjudicación de permisos según el perfil
