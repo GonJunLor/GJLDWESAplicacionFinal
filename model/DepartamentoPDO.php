@@ -200,4 +200,61 @@ final class DepartamentoPDO {
 
         return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
     }
+
+    public static function insertarDepartamentos($aDepartamentos){
+
+        $sql = <<<SQL
+            INSERT INTO T02_Departamento (
+                T02_CodDepartamento, 
+                T02_DescDepartamento, 
+                T02_FechaCreacionDepartamento, 
+                T02_VolumenDeNegocio, 
+                T02_FechaBajaDepartamento
+            ) VALUES (
+                :codDepartamento, 
+                :descDepartamento, 
+                :fechaCreacionDepartamento, 
+                :volumenDeNegocio, 
+                :fechaBajaDepartamento
+            )
+        SQL;
+
+        $aParametros = [];
+        // construyo el array de parametros pasando los datos a objetos que pide la BBDD
+        foreach ($aDepartamentos as $departamento) {
+            // La bbdd necesita pasarle un objeto fecha, lo creamos y lo formateamos correctamente para la bbdd
+            $oFechaCreacion = new DateTime($departamento['fechaCreacionDepartamento']);
+            $oFechaCreacion = $oFechaCreacion->format('Y-m-d H:i:s');
+
+            // Si no hay fecha devolvemos null para la base de datos
+            if ($departamento['fechaBajaDepartamento'] === null) {
+                $ofechaBaja = null;
+
+            // Si existe fecha la creamos y la formateamos antes de pasarla a la BBDD
+            } else {
+                $ofechaBaja = new DateTime($departamento['fechaBajaDepartamento']);
+                $ofechaBaja = $ofechaBaja->format('Y-m-d H:i:s');
+            }
+
+            $aParametros[] = [
+                ":codDepartamento"=>$departamento['codDepartamento'],
+                ":descDepartamento"=>$departamento['descDepartamento'],
+                ":fechaCreacionDepartamento"=>$oFechaCreacion,
+                ":volumenDeNegocio"=>$departamento['volumenDeNegocio'],
+                ":fechaBajaDepartamento"=>$ofechaBaja
+            ];
+        }
+
+        try {
+            DBPDO::ejecutarConsultasTransaccion($sql,$aParametros);
+            return true;
+        } catch (PDOException $miExceptionPDO) {
+            if ($miExceptionPDO->getCode() == 23000 || str_contains($miExceptionPDO->getMessage(), 'Duplicate entry')) {
+                // Lanzamos una excepción propia o manejamos el mensaje
+                // throw new Exception("Error: Ya existe un departamento con ese código en la base de datos.");
+                return false;
+            } 
+        }
+        return false;
+    }
 }

@@ -9,6 +9,7 @@
         <div>
             <button name="volver" class="boton"><span>Volver</span></button> 
             <button name="altaDepartamento" class="boton"><span>Alta Departamento</span></button> 
+            <button name="exportar" class="boton"><span>Exportar</span></button> 
         </div>
     </form>
     <div class="columna1">
@@ -23,6 +24,18 @@
                     <br>
                     <button name="buscar" class="boton" id="buscar"><span>Buscar</span></button>
                 </form>
+            </div>
+            <div>
+                <form class="archivoImportar" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" 
+                enctype="multipart/form-data"> 
+                <!-- Propiedad imprescindible para enviar archivos al servidor -->
+                    <label for="archivoDepartamentos" class="labelFoto">Busca un archivo a importar: </label>
+                    <input type="file" name="archivoDepartamentos" id="archivoDepartamentos" accept="application/json">
+                    <button name="importar" class="boton" id="importar"><span>Importar</span></button>
+                    
+                </form>
+                <span class="error"><?php echo $aErrores['archivoDepartamentos'] ?></span>
+                <span class="correcto"><?php echo $aRespuestas['archivoDepartamentos'] ?></span>
             </div>
         </div>
         <div class="tarjeta">

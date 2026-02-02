@@ -45,7 +45,12 @@
         /* font-weight: bold; */
     }
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form{
+#vMtoDepartamentos .tarjeta div:nth-of-type(2){
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: var(--anchoBorde) solid var(--colorBorde1);
+}
+#vMtoDepartamentos .tarjeta div>form{
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
@@ -53,11 +58,11 @@
     justify-content: center;
     align-items: center;
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form input{
+#vMtoDepartamentos .tarjeta div>form input{
     height: 30px;
     margin-left: 5px;
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form button{
+#vMtoDepartamentos .tarjeta div>form button{
     background-color: var(--colorBoton1);
     margin-right: 10px;
     margin-left: 10px;
@@ -83,4 +88,14 @@
 }
 #vMtoDepartamentos .alta{
     color: lightgray;
+}
+#vMtoDepartamentos .error{
+    color: red;
+    display: block;
+    text-align: center;
+}
+#vMtoDepartamentos .correcto{
+    color: green;
+    display: block;
+    text-align: center;
 }
