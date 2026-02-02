@@ -1,29 +1,37 @@
-/* Registro */
-#vRegistro #registro{
-    margin: 50px calc((100dvw - 550px)/2);
+#vEliminarDepartamento #eliminarDepartamento{
+    margin: 5px calc((100dvw - 550px)/2);
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-#vRegistro #registro h2{
+
+#vEliminarDepartamento button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vEliminarDepartamento #eliminarDepartamento h2{
     font-size: 20px;
     padding: 8px 16px;
     text-align: center;
     font-size: 1rem;
 }
-#vRegistro #registro #iniciarSesion{
-    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
-}
-#vRegistro #registro #iniciarSesion button{
-    width: 100%;
-}
-#vRegistro #registro>h2{
+#vEliminarDepartamento #eliminarDepartamento>h2{
     border-left: var(--anchoBorde) solid var(--colorBorde2);
     border-right: var(--anchoBorde) solid var(--colorBorde2);
     border-top: var(--anchoBorde) solid var(--colorBorde2);
 }
-#vRegistro #registro .contenido{
+#vEliminarDepartamento #eliminarDepartamento>span{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vEliminarDepartamento #eliminarDepartamento .contenido{
     grid-column: 1/ span 2;
     padding: 30px;
+    padding-top: 0;
     border-left: var(--anchoBorde) solid var(--colorBorde2);
     border-bottom: var(--anchoBorde) solid var(--colorBorde2);
     border-right: var(--anchoBorde) solid var(--colorBorde2);
@@ -31,26 +39,18 @@
         width: 100%;
     }
 }
-#vRegistro #registro .contenido label{
+#vEliminarDepartamento #eliminarDepartamento .contenido label{
     display: block;
     margin-top: 16px;
 }
-#vRegistro #registro .contenido input{
+#vEliminarDepartamento #eliminarDepartamento .contenido input{
     padding: 6px 12px;
     font-size: 1.2rem;
     height: 50px;
     margin-top: 8px;
     border: var(--anchoBorde) solid var(--colorBorde2);
 }
-#vRegistro .error{
-    display: block;
-    font-size: 0.8rem;
-    margin-top: 5px;
-}
-#vRegistro .cuadroRojo{
-    border-color: var(--color1);
-}
-#vRegistro #entrar{
+#vEliminarDepartamento #eliminar, #cancelar{
     background-color: var(--colorBoton3);
     height: 60px;
     margin-top: 50px;
@@ -61,9 +61,22 @@
         font-size: 1.1rem;
     } 
 }
-#vRegistro #entrar:hover{background-color: var(--colorBotonMarcado2y3);}
-#vRegistro #cancelar{
+#vEliminarDepartamento #eliminar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+}
+#vEliminarDepartamento #cajaVolumenDeNegocio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vEliminarDepartamento #cajaVolumenDeNegocio span{
+    margin-right: 100px;
+    margin-left: 10px;
+    font-size: calc(var(--tamanoTexto)*1.4);
+}
+#vEliminarDepartamento #cancelar{
     height: 60px;
+    background-color: var(--colorboton2);
     border: 2px solid var(--colorBorde2);
     margin-top: 16px;
     font-weight: bold;
@@ -71,9 +84,10 @@
     & span{
         text-transform: uppercase;
         font-size: 1.1rem;
+        color: var(--colorTexto1);
     } 
 }
-#vRegistro #cancelar:hover{
+#vEliminarDepartamento #cancelar:hover{
     background-color: var(--colorBotonMarcado2y3);
     border: 0px;
     & span{

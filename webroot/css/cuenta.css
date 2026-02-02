@@ -3,45 +3,28 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-
-#vCuenta button{
-    background-color: var(--colorBoton1);
-    margin-right: 10px;
-    padding: 10px;
-    transition: all 0.3s ease;
-    & span{
-        color: var(--colorTexto4);
-        font-size: 0.9rem;
-    }
-}
-#vCuenta>form>div:first-child{
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
-}
-#vCuenta>form>div:first-child button:hover{
-    background-color: var(--colorBotonMarcado1);
-}
 #vCuenta #cuenta h2{
-    font-size: 20px;
     padding: 8px 16px;
     text-align: center;
     font-size: 1rem;
-}
-#vCuenta #cuenta>span{
-    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
-}
-#vCuenta #cuenta #iniciarSesion button{
-    width: 100%;
+    text-transform: uppercase;
 }
 #vCuenta #cuenta>h2{
     border-left: var(--anchoBorde) solid var(--colorBorde2);
     border-right: var(--anchoBorde) solid var(--colorBorde2);
     border-top: var(--anchoBorde) solid var(--colorBorde2);
 }
+#vCuenta #cuenta #cambiarContrasena{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vCuenta #cuenta #cambiarContrasena button{
+    width: 100%;
+}
+
 #vCuenta #cuenta .contenido{
     grid-column: 1/ span 2;
     padding: 30px;
+    padding-top: 0;
     border-left: var(--anchoBorde) solid var(--colorBorde2);
     border-bottom: var(--anchoBorde) solid var(--colorBorde2);
     border-right: var(--anchoBorde) solid var(--colorBorde2);
@@ -60,6 +43,43 @@
     margin-top: 8px;
     border: var(--anchoBorde) solid var(--colorBorde2);
 }
+#vCuenta #cuenta .contenido>div{
+    display: flex;
+}
+#vCuenta #cuenta .contenido>div>div:first-child{
+    padding-top: 20px;
+}
+#vCuenta #cuenta .contenido>div #inputCodUsuario{
+    width: 300px;
+}
+#vCuenta #cuenta .contenido>div .labelFoto{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vCuenta #cuenta .contenido>div .labelFoto .mensajeFoto{
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    left: 150px;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    display: none;
+}
+#vCuenta #cuenta .contenido>div .labelFoto:hover .mensajeFoto{
+    display: block;
+}
+#vCuenta #cuenta .contenido>div .fotoUsuario{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 10%;
+}
+#vCuenta #cuenta .contenido>div #fotoUsuario{display: none;}
 #vCuenta .error{
     display: block;
     font-size: 0.8rem;
@@ -68,7 +88,7 @@
 #vCuenta .cuadroRojo{
     border-color: var(--color1);
 }
-#vCuenta #guardar, #cambiarContrasena, #volver{
+#vCuenta #guardar{
     background-color: var(--colorBoton3);
     height: 60px;
     margin-top: 50px;
@@ -80,3 +100,35 @@
     } 
 }
 #vCuenta #guardar:hover{background-color: var(--colorBotonMarcado2y3);}
+#vCuenta #cancelar{
+    height: 60px;
+    border: 2px solid var(--colorBorde2);
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    & span{
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vCuenta #cancelar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 0px;
+    & span{
+        color: var(--colorTexto4);
+    } 
+}
+#vCuenta #borrarCuenta{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vCuenta #borrarCuenta:hover{background-color: var(--colorBotonMarcado2y3);}
+

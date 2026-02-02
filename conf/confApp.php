@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 19/01/2026
+* @since: 31/01/2026
 */
 
 require_once 'core/231018libreriaValidacion.php';
@@ -20,6 +20,7 @@ require_once 'model/DepartamentoPDO.php';
 
 // constante para acceder a la api de la nasa con una clave privada mia
 const API_KEY_NASA = 'uwcgeJsRXJe8JY2SPm26LWceI9GHg8bNXynfkq9s';
+const PALABRASEGURIDAD = 'pimentel';
 
 $controller=[
     'inicioPublico' => 'controller/cInicioPublico.php',
@@ -30,8 +31,15 @@ $controller=[
     'registro' => 'controller/cRegistro.php',
     'wip' => 'controller/cWIP.php',
     'cuenta' => 'controller/cCuenta.php',
+    'cambiarContrasena' => 'controller/cCambiarPassword.php',
+    'borrarCuenta' => 'controller/cBorrarCuenta.php',
     'rest' => 'controller/cRest.php',
-    'mtoDepartamentos' => 'controller/cMtoDepartamentos.php'
+    'detalleNasa' => 'controller/cDetalleNasa.php',
+    'mtoDepartamentos' => 'controller/cMtoDepartamentos.php',
+    'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
+    'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
+    'eliminarDepartamento' => 'controller/cEliminarDepartamento.php',
+    'altaDepartamento' => 'controller/cAltaDepartamento.php'
 ];
 
 $view=[
@@ -44,8 +52,15 @@ $view=[
     'registro' => 'view/vRegistro.php',
     'wip' => 'view/vWIP.php',
     'cuenta' => 'view/vCuenta.php',
+    'cambiarContrasena' => 'view/vCambiarPassword.php',
+    'borrarCuenta' => 'view/vBorrarCuenta.php',
     'rest' => 'view/vRest.php',
-    'mtoDepartamentos' => 'view/vMtoDepartamentos.php'
+    'detalleNasa' => 'view/vDetalleNasa.php',
+    'mtoDepartamentos' => 'view/vMtoDepartamentos.php',
+    'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
+    'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php',
+    'eliminarDepartamento' => 'view/vEliminarDepartamento.php',
+    'altaDepartamento' => 'view/vAltaDepartamento.php' 
 ];
 
 $titulo=[
@@ -56,11 +71,31 @@ $titulo=[
     'detalle' => 'Detalle',
     'registro' => 'Registro',
     'cuenta' => 'Cuenta de Usuario',
+    'cambiarContrasena' => 'Cuenta de Usuario',
+    'borrarCuenta' => 'Eliminar cuenta',
     'rest' => 'REST',
+    'detalleNasa' => 'Detalle foto Nasa',
     'error' => 'VENTANA DE ERROR',
     'wip' => 'VENTANA DE MANTENIMIENTO',
-    'mtoDepartamentos' => 'Mantenimiento de departamentos'
+    'mtoDepartamentos' => 'Mantenimiento de departamentos',
+    'modificarDepartamento' => 'Modificar Departamento',
+    'consultarDepartamento' => 'Consultar Departamento',
+    'eliminarDepartamento' => 'Eliminar Departamento',
+    'altaDepartamento' => 'Alta Departamento'
 ];
+
+// adjudicación de permisos según el perfil
+$permisos=[
+    'pagDetalle' => ['administrador','usuario'],
+    'pagError' => ['administrador','usuario'],
+    'pagRest' => ['administrador','usuario'],
+    'mtoDepartamentos' => ['administrador','usuario'],
+    'mtoCuenta' => ['administrador','usuario'],
+    'mtoUsuarios' => ['administrador'],
+    'mtoCuestiones' => ['administrador']
+];
+/* de momento solo controlo los elementos exlusivos del administrador 
+para que no carguen en la pagina del usuario normal */
 
 $estadoBotonSalir = 'inactivo';
 $estadoBotonIniciarSesion = 'activo';

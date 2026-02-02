@@ -1,27 +1,27 @@
-/* Login */
-#vLogin #login{
+#vCambiarPassword #cambiarPassword{
     margin: 50px calc((100dvw - 550px)/2);
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-#vLogin #login #registro{
-    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
-}
-#vLogin #login #registro button{
-    width: 100%;
-}
-#vLogin #login h2{
-    font-size: 20px;
+#vCambiarPassword #cambiarPassword h2{
     padding: 8px 16px;
     text-align: center;
     font-size: 1rem;
+    text-transform: uppercase;
 }
-#vLogin #login>h2{
+#vCambiarPassword #cambiarPassword>h2{
     border-left: var(--anchoBorde) solid var(--colorBorde2);
     border-right: var(--anchoBorde) solid var(--colorBorde2);
     border-top: var(--anchoBorde) solid var(--colorBorde2);
 }
-#vLogin #login .contenido{
+#vCambiarPassword #cambiarPassword #datosPersonales{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vCambiarPassword #cambiarPassword #datosPersonales button{
+    width: 100%;
+}
+
+#vCambiarPassword #cambiarPassword .contenido{
     grid-column: 1/ span 2;
     padding: 30px;
     border-left: var(--anchoBorde) solid var(--colorBorde2);
@@ -29,20 +29,31 @@
     border-right: var(--anchoBorde) solid var(--colorBorde2);
     & *{
         width: 100%;
-        margin-bottom: 16px;
     }
 }
-#vLogin #login .contenido input{
+#vCambiarPassword #cambiarPassword .contenido label{
+    display: block;
+    margin-top: 16px;
+}
+#vCambiarPassword #cambiarPassword .contenido input{
     padding: 6px 12px;
     font-size: 1.2rem;
     height: 50px;
     margin-top: 8px;
     border: var(--anchoBorde) solid var(--colorBorde2);
 }
-#vLogin #entrar{
+#vCambiarPassword .error{
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+#vCambiarPassword .cuadroRojo{
+    border-color: var(--color1);
+}
+#vCambiarPassword #guardar{
     background-color: var(--colorBoton3);
     height: 60px;
-    margin-top: 16px;
+    margin-top: 50px;
     transition: all 0.3s ease;
     & span{
         color: var(--colorTexto4);
@@ -50,8 +61,8 @@
         font-size: 1.1rem;
     } 
 }
-#vLogin #entrar:hover{background-color: var(--colorBotonMarcado2y3);}
-#vLogin #cancelar{
+#vCambiarPassword #guardar:hover{background-color: var(--colorBotonMarcado2y3);}
+#vCambiarPassword #cancelar{
     height: 60px;
     border: 2px solid var(--colorBorde2);
     margin-top: 16px;
@@ -62,7 +73,7 @@
         font-size: 1.1rem;
     } 
 }
-#vLogin #cancelar:hover{
+#vCambiarPassword #cancelar:hover{
     background-color: var(--colorBotonMarcado2y3);
     border: 0px;
     & span{

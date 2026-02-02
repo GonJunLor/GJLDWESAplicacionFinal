@@ -8,7 +8,7 @@
 <main id="vLogin">
     <div id="login" >
         <form id="registro" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
-            <button name="registro" class="boton" >
+            <button name="registrarse" class="boton" >
                 <h2>REGÍSTRATE</h2>
             </button>
         </form>

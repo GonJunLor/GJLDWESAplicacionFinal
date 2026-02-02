@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 24/01/2026
+* @since: 31/01/2026
 */
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
@@ -56,36 +56,9 @@ if (isset($_REQUEST['cuenta'])) {
     exit;
 }
 
-// Volvemos al índice general destruyendo la sesión
-if (isset($_REQUEST['cerrarSesion'])) {
-    $_SESSION['paginaAnterior'] = '';
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    // Destruye la sesión
-    session_destroy();
-    header('Location: index.php');
-    exit;
-}
-
-// Volvemoa al inicio público pero sin cerrar sesión
-if (isset($_REQUEST['inicio'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    header('Location: index.php');
-    exit;
-}
-
-// comprueba si existe una cookie de idioma y si no existe la crea en español
-if (!isset($_COOKIE['idioma'])) {
-    setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// comprueba si se ha pulsado cualquier botón de idioma y pone en la cookie su valor para establecer el idioma
-if (isset($_REQUEST['idioma'])) {
-    setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
+$fotoUsuario = 'webroot/media/images/fotoUsuario.png';
+if ($_SESSION['usuarioGJLDWESAplicacionFinal']->getImagenUsuario()!=null) {
+    $fotoUsuario = 'data:image/png;base64,'.base64_encode($_SESSION['usuarioGJLDWESAplicacionFinal']->getImagenUsuario());
 }
 
 //Se crea un array con los datos del usuario para pasarlos a la vista
@@ -96,7 +69,8 @@ $avInicioPrivado=[
     'fechaHoraUltimaConexion' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexion()->format("d-m-Y H:i:s"),
     'fechaHoraUltimaConexionSaludo' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexion(),
     'fechaHoraUltimaConexionAnterior' => ($_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()? $_SESSION['usuarioGJLDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()->format("d-m-Y H:i:s"):""),
-    'perfil' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil()
+    'perfil' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getPerfil(),
+    'fotoUsuario' => $fotoUsuario
 ];
 
 $estadoBotonSalir = 'activo';

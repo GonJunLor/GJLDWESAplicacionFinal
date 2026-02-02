@@ -4,7 +4,6 @@
 * @since: 24/01/2026
 */
 
-
 // comprobamos que existe la sesion para este usuario para redirigir a las paginas correctas
 if (isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
     $estadoBotonSalir = 'activo';
@@ -17,8 +16,8 @@ if (isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
         header('Location: index.php');
         exit;
     }
-
 }
+
 
 if (isset($_REQUEST['iniciarSesion'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
@@ -30,30 +29,6 @@ if (isset($_REQUEST['iniciarSesion'])) {
 if (isset($_REQUEST['registrarse'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'registro';
-    header('Location: index.php');
-    exit;
-}
-
-// comprueba si existe una cookie de idioma y si no existe la crea en español
-if (!isset($_COOKIE['idioma'])) {
-    setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// comprueba si se ha pulsado cualquier botón de idioma y pone en la cookie su valor para establecer el idioma
-if (isset($_REQUEST['idioma'])) {
-    setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// Volvemos al índice general destruyendo la sesión
-if (isset($_REQUEST['cerrarSesion'])) {
-    $_SESSION['paginaAnterior'] = '';
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    // Destruye la sesión
-    session_destroy();
     header('Location: index.php');
     exit;
 }

@@ -7,11 +7,11 @@
 use DBGJLDWESAplicacionFinal;
 
 insert into T02_Departamento values
-        ('INF','Departamento de informatica.',now(),1235.5,null),
-        ('AUT','Departamento de automocion.',now(),5235.8,null),
-        ('ELE','Departamento de electricidad.',now(),2275.1,null),
-        ('MAT','Departamento de matematicas.',now(),735.2,null),
-        ('ING','Departamento de ingles.',now(),235.9,now())
+        ('INF','Departamento de informatica',now(),1235.5,null),
+        ('AUT','Departamento de automocion',now(),5235.8,null),
+        ('ELE','Departamento de electricidad',now(),2275.1,null),
+        ('MAT','Departamento de matematicas',now(),735.2,null),
+        ('ING','Departamento de ingles',now(),235.9,now())
 ;
 
 
@@ -35,5 +35,8 @@ INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario)
         ('jorge',SHA2('jorgepaso',256),'Jorge Corral'),
         ('claudio',SHA2('claudiopaso',256),'Claudio Lozano'),
         ('gisela',SHA2('giselapaso',256),'Gisela Folgueral')
+        
 ;
 
+INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario,T01_Perfil)
+        VALUES ('admin',SHA2('adminpaso',256),'Admin Administrador','administrador');

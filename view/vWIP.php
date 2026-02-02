@@ -14,6 +14,7 @@
                 <?php
                     echo '<div><h2>PÁGINA EN CONSTRUCCIÓN</h2></div>';
                     echo '<div><p>Lo sentimos, el enlace que has seguido no está disponible en este momento.</p></div>';
+                    echo '<p>Lo que hay en la sesion: '.$_SESSION['codDepartamentoEnCurso'].'</p>'
                 ?>
             </div>
         </div>

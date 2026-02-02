@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 16/12/2025
+* @since: 29/01/2026
 */
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
@@ -14,10 +14,20 @@ if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
 
 if (isset($_REQUEST['volver'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPrivado';
+    $_SESSION['paginaEnCurso'] = 'rest';
     header('Location: index.php');
     exit;
 }
+
+$oFotoNasaEnCurso = $_SESSION['fotoNasaEnCurso'];
+$avDetalleNasa = [
+    'fechaNasaEnCurso'=>$_SESSION["fechaNasaEnCurso"]->format('d-m-Y'),
+    'fotoNasaEnCursoTitulo'=>$oFotoNasaEnCurso->getTitulo(),
+    'fotoNasaEnCursoFecha'=>$oFotoNasaEnCurso->getfecha(),
+    'fotoNasaEnCursoDescripcion'=>$oFotoNasaEnCurso->getDescripcion(),
+    'fotoNasaEnCursoUrl'=>$oFotoNasaEnCurso->getUrl(),
+    'fotoNasaEnCursoUrlHD'=>$oFotoNasaEnCurso->getUrlHD()
+];
 
 $estadoBotonSalir = 'activo';
 $estadoBotonIniciarSesion = 'inactivo';

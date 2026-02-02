@@ -11,31 +11,7 @@ if (isset($_REQUEST['cancelar'])) {
     exit;
 }
 
-// comprueba si existe una cookie de idioma y si no existe la crea en español
-if (!isset($_COOKIE['idioma'])) {
-    setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// comprueba si se ha pulsado cualquier botón de idioma y pone en la cookie su valor para establecer el idioma
-if (isset($_REQUEST['idioma'])) {
-    setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// Volvemoa al inicio público pero sin cerrar sesión
-if (isset($_REQUEST['inicio'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    header('Location: index.php');
-    exit;
-}
-
-
-// vamos a la pagina de registro
-if (isset($_REQUEST['registro'])) {
+if (isset($_REQUEST['registrarse'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'registro';
     header('Location: index.php');
@@ -45,11 +21,11 @@ if (isset($_REQUEST['registro'])) {
 $entradaOK = true; //Variable que nos indica que todo va bien
 $oUsuario = null; // Variable para el objeto usuario
 $aErrores = [  //Array donde recogemos los mensajes de error
-    'nombre' => '', 
+    'usuario' => '', 
     'contrasena'=>''
 ];
 $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
-    'nombre' => '',  
+    'usuario' => '',  
     'contrasena'=>''
 ]; 
 
@@ -57,8 +33,8 @@ $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
 if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el formulario
 
     // Validamos los datos del formulario
-    $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,0,1,);
-    $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2);
+    $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,0,1);
+    $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2,1);
     
     foreach($aErrores as $campo => $valor){
         if(!empty($valor)){ // Comprobar si el valor es válido

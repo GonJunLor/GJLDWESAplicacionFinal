@@ -34,7 +34,7 @@
 }
 /* Estilos comunes para todas las paginas */
 main{
-    min-height: 75vh;
+    min-height: 70vh;
 }
 button {
     background-color: var(--color2);
@@ -67,8 +67,25 @@ button {
     padding: 15px 0px 15px 15px;
     position: sticky;
     top: 0;
-    z-index: 2000;
+    z-index: 2001;
     width: 100%;
+}
+/* Creamos la sombra como un elemento separado */
+#sombra {
+    position: sticky;
+    top: 75px; /* Se sitúa justo al terminar la cabecera */
+    left: 0;
+    width: 100%;
+    height: 15px; /* Altura de la sombra */
+    
+    /* Graduado que simula la sombra difuminada hacia abajo */
+    background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.15) 0%, 
+                rgba(0,0,0,0) 100%);
+    
+    /* Importante: queda detrás del contenido que viene después */
+    z-index: 2000; 
+    pointer-events: none;
 }
 #cabecera img{
     height: 40px;
@@ -135,3 +152,117 @@ button {
     margin-right: 10px;
 }
 
+/* ****************************************** */
+/* **** Estilos para consultar/modificar **** */
+/* ****************************************** */
+#vConsultarModificarDepartamento #consultarModificarDepartamento{
+    margin: 5px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+#vConsultarModificarDepartamento button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vConsultarModificarDepartamento>form>div:first-child{
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+#vConsultarModificarDepartamento>form>div:first-child button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vConsultarModificarDepartamento #consultarModificarDepartamento h2{
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+#vConsultarModificarDepartamento #consultarModificarDepartamento>span{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vConsultarModificarDepartamento #consultarModificarDepartamento>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vConsultarModificarDepartamento #consultarModificarDepartamento .contenido{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+    }
+}
+#vConsultarModificarDepartamento #consultarModificarDepartamento .contenido label{
+    display: block;
+    margin-top: 16px;
+}
+#vConsultarModificarDepartamento #consultarModificarDepartamento .contenido input{
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vConsultarModificarDepartamento .error{
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+#vConsultarModificarDepartamento .cuadroRojo{
+    border-color: var(--color1);
+}
+#vConsultarModificarDepartamento #modificar, #volver{
+    background-color: var(--colorBoton3);
+    height: 60px;
+    margin-top: 50px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vConsultarModificarDepartamento #modificar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+}
+#vConsultarModificarDepartamento #cajaVolumenDeNegocio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vConsultarModificarDepartamento #cajaVolumenDeNegocio span{
+    margin-right: 100px;
+    margin-left: 10px;
+    font-size: calc(var(--tamanoTexto)*1.4);
+}
+#vConsultarModificarDepartamento #cancelar{
+    height: 60px;
+    background-color: var(--colorboton2);
+    border: 2px solid var(--colorBorde2);
+    margin-top: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    & span{
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        color: var(--colorTexto1);
+    } 
+}
+#vConsultarModificarDepartamento #cancelar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 0px;
+    & span{
+        color: var(--colorTexto4);
+    } 
+}

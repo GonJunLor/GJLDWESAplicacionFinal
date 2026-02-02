@@ -1,9 +1,15 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 11/01/2026
+* @since: 30/01/2026
 */
 
+// volvemos al index principal al dar a cancelar
+if (isset($_REQUEST['cancelar'])) {
+    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    header('Location: index.php');
+    exit;
+}
 
 if (isset($_REQUEST['iniciarSesion'])) {
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
@@ -12,38 +18,20 @@ if (isset($_REQUEST['iniciarSesion'])) {
     exit;
 }
 
-// comprueba si existe una cookie de idioma y si no existe la crea en español
-if (!isset($_COOKIE['idioma'])) {
-    setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// comprueba si se ha pulsado cualquier botón de idioma y pone en la cookie su valor para establecer el idioma
-if (isset($_REQUEST['idioma'])) {
-    setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// Volvemoa al inicio público pero sin cerrar sesión
-if (isset($_REQUEST['inicio'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    header('Location: index.php');
-    exit;
-}
-
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
     'usuario' => '', 
     'contrasena'=>'',
-    'descUsuario'=>''
+    'descUsuario'=>'',
+    'palabraSeguridad'=>'',
+    'repiteContrasena'=>''
 ];
 $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
     'usuario' => '',  
     'contrasena'=>'',
-    'descUsuario'=>''
+    'descUsuario'=>'',
+    'palabraSeguridad'=>'',
+    'repiteContrasena'=>''
 ]; 
 
 //Para cada campo del formulario: Validar entrada y actuar en consecuencia
@@ -52,8 +40,14 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
     // Validamos los datos del formulario
     $aErrores['usuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],100,4,1);
     $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'],20,4,2,1);
-    $aErrores['descUsuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['descUsuario'],255,4,1,);
+    $aErrores['descUsuario']= validacionFormularios::comprobarAlfabetico($_REQUEST['descUsuario'],255,4,1);
+    $aErrores['palabraSeguridad']= validacionFormularios::comprobarAlfabetico($_REQUEST['palabraSeguridad'],255,4,1);
+    $aErrores['repiteContrasena'] = validacionFormularios::validarPassword($_REQUEST['repiteContrasena'],20,4,2,1);
     
+    if ($_REQUEST['contrasena']!=$_REQUEST['repiteContrasena']){
+        $aErrores['repiteContrasena'] = 'Las contraseñas no son iguales';
+    }
+
     foreach($aErrores as $campo => $valor){
         if(!empty($valor)){ // Comprobar si el valor es válido
             $entradaOK = false;
@@ -67,6 +61,12 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
             $entradaOK = false;
             $aErrores['usuario'] = "El nombre de usuario ya existe.";
         }
+
+        if ($_REQUEST['palabraSeguridad']!=PALABRASEGURIDAD){
+            $entradaOK = false;
+            $aErrores['palabraSeguridad'] = 'Palabra de seguridad incorrecta';
+        }
+
     }
     
 } else {//Código que se ejecuta antes de rellenar el formulario

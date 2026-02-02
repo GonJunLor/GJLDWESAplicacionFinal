@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 11/01/2026
+* @since: 31/01/2026
 */
 
 final class UsuarioPDO {
@@ -42,7 +42,8 @@ final class UsuarioPDO {
                 $usuarioBD->T01_NumConexiones,
                 $oFechaValida,
                 null,
-                $usuarioBD->T01_Perfil
+                $usuarioBD->T01_Perfil,
+                $usuarioBD->T01_ImagenUsuario
             );
 
         }
@@ -147,11 +148,12 @@ final class UsuarioPDO {
      * @param string $nuevoPerfil Nuevo perfil
      * @return Usuario|null El objeto usuario actualizado o null si falla
      */
-    public static function modificarUsuario($oUsuario, $nuevoDescUsuario, $nuevoPerfil){
+    public static function modificarUsuario($oUsuario, $nuevoDescUsuario, $nuevoPerfil, $contenidoImagen=null){
         $sql = <<<SQL
             UPDATE T01_Usuario SET 
                 T01_DescUsuario = :nuevoDescUsuario,
-                T01_Perfil = :nuevoPerfil
+                T01_Perfil = :nuevoPerfil,
+                T01_ImagenUsuario = :imagenUsuario
             WHERE T01_CodUsuario = :codUsuarioAntiguo
         SQL;
 
@@ -161,6 +163,7 @@ final class UsuarioPDO {
         $parametros = [
             ':nuevoDescUsuario' => $nuevoDescUsuario,
             ':nuevoPerfil' => $nuevoPerfil,
+            ':imagenUsuario' => $contenidoImagen,
             ':codUsuarioAntiguo' => $oUsuario->getCodUsuario()
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
@@ -168,6 +171,7 @@ final class UsuarioPDO {
         if ($consulta) {
             $oUsuario->setDescUsuario($nuevoDescUsuario);
             $oUsuario->setPerfil($nuevoPerfil);
+            $oUsuario->setImagenUsuario($contenidoImagen);
             return $oUsuario;
         }
 
@@ -180,7 +184,7 @@ final class UsuarioPDO {
      * @return boolean True si se borró correctamente, false si no se borró
      */
     public static function borrarUsuario($oUsuario){
-        $sql = "DELETE FROM T01_Usuario WHERE T01_CodUsuario = ".$oUsuario->getCodUsuario();
+        $sql = 'DELETE FROM T01_Usuario WHERE T01_CodUsuario = "'.$oUsuario->getCodUsuario().'"';
 
         return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
     }

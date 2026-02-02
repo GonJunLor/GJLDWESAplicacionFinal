@@ -19,34 +19,9 @@ if (isset($_REQUEST['volver'])) {
     exit;
 }
 
-// comprueba si existe una cookie de idioma y si no existe la crea en español
-if (!isset($_COOKIE['idioma'])) {
-    setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// comprueba si se ha pulsado cualquier botón de idioma y pone en la cookie su valor para establecer el idioma
-if (isset($_REQUEST['idioma'])) {
-    setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// Volvemos al índice general destruyendo la sesión
-if (isset($_REQUEST['cerrarSesion'])) {
-    $_SESSION['paginaAnterior'] = '';
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    // Destruye la sesión
-    session_destroy();
-    header('Location: index.php');
-    exit;
-}
-
-// Volvemos al inicio público pero sin cerrar sesión
-if (isset($_REQUEST['inicio'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+// vamos a pagina de detalle de la foto del dia
+if (isset($_REQUEST['detalle'])) {
+    $_SESSION['paginaEnCurso'] = 'detalleNasa';
     header('Location: index.php');
     exit;
 }
@@ -94,16 +69,7 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
 
         // guardamos en la sesion la fecha que viene del formulario para recordarla después.
         $_SESSION['fechaNasaEnCurso'] = $oFechaNasaEnCurso;
-
-        // aqui entramos en caso de algo haya ido mal al usar la api de la nasa
-        if (!isset($oFotoNasaEnCurso)) {
-            $entradaOK = false;
-            $aErrores['fechaNasaEnCurso'] = "Error al cargar la api de la NASA";
-        } else {
-            // guardamos en la sesion el objeto fotoNasa que viene de la api para no tener que usarla constantemente al recargar paginas
-            $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
-            $_SESSION['fechaNasaEnCurso'] = new DateTime($_REQUEST['fechaNasaEnCurso']);
-        }
+        $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
     }
     
 } else {//Código que se ejecuta antes de rellenar el formulario
@@ -116,14 +82,13 @@ if ($entradaOK) {
     $_SESSION['paginaEnCurso'] = 'rest';
     header('Location: index.php');
     exit;
-
 }
 
 /* Para que se vea bien la fecha en la vista, ya que sino se me cambia a la anterior aunque es sólo
 visual ya que en la sesión esta la fecha nueva pero en el input no aparece */
-if (isset($_SESSION["fechaNasaEnCurso"])) {
+if (isset($_SESSION['fechaNasaEnCurso'])) {
     // si ya hay una fecha en la sesión se usa esa en vez de la actual
-    $oFechaNasaEnCurso = $_SESSION["fechaNasaEnCurso"];
+    $oFechaNasaEnCurso = $_SESSION['fechaNasaEnCurso'];
 }
 
 // Si ya hay un objeto en la sesion usamos éste en vez de pedir otro
@@ -135,12 +100,7 @@ if (isset($_SESSION['fotoNasaEnCurso'])) {
     $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
 }
 
-// Para controlar si el objeto fotoNasa se ha creado correctamente, sino creamos uno para que no de error la vista
-if (!isset($oFotoNasaEnCurso)) {
-    $oFotoNasaEnCurso = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
-}
-
-
+$_SESSION['fechaNasaEnCurso'] = $oFechaNasaEnCurso;
 $avRest = [
     'fechaNasaEnCurso'=>$oFechaNasaEnCurso->format('Y-m-d'),
     'fotoNasaEnCursoTitulo'=>$oFotoNasaEnCurso->getTitulo(),

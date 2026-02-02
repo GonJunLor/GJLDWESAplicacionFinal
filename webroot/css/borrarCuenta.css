@@ -1,27 +1,24 @@
-/* Login */
-#vLogin #login{
+#vBorrarCuenta #borrarCuenta{
     margin: 50px calc((100dvw - 550px)/2);
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-#vLogin #login #registro{
-    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
-}
-#vLogin #login #registro button{
-    width: 100%;
-}
-#vLogin #login h2{
-    font-size: 20px;
+#vBorrarCuenta #borrarCuenta h2{
     padding: 8px 16px;
     text-align: center;
     font-size: 1rem;
+    text-transform: uppercase;
 }
-#vLogin #login>h2{
+#vBorrarCuenta #borrarCuenta>h2{
     border-left: var(--anchoBorde) solid var(--colorBorde2);
     border-right: var(--anchoBorde) solid var(--colorBorde2);
     border-top: var(--anchoBorde) solid var(--colorBorde2);
 }
-#vLogin #login .contenido{
+#vBorrarCuenta #borrarCuenta>span{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+
+#vBorrarCuenta #borrarCuenta .contenido{
     grid-column: 1/ span 2;
     padding: 30px;
     border-left: var(--anchoBorde) solid var(--colorBorde2);
@@ -29,17 +26,32 @@
     border-right: var(--anchoBorde) solid var(--colorBorde2);
     & *{
         width: 100%;
-        margin-bottom: 16px;
     }
 }
-#vLogin #login .contenido input{
-    padding: 6px 12px;
+#vBorrarCuenta #borrarCuenta .contenido p{
+    margin: 20px 1px;
     font-size: 1.2rem;
-    height: 50px;
-    margin-top: 8px;
-    border: var(--anchoBorde) solid var(--colorBorde2);
 }
-#vLogin #entrar{
+#vBorrarCuenta #cancelar{
+    height: 60px;
+    border: 2px solid var(--colorBorde2);
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    & span{
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    } 
+}
+#vBorrarCuenta #cancelar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 0px;
+    & span{
+        color: var(--colorTexto4);
+    } 
+}
+#vBorrarCuenta #eliminar{
     background-color: var(--colorBoton3);
     height: 60px;
     margin-top: 16px;
@@ -50,22 +62,4 @@
         font-size: 1.1rem;
     } 
 }
-#vLogin #entrar:hover{background-color: var(--colorBotonMarcado2y3);}
-#vLogin #cancelar{
-    height: 60px;
-    border: 2px solid var(--colorBorde2);
-    margin-top: 16px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    & span{
-        text-transform: uppercase;
-        font-size: 1.1rem;
-    } 
-}
-#vLogin #cancelar:hover{
-    background-color: var(--colorBotonMarcado2y3);
-    border: 0px;
-    & span{
-        color: var(--colorTexto4);
-    } 
-}
+#vBorrarCuenta #eliminar:hover{background-color: var(--colorBotonMarcado2y3);}

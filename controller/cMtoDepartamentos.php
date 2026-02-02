@@ -1,48 +1,82 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 24/01/2026
+* @since: 26/01/2026
 */
 
 if (isset($_REQUEST['volver'])) {
-    $_SESSION['paginaEnCurso'] = $_SESSION['paginaAnterior'];
+    $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     header('Location: index.php');
     exit;
 }
 
-// Volvemos al inicio público pero sin cerrar sesión
-if (isset($_REQUEST['inicio'])) {
+if (isset($_REQUEST['altaDepartamento'])) {
+    $_SESSION['paginaEnCurso'] = 'altaDepartamento';
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_REQUEST['editar'])) {
+
+    // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['editar'];
+    
+    // Cambiamos la página en curso y redirigimos
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    $_SESSION['paginaEnCurso'] = 'modificarDepartamento';
+    
     header('Location: index.php');
     exit;
 }
 
-// comprueba si existe una cookie de idioma y si no existe la crea en español
-if (!isset($_COOKIE['idioma'])) {
-    setcookie("idioma", "ES", time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// comprueba si se ha pulsado cualquier botón de idioma y pone en la cookie su valor para establecer el idioma
-if (isset($_REQUEST['idioma'])) {
-    setcookie("idioma", $_REQUEST['idioma'], time()+604.800); // caducidad 1 semana
-    header('Location: ./index.php');
-    exit;
-}
-
-// Volvemos al índice general destruyendo la sesión
-if (isset($_REQUEST['cerrarSesion'])) {
-    $_SESSION['paginaAnterior'] = '';
-    $_SESSION['paginaEnCurso'] = 'inicioPublico';
-    // Destruye la sesión
-    session_destroy();
+if (isset($_REQUEST['mostrar'])) {
+    
+    // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['mostrar'];
+    
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'consultarDepartamento';
+    
     header('Location: index.php');
     exit;
 }
 
-$terminoBusqueda = '%%'; // termino de busqueda explicado al usarlo
+if (isset($_REQUEST['borrar'])) {
+    
+    // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
+    $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['borrar'];
+    
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'eliminarDepartamento';
+    
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_REQUEST['bajaAlta'])) {
+
+    // buscamos el departamento en la BBDD
+    $oDepartamentoAltaBaja = DepartamentoPDO::buscaDepartamentoPorCod($_REQUEST['bajaAlta']);
+
+    // Comprobamos si esta de alta o de baja lógica en función de si la fecha de baja es null
+    if (is_null($oDepartamentoAltaBaja->getFechaBajaDepartamento())) {
+        // el departamento es de alta
+        DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['bajaAlta']);
+    } else {
+        // el departamento está de baja
+        DepartamentoPDO::rehabilitaDepartamento($_REQUEST['bajaAlta']);
+    }
+
+    // Cambiamos la página en curso y redirigimos
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
+    
+    header('Location: index.php');
+    exit;
+}
+
 $entradaOK = true; //Variable que nos indica que todo va bien
 $aErrores = [  //Array donde recogemos los mensajes de error
     'DescDepartamentoBuscado' => ''
@@ -77,35 +111,34 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
     // Recuperar los valores del formulario
     $aRespuestas['DescDepartamentoBuscado'] = $_REQUEST['DescDepartamentoBuscado'] ?? ''; // Usamos el operador ?? para asegurar un valor si no existe
     
-    // Preparamos el término de búsqueda con comodines y en minúsculas para la búsqueda LIKE. 
-    // Los % indica que puede tener cualquier cosa antes y después.
-    // Si la descripción está vacía, el término será '%%', devolviendo todos los resultados.
-    $terminoBusqueda = '%'.strtolower($aRespuestas['DescDepartamentoBuscado']).'%';
-    // Usamos LOWER() en el campo de la DB y en el término de búsqueda para garantizar que la búsqueda sea insensible a mayúsculas/minúsculas.
+    // Guardamos la descripción buscada en la sesión para usarla cuando volvamos a cargar el controlador
+    $_SESSION['descDepartamentoBuscadaEnCurso'] = $aRespuestas['DescDepartamentoBuscado'];
+
 }
  
 
 // Objeto para guardar el departamento que viene de la BBDD 
-$oDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($terminoBusqueda);
+$aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso']??'');
 
 $avMtoDepartamentos=[];
-if (!is_null($oDepartamentos) && is_array($oDepartamentos)) {
-    foreach ($oDepartamentos as $departamento) {
+if (!is_null($aDepartamentos) && is_array($aDepartamentos)) {
+    foreach ($aDepartamentos as $oDepartamento) {
 
         // Creamos las fechas que vienen del objeto Departamento para formatearlas antes de pasarlas a la vista
-        $fechaCreacion = new DateTime($departamento->getFechaCreacionDepartamento());
+        $fechaCreacion = new DateTime($oDepartamento->getFechaCreacionDepartamento());
         $fechaBajaFormateada = '';
-        if (!is_null($departamento->getFechaBajaDepartamento())) {
-            $fechaBaja = new DateTime($departamento->getFechaBajaDepartamento());
+        if (!is_null($oDepartamento->getFechaBajaDepartamento())) {
+            $fechaBaja = new DateTime($oDepartamento->getFechaBajaDepartamento());
             $fechaBajaFormateada = $fechaBaja->format('d/m/Y');
         }
 
         $avMtoDepartamentos[] = [
-            'codDepartamento'           => $departamento->getCodDepartamento(),
-            'descDepartamento'          => $departamento->getDescDepartamento(),
+            'codDepartamento'           => $oDepartamento->getCodDepartamento(),
+            'descDepartamento'          => $oDepartamento->getDescDepartamento(),
             'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
-            'volumenDeNegocio'          => (number_format($departamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
-            'fechaBajaDepartamento'     => $fechaBajaFormateada
+            'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
+            'fechaBajaDepartamento'     => $fechaBajaFormateada,
+            'estadoDepartamento'        => $fechaBajaFormateada==''?'baja':'alta'
         ];
     }
 }

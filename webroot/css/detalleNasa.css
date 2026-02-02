@@ -1,19 +1,18 @@
-/* Inicio Privado */
-#vInicioPrivado{background-color: var(--color3);}
-#vInicioPrivado>form{
+#vDetalleNasa{background-color: var(--color3);}
+#vDetalleNasa>form{
     padding: 16px;
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 1fr;
 }
-#vInicioPrivado>form>div:first-child{
-    grid-column: 1/span 2;
+#vDetalleNasa>form>div:first-child{
+    grid-column: 1/span 1;
     display: flex;
     justify-content: center; 
     align-items: center;
     margin-bottom: 10px;
 }
-#vInicioPrivado>form>div:first-child button{
+#vDetalleNasa>form>div:first-child button{
     background-color: var(--colorBoton1);
     margin-right: 10px;
     padding: 10px;
@@ -23,10 +22,10 @@
         font-size: 0.9rem;
     }
 }
-#vInicioPrivado>form>div:first-child button:hover{
+#vDetalleNasa>form>div:first-child button:hover{
     background-color: var(--colorBotonMarcado1);
 }
-#vInicioPrivado .tarjeta{
+#vDetalleNasa .tarjeta{
     background-color: var(--color2);
     border: var(--anchoBorde) solid var(--colorBorde1);
     border-radius: var(--radioBorde);
@@ -36,25 +35,29 @@
     width: 100%;
 }
 
-#vInicioPrivado .tarjeta div:nth-of-type(1){
+#vDetalleNasa .tarjeta div:nth-of-type(1){
     border-bottom: var(--anchoBorde) solid var(--colorBorde1);
     padding: 16px;
     margin-bottom: 16px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     & *{
         font-size: 1rem;
         display: inline-block;
         /* font-weight: bold; */
     }
 }
-#vInicioPrivado .tarjeta div:nth-of-type(2){
+#vDetalleNasa .tarjeta div:nth-of-type(2){
+    max-width: 100dvw;
     padding-left: 16px;
     padding-right: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-#vInicioPrivado .tarjeta div:nth-of-type(2) .fotoUsuario{
-    width: 25%;
-    max-width: 200px;
-    min-width: 100px;
-    border-radius: 10%;
+#vDetalleNasa img{
+    max-width: 90dvw;
 }
