@@ -132,6 +132,35 @@ if (isset($_REQUEST['importar'])){
     if ($_FILES['archivoDepartamentos']['error'] == UPLOAD_ERR_NO_FILE) {
         $aErrores['archivoDepartamentos'] = "Por favor, selecciona un archivo antes de importar.";
         $archivoOK = false;
+    } else {
+        // Comprobamos que la estrutura del json está bien, con todos los campos
+        // Leemos el contenido del archivo subido
+        $contenidoImagen = file_get_contents($_FILES['archivoDepartamentos']['tmp_name']);
+
+        // lo convertimos a un array
+        $aDepartamentos = json_decode($contenidoImagen,true);
+
+        // Definimos los campos que DEBEN estar en cada departamento
+        $camposObligatorios = [
+            'codDepartamento', 
+            'descDepartamento', 
+            'fechaCreacionDepartamento', 
+            'volumenDeNegocio', 
+            'fechaBajaDepartamento'
+        ];
+
+        // comprobamos que existe cada campo en el archivo json
+        foreach ($aDepartamentos as $indice => $departamento) {
+            foreach ($camposObligatorios as $campo) {
+                // array_key_exists es más preciso que isset por si el valor es NULL
+                if (!array_key_exists($campo, $departamento)) {
+                    $archivoOK = false;
+                    $aErrores['archivoDepartamentos'] = "Error en la estructura del archivo json: <br> En el registro $indice: Falta el campo '$campo'.";
+                    break 2; // Rompe el bucle de campos y el de departamentos
+                }
+            }
+        }
+        
     }
   
 } else {//Código que se ejecuta antes de rellenar el formulario

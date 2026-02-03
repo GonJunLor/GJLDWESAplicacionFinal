@@ -201,6 +201,11 @@ final class DepartamentoPDO {
         return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
     }
 
+    /**
+     * Inserta en la BBDD un conjunto de departamentos a partir de un array.
+     * @param $aDepartamentos Array con los departamentos.
+     * @return boolean True si insertó todos los departamentos en la BBDD y False si no insertó ningun por fallar aunque sea uno sólo.
+     */
     public static function insertarDepartamentos($aDepartamentos){
 
         $sql = <<<SQL
