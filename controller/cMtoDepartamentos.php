@@ -179,7 +179,7 @@ if ($archivoOK) {
 
         // lo guardamos en la BBDD
         if( DepartamentoPDO::insertarDepartamentos($aDepartamentos)){
-            $aRespuestas['archivoDepartamentos'] = 'Archivos insertados correctamente';
+            $aRespuestas['archivoDepartamentos'] = 'Departamentos insertados correctamente';
         } else {
             $aErrores['archivoDepartamentos'] = 'No se han insertado los registros en la BBDD';
         }
@@ -216,32 +216,60 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
     // Guardamos la descripción buscada en la sesión para usarla cuando volvamos a cargar el controlador
     $_SESSION['descDepartamentoBuscadaEnCurso'] = $aRespuestas['DescDepartamentoBuscado'];
 
+    // Guardamos en la sesion el estado buscado para usarla 
+    $_SESSION['estadoDepartamentoBuscadoEnCurso'] = $_REQUEST['radio'];
 }
- 
 
-// Objeto para guardar el departamento que viene de la BBDD 
-$aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso']??'');
+$criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioTodos';
+
+if ($criterioRadio == 'radioTodos') {
+    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '');
+} else if ($criterioRadio == 'radioAlta') {
+    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', 'alta');
+} else if ($criterioRadio == 'radioBaja') {
+    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', 'baja');
+}
+
+// variables para la gestión de la paginación
+$resultadosPorPagina = 5;
+$totalPaginas = ceil(count($aDepartamentos)/$resultadosPorPagina);
+
+$paginaActual = $_SESSION['paginaActualTablaDepartamentos']??1;
+if (isset($_REQUEST['paginaInicial'])){$paginaActual = 1;}
+if (isset($_REQUEST['paginaAnterior'])){$paginaActual>1?$paginaActual--:'';}
+if (isset($_REQUEST['paginaSiguiente'])){$paginaActual<$totalPaginas?$paginaActual++:'';}
+if (isset($_REQUEST['paginaFinal'])){$paginaActual = $totalPaginas;}
+
+// echo 'Pagina actual'.$paginaActual;
+$_SESSION['paginaActualTablaDepartamentos'] = $paginaActual;
 
 $avMtoDepartamentos=[];
 if (!is_null($aDepartamentos) && is_array($aDepartamentos)) {
-    foreach ($aDepartamentos as $oDepartamento) {
 
-        // Creamos las fechas que vienen del objeto Departamento para formatearlas antes de pasarlas a la vista
-        $fechaCreacion = new DateTime($oDepartamento->getFechaCreacionDepartamento());
-        $fechaBajaFormateada = '';
-        if (!is_null($oDepartamento->getFechaBajaDepartamento())) {
-            $fechaBaja = new DateTime($oDepartamento->getFechaBajaDepartamento());
-            $fechaBajaFormateada = $fechaBaja->format('d/m/Y');
+    $indiceActual = ($paginaActual-1)*$resultadosPorPagina;
+    foreach ($aDepartamentos as $index=>$oDepartamento) {
+
+        if ($index>=$indiceActual && $index<($indiceActual+$resultadosPorPagina)) {
+            // echo 'el indice nuevo a ver que tiene: '.$index;
+            // echo '<br>';
+
+            // Creamos las fechas que vienen del objeto Departamento para formatearlas antes de pasarlas a la vista
+            $fechaCreacion = new DateTime($oDepartamento->getFechaCreacionDepartamento());
+            $fechaBajaFormateada = '';
+            if (!is_null($oDepartamento->getFechaBajaDepartamento())) {
+                $fechaBaja = new DateTime($oDepartamento->getFechaBajaDepartamento());
+                $fechaBajaFormateada = $fechaBaja->format('d/m/Y');
+            }
+
+            $avMtoDepartamentos[] = [
+                'codDepartamento'           => $oDepartamento->getCodDepartamento(),
+                'descDepartamento'          => $oDepartamento->getDescDepartamento(),
+                'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
+                'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
+                'fechaBajaDepartamento'     => $fechaBajaFormateada,
+                'estadoDepartamento'        => $fechaBajaFormateada==''?'baja':'alta',
+            ];
         }
-
-        $avMtoDepartamentos[] = [
-            'codDepartamento'           => $oDepartamento->getCodDepartamento(),
-            'descDepartamento'          => $oDepartamento->getDescDepartamento(),
-            'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
-            'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
-            'fechaBajaDepartamento'     => $fechaBajaFormateada,
-            'estadoDepartamento'        => $fechaBajaFormateada==''?'baja':'alta'
-        ];
     }
 }
 

@@ -7,7 +7,7 @@
 final class DepartamentoPDO {
 
     /**
-     * Busca departamentos existente en la BBDD por la desceripción.
+     * Busca departamentos existente en la BBDD por la descripción.
      * @param String $descDepartamento Descripción de los departamentos a buscar.
      * @return array Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
@@ -261,5 +261,44 @@ final class DepartamentoPDO {
             } 
         }
         return false;
+    }
+
+    /**
+     * Busca departamentos existente en la BBDD por la descripción y el estado de alta o baja.
+     * @param String $descDepartamento Descripción de los departamentos a buscar.
+     * @param String $estadoDepartamento Estado de alta, baja de los departamentos a buscar.
+     * @return array Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
+     */
+    public static function buscaDepartamentosPorDescEstado($descDepartamento, $estadoDepartamento){
+
+        // Definimos la condición de fecha según el estado
+        $condicionFecha = ($estadoDepartamento == 'alta') ? "IS NULL" : "IS NOT NULL";
+
+        $sql = <<<SQL
+            SELECT * FROM T02_Departamento
+            WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+            AND T02_FechaBajaDepartamento $condicionFecha
+        SQL;
+            
+        $parametros = [
+            ':departamento' => '%'.$descDepartamento.'%'
+        ];
+
+        $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+        // si encuentra algo en la BBDD creamos el array con los departamentos
+        $aDepartamentos = [];
+        while ($DepartamentoBD = $consulta->fetchObject()) {
+            $aDepartamentos[] = new Departamento(
+                $DepartamentoBD->T02_CodDepartamento,
+                $DepartamentoBD->T02_DescDepartamento,
+                $DepartamentoBD->T02_FechaCreacionDepartamento,
+                $DepartamentoBD->T02_VolumenDeNegocio,
+                $DepartamentoBD->T02_FechaBajaDepartamento
+            );
+        }
+
+        return $aDepartamentos;
+        // return $consulta;
     }
 }

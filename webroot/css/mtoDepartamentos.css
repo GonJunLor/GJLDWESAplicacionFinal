@@ -42,7 +42,6 @@
     & *{
         font-size: 1rem;
         display: inline-block;
-        /* font-weight: bold; */
     }
 }
 #vMtoDepartamentos .tarjeta div:nth-of-type(2){
@@ -83,6 +82,12 @@
     flex-direction: row;
     justify-content: center;
 }
+#vMtoDepartamentos #formTablaDepartamentos{
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 #vMtoDepartamentos .baja{
     color: black;
 }
@@ -98,4 +103,22 @@
     color: green;
     display: block;
     text-align: center;
+}
+#vMtoDepartamentos #formularioBuscar{
+    display: flex;
+    flex-direction: column;
+}
+#vMtoDepartamentos #formularioBuscar>span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vMtoDepartamentos #formularioBuscar input[type="radio"] {
+    margin-right: 15px;
+}
+#vMtoDepartamentos #paginacionTabla{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
 }

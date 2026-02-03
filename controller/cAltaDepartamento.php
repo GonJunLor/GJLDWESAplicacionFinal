@@ -64,7 +64,7 @@ if ($entradaOK) {
     // cargamos el objeto departamento de la BBDD
     $oDepartamento = DepartamentoPDO::altaDepartamento(
         $_REQUEST['codDepartamento'],
-        $_REQUEST['descDepartamento'],
+        'Departamento de '.$_REQUEST['descDepartamento'],
         $_REQUEST['volumenDeNegocio']
     );
 
