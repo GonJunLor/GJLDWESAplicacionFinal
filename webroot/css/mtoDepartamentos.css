@@ -83,7 +83,8 @@
     justify-content: center;
 }
 #vMtoDepartamentos #formTablaDepartamentos{
-    height: 240px;
+    height: 280px;
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -120,5 +121,13 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    gap: 10px;
+    gap: 30px;
+}
+#vMtoDepartamentos #paginacionTabla button{
+    font-size: 1.2rem;
+}
+#vMtoDepartamentos #paginacionTabla p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
