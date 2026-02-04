@@ -6,7 +6,7 @@
  * 
  * @package App\Model
  * @author: Gonzalo Junquera Lorenzo
- * @since: 02/02/2026
+ * @since: 04/02/2026
  * @version 1.0.0
  */
 final class DBPDO{
@@ -92,5 +92,64 @@ final class DBPDO{
             // Cerramos la conexión con la BBDD
             unset($miDB);
         }
+    } 
+
+    /**
+     * Inserta un nuevo registro en la tabla de trazabilidad (log de eventos).
+     * * Este método registra las acciones realizadas por el usuario actual en la aplicación,
+     * almacenando quién lo hizo, qué operación realizó y sobre qué tabla.
+     * * @param string $operacion Descripción de la acción realizada.
+     * @param string $tablaObjetivo Nombre de la tabla afectada por la operación.
+     * @param string $masInformacion Detalles adicionales de la operación realizada.
+     * @return PDOStatement Objeto con el resultado de la inserción.
+     * @throws PDOException Si ocurre un error durante la conexión o la ejecución de la consulta.
+     */
+    public static function insertarTrazabilidad($operacion, $tablaObjetivo, $masInformacion){
+        try {
+            // Conectamos a la base de datos
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+
+            // SQL para insertar el nuevo registro
+            $sql = <<<SQL
+                INSERT INTO T03_Trazabilidad (
+                    T03_Usuario, 
+                    T03_Timestamp, 
+                    T03_Operacion,
+                    T03_NombreTabla,
+                    T03_MasInformacion
+                ) VALUES (
+                    :codUsuario,
+                    now(), 
+                    :operacion,
+                    :tablaObjetivo,
+                    :masInformacion
+                )
+            SQL;
+
+            // Preparamos la consulta
+            $consulta = $miDB->prepare($sql);
+
+            // Ejecutamos la consulta con los parámetros
+            $consulta->execute([
+                ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
+                ':operacion' => $operacion,
+                ':tablaObjetivo' => $tablaObjetivo,
+                ':masInformacion' => $masInformacion
+            ]);
+            
+            // Devuelvemos el resultado de la consulta
+            return $consulta;
+            
+        } catch (PDOException $miExceptionPDO) {
+            // temporalmente ponemos estos errores para que se muestren en pantalla
+            $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+            $_SESSION['paginaEnCurso'] = 'error';
+            $_SESSION['error'] = new ErrorApp($miExceptionPDO->getCode(),$miExceptionPDO->getMessage(),$miExceptionPDO->getFile(),$miExceptionPDO->getLine());
+            header('Location: index.php');
+            exit;
+        } finally {
+            // Cerramos la conexión con la BBDD
+            unset($miDB);
+        } 
     } 
 }

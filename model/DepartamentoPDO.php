@@ -6,7 +6,7 @@
  *
  * @package App\Model
  * @author Gonzalo Junquera Lorenzo
- * @since 03/02/2026
+ * @since 04/02/2026
  * @version 1.0.0
  */
 final class DepartamentoPDO {
@@ -17,6 +17,7 @@ final class DepartamentoPDO {
      * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDesc($descDepartamento){
+        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento','Descripcion: '.$descDepartamento);
 
         $sql = <<<SQL
             SELECT * FROM T02_Departamento
@@ -51,6 +52,8 @@ final class DepartamentoPDO {
      * @return Departamento|null Objeto departamento encontrado en la BBDD. Null si no lo ha encontrado.
      */
     public static function buscaDepartamentoPorCod($codDepartamento){
+        DBPDO::insertarTrazabilidad('buscaDepartamentoPorCod','T02_Departamento','T02_CodDepartamento: '.$codDepartamento);
+
         $sql = <<<SQL
             SELECT * FROM T02_Departamento
             WHERE lower(T02_CodDepartamento) like :departamento
@@ -85,16 +88,22 @@ final class DepartamentoPDO {
      * @return Departamento|null Objeto departamento modificado en la BBDD. Null si no lo ha modificado correctamente.
      */
     public static function modificaDepartamento($oDepartamento, $nuevoDescDepartamento, $nuevoVolumenDeNegocio){
+        DBPDO::insertarTrazabilidad('modificaDepartamento','T02_Departamento',
+            'T02_CodDepartamento: '.$oDepartamento->getCodDepartamento());
+
         $sql = <<<SQL
             UPDATE T02_Departamento SET 
                 T02_DescDepartamento = :nuevoDescDepartamento,
-                T02_VolumenDeNegocio = :nuevoVolumenDeNegocio
+                T02_VolumenDeNegocio = :nuevoVolumenDeNegocio,
+                T02_Usuario = :codUsuario,
+                T02_Timestamp = now()
             WHERE T02_CodDepartamento = :codDepartamento
         SQL;
 
         $parametros = [
             ':nuevoDescDepartamento' => $nuevoDescDepartamento,
             ':nuevoVolumenDeNegocio' => $nuevoVolumenDeNegocio,
+            ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
             ':codDepartamento' => $oDepartamento->getCodDepartamento()
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
@@ -114,6 +123,8 @@ final class DepartamentoPDO {
      * @return boolean True si se borró correctamente, false si no se borró
      */
     public static function bajaFisicaDepartamento($codDepartamento){
+        DBPDO::insertarTrazabilidad('bajaFisicaDepartamento','T02_Departamento','T02_CodDepartamento: '.$codDepartamento);
+
         $sql = 'DELETE FROM T02_Departamento WHERE T02_CodDepartamento = "'.$codDepartamento.'"';
 
         return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
@@ -125,13 +136,18 @@ final class DepartamentoPDO {
      * @return boolean True si lo deshabilitó correctamente y False en caso contrario.
      */
     public static function bajaLogicaDepartamento($codDepartamento){
+        DBPDO::insertarTrazabilidad('bajaLogicaDepartamento','T02_Departamento','T02_CodDepartamento: '.$codDepartamento);
+
         $sql = <<<SQL
             UPDATE T02_Departamento SET 
-                T02_FechaBajaDepartamento = now()
+                T02_FechaBajaDepartamento = now(),
+                T02_Usuario = :codUsuario,
+                T02_Timestamp = now()
             WHERE T02_CodDepartamento = :codDepartamento
         SQL;
 
         $parametros = [
+            ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
             ':codDepartamento' => $codDepartamento
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
@@ -148,13 +164,18 @@ final class DepartamentoPDO {
      * @return boolean True si lo habilitó correctamente y False si no lo habilitó.
      */
     public static function rehabilitaDepartamento($codDepartamento){
+        DBPDO::insertarTrazabilidad('rehabilitaDepartamento','T02_Departamento','T02_CodDepartamento: '.$codDepartamento);
+
         $sql = <<<SQL
             UPDATE T02_Departamento SET 
-                T02_FechaBajaDepartamento = null
+                T02_FechaBajaDepartamento = null,
+                T02_Usuario = :codUsuario,
+                T02_Timestamp = now()
             WHERE T02_CodDepartamento = :codDepartamento
         SQL;
 
         $parametros = [
+            ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
             ':codDepartamento' => $codDepartamento
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
@@ -173,18 +194,36 @@ final class DepartamentoPDO {
      * @return Departamento|null Objeto con el nuevo departamento de la BBDD. Null si no lo ha insertado correctamente.
      */
     public static function altaDepartamento($codDepartamento, $descDepartamento, $volumenDeNegocio){
+        DBPDO::insertarTrazabilidad('altaDepartamento','T02_Departamento','T02_CodDepartamento: '.$codDepartamento);
+
         $oDepartamento = null;
 
         // SQL para insertar el nuevo registro
         $sql = <<<SQL
-            INSERT INTO T02_Departamento
-            VALUES (:codDepartamento, :descDepartamento, now(), :volumenDeNegocio, null)
+            INSERT INTO T02_Departamento (
+                T02_CodDepartamento, 
+                T02_DescDepartamento, 
+                T02_FechaCreacionDepartamento, 
+                T02_VolumenDeNegocio, 
+                T02_FechaBajaDepartamento,
+                T02_Usuario,
+                T02_Timestamp
+            ) VALUES (
+                :codDepartamento, 
+                :descDepartamento, 
+                now(), 
+                :volumenDeNegocio, 
+                null,
+                :codUsuario,
+                now()
+            )
         SQL;
 
         $consulta = DBPDO::ejecutarConsulta($sql, [
             ':codDepartamento' => $codDepartamento,
             ':descDepartamento' => $descDepartamento,
-            ':volumenDeNegocio' => $volumenDeNegocio
+            ':volumenDeNegocio' => $volumenDeNegocio,
+            ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario()
         ]);
 
         if ($consulta) {
@@ -214,6 +253,8 @@ final class DepartamentoPDO {
      * @see DBPDO::ejecutarConsultasTransaccion()
      */
     public static function insertarDepartamentos($aDepartamentos){
+        DBPDO::insertarTrazabilidad('insertarDepartamentos','T02_Departamento',
+            'Intento insertar '.count($aDepartamentos).' departamentos');
 
         $sql = <<<SQL
             INSERT INTO T02_Departamento (
@@ -221,13 +262,17 @@ final class DepartamentoPDO {
                 T02_DescDepartamento, 
                 T02_FechaCreacionDepartamento, 
                 T02_VolumenDeNegocio, 
-                T02_FechaBajaDepartamento
+                T02_FechaBajaDepartamento,
+                T02_Usuario,
+                T02_Timestamp
             ) VALUES (
                 :codDepartamento, 
                 :descDepartamento, 
                 :fechaCreacionDepartamento, 
                 :volumenDeNegocio, 
-                :fechaBajaDepartamento
+                :fechaBajaDepartamento,
+                :codUsuario,
+                now()
             )
         SQL;
 
@@ -253,7 +298,8 @@ final class DepartamentoPDO {
                 ":descDepartamento"=>$departamento['descDepartamento'],
                 ":fechaCreacionDepartamento"=>$oFechaCreacion,
                 ":volumenDeNegocio"=>$departamento['volumenDeNegocio'],
-                ":fechaBajaDepartamento"=>$ofechaBaja
+                ":fechaBajaDepartamento"=>$ofechaBaja,
+                ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario()
             ];
         }
 
@@ -277,6 +323,8 @@ final class DepartamentoPDO {
      * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDescEstado($descDepartamento, $estadoDepartamento){
+        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento',
+            'Descripcion: '.$descDepartamento.', estado: '.$estadoDepartamento);
 
         // Definimos la condición de fecha según el estado
         $condicionFecha = ($estadoDepartamento == 'alta') ? "IS NULL" : "IS NOT NULL";

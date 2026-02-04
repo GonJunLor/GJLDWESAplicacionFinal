@@ -38,6 +38,9 @@ if (isset($_REQUEST['exportar'])) {
     // Convertimos a JSON con un formato limpio
     $jsonContenido = json_encode($avMtoDepartamentosExportar, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
+    DBPDO::insertarTrazabilidad('exportar','T02_Departamento',
+        'Exportó '.count($avMtoDepartamentosExportar).' departamentos.');
+
     // Cabecera para forzar la descarga del archivo
     header('Content-Disposition: attachment; filename="departamentos.json"');
 
@@ -218,6 +221,9 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
 
     // Guardamos en la sesion el estado buscado para usarla 
     $_SESSION['estadoDepartamentoBuscadoEnCurso'] = $_REQUEST['radio'];
+
+    // Reseteamos la paginación a 1 para evitar problemas de que salga pag 3 de 2 por ejemplo
+    $_SESSION['paginaActualTablaDepartamentos'] = 1;
 }
 
 $criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioTodos';

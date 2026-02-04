@@ -50,8 +50,8 @@
     height: 100dvh;
 }
 #vInicioPublico #vInicioPublico07{
-    width: 336px;
-    height: 503px;
+    max-width: 889px;
+    max-height: 703px;
 }
 
 /* Ocultar los inputs radio de la vista */

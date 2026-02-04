@@ -49,27 +49,29 @@
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="174.827" y="160.703" width="90.95" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="488.404" y="73" width="395" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="488.404" y="73" width="395" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="685.904" y="92">DBPDO</text>
-    <rect style="fill: #ffffff" x="488.404" y="101" width="395" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="488.404" y="101" width="395" height="8"/>
-    <rect style="fill: #ffffff" x="488.404" y="109" width="395" height="52"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="488.404" y="109" width="395" height="52"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="491.404" y="123">+static ejecutarConsulta(sentenciaSQL,parametros)</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="491.404" y="139">+static ejecutarConsultasTransaccion(sentenciaSQL,</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="491.404" y="155">                                     aParametros)</text>
+    <rect style="fill: #ffffff" x="450.404" y="59" width="418.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="450.404" y="59" width="418.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="659.454" y="78">DBPDO</text>
+    <rect style="fill: #ffffff" x="450.404" y="87" width="418.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="450.404" y="87" width="418.1" height="8"/>
+    <rect style="fill: #ffffff" x="450.404" y="95" width="418.1" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="450.404" y="95" width="418.1" height="84"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="453.404" y="109">+static ejecutarConsulta(sentenciaSQL,parametros)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="453.404" y="125">+static ejecutarConsultasTransaccion(sentenciaSQL,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="453.404" y="141">                                     aParametros)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="453.404" y="157">+static insertarTrazabilidad(operacion,tablaObjetivo,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="453.404" y="173">                             masInformacion)</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="626.348,232.807 626.348,201.406 685.904,201.406 685.904,168.711 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="690.904,181.358 685.904,165.358 680.904,181.358 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="626.348,232.807 626.348,210.407 659.454,210.407 659.454,186.713 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="664.454,199.36 659.454,183.36 654.454,199.36 "/>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="377.79,317.812 353.099,317.812 353.099,318 327.113,318 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="339.76,313 323.76,318 339.76,323 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="487.398,117 381.091,117 381.091,116.703 273.488,116.703 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="449.398,119 362.09,119 362.09,116.703 273.488,116.703 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="286.136,111.703 270.136,116.703 286.136,121.703 "/>
   </g>
   <text font-size="19.7556" style="fill: #1e90ff;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="316" y="19">
@@ -116,8 +118,8 @@
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="304.661,567 288.661,572 304.661,577 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.564,573.156 912.404,573.156 912.404,119 890.109,119 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="902.757,114 886.757,119 902.757,124 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.564,573.156 905.564,573.156 905.564,105 875.209,105 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="887.857,100 871.857,105 887.857,110 "/>
   </g>
   <g>
     <rect style="fill: #ffffff" x="192.97" y="692.12" width="102.4" height="28"/>
@@ -149,7 +151,7 @@
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="315.729,747.12 299.729,752.12 315.729,757.12 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="925.094,751.542 946.094,751.542 946.094,87 890.109,87 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="902.757,82 886.757,87 902.757,92 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="925.094,751.542 946.094,751.542 946.094,73 875.209,73 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="887.857,68 871.857,73 887.857,78 "/>
   </g>
 </svg>
