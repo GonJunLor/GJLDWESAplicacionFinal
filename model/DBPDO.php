@@ -1,10 +1,23 @@
 <?php
 /**
-* @author: Gonzalo Junquera Lorenzo
-* @since: 11/01/2026
-*/
-
+ * Clase para ejecutar consultas sobre la base de datos
+ * * Esta clase contiene métodos que se conectan a la base de datos y ejecutan las sentencias sql
+ * con los paramámetros que se la pasan en la llamada.
+ * 
+ * @package App\Model
+ * @author: Gonzalo Junquera Lorenzo
+ * @since: 02/02/2026
+ * @version 1.0.0
+ */
 final class DBPDO{
+
+    /**
+     * Ejecuta una consulta sql con los parámetros requeridos.
+     * @param string $sentenciaSQL Instrucción SQL a ejecutar
+     * @param array|null $parametros [Opcional] Parametros a pasarle a la instrucción SQL antes de ejecutarla.
+     * @return PDOStatement Objeto con el resultado de la consulta, los registros afectados.
+     * @throws PDOException Si ocurre un error inesperado durante la consulta.
+     */ 
     public static function ejecutarConsulta($sentenciaSQL, $parametros = null){
         try {
             // Conectamos a la base de datos
@@ -32,6 +45,16 @@ final class DBPDO{
         } 
     } 
 
+    /**
+     * Ejecuta una consulta sql con los parámetros requeridos y con transacción.
+     * * Este método sirve para consultas masivas donde todas las operaciones
+     * deben tener éxito o ninguna se aplicará.
+     * @param string $sentenciaSQL Instrucción SQL a ejecutar
+     * @param array $parametros Array bidimensional donde cada elemento es un set de parámetros.
+     * @return PDOStatement Objeto con el resultado de la consulta, los registros afectados.
+     * @throws PDOException Si ocurre un error inesperado durante la consulta.
+     * @throws miExceptionPDO Si no se ejecuta la transacción entera.
+     */ 
     public static function ejecutarConsultasTransaccion($sentenciaSQL, $aParametros){
         try {
             // Conectamos a la base de datos

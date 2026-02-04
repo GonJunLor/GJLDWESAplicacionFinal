@@ -1,15 +1,20 @@
 <?php
 /**
-* @author: Gonzalo Junquera Lorenzo
-* @since: 01/01/2026
-*/
-
+ * Clase para el acceso a datos de los departamentos mediante PDO.
+ * * Esta clase contiene todos los métodos necesarios para realizar operaciones
+ * CRUD y de gestión de estados sobre la tabla T02_Departamento.
+ *
+ * @package App\Model
+ * @author Gonzalo Junquera Lorenzo
+ * @since 03/02/2026
+ * @version 1.0.0
+ */
 final class DepartamentoPDO {
 
     /**
      * Busca departamentos existente en la BBDD por la descripción.
-     * @param String $descDepartamento Descripción de los departamentos a buscar.
-     * @return array Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
+     * @param string $descDepartamento Descripción de los departamentos a buscar.
+     * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDesc($descDepartamento){
 
@@ -42,7 +47,7 @@ final class DepartamentoPDO {
 
     /**
      * Busca un departamento existente en la BBDD por codDepartamento.
-     * @param String $codDepartamento Codigo departamento a buscar
+     * @param string $codDepartamento Codigo departamento a buscar
      * @return Departamento|null Objeto departamento encontrado en la BBDD. Null si no lo ha encontrado.
      */
     public static function buscaDepartamentoPorCod($codDepartamento){
@@ -75,8 +80,8 @@ final class DepartamentoPDO {
     /**
      * Modifica un departamento existente en la BBDD.
      * @param Departamento $oDepartamento Objeto del departamento a modificar
-     * @param String $nuevoDescDepartamento Descripción departamento a modificar
-     * @param Float $nuevoVolumenDeNegocio Volumen de negocio del departamento a modificar
+     * @param string $nuevoDescDepartamento Descripción departamento a modificar
+     * @param float $nuevoVolumenDeNegocio Volumen de negocio del departamento a modificar
      * @return Departamento|null Objeto departamento modificado en la BBDD. Null si no lo ha modificado correctamente.
      */
     public static function modificaDepartamento($oDepartamento, $nuevoDescDepartamento, $nuevoVolumenDeNegocio){
@@ -105,7 +110,7 @@ final class DepartamentoPDO {
 
     /**
      * Elimina un departamento de la base de datos
-     * @param String $codDepartamento Código del departamento a eliminar
+     * @param string $codDepartamento Código del departamento a eliminar
      * @return boolean True si se borró correctamente, false si no se borró
      */
     public static function bajaFisicaDepartamento($codDepartamento){
@@ -116,7 +121,7 @@ final class DepartamentoPDO {
     
     /**
      * Deshabilita un departamento poniendo la fecha de baja actual.
-     * @param String $codDepartamento Código del departamento a deshabilitar
+     * @param string $codDepartamento Código del departamento a deshabilitar
      * @return boolean True si lo deshabilitó correctamente y False en caso contrario.
      */
     public static function bajaLogicaDepartamento($codDepartamento){
@@ -139,7 +144,7 @@ final class DepartamentoPDO {
 
     /**
      * Habilita un departamento poniendo la fecha de baja a null
-     * @param String $codDepartamento Código del departamento a habilitar
+     * @param string $codDepartamento Código del departamento a habilitar
      * @return boolean True si lo habilitó correctamente y False si no lo habilitó.
      */
     public static function rehabilitaDepartamento($codDepartamento){
@@ -162,9 +167,9 @@ final class DepartamentoPDO {
 
     /**
      * Inserta un departamento nuevo en la BBDD.
-     * @param String $codDepartamento Código del departamento a insertar
-     * @param String $descDepartamento Descripción departamento a insertar
-     * @param Float $volumenDeNegocio Volumen de negocio del departamento a insertar
+     * @param string $codDepartamento Código del departamento a insertar
+     * @param string $descDepartamento Descripción departamento a insertar
+     * @param float $volumenDeNegocio Volumen de negocio del departamento a insertar
      * @return Departamento|null Objeto con el nuevo departamento de la BBDD. Null si no lo ha insertado correctamente.
      */
     public static function altaDepartamento($codDepartamento, $descDepartamento, $volumenDeNegocio){
@@ -192,7 +197,7 @@ final class DepartamentoPDO {
 
     /**
      * Comprueba si existe un departamento con el código indicado en la BBDD.
-     * @param $codDepartamento Código del departamento a buscar
+     * @param string $codDepartamento Código del departamento a buscar
      * @return boolean True si encontró un departamento en la BBDD y False si no lo encontró.
      */
     public static function validaCodNoExiste($codDepartamento){
@@ -203,8 +208,10 @@ final class DepartamentoPDO {
 
     /**
      * Inserta en la BBDD un conjunto de departamentos a partir de un array.
-     * @param $aDepartamentos Array con los departamentos.
+     * @param array $aDepartamentos Array con los departamentos.
      * @return boolean True si insertó todos los departamentos en la BBDD y False si no insertó ningun por fallar aunque sea uno sólo.
+     * @throws Exception Si ocurre un error inesperado durante la transacción.
+     * @see DBPDO::ejecutarConsultasTransaccion()
      */
     public static function insertarDepartamentos($aDepartamentos){
 
@@ -265,9 +272,9 @@ final class DepartamentoPDO {
 
     /**
      * Busca departamentos existente en la BBDD por la descripción y el estado de alta o baja.
-     * @param String $descDepartamento Descripción de los departamentos a buscar.
-     * @param String $estadoDepartamento Estado de alta, baja de los departamentos a buscar.
-     * @return array Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
+     * @param string $descDepartamento Descripción de los departamentos a buscar.
+     * @param string $estadoDepartamento Estado de alta, baja de los departamentos a buscar.
+     * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDescEstado($descDepartamento, $estadoDepartamento){
 
