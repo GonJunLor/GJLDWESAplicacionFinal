@@ -1,14 +1,19 @@
 <?php
 /**
-* @author: Gonzalo Junquera Lorenzo
-* @since: 31/01/2026
-*/
-
+ * Clase de acceso a datos (DAO) para la gestión de Usuarios.
+ * * Esta clase final proporciona métodos estáticos para interactuar con la tabla
+ * T01_Usuario, gestionando el login, registro y mantenimiento de usuarios.
+ * * @package App\Model
+ * @author Gonzalo Junquera Lorenzo
+ * @since 31/01/2026
+ * @version 1.1.0
+ */
 final class UsuarioPDO {
 
     /**
      * Valida las credenciales de un usuario y devuelve un objeto Usuario si son correctas
-     * @param string $codUsuario Código del usuario
+     * * Comprueba el código de usuario y la contraseña (aplicando SHA2).
+     * * @param string $codUsuario Código del usuario
      * @param string $password Contraseña sin encriptar
      * @return Usuario|null Objeto Usuario si las credenciales son correctas, null si no
      */
@@ -54,6 +59,7 @@ final class UsuarioPDO {
     /**
      * Actualiza la fecha de última conexión y el contador de accesos
      * @param Usuario $oUsuario Objeto usuario a actualizar
+     * @return Usuario El objeto actualizado con las nuevas fechas de conexión.
      */
     public static function registrarUltimaConexion($oUsuario){
         
@@ -85,10 +91,10 @@ final class UsuarioPDO {
 
     /**
      * Crea un nuevo usuario en la base de datos
-     * @param string $codUsuario
-     * @param string $password
-     * @param string $descUsuario
-     * @return Usuario|null El objeto usuario si se crea con éxito, null si falla
+     * @param string $codUsuario Código único.
+     * @param string $password Contraseña plana.
+     * @param string $descUsuario Nombre/Descripción.
+     * @return Usuario|null El nuevo objeto Usuario o null si no se pudo crear.
      */
     public static function altaUsuario($codUsuario, $password, $descUsuario){
         $oUsuario = null;

@@ -1,0 +1,16 @@
+[
+    {
+        "codDepartamento": "aaa",
+        "descDepartamento": "Departamento de aaaaaaaaaa",
+        "fechaCreacionDepartamento": "2020-03-15 10:30:00",
+        "volumenDeNegocio": 123.456,
+        "fechaBajaDepartamento": "2024-12-20 18:00:00"
+    },
+    {
+        "codDepartamento": "bbb",
+        "descDepartamento": "Departamento de aaabbbbbbb",
+        "fechaCreacionDepartamento": "2020-06-20 09:15:22",
+        "volumenDeNegocio": 987.654,
+        "fechaBajaDepartamento": null
+    }
+]

@@ -28,6 +28,6 @@
         <img id="vInicioPublico04" src="doc/pdf/diagramaClases.svg" alt="">
         <img id="vInicioPublico05" src="doc/pdf/usoSesion.png" alt="">
         <iframe id="vInicioPublico06" src="doc/pdf/CatalogoRequisitos.pdf" frameborder="0"></iframe>
-        <img id="vInicioPublico07" src="doc/pdf/modeloDatos.JPG" alt="">
+        <img id="vInicioPublico07" src="doc/pdf/modeloDatos.png" alt="">
     </div>
 </main>

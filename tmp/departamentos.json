@@ -1,0 +1,149 @@
+[
+    {
+        "codDepartamento": "AUT",
+        "descDepartamento": "Departamento de automociones",
+        "fechaCreacionDepartamento": "2020-03-15 10:30:00",
+        "volumenDeNegocio": 123.654,
+        "fechaBajaDepartamento": "2024-12-20 18:00:00"
+    },
+    {
+        "codDepartamento": "ELE",
+        "descDepartamento": "Departamento de electricidad",
+        "fechaCreacionDepartamento": "2020-06-20 09:15:22",
+        "volumenDeNegocio": 2275.1,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "INF",
+        "descDepartamento": "Departamento de informatica",
+        "fechaCreacionDepartamento": "2021-01-10 08:00:00",
+        "volumenDeNegocio": 1235.5,
+        "fechaBajaDepartamento": "2026-01-31 23:41:57"
+    },
+    {
+        "codDepartamento": "ING",
+        "descDepartamento": "Departamento de ingles",
+        "fechaCreacionDepartamento": "2021-05-12 11:45:10",
+        "volumenDeNegocio": 235.9,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "MAT",
+        "descDepartamento": "Departamento de matematicas",
+        "fechaCreacionDepartamento": "2021-09-01 09:00:00",
+        "volumenDeNegocio": 735.2,
+        "fechaBajaDepartamento": "2025-06-15 12:00:00"
+    },
+    {
+        "codDepartamento": "FIS",
+        "descDepartamento": "Departamento de fisica",
+        "fechaCreacionDepartamento": "2022-02-14 10:20:00",
+        "volumenDeNegocio": 850.4,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "QUI",
+        "descDepartamento": "Departamento de quimica",
+        "fechaCreacionDepartamento": "2022-04-22 13:10:05",
+        "volumenDeNegocio": 920.15,
+        "fechaBajaDepartamento": "2023-11-10 14:30:00"
+    },
+    {
+        "codDepartamento": "BIO",
+        "descDepartamento": "Departamento de biologia",
+        "fechaCreacionDepartamento": "2022-11-30 08:45:00",
+        "volumenDeNegocio": 1100.0,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "HIS",
+        "descDepartamento": "Departamento de historia",
+        "fechaCreacionDepartamento": "2023-01-15 12:00:00",
+        "volumenDeNegocio": 450.75,
+        "fechaBajaDepartamento": "2024-05-05 09:00:00"
+    },
+    {
+        "codDepartamento": "LEN",
+        "descDepartamento": "Departamento de lengua y literatura",
+        "fechaCreacionDepartamento": "2023-03-10 10:30:15",
+        "volumenDeNegocio": 615.3,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "FIL",
+        "descDepartamento": "Departamento de filosofia",
+        "fechaCreacionDepartamento": "2023-08-05 14:20:00",
+        "volumenDeNegocio": 310.2,
+        "fechaBajaDepartamento": "2024-01-20 10:00:00"
+    },
+    {
+        "codDepartamento": "ART",
+        "descDepartamento": "Departamento de artes plasticas",
+        "fechaCreacionDepartamento": "2024-02-01 09:00:00",
+        "volumenDeNegocio": 580.9,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "MUS",
+        "descDepartamento": "Departamento de musica",
+        "fechaCreacionDepartamento": "2024-05-20 11:15:30",
+        "volumenDeNegocio": 420.0,
+        "fechaBajaDepartamento": "2025-03-12 16:45:00"
+    },
+    {
+        "codDepartamento": "EFD",
+        "descDepartamento": "Departamento de educacion fisica",
+        "fechaCreacionDepartamento": "2024-10-12 08:30:00",
+        "volumenDeNegocio": 1500.6,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "ECO",
+        "descDepartamento": "Departamento de economia",
+        "fechaCreacionDepartamento": "2025-01-07 10:00:00",
+        "volumenDeNegocio": 2100.45,
+        "fechaBajaDepartamento": "2025-12-01 11:00:00"
+    },
+    {
+        "codDepartamento": "GEO",
+        "descDepartamento": "Departamento de geografia",
+        "fechaCreacionDepartamento": "2025-04-18 12:45:00",
+        "volumenDeNegocio": 395.8,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "TEC",
+        "descDepartamento": "Departamento de tecnologia",
+        "fechaCreacionDepartamento": "2025-06-30 09:30:10",
+        "volumenDeNegocio": 1850.25,
+        "fechaBajaDepartamento": "2026-02-01 08:20:00"
+    },
+    {
+        "codDepartamento": "FRA",
+        "descDepartamento": "Departamento de frances",
+        "fechaCreacionDepartamento": "2025-11-25 15:00:00",
+        "volumenDeNegocio": 195.5,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "LAT",
+        "descDepartamento": "Departamento de latin y griego",
+        "fechaCreacionDepartamento": "2026-01-05 08:00:00",
+        "volumenDeNegocio": 110.3,
+        "fechaBajaDepartamento": "2026-02-02 11:20:00"
+    },
+    {
+        "codDepartamento": "ORI",
+        "descDepartamento": "Departamento de orientacion",
+        "fechaCreacionDepartamento": "2026-02-01 09:00:00",
+        "volumenDeNegocio": 50.0,
+        "fechaBajaDepartamento": null
+    },
+    {
+        "codDepartamento": "VID",
+        "descDepartamento": "Departamento de videojuegos",
+        "fechaCreacionDepartamento": "2023-03-16 17:30:00",
+        "volumenDeNegocio": 6000.0,
+        "fechaBajaDepartamento": null
+    }
+]

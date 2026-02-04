@@ -42,10 +42,14 @@
     & *{
         font-size: 1rem;
         display: inline-block;
-        /* font-weight: bold; */
     }
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form{
+#vMtoDepartamentos .tarjeta div:nth-of-type(2){
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: var(--anchoBorde) solid var(--colorBorde1);
+}
+#vMtoDepartamentos .tarjeta div>form{
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
@@ -53,11 +57,11 @@
     justify-content: center;
     align-items: center;
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form input{
+#vMtoDepartamentos .tarjeta div>form input{
     height: 30px;
     margin-left: 5px;
 }
-#vMtoDepartamentos .tarjeta div:nth-of-type(2)>form button{
+#vMtoDepartamentos .tarjeta div>form button{
     background-color: var(--colorBoton1);
     margin-right: 10px;
     margin-left: 10px;
@@ -78,9 +82,52 @@
     flex-direction: row;
     justify-content: center;
 }
+#vMtoDepartamentos #formTablaDepartamentos{
+    height: 280px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 #vMtoDepartamentos .baja{
     color: black;
 }
 #vMtoDepartamentos .alta{
     color: lightgray;
+}
+#vMtoDepartamentos .error{
+    color: red;
+    display: block;
+    text-align: center;
+}
+#vMtoDepartamentos .correcto{
+    color: green;
+    display: block;
+    text-align: center;
+}
+#vMtoDepartamentos #formularioBuscar{
+    display: flex;
+    flex-direction: column;
+}
+#vMtoDepartamentos #formularioBuscar>span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vMtoDepartamentos #formularioBuscar input[type="radio"] {
+    margin-right: 15px;
+}
+#vMtoDepartamentos #paginacionTabla{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+}
+#vMtoDepartamentos #paginacionTabla button{
+    font-size: 1.2rem;
+}
+#vMtoDepartamentos #paginacionTabla p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

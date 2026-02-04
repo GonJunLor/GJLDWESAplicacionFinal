@@ -9,26 +9,48 @@
         <div>
             <button name="volver" class="boton"><span>Volver</span></button> 
             <button name="altaDepartamento" class="boton"><span>Alta Departamento</span></button> 
+            <button name="exportar" class="boton"><span>Exportar</span></button> 
         </div>
     </form>
     <div class="columna1">
         <div class="tarjeta">
             <div><h2>Buscar departamento</h2></div>
             <div>
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-                    <label for="DescDepartamentoBuscado">Introduce Departamento a Buscar: </label>
-                    <br>
-                    <input type="text" name="DescDepartamentoBuscado" value="<?php echo $_SESSION['descDepartamentoBuscadaEnCurso']??'' ?>">
-                    <span class="error"><?php echo $aErrores['DescDepartamentoBuscado'] ?></span>
-                    <br>
-                    <button name="buscar" class="boton" id="buscar"><span>Buscar</span></button>
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" id="formularioBuscar">
+                    <span>
+                        <label for="DescDepartamentoBuscado">Introduce Departamento a Buscar: </label>
+                        <input type="text" name="DescDepartamentoBuscado" value="<?php echo $_SESSION['descDepartamentoBuscadaEnCurso']??'' ?>">
+                        <span class="error"><?php echo $aErrores['DescDepartamentoBuscado'] ?></span>
+                        <button name="buscar" class="boton" id="buscar"><span>Buscar</span></button>
+                    </span>
+                    <span>
+                        <label for="radioAlta">Alta</label>
+                        <input type="radio" name="radio" id="radioAlta" value="radioAlta" <?php echo $criterioRadio=='radioAlta'?'checked':'' ?>>
+                        <label for="radioBaja">Baja</label>
+                        <input type="radio" name="radio" id="radioBaja" value="radioBaja" <?php echo $criterioRadio=='radioBaja'?'checked':'' ?>>
+                        <label for="radioTodos">Todos</label>
+                        <input type="radio" name="radio" id="radioTodos" value="radioTodos" <?php echo $criterioRadio=='radioTodos'?'checked':'' ?>>
+                    </span>
+                    
                 </form>
+            </div>
+            <div>
+                <form class="archivoImportar" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" 
+                enctype="multipart/form-data"> 
+                <!-- Propiedad imprescindible para enviar archivos al servidor -->
+                    <label for="archivoDepartamentos" class="labelFoto">Busca un archivo a importar: </label>
+                    <input type="file" name="archivoDepartamentos" id="archivoDepartamentos" accept="application/json">
+                    <button name="importar" class="boton" id="importar"><span>Importar</span></button>
+                    
+                </form>
+                <span class="error"><?php echo $aErrores['archivoDepartamentos'] ?></span>
+                <span class="correcto"><?php echo $aRespuestas['archivoDepartamentos'] ?></span>
             </div>
         </div>
         <div class="tarjeta">
             <div><h2>Resultado</h2></div>
             <div>
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                <form id="formTablaDepartamentos" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                 <?php 
                     echo '<table>';
                     echo '<tr>';
@@ -56,6 +78,15 @@
                 ?>
                 </form>
             </div>
+            <form id="paginacionTabla" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                <button name="paginaInicial" class="boton" id="paginaInicial">|<</button>
+                <button name="paginaAnterior" class="boton" id="paginaAnterior"><</button>
+                <p><?php echo $paginaActual ?></p>
+                <p>de</p>
+                <p><?php echo $totalPaginas ?></p>
+                <button name="paginaSiguiente" class="boton" id="paginaSiguiente">></button>
+                <button name="paginaFinal" class="boton" id="paginaFinal">>|</button>
+            </form>
         </div>
     </div>
     
