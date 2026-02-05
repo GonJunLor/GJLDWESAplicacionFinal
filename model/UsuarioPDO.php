@@ -56,6 +56,11 @@ final class UsuarioPDO {
         return $oUsuario;
     }
 
+    /**
+     * Busca usuarios existente en la BBDD por la descripción.
+     * @param string $descUsuario Descripción de los usuarios a buscar.
+     * @return Usuario[] Array de objeto usuario encontrados en la BBDD. Vacío si no encuentra ninguno.
+     */
     public static function buscaUsuariosPorDesc($descUsuario){
 
         $sql = <<<SQL

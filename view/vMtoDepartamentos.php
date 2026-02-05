@@ -10,6 +10,7 @@
             <button name="volver" class="boton"><span>Volver</span></button> 
             <button name="altaDepartamento" class="boton"><span>Alta Departamento</span></button> 
             <button name="exportar" class="boton"><span>Exportar</span></button> 
+            <button name="exportarPDF" class="boton"><span>ExportarPDF</span></button> 
         </div>
     </form>
     <div class="columna1">

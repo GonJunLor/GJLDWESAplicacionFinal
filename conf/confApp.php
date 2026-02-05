@@ -22,6 +22,9 @@ require_once 'model/DepartamentoPDO.php';
 const API_KEY_NASA = 'uwcgeJsRXJe8JY2SPm26LWceI9GHg8bNXynfkq9s';
 const PALABRASEGURIDAD = 'pimentel';
 
+// constante para la paginación de resultados de consulta sobre la BBDD
+const RESULTADOSPORPAGINA = 5;
+
 $controller=[
     'inicioPublico' => 'controller/cInicioPublico.php',
     'login' => 'controller/cLogin.php',
@@ -40,7 +43,8 @@ $controller=[
     'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'eliminarDepartamento' => 'controller/cEliminarDepartamento.php',
     'altaDepartamento' => 'controller/cAltaDepartamento.php',
-    'mtoUsuarios' => 'controller/cMtoUsuarios.php'
+    'mtoUsuarios' => 'controller/cMtoUsuarios.php',
+    'exportarPDF' => 'controller/cExportarPDF.php'
 ];
 
 $view=[
@@ -62,7 +66,8 @@ $view=[
     'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php',
     'eliminarDepartamento' => 'view/vEliminarDepartamento.php',
     'altaDepartamento' => 'view/vAltaDepartamento.php',
-    'mtoUsuarios' => 'view/vMtoUsuarios.php'
+    'mtoUsuarios' => 'view/vMtoUsuarios.php',
+    'exportarPDF' => 'view/vExportarPDF.php'
 ];
 
 $titulo=[
@@ -84,7 +89,8 @@ $titulo=[
     'consultarDepartamento' => 'Consultar Departamento',
     'eliminarDepartamento' => 'Eliminar Departamento',
     'altaDepartamento' => 'Alta Departamento',
-    'mtoUsuarios' => 'Mantenimiento Usuarios'
+    'mtoUsuarios' => 'Mantenimiento Usuarios',
+    'exportarPDF' => 'Página visualizar PDF'
 ];
 
 // adjudicación de permisos según el perfil

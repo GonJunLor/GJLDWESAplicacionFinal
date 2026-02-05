@@ -1,20 +1,15 @@
 /* Página de Mantenimiento */
 /* Página de Error */
-#vMtoUsuarios{background-color: var(--color3);}
-#vMtoUsuarios>form{
-    padding: 16px;
-    display: grid;
-    gap: 15px;
-    grid-template-columns: 1fr;
-}
-#vMtoUsuarios>form>div:first-child{
+#vExportarPDF{background-color: var(--color3);}
+#vExportarPDF form{
     grid-column: 1/span 1;
     display: flex;
     justify-content: center; 
     align-items: center;
     margin-bottom: 10px;
+    padding-top: 16px;
 }
-#vMtoUsuarios>form>div:first-child button{
+#vExportarPDF form button{
     background-color: var(--colorBoton1);
     margin-right: 10px;
     padding: 10px;
@@ -24,20 +19,27 @@
         font-size: 0.9rem;
     }
 }
-#vMtoUsuarios>form>div:first-child button:hover{
+#vExportarPDF form  button:hover{
     background-color: var(--colorBotonMarcado1);
 }
-#vMtoUsuarios .tarjeta{
+#vExportarPDF .tarjeta{
     background-color: var(--color2);
     border: var(--anchoBorde) solid var(--colorBorde1);
     border-radius: var(--radioBorde);
     padding-bottom: 16px;
-    margin: 8px 4px;
-    display: inline-block;
-    width: 100%;
+    margin: 0 auto;
+    width: 800px;
+    padding: 30px;
+    padding-top: 50px;
+    display: grid;
+    grid-template-rows: 1fr 10px;
+    height: 1000px;
+}
+#vExportarPDF .tarjeta p{
+    text-align: center;
 }
 
-#vMtoUsuarios .tarjeta div:nth-of-type(1){
+/* #vExportarPDF .tarjeta div:nth-of-type(1){
     border-bottom: var(--anchoBorde) solid var(--colorBorde1);
     padding: 16px;
     margin-bottom: 16px;
@@ -46,12 +48,31 @@
     & *{
         font-size: 1rem;
         display: inline-block;
-        /* font-weight: bold; */
     }
-}
-#vMtoUsuarios .tarjeta div:nth-of-type(2){
+} */
+#vExportarPDF .tarjeta div:nth-of-type(1){
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
     justify-content: center;
+}
+#vExportarPDF th, td{
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 8px 5px;
+}
+#vExportarPDF table{
+    display: block;
+}
+@media print {
+    /* Ocultamos botones, formularios de búsqueda y paginación */
+    #aviso, #sombra, #cabecera, #pie, button{
+        display: none !important;
+    }
+    #vExportarPDF .tarjeta{
+        margin: 0;
+        padding: 0px;
+        width: 100%;
+        border: 0px;
+    }
 }
