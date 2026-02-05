@@ -8,4 +8,4 @@ TRUNCATE TABLE T03_Trazabilidad;
 
 TRUNCATE TABLE T02_Departamento;
 
-TRUNCATE TABLE T01_Usuario;
+TRUNCATE TABLE DBGJLDWESAplicacionFinal.T01_Usuario;

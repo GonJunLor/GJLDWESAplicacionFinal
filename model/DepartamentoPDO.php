@@ -17,7 +17,6 @@ final class DepartamentoPDO {
      * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDesc($descDepartamento){
-        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento','Descripcion: '.$descDepartamento);
 
         $sql = <<<SQL
             SELECT * FROM T02_Departamento
@@ -323,6 +322,75 @@ final class DepartamentoPDO {
      * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDescEstado($descDepartamento, $estadoDepartamento){
+        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento',
+            'Descripcion: '.$descDepartamento.', estado: '.$estadoDepartamento
+        );
+
+        $aDepartamentos = [];
+        if ($estadoDepartamento == 'radioTodos') {
+            $aDepartamentos = self::buscaDepartamentosPorDesc($descDepartamento);
+        } else {
+
+            // Definimos la condición de fecha según el estado
+            $condicionFecha = ($estadoDepartamento == 'radioAlta') ? "IS NULL" : "IS NOT NULL";
+
+            $sql = <<<SQL
+                SELECT COUNT(*) FROM T02_Departamento
+                WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+                AND T02_FechaBajaDepartamento $condicionFecha
+            SQL;
+                
+            $parametros = [
+                ':departamento' => '%'.$descDepartamento.'%'
+            ];
+
+            $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+            // si encuentra algo en la BBDD rellenamos el array con los departamentos
+            while ($DepartamentoBD = $consulta->fetchObject()) {
+                $aDepartamentos[] = new Departamento(
+                    $DepartamentoBD->T02_CodDepartamento,
+                    $DepartamentoBD->T02_DescDepartamento,
+                    $DepartamentoBD->T02_FechaCreacionDepartamento,
+                    $DepartamentoBD->T02_VolumenDeNegocio,
+                    $DepartamentoBD->T02_FechaBajaDepartamento
+                );
+            }
+        }
+
+        return $aDepartamentos;
+    }
+
+    public static function contarDepartamentosPorDescEstado($descDepartamento){
+
+        $sql = <<<SQL
+            SELECT * FROM T02_Departamento
+            WHERE lower(T02_DescDepartamento) like :departamento
+        SQL;
+        
+        $parametros = [
+            ':departamento' => '%'.$descDepartamento.'%'
+        ];
+
+        $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+        // si encuentra algo en la BBDD creamos el array con los departamentos
+        $aDepartamentos = [];
+        while ($DepartamentoBD = $consulta->fetchObject()) {
+            $aDepartamentos[] = new Departamento(
+                $DepartamentoBD->T02_CodDepartamento,
+                $DepartamentoBD->T02_DescDepartamento,
+                $DepartamentoBD->T02_FechaCreacionDepartamento,
+                $DepartamentoBD->T02_VolumenDeNegocio,
+                $DepartamentoBD->T02_FechaBajaDepartamento
+            );
+        }
+
+        return $aDepartamentos;
+        // return $consulta;
+    }
+
+    public static function buscaDepartamentosPorDescEstadoPaginado($descDepartamento, $estadoDepartamento, ){
         DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento',
             'Descripcion: '.$descDepartamento.', estado: '.$estadoDepartamento);
 

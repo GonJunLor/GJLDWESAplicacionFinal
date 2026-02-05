@@ -14,6 +14,7 @@ insert into T02_Departamento values
         ('ING','Departamento de ingles',now(),235.9,now())
 ;
 
+use DBGJLDWESAplicacionFinal;
 
 INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario)
                 VALUES

@@ -77,7 +77,10 @@
         <!-- Si el perfil esta en el array de permisos carga el mto de usuarios, sino no -->
         <?php if(in_array($avInicioPrivado['perfil'],$permisos['mtoUsuarios'])): ?>
         <div class="tarjeta">
-            <div><h2>Usuarios</h2></div>
+            <div>
+                <h2>Usuarios</h2>
+                <button name="mtoUsuarios" class="boton"><span class="enlace">Ver</span></button>
+            </div>
             <div>
                 <p>Espacio reservado para la futura función de mantenimiento de usuarios</p>
             </div>

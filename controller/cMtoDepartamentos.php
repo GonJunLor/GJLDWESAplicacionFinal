@@ -21,11 +21,11 @@ if (isset($_REQUEST['exportar'])) {
     // recuperamos de la BBDD lo que ha buscado el usuario
     $aDepartamentosExportar = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso']??'');
 
-    $avMtoDepartamentosExportar=[];
+    $aArchivoExportar=[];
     if (!is_null($aDepartamentosExportar) && is_array($aDepartamentosExportar)) {
         foreach ($aDepartamentosExportar as $oDepartamentoExportar) {
 
-            $avMtoDepartamentosExportar[] = [
+            $aArchivoExportar[] = [
                 'codDepartamento'           => $oDepartamentoExportar->getCodDepartamento(),
                 'descDepartamento'          => $oDepartamentoExportar->getDescDepartamento(),
                 'fechaCreacionDepartamento' => $oDepartamentoExportar->getFechaCreacionDepartamento(),
@@ -227,14 +227,7 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
 }
 
 $criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioTodos';
-
-if ($criterioRadio == 'radioTodos') {
-    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '');
-} else if ($criterioRadio == 'radioAlta') {
-    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', 'alta');
-} else if ($criterioRadio == 'radioBaja') {
-    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', 'baja');
-}
+$aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', $criterioRadio);
 
 // variables para la gestión de la paginación
 $resultadosPorPagina = 5;

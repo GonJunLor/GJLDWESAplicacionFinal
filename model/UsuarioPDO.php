@@ -56,6 +56,37 @@ final class UsuarioPDO {
         return $oUsuario;
     }
 
+    public static function buscaUsuariosPorDesc($descUsuario){
+
+        $sql = <<<SQL
+            SELECT * FROM T01_Usuario
+            WHERE lower(T01_DescUsuario) like :descripcion
+        SQL;
+        
+        $parametros = [
+            ':descripcion' => '%'.$descUsuario.'%'
+        ];
+
+        $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+        // si encuentra algo en la BBDD creamos el array con los departamentos
+        $aUsuarios = [];
+        while ($UsuariosBD = $consulta->fetchObject()) {
+            $aUsuarios[] = new Usuario(
+                $UsuariosBD->T01_CodUsuario,
+                $UsuariosBD->T01_Password,
+                $UsuariosBD->T01_DescUsuario,
+                $UsuariosBD->T01_NumConexiones,
+                $UsuariosBD->T01_FechaHoraUltimaConexion,
+                null,
+                $UsuariosBD->T01_Perfil,
+                $UsuariosBD->T01_ImagenUsuario
+            );
+        }
+
+        return $aUsuarios;
+    }
+
     /**
      * Actualiza la fecha de última conexión y el contador de accesos
      * @param Usuario $oUsuario Objeto usuario a actualizar
