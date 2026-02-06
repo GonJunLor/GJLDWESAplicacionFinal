@@ -35,6 +35,8 @@ if (!is_null($aUsuariosExportar) && is_array($aUsuariosExportar)) {
 }
 
 // Convertimos a JSON con un formato limpio
-print_r(json_encode($aArchivoExportar,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) ;
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($aArchivoExportar,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+// echo json_encode($aArchivoExportar, JSON_PRETTY_PRINT);
 
 /* http://daw205.local.ieslossauces.es/GJLDWESAplicacionFinal/api/wsBuscaUsuariosPorDescripcion.php?descUsuario=vero */
