@@ -1,12 +1,12 @@
 <?php
 /**
 * @author: Gonzalo Junquera Lorenzo
-* @since: 30/01/2026
+* @since: 07/02/2026
 */
 class REST{
 
     // public static function apiNasa($fecha){
-    //     $oFotoNasa = null;
+    //     $volumen = null;
 
     //     // El @ evita que el Warning salga en pantalla
     //     $resultado = @file_get_contents("https://api.nasa.gov/planetary/apod?date=$fecha&api_key=" . API_KEY_NASA);
@@ -19,18 +19,18 @@ class REST{
 
     //     if (isset($archivoApi)) {
     //         if (isset($archivoApi['date']) && isset($archivoApi['explanation']) && isset($archivoApi['hdurl']) && isset($archivoApi['title']) && isset($archivoApi['url'])) {
-    //             $oFotoNasa = new FotoNasa($archivoApi['date'], $archivoApi['explanation'], $archivoApi['hdurl'], $archivoApi['title'], $archivoApi['url']);
+    //             $volumen = new FotoNasa($archivoApi['date'], $archivoApi['explanation'], $archivoApi['hdurl'], $archivoApi['title'], $archivoApi['url']);
     //         } else {
-    //             $oFotoNasa = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
+    //             $volumen = new FotoNasa('1990-04-24','','webroot/media/images/banderaEs.png','No hay foto del dia','webroot/media/images/banderaEs.png');
     //         }
     //     }
 
-    //     return $oFotoNasa;
+    //     return $volumen;
     // }
 
     // Codigo alternativo por si no funciona el anterior en el servidor, este es más seguro.
     public static function apiNasa($fecha) {
-        $oFotoNasa = null;
+        $volumen = null;
 
         $url = "https://api.nasa.gov/planetary/apod?date=$fecha&api_key=" . API_KEY_NASA;
 
@@ -54,7 +54,7 @@ class REST{
         if (curl_errno($ch)) {
             // Si quieres ver el error real, podrías hacer un: echo curl_error($ch);
             curl_close($ch);
-            $oFotoNasa = null;
+            $volumen = null;
         }
 
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -62,7 +62,7 @@ class REST{
 
         // Si el código no es 200 (OK), algo ha ido mal (ej. fecha incorrecta o API KEY mal)
         if ($httpCode !== 200) {
-            $oFotoNasa = null;
+            $volumen = null;
         }
 
         
@@ -75,7 +75,7 @@ class REST{
                 
                 $imagenSerializada = self::serializarImagen($hdurl);
 
-                $oFotoNasa = new FotoNasa(
+                $volumen = new FotoNasa(
                     $archivoApi['date'], 
                     $archivoApi['explanation'], 
                     $imagenSerializada, 
@@ -86,8 +86,8 @@ class REST{
         }
 
         // si ha habido un error en vez de devolver null, devolvemos un objeto falso para que el programa siga funcionando
-        if ($oFotoNasa == null) {
-            $oFotoNasa = new FotoNasa(
+        if ($volumen == null) {
+            $volumen = new FotoNasa(
                 '1990-04-24',
                 '',
                 'webroot/media/images/banderaEs.png',
@@ -95,7 +95,7 @@ class REST{
                 'webroot/media/images/banderaEs.png'
             );
         }
-        return $oFotoNasa;
+        return $volumen;
     }
 
     public static function serializarImagen($url) {
@@ -112,5 +112,54 @@ class REST{
         
         // Retornamos el formato listo para el atributo 'src' de una <img>
         return "data:$tipoMime;base64,$base64";
+    }
+
+    public static function apiPropia($codDepartamento){
+        $volumen = 0;
+        // $url = "http://daw205.local.ieslossauces.es/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
+        $url = "http://192.168.1.205/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
+        // $url = "http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
+
+        // 1. Iniciamos cURL
+        $ch = curl_init();
+
+        // 2. Configuramos las opciones
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Devuelve el resultado como string
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);          // Timeout de 10 segundos
+        
+        // ESTO ES CLAVE PARA EL NAS:
+        // Ignora la verificación de certificados si el NAS no tiene los bundles actualizados
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+        // 3. Ejecutamos la petición
+        $resultado = curl_exec($ch);
+        
+        // 4. Control de errores de conexión
+        if (curl_errno($ch)) {
+            // Si quieres ver el error real, podrías hacer un: echo curl_error($ch);
+            curl_close($ch);
+            $volumen = 0;
+        }
+
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        // Si el código no es 200 (OK), algo ha ido mal (ej. fecha incorrecta o API KEY mal)
+        if ($httpCode !== 200) {
+            $volumen = 0;
+        }
+
+        // 5. Procesamos el JSON
+        $archivoApi = json_decode($resultado, true);
+
+        if (isset($archivoApi)) {
+            if (isset($archivoApi['volumenDeNegocio'])) {
+                $volumen = $archivoApi['volumenDeNegocio'];
+            }
+        }
+
+        return $volumen;
     }
 }

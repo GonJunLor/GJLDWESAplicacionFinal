@@ -20,6 +20,7 @@ require_once 'model/DepartamentoPDO.php';
 
 // constante para acceder a la api de la nasa con una clave privada mia
 const API_KEY_NASA = 'uwcgeJsRXJe8JY2SPm26LWceI9GHg8bNXynfkq9s';
+const API_KEY_PROPIA = 'XZuVZLROAF6FyluURwSTaJOLesWQZYrFZ9JX7E8n';
 const PALABRASEGURIDAD = 'pimentel';
 
 // constante para la paginación de resultados de consulta sobre la BBDD

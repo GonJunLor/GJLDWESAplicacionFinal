@@ -131,7 +131,7 @@ final class DBPDO{
 
             // Ejecutamos la consulta con los parámetros
             $consulta->execute([
-                ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
+                ':codUsuario' => isset($_SESSION['usuarioGJLDWESAplicacionFinal'])?$_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario():'Api',
                 ':operacion' => $operacion,
                 ':tablaObjetivo' => $tablaObjetivo,
                 ':masInformacion' => $masInformacion
@@ -142,11 +142,11 @@ final class DBPDO{
             
         } catch (PDOException $miExceptionPDO) {
             // temporalmente ponemos estos errores para que se muestren en pantalla
-            $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-            $_SESSION['paginaEnCurso'] = 'error';
-            $_SESSION['error'] = new ErrorApp($miExceptionPDO->getCode(),$miExceptionPDO->getMessage(),$miExceptionPDO->getFile(),$miExceptionPDO->getLine());
-            header('Location: index.php');
-            exit;
+            // $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+            // $_SESSION['paginaEnCurso'] = 'error';
+            // $_SESSION['error'] = new ErrorApp($miExceptionPDO->getCode(),$miExceptionPDO->getMessage(),$miExceptionPDO->getFile(),$miExceptionPDO->getLine());
+            // header('Location: index.php');
+            // exit;
         } finally {
             // Cerramos la conexión con la BBDD
             unset($miDB);

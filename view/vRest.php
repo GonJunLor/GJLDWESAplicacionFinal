@@ -57,9 +57,32 @@
     </div>
     <div class="columna3">
         <div class="tarjeta">
-            <div><h2>Mi API</h2></div>
+            <div><h2>Mi API - Obtener volumen de negocio por codigo departamento</h2></div>
             <div>
-                <p></p>
+                <form action="">
+                    <label for="codDepartamentoEnCursoRest">Código a buscar su volumen: </label>
+                    <select id="codDepartamentoEnCursoRest" name="codDepartamentoEnCursoRest">
+                        <option value="">Seleccione un departamento</option>
+                        <?php
+                        foreach ($avRestDepartamentos as $departamento) {
+                            // En cada option le ponemos de valor el codigo del departamento
+                            /* En la siuiente linea es para que ponga select o nada en funcion de si 
+                            el código que estamos pintando es el mismo que el guardado en la sesión */
+                            echo '<option 
+                                value="'.$departamento['codDepartamento'].'" 
+                                '.(($avRest['codDepartamentoEnCursoRest'] == $departamento['codDepartamento']) ? 'selected' : '').'
+                            >'.$departamento['codYdesc'].'</option>';   
+                            // en esta última linea ponemos el texto "codigo - descripcion" para verlo bien.                     
+                        }
+                        ?>
+                    </select>
+                    <button name="entrarDepartamentoRest" class="boton" id="entrarDepartamentoRest"><span>Buscar</span></button>
+                </form> 
+                <hr>
+                <div id="restVolumenResultado">
+                    <h2>Volumen de negocio</h2>
+                    <h2><?php echo $avRest['volumenDeNegocio'] ?> €</h2>
+                </div>
             </div>
         </div>
     </div>

@@ -45,7 +45,11 @@ class Usuario {
      * @param string $perfil Tipo de perfil ('usuario', 'admin').
      * @param string|null $imagenUsuario Imagen de perfil en formato binario.
      */
-    public function __construct($codUsuario, $password, $descUsuario, $numAccesos, $fechaHoraUltimaConexion, $fechaHoraUltimaConexionAnterior, $perfil, $imagenUsuario){
+    public function __construct(
+        $codUsuario, $password=null, $descUsuario=null, 
+        $numAccesos=null, $fechaHoraUltimaConexion=null, 
+        $fechaHoraUltimaConexionAnterior=null, $perfil=null, $imagenUsuario=null
+    ){
         $this->codUsuario = $codUsuario;
         $this->password = $password;
         $this->descUsuario = $descUsuario;

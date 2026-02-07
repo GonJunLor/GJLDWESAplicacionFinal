@@ -33,8 +33,6 @@
                 </div>
             </div>
             <span class="error rojo"><?php echo $aErrores['fotoUsuario'] ?></span>
-            <label for="codUsuario">Usuario</label>
-            <input type="text" value="<?php echo $avCuenta['codUsuario'] ?>" disabled>
             <label for="descUsuario">Nombre y Apellidos</label>
             <input type="text" class="obligatorio" id="descUsuario" name="descUsuario" value="<?php echo $avCuenta['descUsuario'] ?>">
             <span class="error rojo"><?php echo $aErrores['descUsuario'] ?></span>

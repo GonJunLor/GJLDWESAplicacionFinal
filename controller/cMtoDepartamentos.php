@@ -35,10 +35,10 @@ if (isset($_REQUEST['exportar'])) {
     }
 
     // Convertimos a JSON con un formato limpio
-    $jsonContenido = json_encode($avMtoDepartamentosExportar, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $jsonContenido = json_encode($aArchivoExportar, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
     DBPDO::insertarTrazabilidad('exportar','T02_Departamento',
-        'Exportó '.count($avMtoDepartamentosExportar).' departamentos.');
+        'Exportó '.count($aArchivoExportar).' departamentos.');
 
     // Cabecera para forzar la descarga del archivo
     header('Content-Disposition: attachment; filename="departamentos.json"');

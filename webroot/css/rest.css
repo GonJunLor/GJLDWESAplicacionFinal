@@ -44,6 +44,7 @@
     margin: 8px 4px;
     display: inline-block;
     width: 100%;
+    min-height: 60dvh;
 }
 
 #vRest .tarjeta img{
@@ -97,4 +98,29 @@
     border: var(--anchoBorde) solid var(--colorBorde1);
     padding: 16px;
     border-radius: var(--radioBorde);
+}
+#vRest .columna3 form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#vRest .columna3 form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+#vRest .columna3 form select{
+    padding: 5px;
+}
+#vRest .columna3 #restVolumenResultado{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
 }
