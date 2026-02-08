@@ -1,0 +1,95 @@
+\doxysection{DBPDO Class Reference}
+\hypertarget{class_d_b_p_d_o}{}\label{class_d_b_p_d_o}\index{DBPDO@{DBPDO}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_d_b_p_d_o_a420d83808be5b9d3ac7b155dc8393375}{ejecutar\+Consulta}} (\$sentencia\+SQL, \$parametros=null)
+\item 
+static \doxymbox{\hyperlink{class_d_b_p_d_o_a1dadccca4da74b72d3f62ff7ac51ef4d}{ejecutar\+Consultas\+Transaccion}} (\$sentencia\+SQL, \$a\+Parametros)
+\item 
+static \doxymbox{\hyperlink{class_d_b_p_d_o_a5d118afe6c23160f1424b8a28fd9d899}{insertar\+Trazabilidad}} (\$operacion, \$tabla\+Objetivo, \$mas\+Informacion)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_d_b_p_d_o_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_d_b_p_d_o_a420d83808be5b9d3ac7b155dc8393375}\index{DBPDO@{DBPDO}!ejecutarConsulta@{ejecutarConsulta}}
+\index{ejecutarConsulta@{ejecutarConsulta}!DBPDO@{DBPDO}}
+\doxysubsubsection{\texorpdfstring{ejecutarConsulta()}{ejecutarConsulta()}}
+{\footnotesize\ttfamily \label{class_d_b_p_d_o_a420d83808be5b9d3ac7b155dc8393375} 
+ejecutar\+Consulta (\begin{DoxyParamCaption}\item[{}]{\$sentencia\+SQL}{, }\item[{}]{\$parametros}{ = {\ttfamily null}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Ejecuta una consulta sql con los parámetros requeridos. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$sentencia\+SQL} & Instrucción SQL a ejecutar \\
+\hline
+array | null & {\em \$parametros} & \+[Opcional]\+ Parametros a pasarle a la instrucción SQL antes de ejecutarla. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PDOStatement Objeto con el resultado de la consulta, los registros afectados. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em PDOException} & Si ocurre un error inesperado durante la consulta. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_d_b_p_d_o_a1dadccca4da74b72d3f62ff7ac51ef4d}\index{DBPDO@{DBPDO}!ejecutarConsultasTransaccion@{ejecutarConsultasTransaccion}}
+\index{ejecutarConsultasTransaccion@{ejecutarConsultasTransaccion}!DBPDO@{DBPDO}}
+\doxysubsubsection{\texorpdfstring{ejecutarConsultasTransaccion()}{ejecutarConsultasTransaccion()}}
+{\footnotesize\ttfamily \label{class_d_b_p_d_o_a1dadccca4da74b72d3f62ff7ac51ef4d} 
+ejecutar\+Consultas\+Transaccion (\begin{DoxyParamCaption}\item[{}]{\$sentencia\+SQL}{, }\item[{}]{\$a\+Parametros}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Ejecuta una consulta sql con los parámetros requeridos y con transacción.
+\begin{DoxyItemize}
+\item Este método sirve para consultas masivas donde todas las operaciones deben tener éxito o ninguna se aplicará. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$sentencia\+SQL} & Instrucción SQL a ejecutar \\
+\hline
+array & {\em \$parametros} & Array bidimensional donde cada elemento es un set de parámetros. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PDOStatement Objeto con el resultado de la consulta, los registros afectados. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em PDOException} & Si ocurre un error inesperado durante la consulta. \\
+\hline
+{\em mi\+Exception\+PDO} & Si no se ejecuta la transacción entera. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}\Hypertarget{class_d_b_p_d_o_a5d118afe6c23160f1424b8a28fd9d899}\index{DBPDO@{DBPDO}!insertarTrazabilidad@{insertarTrazabilidad}}
+\index{insertarTrazabilidad@{insertarTrazabilidad}!DBPDO@{DBPDO}}
+\doxysubsubsection{\texorpdfstring{insertarTrazabilidad()}{insertarTrazabilidad()}}
+{\footnotesize\ttfamily \label{class_d_b_p_d_o_a5d118afe6c23160f1424b8a28fd9d899} 
+insertar\+Trazabilidad (\begin{DoxyParamCaption}\item[{}]{\$operacion}{, }\item[{}]{\$tabla\+Objetivo}{, }\item[{}]{\$mas\+Informacion}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Inserta un nuevo registro en la tabla de trazabilidad (log de eventos).
+\begin{DoxyItemize}
+\item Este método registra las acciones realizadas por el usuario actual en la aplicación, almacenando quién lo hizo, qué operación realizó y sobre qué tabla.
+\item 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$operacion} & Descripción de la acción realizada. \\
+\hline
+string & {\em \$tabla\+Objetivo} & Nombre de la tabla afectada por la operación. \\
+\hline
+string & {\em \$mas\+Informacion} & Detalles adicionales de la operación realizada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PDOStatement Objeto con el resultado de la inserción. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em PDOException} & Si ocurre un error durante la conexión o la ejecución de la consulta. \\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+U:\+/\+\+GJLDWESAplicacion\+Final/\+model/\+\doxymbox{\hyperlink{_d_b_p_d_o_8php}{DBPDO.\+php}}\end{DoxyCompactItemize}

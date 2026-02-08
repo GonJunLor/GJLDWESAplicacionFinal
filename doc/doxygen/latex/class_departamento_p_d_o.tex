@@ -1,0 +1,236 @@
+\doxysection{Departamento\+PDO Class Reference}
+\hypertarget{class_departamento_p_d_o}{}\label{class_departamento_p_d_o}\index{DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_ad4f2c3bd2b2ec743c541f1721bb68004}{busca\+Departamentos\+Por\+Desc}} (\$desc\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a93f4342a7a21b1b8b4f74c0444c81396}{busca\+Departamento\+Por\+Cod}} (\$cod\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_aaac251a3513b0387efe0a71cd14df017}{modifica\+Departamento}} (\$o\+Departamento, \$nuevo\+Desc\+Departamento, \$nuevo\+Volumen\+De\+Negocio)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a8169902b45ca6353d8299a993e82adcc}{baja\+Fisica\+Departamento}} (\$cod\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_ab7d403045b3eb50ed146356bb4420a29}{baja\+Logica\+Departamento}} (\$cod\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a9f90ada3eeddd26374c913fdfd7d34c7}{rehabilita\+Departamento}} (\$cod\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a34a69611d27f4b2084b68e164d38d0bb}{alta\+Departamento}} (\$cod\+Departamento, \$desc\+Departamento, \$volumen\+De\+Negocio)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_aea852471ac0c465f1fce4ce37c7ba691}{valida\+Cod\+No\+Existe}} (\$cod\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a3a292e3e94c819ec45885b9d3c0cafed}{insertar\+Departamentos}} (\$a\+Departamentos)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_abf1f381237c87e7f5795aeed7f9cfe64}{busca\+Departamentos\+Por\+Desc\+Estado}} (\$desc\+Departamento, \$estado\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a185411017e8e08da9523f6db9e997ff0}{contar\+Departamentos\+Por\+Desc\+Estado}} (\$desc\+Departamento, \$estado\+Departamento)
+\item 
+static \doxymbox{\hyperlink{class_departamento_p_d_o_a36102190d018e528fa9857d62c441db4}{busca\+Departamentos\+Por\+Desc\+Estado\+Paginado}} (\$desc\+Departamento, \$estado\+Departamento, \$pagina\+Actual)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_departamento_p_d_o_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_departamento_p_d_o_a34a69611d27f4b2084b68e164d38d0bb}\index{DepartamentoPDO@{DepartamentoPDO}!altaDepartamento@{altaDepartamento}}
+\index{altaDepartamento@{altaDepartamento}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{altaDepartamento()}{altaDepartamento()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a34a69611d27f4b2084b68e164d38d0bb} 
+alta\+Departamento (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{, }\item[{}]{\$desc\+Departamento}{, }\item[{}]{\$volumen\+De\+Negocio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Inserta un departamento nuevo en la BBDD. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Código del departamento a insertar \\
+\hline
+string & {\em \$desc\+Departamento} & Descripción departamento a insertar \\
+\hline
+float & {\em \$volumen\+De\+Negocio} & Volumen de negocio del departamento a insertar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Departamento\texorpdfstring{$\vert$}{|}null Objeto con el nuevo departamento de la BBDD. Null si no lo ha insertado correctamente. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_a8169902b45ca6353d8299a993e82adcc}\index{DepartamentoPDO@{DepartamentoPDO}!bajaFisicaDepartamento@{bajaFisicaDepartamento}}
+\index{bajaFisicaDepartamento@{bajaFisicaDepartamento}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{bajaFisicaDepartamento()}{bajaFisicaDepartamento()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a8169902b45ca6353d8299a993e82adcc} 
+baja\+Fisica\+Departamento (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Elimina un departamento de la base de datos 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Código del departamento a eliminar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True si se borró correctamente, false si no se borró 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_ab7d403045b3eb50ed146356bb4420a29}\index{DepartamentoPDO@{DepartamentoPDO}!bajaLogicaDepartamento@{bajaLogicaDepartamento}}
+\index{bajaLogicaDepartamento@{bajaLogicaDepartamento}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{bajaLogicaDepartamento()}{bajaLogicaDepartamento()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_ab7d403045b3eb50ed146356bb4420a29} 
+baja\+Logica\+Departamento (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Deshabilita un departamento poniendo la fecha de baja actual. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Código del departamento a deshabilitar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True si lo deshabilitó correctamente y False en caso contrario. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_a93f4342a7a21b1b8b4f74c0444c81396}\index{DepartamentoPDO@{DepartamentoPDO}!buscaDepartamentoPorCod@{buscaDepartamentoPorCod}}
+\index{buscaDepartamentoPorCod@{buscaDepartamentoPorCod}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{buscaDepartamentoPorCod()}{buscaDepartamentoPorCod()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a93f4342a7a21b1b8b4f74c0444c81396} 
+busca\+Departamento\+Por\+Cod (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Busca un departamento existente en la BBDD por cod\+Departamento. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Codigo departamento a buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Departamento\texorpdfstring{$\vert$}{|}null Objeto departamento encontrado en la BBDD. Null si no lo ha encontrado. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_ad4f2c3bd2b2ec743c541f1721bb68004}\index{DepartamentoPDO@{DepartamentoPDO}!buscaDepartamentosPorDesc@{buscaDepartamentosPorDesc}}
+\index{buscaDepartamentosPorDesc@{buscaDepartamentosPorDesc}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{buscaDepartamentosPorDesc()}{buscaDepartamentosPorDesc()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_ad4f2c3bd2b2ec743c541f1721bb68004} 
+busca\+Departamentos\+Por\+Desc (\begin{DoxyParamCaption}\item[{}]{\$desc\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Busca departamentos existente en la BBDD por la descripción. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$desc\+Departamento} & Descripción de los departamentos a buscar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_departamento}{Departamento}\+[]\+ Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_abf1f381237c87e7f5795aeed7f9cfe64}\index{DepartamentoPDO@{DepartamentoPDO}!buscaDepartamentosPorDescEstado@{buscaDepartamentosPorDescEstado}}
+\index{buscaDepartamentosPorDescEstado@{buscaDepartamentosPorDescEstado}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{buscaDepartamentosPorDescEstado()}{buscaDepartamentosPorDescEstado()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_abf1f381237c87e7f5795aeed7f9cfe64} 
+busca\+Departamentos\+Por\+Desc\+Estado (\begin{DoxyParamCaption}\item[{}]{\$desc\+Departamento}{, }\item[{}]{\$estado\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Busca departamentos existente en la BBDD por la descripción y el estado de alta o baja. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$desc\+Departamento} & Descripción de los departamentos a buscar. \\
+\hline
+string & {\em \$estado\+Departamento} & Estado de alta, baja de los departamentos a buscar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_departamento}{Departamento}\+[]\+ Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_a36102190d018e528fa9857d62c441db4}\index{DepartamentoPDO@{DepartamentoPDO}!buscaDepartamentosPorDescEstadoPaginado@{buscaDepartamentosPorDescEstadoPaginado}}
+\index{buscaDepartamentosPorDescEstadoPaginado@{buscaDepartamentosPorDescEstadoPaginado}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{buscaDepartamentosPorDescEstadoPaginado()}{buscaDepartamentosPorDescEstadoPaginado()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a36102190d018e528fa9857d62c441db4} 
+busca\+Departamentos\+Por\+Desc\+Estado\+Paginado (\begin{DoxyParamCaption}\item[{}]{\$desc\+Departamento}{, }\item[{}]{\$estado\+Departamento}{, }\item[{}]{\$pagina\+Actual}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Busca departamentos existente en la BBDD por la descripción, el estado de alta o baja y devuelve en función de la pagina\+Actual.
+\begin{DoxyItemize}
+\item Realiza una consulta filtrada por descripción y estado, aplicando un límite y un desplazamiento calculado en base a la página actual y la constante global RESULTADOSPORPAGINA.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$desc\+Departamento} & Descripción de los departamentos a buscar. \\
+\hline
+string & {\em \$estado\+Departamento} & Estado de alta, baja de los departamentos a buscar. \\
+\hline
+int & {\em \$pagina\+Actual} & El número de la página que se desea visualizar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_departamento}{Departamento}\+[]\+ Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_a185411017e8e08da9523f6db9e997ff0}\index{DepartamentoPDO@{DepartamentoPDO}!contarDepartamentosPorDescEstado@{contarDepartamentosPorDescEstado}}
+\index{contarDepartamentosPorDescEstado@{contarDepartamentosPorDescEstado}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{contarDepartamentosPorDescEstado()}{contarDepartamentosPorDescEstado()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a185411017e8e08da9523f6db9e997ff0} 
+contar\+Departamentos\+Por\+Desc\+Estado (\begin{DoxyParamCaption}\item[{}]{\$desc\+Departamento}{, }\item[{}]{\$estado\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Cuenta departamentos existente en la BBDD por la descripción y el estado de alta o baja. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$desc\+Departamento} & Descripción de los departamentos a buscar. \\
+\hline
+string & {\em \$estado\+Departamento} & Estado de alta, baja de los departamentos a buscar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Número total de registros encontrados. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_a3a292e3e94c819ec45885b9d3c0cafed}\index{DepartamentoPDO@{DepartamentoPDO}!insertarDepartamentos@{insertarDepartamentos}}
+\index{insertarDepartamentos@{insertarDepartamentos}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{insertarDepartamentos()}{insertarDepartamentos()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a3a292e3e94c819ec45885b9d3c0cafed} 
+insertar\+Departamentos (\begin{DoxyParamCaption}\item[{}]{\$a\+Departamentos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Inserta en la BBDD un conjunto de departamentos a partir de un array. 
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$a\+Departamentos} & Array con los departamentos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True si insertó todos los departamentos en la BBDD y False si no insertó ningun por fallar aunque sea uno sólo. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Si ocurre un error inesperado durante la transacción. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_d_b_p_d_o_a1dadccca4da74b72d3f62ff7ac51ef4d}{DBPDO\textbackslash{}ejecutar\+Consultas\+Transaccion()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_departamento_p_d_o_aaac251a3513b0387efe0a71cd14df017}\index{DepartamentoPDO@{DepartamentoPDO}!modificaDepartamento@{modificaDepartamento}}
+\index{modificaDepartamento@{modificaDepartamento}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{modificaDepartamento()}{modificaDepartamento()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_aaac251a3513b0387efe0a71cd14df017} 
+modifica\+Departamento (\begin{DoxyParamCaption}\item[{}]{\$o\+Departamento}{, }\item[{}]{\$nuevo\+Desc\+Departamento}{, }\item[{}]{\$nuevo\+Volumen\+De\+Negocio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Modifica un departamento existente en la BBDD. 
+\begin{DoxyParams}[1]{Parameters}
+\doxylink{class_departamento}{Departamento} & {\em \$o\+Departamento} & Objeto del departamento a modificar \\
+\hline
+string & {\em \$nuevo\+Desc\+Departamento} & Descripción departamento a modificar \\
+\hline
+float & {\em \$nuevo\+Volumen\+De\+Negocio} & Volumen de negocio del departamento a modificar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Departamento\texorpdfstring{$\vert$}{|}null Objeto departamento modificado en la BBDD. Null si no lo ha modificado correctamente. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_a9f90ada3eeddd26374c913fdfd7d34c7}\index{DepartamentoPDO@{DepartamentoPDO}!rehabilitaDepartamento@{rehabilitaDepartamento}}
+\index{rehabilitaDepartamento@{rehabilitaDepartamento}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{rehabilitaDepartamento()}{rehabilitaDepartamento()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_a9f90ada3eeddd26374c913fdfd7d34c7} 
+rehabilita\+Departamento (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Habilita un departamento poniendo la fecha de baja a null 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Código del departamento a habilitar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True si lo habilitó correctamente y False si no lo habilitó. 
+\end{DoxyReturn}
+\Hypertarget{class_departamento_p_d_o_aea852471ac0c465f1fce4ce37c7ba691}\index{DepartamentoPDO@{DepartamentoPDO}!validaCodNoExiste@{validaCodNoExiste}}
+\index{validaCodNoExiste@{validaCodNoExiste}!DepartamentoPDO@{DepartamentoPDO}}
+\doxysubsubsection{\texorpdfstring{validaCodNoExiste()}{validaCodNoExiste()}}
+{\footnotesize\ttfamily \label{class_departamento_p_d_o_aea852471ac0c465f1fce4ce37c7ba691} 
+valida\+Cod\+No\+Existe (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Comprueba si existe un departamento con el código indicado en la BBDD. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Código del departamento a buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True si encontró un departamento en la BBDD y False si no lo encontró. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+U:\+/\+\+GJLDWESAplicacion\+Final/\+model/\+\doxymbox{\hyperlink{_departamento_p_d_o_8php}{Departamento\+PDO.\+php}}\end{DoxyCompactItemize}

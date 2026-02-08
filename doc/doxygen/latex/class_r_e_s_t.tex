@@ -1,0 +1,75 @@
+\doxysection{REST Class Reference}
+\hypertarget{class_r_e_s_t}{}\label{class_r_e_s_t}\index{REST@{REST}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_r_e_s_t_a96798874633adde8fd41fbce21e6ef73}{api\+Nasa}} (\$fecha)
+\item 
+static \doxymbox{\hyperlink{class_r_e_s_t_a428d8fc357c32645842e3eb18e257795}{serializar\+Imagen}} (\$url)
+\item 
+static \doxymbox{\hyperlink{class_r_e_s_t_a08e116c6305ad62a5f18a188677d2303}{api\+Propia}} (\$cod\+Departamento)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_r_e_s_t_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_r_e_s_t_a96798874633adde8fd41fbce21e6ef73}\index{REST@{REST}!apiNasa@{apiNasa}}
+\index{apiNasa@{apiNasa}!REST@{REST}}
+\doxysubsubsection{\texorpdfstring{apiNasa()}{apiNasa()}}
+{\footnotesize\ttfamily \label{class_r_e_s_t_a96798874633adde8fd41fbce21e6ef73} 
+api\+Nasa (\begin{DoxyParamCaption}\item[{}]{\$fecha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Consulta la API de la NASA.
+\begin{DoxyItemize}
+\item Realiza una petición c\+URL para obtener los datos de la imagen del día. Si la petición falla, devuelve un objeto \doxylink{class_foto_nasa}{Foto\+Nasa} con datos por defecto.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$fecha} & Fecha de la cual se desea obtener la imagen. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_foto_nasa}{Foto\+Nasa} Objeto con la información de la fotografía. 
+\end{DoxyReturn}
+\Hypertarget{class_r_e_s_t_a08e116c6305ad62a5f18a188677d2303}\index{REST@{REST}!apiPropia@{apiPropia}}
+\index{apiPropia@{apiPropia}!REST@{REST}}
+\doxysubsubsection{\texorpdfstring{apiPropia()}{apiPropia()}}
+{\footnotesize\ttfamily \label{class_r_e_s_t_a08e116c6305ad62a5f18a188677d2303} 
+api\+Propia (\begin{DoxyParamCaption}\item[{}]{\$cod\+Departamento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Consulta el volumen de negocio de un departamento a través de una API propia.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Departamento} & Código identificador del departamento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float\texorpdfstring{$\vert$}{|}int El volumen de negocio obtenido o 0 en caso de error. 
+\end{DoxyReturn}
+\Hypertarget{class_r_e_s_t_a428d8fc357c32645842e3eb18e257795}\index{REST@{REST}!serializarImagen@{serializarImagen}}
+\index{serializarImagen@{serializarImagen}!REST@{REST}}
+\doxysubsubsection{\texorpdfstring{serializarImagen()}{serializarImagen()}}
+{\footnotesize\ttfamily \label{class_r_e_s_t_a428d8fc357c32645842e3eb18e257795} 
+serializar\+Imagen (\begin{DoxyParamCaption}\item[{}]{\$url}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Descarga una imagen y la convierte a formato Base64.
+\begin{DoxyItemize}
+\item Útil para incrustar imágenes directamente en el HTML sin depender de enlaces externos directos en el cliente.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$url} & Dirección URL de la imagen. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string Imagen codificada en Base64 con cabecera MIME (data:\+image/\+...;base64,...). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+U:\+/\+\+GJLDWESAplicacion\+Final/\+model/\+\doxymbox{\hyperlink{_r_e_s_t_8php}{REST.\+php}}\end{DoxyCompactItemize}

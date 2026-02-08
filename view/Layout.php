@@ -79,6 +79,12 @@
             <a id="iconoGithub" href="https://github.com/GonJunLor/GJLDWESAplicacionFinal.git" target="_blank">
                 <img src="webroot/media/images/github.png" alt="">
             </a>
+            <a id="doxygen" href="doc/doxygen/html/index.html"  target="_blank">
+                <img src="webroot/media/images/doxygen.png" alt="">
+            </a>
+            <a id="phpdoc" href="doc/phpdoc/index.html"  target="_blank">
+                <img src="webroot/media/images/phpdoc.svg" alt="">
+            </a>
             <a id="webImitada" href="https://www.kiwoko.com/"  target="_blank">
                 <img src="webroot/media/images/kiwoko.png" alt="">
             </a>

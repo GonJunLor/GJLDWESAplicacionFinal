@@ -3,7 +3,8 @@
  * Clase de acceso a datos (DAO) para la gestión de Usuarios.
  * * Esta clase final proporciona métodos estáticos para interactuar con la tabla
  * T01_Usuario, gestionando el login, registro y mantenimiento de usuarios.
- * * @package App\Model
+ * 
+ * @package App\Model
  * @author Gonzalo Junquera Lorenzo
  * @since 31/01/2026
  * @version 1.1.0
