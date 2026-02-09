@@ -26,38 +26,42 @@ if (isset($_REQUEST['api_key']) && in_array($_REQUEST['api_key'],API_KEYS_NUESTR
     require_once '../model/UsuarioPDO.php';
     require_once '../model/DBPDO.php';
 
+    // comprobamos que exista el campo descUsuario en la llamada y además validamos con nuestra librería que el codigo es correcto
     if (isset($_REQUEST['descUsuario']) && empty(validacionFormularios::comprobarAlfabetico($_REQUEST['descUsuario'],255,0,0))) {
         // recuperamos de la BBDD lo que ha buscado el usuario
-        $aUsuariosExportar = UsuarioPDO::buscaUsuariosPorDesc($_REQUEST['descUsuario']??'');
+        $aoUsuarios = UsuarioPDO::buscaUsuariosPorDesc($_REQUEST['descUsuario']??'');
 
         $aArchivoExportar=[];
-        if (!is_null($aUsuariosExportar) && is_array($aUsuariosExportar)) {
-            foreach ($aUsuariosExportar as $oUsuarioExportar) {
+        if (!is_null($aoUsuarios) && is_array($aoUsuarios)) {
+            foreach ($aoUsuarios as $oUsuario) {
 
                 $aArchivoExportar[] = [
-                    'codUsuario'           => $oUsuarioExportar->getCodUsuario(),
-                    // 'password'          => $oUsuarioExportar->getPassword(),
-                    'descUsuario' => $oUsuarioExportar->getDescUsuario(),
-                    'numAccesos'          => $oUsuarioExportar->getNumAccesos(),
-                    'fechaHoraUltimaConexion'     => $oUsuarioExportar->getFechaHoraUltimaConexion(),
-                    // 'fechaHoraUltimaConexionAnterior'     => $oUsuarioExportar->getFechaHoraUltimaConexionAnterior(),
-                    'perfil'     => $oUsuarioExportar->getPerfil(),
-                    // 'imagenUsuario'     => $oUsuarioExportar->getImagenUsuario()
+                    'codUsuario'           => $oUsuario->getCodUsuario(),
+                    // 'password'          => $oUsuario->getPassword(),
+                    'descUsuario' => $oUsuario->getDescUsuario(),
+                    'numAccesos'          => $oUsuario->getNumAccesos(),
+                    'fechaHoraUltimaConexion'     => $oUsuario->getFechaHoraUltimaConexion(),
+                    // 'fechaHoraUltimaConexionAnterior'     => $oUsuario->getFechaHoraUltimaConexionAnterior(),
+                    'perfil'     => $oUsuario->getPerfil(),
+                    // 'imagenUsuario'     => $oUsuario->getImagenUsuario()
                     // 'imagenUsuario' => 'Error al mostrar la imagen'
                 ];
             }
         }
 
-        // Convertimos a JSON con un formato limpio
+        // con esto hacemos que al ver solo la url de la api el json tenga un formato ordenado
         header('Content-Type: application/json; charset=utf-8');
+        // Convertimos a JSON con un formato limpio
         echo json_encode($aArchivoExportar,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
         
     } else {
+        // si la descripción es incorrecta devuelvo array 
         echo json_encode([],JSON_PRETTY_PRINT);
     }
 
 } else {
+    // si la clave esta incorrecta devuelvo array vacio
     echo json_encode([],JSON_PRETTY_PRINT);
 }
 

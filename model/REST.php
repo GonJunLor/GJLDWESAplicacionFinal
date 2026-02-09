@@ -118,7 +118,7 @@ class REST {
      */
     public static function apiPropia($codDepartamento){
         $volumen = 0;
-        $url = "http://192.168.1.205/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
+        $url = "http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
 
         $ch = curl_init();
 

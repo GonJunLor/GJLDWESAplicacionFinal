@@ -86,9 +86,9 @@ final class DepartamentoPDO {
      * @param float $nuevoVolumenDeNegocio Volumen de negocio del departamento a modificar
      * @return Departamento|null Objeto departamento modificado en la BBDD. Null si no lo ha modificado correctamente.
      */
-    public static function modificaDepartamento($oDepartamento, $nuevoDescDepartamento, $nuevoVolumenDeNegocio){
+    public static function modificaDepartamento($codDepartamento, $nuevoDescDepartamento, $nuevoVolumenDeNegocio){
         DBPDO::insertarTrazabilidad('modificaDepartamento','T02_Departamento',
-            'T02_CodDepartamento: '.$oDepartamento->getCodDepartamento());
+            'T02_CodDepartamento: '.$codDepartamento);
 
         $sql = <<<SQL
             UPDATE T02_Departamento SET 
@@ -103,14 +103,12 @@ final class DepartamentoPDO {
             ':nuevoDescDepartamento' => $nuevoDescDepartamento,
             ':nuevoVolumenDeNegocio' => $nuevoVolumenDeNegocio,
             ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
-            ':codDepartamento' => $oDepartamento->getCodDepartamento()
+            ':codDepartamento' => $codDepartamento
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
 
         if ($consulta) {
-            $oDepartamento->setDescDepartamento($nuevoDescDepartamento);
-            $oDepartamento->setVolumenDeNegocio($nuevoVolumenDeNegocio);
-            return $oDepartamento;
+            return self::buscaDepartamentoPorCod($codDepartamento);
         }
 
         return null;

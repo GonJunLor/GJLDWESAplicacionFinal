@@ -230,7 +230,7 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
     $_SESSION['paginaActualTablaDepartamentos'] = 1;
 }
 
-$criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioTodos';
+$criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioAlta';
 
 // variables para la gestión de la paginación
 $totalPaginas = ceil(

@@ -63,17 +63,12 @@
         var tbody = document.getElementById('tablaResultado');
         var main = document.getElementById('vMtoUsuarios');
         const API_KEY_NUESTRA = 'XZuVZLROAF6FyluURwSTaJOLesWQZYrFZ9JX7E8n';
-        var servidor =
-            // "http://daw205.local.ieslossauces.es/GJLDWESAplicacionFinal"
-            "http://192.168.1.205/GJLDWESAplicacionFinal"
-            // "https://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal"
-            // "https://veroniquegru.ieslossauces.es/VGDWESAplicacionFinal"
-        ;
+        var servidor = "https://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal";
 
         // Función para inicializar la carga al entrar en la página
         async function inicio() {
             // Intentamos recuperar el valor guardado y de existir lo ponemos en el cuadro de busqueda 
-            cuadroBusqueda.value = localStorage.getItem('buscarDescUsuarioActual')!== null?localStorage.getItem('buscarDescUsuarioActual'):'';
+            cuadroBusqueda.value = sessionStorage.getItem('buscarDescUsuarioActual')!== null?localStorage.getItem('buscarDescUsuarioActual'):'';
 
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         }
@@ -82,7 +77,7 @@
 
         cuadroBusqueda.addEventListener("input", async (e)=>{
             // Guardamos el valor en el almacenamiento local
-            localStorage.setItem('buscarDescUsuarioActual', cuadroBusqueda.value);
+            sessionStorage.setItem('buscarDescUsuarioActual', cuadroBusqueda.value);
 
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         })
