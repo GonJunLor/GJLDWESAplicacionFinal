@@ -14,9 +14,10 @@ insert into T02_Departamento values
         ('ING','Departamento de ingles',now(),235.9,now())
 ;
 
+use DBGJLDWESAplicacionFinal;
 
 INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario)
-                VALUES
+        VALUES
         ('vero',SHA2('veropaso',256),'Véro Grué'),
         ('heraclio',SHA2('heracliopaso',256),'Heraclio Borbujo'),
         ('alvaroA',SHA2('alvaroApaso',256),'Alvaro Allen'),
@@ -28,7 +29,7 @@ INSERT INTO T01_Usuario (T01_CodUsuario,T01_Password,T01_DescUsuario)
         ('enrique',SHA2('enriquepaso',256),'Enrique Nieto'),
         ('james',SHA2('jamespaso',256),'James Edward Nuñez'),
         ('oscar',SHA2('oscarpaso',256),'Oscar Pozuelo'),
-        ('jesus',SHA2('jesuspaso',256),'Enrique Nieto'),
+        ('jesus',SHA2('jesuspaso',256),'Jesús Temprano'),
         ('amor',SHA2('amorpaso',256),'Amor Rodriguez'),
         ('albertoB',SHA2('albertoBpaso',256),'Alberto Bahillo'),
         ('antonio',SHA2('antoniopaso',256),'Antonio Jañez'),

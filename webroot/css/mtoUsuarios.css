@@ -1,0 +1,168 @@
+/* Página de Mantenimiento */
+/* Página de Error */
+#vMtoUsuarios{background-color: var(--color3);}
+#vMtoUsuarios>form{
+    padding: 16px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr;
+}
+#vMtoUsuarios input{
+    height: 30px;
+    margin-left: 5px;
+}
+#vMtoUsuarios>form>div:first-child{
+    grid-column: 1/span 1;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 10px;
+}
+#vMtoUsuarios button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vMtoUsuarios button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+#vMtoUsuarios .tarjeta{
+    background-color: var(--color2);
+    border: var(--anchoBorde) solid var(--colorBorde1);
+    border-radius: var(--radioBorde);
+    padding-bottom: 2px;
+    margin: 2px auto;
+    display: block;
+    width: 95%;
+}
+
+#vMtoUsuarios .tarjeta div:nth-of-type(1){
+    border-bottom: var(--anchoBorde) solid var(--colorBorde1);
+    padding: 10px;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: center;
+    & *{
+        font-size: 1rem;
+        display: inline-block;
+    }
+}
+#vMtoUsuarios .tarjeta div:nth-of-type(2) {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+#vMtoUsuarios .tarjeta:nth-of-type(2) div:nth-of-type(1){
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+}
+#vMtoUsuarios table{
+    width: 90%;
+    border-collapse: collapse;
+}
+#vMtoUsuarios table td,th{
+    text-align: left;
+    border: 1px solid var(--colorBorde1);  
+    padding: 4px 10px;
+}
+
+#vMtoUsuarios table td button{
+    background-color: var(--colorBoton1);
+    margin-right: 10px;
+    padding: 2px 5px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+        font-size: 0.9rem;
+    }
+}
+#vMtoUsuarios table td button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
+
+#vMtoUsuarios #mostrarDatosUsuario{
+    padding-top: 10px;
+    margin: 0px calc((100dvw - 550px)/2);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+#vMtoUsuarios #mostrarDatosUsuario h2{
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+#vMtoUsuarios #mostrarDatosUsuario>h2{
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    border-top: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vMtoUsuarios #mostrarDatosUsuario>span{
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+}
+#vMtoUsuarios #mostrarDatosUsuario>span button{
+    width: 50%;
+    height: 90%;
+    margin: 0 auto;
+    display: block;
+}
+
+#vMtoUsuarios #mostrarDatosUsuario .contenido{
+    grid-column: 1/ span 2;
+    padding: 30px;
+    padding-top: 0;
+    border-left: var(--anchoBorde) solid var(--colorBorde2);
+    border-bottom: var(--anchoBorde) solid var(--colorBorde2);
+    border-right: var(--anchoBorde) solid var(--colorBorde2);
+    & *{
+        width: 100%;
+    }
+}
+#vMtoUsuarios #mostrarDatosUsuario .contenido label{
+    display: block;
+    margin-top: 16px;
+}
+#vMtoUsuarios input{
+    padding: 6px 12px;
+}
+#vMtoUsuarios #mostrarDatosUsuario .contenido input{
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 8px;
+    border: var(--anchoBorde) solid var(--colorBorde2);
+    color: black;
+}
+#vMtoUsuarios #cancelarEliminar{
+    background-color: white;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    & span{
+        color: black;
+        text-transform: uppercase;
+        /* font-size: 1.1rem; */
+    } 
+}
+#vMtoUsuarios #cancelarEliminar:hover{
+    background-color: var(--colorBotonMarcado2y3);
+    border: 1px solid var(--colorBotonMarcado2y3);
+    & span{
+        color: var(--colorTexto4);
+    } 
+}
+#vMtoUsuarios .columnaEliminar{
+    height: 69dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vMtoUsuarios #tarjetaEliminarUsuario p{
+    display: block;
+    text-align: center;
+    color: red;
+}

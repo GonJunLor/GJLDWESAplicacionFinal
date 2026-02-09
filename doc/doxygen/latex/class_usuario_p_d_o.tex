@@ -1,0 +1,159 @@
+\doxysection{Usuario\+PDO Class Reference}
+\hypertarget{class_usuario_p_d_o}{}\label{class_usuario_p_d_o}\index{UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_ae85b032587e9e5fa8844d0431f32578e}{validar\+Usuario}} (\$cod\+Usuario, \$password)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_af8a703c4a0a8461eb159bf638aba255e}{busca\+Usuarios\+Por\+Desc}} (\$desc\+Usuario)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_a237337d445972cd4701ccef82ddbdf8e}{registrar\+Ultima\+Conexion}} (\$o\+Usuario)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_a7a5176f4bfba2cf39eca0462195676b8}{alta\+Usuario}} (\$cod\+Usuario, \$password, \$desc\+Usuario)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_aac1a556616a81a5d14a665d6efa9be03}{cambiar\+Password}} (\$o\+Usuario, \$nueva\+Password)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_ab60ec46051f8b3a68ceef2d67aa0a623}{modificar\+Usuario}} (\$o\+Usuario, \$nuevo\+Desc\+Usuario, \$nuevo\+Perfil, \$contenido\+Imagen=null)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_ae0d4960d8116f3476cd9369c824ed166}{borrar\+Usuario}} (\$o\+Usuario)
+\item 
+static \doxymbox{\hyperlink{class_usuario_p_d_o_a52fa586fecf82d3f4df7ff5dac39afc8}{validar\+Cod\+No\+Existe}} (\$cod\+Usuario)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_usuario_p_d_o_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_usuario_p_d_o_a7a5176f4bfba2cf39eca0462195676b8}\index{UsuarioPDO@{UsuarioPDO}!altaUsuario@{altaUsuario}}
+\index{altaUsuario@{altaUsuario}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{altaUsuario()}{altaUsuario()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_a7a5176f4bfba2cf39eca0462195676b8} 
+alta\+Usuario (\begin{DoxyParamCaption}\item[{}]{\$cod\+Usuario}{, }\item[{}]{\$password}{, }\item[{}]{\$desc\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Crea un nuevo usuario en la base de datos 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Usuario} & Código único. \\
+\hline
+string & {\em \$password} & Contraseña plana. \\
+\hline
+string & {\em \$desc\+Usuario} & Nombre/\+\+Descripción. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Usuario\texorpdfstring{$\vert$}{|}null El nuevo objeto \doxylink{class_usuario}{Usuario} o null si no se pudo crear. 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_ae0d4960d8116f3476cd9369c824ed166}\index{UsuarioPDO@{UsuarioPDO}!borrarUsuario@{borrarUsuario}}
+\index{borrarUsuario@{borrarUsuario}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{borrarUsuario()}{borrarUsuario()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_ae0d4960d8116f3476cd9369c824ed166} 
+borrar\+Usuario (\begin{DoxyParamCaption}\item[{}]{\$o\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Elimina un usuario de la base de datos 
+\begin{DoxyParams}[1]{Parameters}
+\doxylink{class_usuario}{Usuario} & {\em \$o\+Usuario} & Objeto del usuario a eliminar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean True si se borró correctamente, false si no se borró 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_af8a703c4a0a8461eb159bf638aba255e}\index{UsuarioPDO@{UsuarioPDO}!buscaUsuariosPorDesc@{buscaUsuariosPorDesc}}
+\index{buscaUsuariosPorDesc@{buscaUsuariosPorDesc}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{buscaUsuariosPorDesc()}{buscaUsuariosPorDesc()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_af8a703c4a0a8461eb159bf638aba255e} 
+busca\+Usuarios\+Por\+Desc (\begin{DoxyParamCaption}\item[{}]{\$desc\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Busca usuarios existente en la BBDD por la descripción. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$desc\+Usuario} & Descripción de los usuarios a buscar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_usuario}{Usuario}\+[]\+ Array de objeto usuario encontrados en la BBDD. Vacío si no encuentra ninguno. 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_aac1a556616a81a5d14a665d6efa9be03}\index{UsuarioPDO@{UsuarioPDO}!cambiarPassword@{cambiarPassword}}
+\index{cambiarPassword@{cambiarPassword}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{cambiarPassword()}{cambiarPassword()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_aac1a556616a81a5d14a665d6efa9be03} 
+cambiar\+Password (\begin{DoxyParamCaption}\item[{}]{\$o\+Usuario}{, }\item[{}]{\$nueva\+Password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Cambia la contraseña de un usuario existente 
+\begin{DoxyParams}[1]{Parameters}
+\doxylink{class_usuario}{Usuario} & {\em \$o\+Usuario} & Objeto del usuario actual \\
+\hline
+string & {\em \$nueva\+Password} & Nueva contraseña sin encriptar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Usuario\texorpdfstring{$\vert$}{|}null El objeto usuario actualizado o null si falla 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_ab60ec46051f8b3a68ceef2d67aa0a623}\index{UsuarioPDO@{UsuarioPDO}!modificarUsuario@{modificarUsuario}}
+\index{modificarUsuario@{modificarUsuario}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{modificarUsuario()}{modificarUsuario()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_ab60ec46051f8b3a68ceef2d67aa0a623} 
+modificar\+Usuario (\begin{DoxyParamCaption}\item[{}]{\$o\+Usuario}{, }\item[{}]{\$nuevo\+Desc\+Usuario}{, }\item[{}]{\$nuevo\+Perfil}{, }\item[{}]{\$contenido\+Imagen}{ = {\ttfamily null}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Cambia datos de un usuario existente 
+\begin{DoxyParams}[1]{Parameters}
+\doxylink{class_usuario}{Usuario} & {\em \$o\+Usuario} & Objeto del usuario actual \\
+\hline
+string & {\em \$nuevo\+Desc\+Usuario} & Nuevo nombre y apellidos \\
+\hline
+string & {\em \$nuevo\+Perfil} & Nuevo perfil \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Usuario\texorpdfstring{$\vert$}{|}null El objeto usuario actualizado o null si falla 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_a237337d445972cd4701ccef82ddbdf8e}\index{UsuarioPDO@{UsuarioPDO}!registrarUltimaConexion@{registrarUltimaConexion}}
+\index{registrarUltimaConexion@{registrarUltimaConexion}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{registrarUltimaConexion()}{registrarUltimaConexion()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_a237337d445972cd4701ccef82ddbdf8e} 
+registrar\+Ultima\+Conexion (\begin{DoxyParamCaption}\item[{}]{\$o\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Actualiza la fecha de última conexión y el contador de accesos 
+\begin{DoxyParams}[1]{Parameters}
+\doxylink{class_usuario}{Usuario} & {\em \$o\+Usuario} & Objeto usuario a actualizar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_usuario}{Usuario} El objeto actualizado con las nuevas fechas de conexión. 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_a52fa586fecf82d3f4df7ff5dac39afc8}\index{UsuarioPDO@{UsuarioPDO}!validarCodNoExiste@{validarCodNoExiste}}
+\index{validarCodNoExiste@{validarCodNoExiste}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{validarCodNoExiste()}{validarCodNoExiste()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_a52fa586fecf82d3f4df7ff5dac39afc8} 
+validar\+Cod\+No\+Existe (\begin{DoxyParamCaption}\item[{}]{\$cod\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Comprueba si un código de usuario ya existe en la BD 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Usuario} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean true si existe, false si no 
+\end{DoxyReturn}
+\Hypertarget{class_usuario_p_d_o_ae85b032587e9e5fa8844d0431f32578e}\index{UsuarioPDO@{UsuarioPDO}!validarUsuario@{validarUsuario}}
+\index{validarUsuario@{validarUsuario}!UsuarioPDO@{UsuarioPDO}}
+\doxysubsubsection{\texorpdfstring{validarUsuario()}{validarUsuario()}}
+{\footnotesize\ttfamily \label{class_usuario_p_d_o_ae85b032587e9e5fa8844d0431f32578e} 
+validar\+Usuario (\begin{DoxyParamCaption}\item[{}]{\$cod\+Usuario}{, }\item[{}]{\$password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Valida las credenciales de un usuario y devuelve un objeto \doxylink{class_usuario}{Usuario} si son correctas
+\begin{DoxyItemize}
+\item Comprueba el código de usuario y la contraseña (aplicando SHA2).
+\item 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cod\+Usuario} & Código del usuario \\
+\hline
+string & {\em \$password} & Contraseña sin encriptar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Usuario\texorpdfstring{$\vert$}{|}null Objeto \doxylink{class_usuario}{Usuario} si las credenciales son correctas, null si no 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+U:\+/\+\+GJLDWESAplicacion\+Final/\+model/\+\doxymbox{\hyperlink{_usuario_p_d_o_8php}{Usuario\+PDO.\+php}}\end{DoxyCompactItemize}

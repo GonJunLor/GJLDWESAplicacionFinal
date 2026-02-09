@@ -1,6 +1,6 @@
 /**
  * Author:  gonzalo.junlor
- * Created: 16/01/2026
+ * Created: 04/02/2026
  * Script de creación de base de datos
  */
 create database if not exists DBGJLDWESAplicacionFinal;
@@ -42,4 +42,3 @@ create table if not exists DBGJLDWESAplicacionFinal.T03_Trazabilidad(
     T03_MasInformacion varchar(255)
 )engine=innodb;
 
-alter table DBGJLDWESAplicacionFinal.T03_Trazabilidad add column T03_MasInformacion varchar(255);

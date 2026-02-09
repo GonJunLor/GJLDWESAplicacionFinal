@@ -17,7 +17,6 @@ final class DepartamentoPDO {
      * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDesc($descDepartamento){
-        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento','Descripcion: '.$descDepartamento);
 
         $sql = <<<SQL
             SELECT * FROM T02_Departamento
@@ -87,9 +86,9 @@ final class DepartamentoPDO {
      * @param float $nuevoVolumenDeNegocio Volumen de negocio del departamento a modificar
      * @return Departamento|null Objeto departamento modificado en la BBDD. Null si no lo ha modificado correctamente.
      */
-    public static function modificaDepartamento($oDepartamento, $nuevoDescDepartamento, $nuevoVolumenDeNegocio){
+    public static function modificaDepartamento($codDepartamento, $nuevoDescDepartamento, $nuevoVolumenDeNegocio){
         DBPDO::insertarTrazabilidad('modificaDepartamento','T02_Departamento',
-            'T02_CodDepartamento: '.$oDepartamento->getCodDepartamento());
+            'T02_CodDepartamento: '.$codDepartamento);
 
         $sql = <<<SQL
             UPDATE T02_Departamento SET 
@@ -104,14 +103,12 @@ final class DepartamentoPDO {
             ':nuevoDescDepartamento' => $nuevoDescDepartamento,
             ':nuevoVolumenDeNegocio' => $nuevoVolumenDeNegocio,
             ':codUsuario' => $_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario(),
-            ':codDepartamento' => $oDepartamento->getCodDepartamento()
+            ':codDepartamento' => $codDepartamento
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
 
         if ($consulta) {
-            $oDepartamento->setDescDepartamento($nuevoDescDepartamento);
-            $oDepartamento->setVolumenDeNegocio($nuevoVolumenDeNegocio);
-            return $oDepartamento;
+            return self::buscaDepartamentoPorCod($codDepartamento);
         }
 
         return null;
@@ -323,17 +320,122 @@ final class DepartamentoPDO {
      * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
      */
     public static function buscaDepartamentosPorDescEstado($descDepartamento, $estadoDepartamento){
-        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDesc','T02_Departamento',
-            'Descripcion: '.$descDepartamento.', estado: '.$estadoDepartamento);
+        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDescEstado','T02_Departamento',
+            'Descripcion: '.$descDepartamento.', estado: '.$estadoDepartamento
+        );
 
-        // Definimos la condición de fecha según el estado
-        $condicionFecha = ($estadoDepartamento == 'alta') ? "IS NULL" : "IS NOT NULL";
+        $aDepartamentos = [];
+        if ($estadoDepartamento == 'radioTodos') {
+            $aDepartamentos = self::buscaDepartamentosPorDesc($descDepartamento);
+        } else {
 
-        $sql = <<<SQL
-            SELECT * FROM T02_Departamento
-            WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
-            AND T02_FechaBajaDepartamento $condicionFecha
-        SQL;
+            // Definimos la condición de fecha según el estado
+            $condicionFecha = ($estadoDepartamento == 'radioAlta') ? "IS NULL" : "IS NOT NULL";
+
+            $sql = <<<SQL
+                SELECT * FROM T02_Departamento
+                WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+                AND T02_FechaBajaDepartamento $condicionFecha
+            SQL;
+                
+            $parametros = [
+                ':departamento' => '%'.$descDepartamento.'%'
+            ];
+
+            $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+            // si encuentra algo en la BBDD rellenamos el array con los departamentos
+            while ($DepartamentoBD = $consulta->fetchObject()) {
+                $aDepartamentos[] = new Departamento(
+                    $DepartamentoBD->T02_CodDepartamento,
+                    $DepartamentoBD->T02_DescDepartamento,
+                    $DepartamentoBD->T02_FechaCreacionDepartamento,
+                    $DepartamentoBD->T02_VolumenDeNegocio,
+                    $DepartamentoBD->T02_FechaBajaDepartamento
+                );
+            }
+        }
+
+        return $aDepartamentos;
+    }
+
+    /**
+     * Cuenta departamentos existente en la BBDD por la descripción y el estado de alta o baja.
+     * @param string $descDepartamento Descripción de los departamentos a buscar.
+     * @param string $estadoDepartamento Estado de alta, baja de los departamentos a buscar.
+     * @return int Número total de registros encontrados.
+     */
+    public static function contarDepartamentosPorDescEstado($descDepartamento, $estadoDepartamento){
+
+        if ($estadoDepartamento == 'radioTodos') {
+            
+            $sql = <<<SQL
+                SELECT COUNT(*) numeroDepartamentos FROM T02_Departamento
+                WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+            SQL;
+
+        } else {
+            // Definimos la condición de fecha según el estado
+            $condicionFecha = ($estadoDepartamento == 'radioAlta') ? "IS NULL" : "IS NOT NULL";
+
+            $sql = <<<SQL
+                SELECT COUNT(*) numeroDepartamentos FROM T02_Departamento
+                WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+                AND T02_FechaBajaDepartamento $condicionFecha
+            SQL;      
+        }
+
+        $parametros = [
+            ':departamento' => '%'.$descDepartamento.'%'
+        ];
+
+        $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+        if ($contarDB = $consulta->fetchObject()) {
+            return $contarDB->numeroDepartamentos;
+        }
+
+        return 0;
+    }
+
+    /**
+     * Busca departamentos existente en la BBDD por la descripción, el estado de alta o baja y devuelve en función de la paginaActual.
+     * * Realiza una consulta filtrada por descripción y estado, aplicando un límite y un desplazamiento
+     * calculado en base a la página actual y la constante global RESULTADOSPORPAGINA.
+     *
+     * @param string $descDepartamento Descripción de los departamentos a buscar.
+     * @param string $estadoDepartamento Estado de alta, baja de los departamentos a buscar.
+     * @param int $paginaActual El número de la página que se desea visualizar.
+     * @return Departamento[] Array de objeto departamento encontrados en la BBDD. Vacío si no encuentra ninguno.
+     */
+    public static function buscaDepartamentosPorDescEstadoPaginado($descDepartamento, $estadoDepartamento, $paginaActual){
+        DBPDO::insertarTrazabilidad('buscaDepartamentosPorDescEstadoPaginado','T02_Departamento',
+        'Descripcion: '.$descDepartamento.', estado: '.$estadoDepartamento.', en pagina: '.$paginaActual);
+
+        // Calculamos los valores numéricos fuera porque si los paso por parámetro de error
+        // tampoco puedo poner la constante en la instruccion sql actual
+        $numResultados = (int) RESULTADOSPORPAGINA;
+        $indicePagina = (int) (($paginaActual - 1) * $numResultados);
+
+        if ($estadoDepartamento == 'radioTodos') {
+            
+            $sql = <<<SQL
+                SELECT * FROM T02_Departamento
+                WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+                LIMIT $numResultados OFFSET $indicePagina
+            SQL;
+
+        } else {
+            // Definimos la condición de fecha según el estado
+            $condicionFecha = ($estadoDepartamento == 'radioAlta') ? "IS NULL" : "IS NOT NULL";
+
+            $sql = <<<SQL
+                SELECT * FROM T02_Departamento
+                WHERE lower(T02_DescDepartamento) LIKE lower(:departamento)
+                AND T02_FechaBajaDepartamento $condicionFecha
+                LIMIT $numResultados OFFSET $indicePagina
+            SQL;      
+        }
             
         $parametros = [
             ':departamento' => '%'.$descDepartamento.'%'
@@ -354,6 +456,5 @@ final class DepartamentoPDO {
         }
 
         return $aDepartamentos;
-        // return $consulta;
     }
 }

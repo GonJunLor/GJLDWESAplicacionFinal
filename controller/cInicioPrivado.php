@@ -56,6 +56,14 @@ if (isset($_REQUEST['cuenta'])) {
     exit;
 }
 
+// vamos a la página de cuenta del usuario
+if (isset($_REQUEST['mtoUsuarios'])) {
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'mtoUsuarios';
+    header('Location: index.php');
+    exit;
+}
+
 $fotoUsuario = 'webroot/media/images/fotoUsuario.png';
 if ($_SESSION['usuarioGJLDWESAplicacionFinal']->getImagenUsuario()!=null) {
     $fotoUsuario = 'data:image/png;base64,'.base64_encode($_SESSION['usuarioGJLDWESAplicacionFinal']->getImagenUsuario());

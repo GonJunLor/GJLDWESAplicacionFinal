@@ -3,7 +3,8 @@
  * Clase de acceso a datos (DAO) para la gestión de Usuarios.
  * * Esta clase final proporciona métodos estáticos para interactuar con la tabla
  * T01_Usuario, gestionando el login, registro y mantenimiento de usuarios.
- * * @package App\Model
+ * 
+ * @package App\Model
  * @author Gonzalo Junquera Lorenzo
  * @since 31/01/2026
  * @version 1.1.0
@@ -54,6 +55,42 @@ final class UsuarioPDO {
         }
 
         return $oUsuario;
+    }
+
+    /**
+     * Busca usuarios existente en la BBDD por la descripción.
+     * @param string $descUsuario Descripción de los usuarios a buscar.
+     * @return Usuario[] Array de objeto usuario encontrados en la BBDD. Vacío si no encuentra ninguno.
+     */
+    public static function buscaUsuariosPorDesc($descUsuario){
+
+        $sql = <<<SQL
+            SELECT * FROM T01_Usuario
+            WHERE lower(T01_DescUsuario) like :descripcion
+        SQL;
+        
+        $parametros = [
+            ':descripcion' => '%'.$descUsuario.'%'
+        ];
+
+        $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+
+        // si encuentra algo en la BBDD creamos el array con los departamentos
+        $aUsuarios = [];
+        while ($UsuariosBD = $consulta->fetchObject()) {
+            $aUsuarios[] = new Usuario(
+                $UsuariosBD->T01_CodUsuario,
+                $UsuariosBD->T01_Password,
+                $UsuariosBD->T01_DescUsuario,
+                $UsuariosBD->T01_NumConexiones,
+                $UsuariosBD->T01_FechaHoraUltimaConexion,
+                null,
+                $UsuariosBD->T01_Perfil,
+                $UsuariosBD->T01_ImagenUsuario
+            );
+        }
+
+        return $aUsuarios;
     }
 
     /**

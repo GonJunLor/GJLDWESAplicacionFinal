@@ -17,15 +17,14 @@ if (isset($_REQUEST['altaDepartamento'])) {
 }
 
 if (isset($_REQUEST['exportar'])) {
-    
     // recuperamos de la BBDD lo que ha buscado el usuario
     $aDepartamentosExportar = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso']??'');
 
-    $avMtoDepartamentosExportar=[];
+    $aArchivoExportar=[];
     if (!is_null($aDepartamentosExportar) && is_array($aDepartamentosExportar)) {
         foreach ($aDepartamentosExportar as $oDepartamentoExportar) {
 
-            $avMtoDepartamentosExportar[] = [
+            $aArchivoExportar[] = [
                 'codDepartamento'           => $oDepartamentoExportar->getCodDepartamento(),
                 'descDepartamento'          => $oDepartamentoExportar->getDescDepartamento(),
                 'fechaCreacionDepartamento' => $oDepartamentoExportar->getFechaCreacionDepartamento(),
@@ -36,10 +35,10 @@ if (isset($_REQUEST['exportar'])) {
     }
 
     // Convertimos a JSON con un formato limpio
-    $jsonContenido = json_encode($avMtoDepartamentosExportar, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $jsonContenido = json_encode($aArchivoExportar, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
     DBPDO::insertarTrazabilidad('exportar','T02_Departamento',
-        'Exportó '.count($avMtoDepartamentosExportar).' departamentos.');
+        'Exportó '.count($aArchivoExportar).' departamentos.');
 
     // Cabecera para forzar la descarga del archivo
     header('Content-Disposition: attachment; filename="departamentos.json"');
@@ -49,8 +48,13 @@ if (isset($_REQUEST['exportar'])) {
     exit;
 }
 
-if (isset($_REQUEST['editar'])) {
+if (isset($_REQUEST['exportarPDF'])) {
+    $_SESSION['paginaEnCurso'] = 'exportarPDF';
+    header('Location: index.php');
+    exit;
+}
 
+if (isset($_REQUEST['editar'])) {
     // Guardamos el código del departamento en la sesión para que el controlador de la ventana de edición sepa qué cargar
     $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['editar'];
     
@@ -226,19 +230,13 @@ if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
     $_SESSION['paginaActualTablaDepartamentos'] = 1;
 }
 
-$criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioTodos';
-
-if ($criterioRadio == 'radioTodos') {
-    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '');
-} else if ($criterioRadio == 'radioAlta') {
-    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', 'alta');
-} else if ($criterioRadio == 'radioBaja') {
-    $aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', 'baja');
-}
+$criterioRadio = $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioAlta';
 
 // variables para la gestión de la paginación
-$resultadosPorPagina = 5;
-$totalPaginas = ceil(count($aDepartamentos)/$resultadosPorPagina);
+$totalPaginas = ceil(
+    DepartamentoPDO::contarDepartamentosPorDescEstado($_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', $criterioRadio)
+    / RESULTADOSPORPAGINA
+);
 
 $paginaActual = $_SESSION['paginaActualTablaDepartamentos']??1;
 if (isset($_REQUEST['paginaInicial'])){$paginaActual = 1;}
@@ -246,36 +244,30 @@ if (isset($_REQUEST['paginaAnterior'])){$paginaActual>1?$paginaActual--:'';}
 if (isset($_REQUEST['paginaSiguiente'])){$paginaActual<$totalPaginas?$paginaActual++:'';}
 if (isset($_REQUEST['paginaFinal'])){$paginaActual = $totalPaginas;}
 
-// echo 'Pagina actual'.$paginaActual;
 $_SESSION['paginaActualTablaDepartamentos'] = $paginaActual;
+
+$aDepartamentos = DepartamentoPDO::buscaDepartamentosPorDescEstadoPaginado(
+    $_SESSION['descDepartamentoBuscadaEnCurso'] ?? '', $criterioRadio, $paginaActual
+);
 
 $avMtoDepartamentos=[];
 if (!is_null($aDepartamentos) && is_array($aDepartamentos)) {
-
-    $indiceActual = ($paginaActual-1)*$resultadosPorPagina;
-    foreach ($aDepartamentos as $index=>$oDepartamento) {
-
-        if ($index>=$indiceActual && $index<($indiceActual+$resultadosPorPagina)) {
-            // echo 'el indice nuevo a ver que tiene: '.$index;
-            // echo '<br>';
-
-            // Creamos las fechas que vienen del objeto Departamento para formatearlas antes de pasarlas a la vista
-            $fechaCreacion = new DateTime($oDepartamento->getFechaCreacionDepartamento());
-            $fechaBajaFormateada = '';
-            if (!is_null($oDepartamento->getFechaBajaDepartamento())) {
-                $fechaBaja = new DateTime($oDepartamento->getFechaBajaDepartamento());
-                $fechaBajaFormateada = $fechaBaja->format('d/m/Y');
-            }
-
-            $avMtoDepartamentos[] = [
-                'codDepartamento'           => $oDepartamento->getCodDepartamento(),
-                'descDepartamento'          => $oDepartamento->getDescDepartamento(),
-                'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
-                'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
-                'fechaBajaDepartamento'     => $fechaBajaFormateada,
-                'estadoDepartamento'        => $fechaBajaFormateada==''?'baja':'alta',
-            ];
+    foreach ($aDepartamentos as $oDepartamento) {
+        // Creamos las fechas que vienen del objeto Departamento para formatearlas antes de pasarlas a la vista
+        $fechaCreacion = new DateTime($oDepartamento->getFechaCreacionDepartamento());
+        $fechaBajaFormateada = '';
+        if (!is_null($oDepartamento->getFechaBajaDepartamento())) {
+            $fechaBaja = new DateTime($oDepartamento->getFechaBajaDepartamento());
+            $fechaBajaFormateada = $fechaBaja->format('d/m/Y');
         }
+        $avMtoDepartamentos[] = [
+            'codDepartamento'           => $oDepartamento->getCodDepartamento(),
+            'descDepartamento'          => $oDepartamento->getDescDepartamento(),
+            'fechaCreacionDepartamento' => $fechaCreacion->format('d/m/Y'),
+            'volumenDeNegocio'          => (number_format($oDepartamento->getVolumenDeNegocio(), 2, ',', '.') . ' €'),
+            'fechaBajaDepartamento'     => $fechaBajaFormateada,
+            'estadoDepartamento'        => $fechaBajaFormateada==''?'baja':'alta',
+        ];
     }
 }
 

@@ -26,6 +26,9 @@ if (isset($_REQUEST['detalle'])) {
     exit;
 }
 
+/* ***************************************************************** */
+/* ********************** SECCION API NASA ************************* */
+/* ***************************************************************** */
 // Para control de la fecha, por defecto creamos la fecha de hoy
 $oFechaNasaEnCurso = new DateTime(); // Variable para el objeto fechaNasa
 if (isset($_SESSION["fechaNasaEnCurso"])) {
@@ -79,9 +82,9 @@ if (isset($_REQUEST["entrar"])) {//Código que se ejecuta cuando se envía el fo
 // Si la validación de datos es correcta cargamos los datos de la nasa
 if ($entradaOK) {
 
-    $_SESSION['paginaEnCurso'] = 'rest';
-    header('Location: index.php');
-    exit;
+    // $_SESSION['paginaEnCurso'] = 'rest';
+    // header('Location: index.php');
+    // exit;
 }
 
 /* Para que se vea bien la fecha en la vista, ya que sino se me cambia a la anterior aunque es sólo
@@ -99,15 +102,42 @@ if (isset($_SESSION['fotoNasaEnCurso'])) {
     $oFotoNasaEnCurso = REST::apiNasa($fechaNasaFormateada);
     $_SESSION['fotoNasaEnCurso'] = $oFotoNasaEnCurso;
 }
-
 $_SESSION['fechaNasaEnCurso'] = $oFechaNasaEnCurso;
+/* ***************************************************************** */
+/* ***************************************************************** */
+
+
+/* ***************************************************************** */
+/* ********************* SECCION API PROPIA ************************ */
+/* ***************************************************************** */
+$aDepartamentosObjetos = DepartamentoPDO::buscaDepartamentosPorDesc("");
+
+$avRestDepartamentos = [];
+foreach ($aDepartamentosObjetos as $oDepartamento) {
+    $avRestDepartamentos[] = [
+        'codDepartamento' => $oDepartamento->getCodDepartamento(),
+        'codYdesc' => $oDepartamento->getCodDepartamento().' - '.str_replace('Departamento de ','',$oDepartamento->getDescDepartamento())
+    ];
+}
+
+if (isset($_REQUEST["entrarDepartamentoRest"])) {//Código que se ejecuta cuando se envía el formulario
+    $_SESSION['codDepartamentoEnCursoRest'] = $_REQUEST["codDepartamentoEnCursoRest"];
+} 
+
+$volumenDeNegocio = REST::apiPropia($_SESSION['codDepartamentoEnCursoRest']??'');
+/* ***************************************************************** */
+/* ***************************************************************** */
+
+
 $avRest = [
-    'fechaNasaEnCurso'=>$oFechaNasaEnCurso->format('Y-m-d'),
-    'fotoNasaEnCursoTitulo'=>$oFotoNasaEnCurso->getTitulo(),
-    'fotoNasaEnCursoFecha'=>$oFotoNasaEnCurso->getfecha(),
-    'fotoNasaEnCursoDescripcion'=>$oFotoNasaEnCurso->getDescripcion(),
-    'fotoNasaEnCursoUrl'=>$oFotoNasaEnCurso->getUrl(),
-    'fotoNasaEnCursoUrlHD'=>$oFotoNasaEnCurso->getUrlHD()
+    'fechaNasaEnCurso' => $oFechaNasaEnCurso->format('Y-m-d'),
+    'fotoNasaEnCursoTitulo' => $oFotoNasaEnCurso->getTitulo(),
+    'fotoNasaEnCursoFecha' => $oFotoNasaEnCurso->getfecha(),
+    'fotoNasaEnCursoDescripcion' => $oFotoNasaEnCurso->getDescripcion(),
+    'fotoNasaEnCursoUrl' => $oFotoNasaEnCurso->getUrl(),
+    'fotoNasaEnCursoUrlHD' => $oFotoNasaEnCurso->getUrlHD(),
+    'codDepartamentoEnCursoRest' => $_SESSION['codDepartamentoEnCursoRest']??'',
+    'volumenDeNegocio' => $volumenDeNegocio
 ];
 
 $estadoBotonSalir = 'activo';

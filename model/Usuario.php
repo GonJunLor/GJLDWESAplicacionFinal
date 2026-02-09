@@ -3,7 +3,8 @@
  * Clase que representa un Usuario del sistema.
  * * Esta clase se utiliza para el transporte de datos entre la base de datos
  * y la lógica de negocio, almacenando toda la información relativa al perfil de usuario.
- * * @package App\Model
+ * 
+ * @package App\Model
  * @author Gonzalo Junquera Lorenzo
  * @since 18/12/2025
  * @version 1.0.0
@@ -45,7 +46,11 @@ class Usuario {
      * @param string $perfil Tipo de perfil ('usuario', 'admin').
      * @param string|null $imagenUsuario Imagen de perfil en formato binario.
      */
-    public function __construct($codUsuario, $password, $descUsuario, $numAccesos, $fechaHoraUltimaConexion, $fechaHoraUltimaConexionAnterior, $perfil, $imagenUsuario){
+    public function __construct(
+        $codUsuario, $password=null, $descUsuario=null, 
+        $numAccesos=null, $fechaHoraUltimaConexion=null, 
+        $fechaHoraUltimaConexionAnterior=null, $perfil=null, $imagenUsuario=null
+    ){
         $this->codUsuario = $codUsuario;
         $this->password = $password;
         $this->descUsuario = $descUsuario;

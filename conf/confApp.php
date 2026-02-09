@@ -20,7 +20,11 @@ require_once 'model/DepartamentoPDO.php';
 
 // constante para acceder a la api de la nasa con una clave privada mia
 const API_KEY_NASA = 'uwcgeJsRXJe8JY2SPm26LWceI9GHg8bNXynfkq9s';
+const API_KEY_PROPIA = 'XZuVZLROAF6FyluURwSTaJOLesWQZYrFZ9JX7E8n';
 const PALABRASEGURIDAD = 'pimentel';
+
+// constante para la paginación de resultados de consulta sobre la BBDD
+const RESULTADOSPORPAGINA = 5;
 
 $controller=[
     'inicioPublico' => 'controller/cInicioPublico.php',
@@ -39,7 +43,9 @@ $controller=[
     'modificarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'controller/cConsultarModificarDepartamento.php',
     'eliminarDepartamento' => 'controller/cEliminarDepartamento.php',
-    'altaDepartamento' => 'controller/cAltaDepartamento.php'
+    'altaDepartamento' => 'controller/cAltaDepartamento.php',
+    'mtoUsuarios' => 'controller/cMtoUsuarios.php',
+    'exportarPDF' => 'controller/cExportarPDF.php'
 ];
 
 $view=[
@@ -60,7 +66,9 @@ $view=[
     'modificarDepartamento' => 'view/vConsultarModificarDepartamento.php',
     'consultarDepartamento' => 'view/vConsultarModificarDepartamento.php',
     'eliminarDepartamento' => 'view/vEliminarDepartamento.php',
-    'altaDepartamento' => 'view/vAltaDepartamento.php' 
+    'altaDepartamento' => 'view/vAltaDepartamento.php',
+    'mtoUsuarios' => 'view/vMtoUsuarios.php',
+    'exportarPDF' => 'view/vExportarPDF.php'
 ];
 
 $titulo=[
@@ -81,7 +89,9 @@ $titulo=[
     'modificarDepartamento' => 'Modificar Departamento',
     'consultarDepartamento' => 'Consultar Departamento',
     'eliminarDepartamento' => 'Eliminar Departamento',
-    'altaDepartamento' => 'Alta Departamento'
+    'altaDepartamento' => 'Alta Departamento',
+    'mtoUsuarios' => 'Mantenimiento Usuarios',
+    'exportarPDF' => 'Página visualizar PDF'
 ];
 
 // adjudicación de permisos según el perfil
