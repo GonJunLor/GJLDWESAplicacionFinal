@@ -1,8 +1,20 @@
 <?php
 /**
-* @author: Gonzalo Junquera Lorenzo
-* @since: 07/02/2026
-*/
+ * Servicio Web: Búsqueda de Usuarios por Descripción.
+ * * Este endpoint permite consultar la base de datos para obtener información de usuarios 
+ * cuya descripción coincida con el criterio de búsqueda proporcionado. Requiere 
+ * autenticación mediante una API KEY válida.
+ * * @url http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsBuscaUsuariosPorDescripcion.php
+ * @method GET|POST
+ * * @param string api_key Clave de acceso obligatoria.
+ * @param string descUsuario Cadena de búsqueda alfabética (máx. 255 caracteres).
+ * * @return json Devuelve un array de objetos usuario en formato JSON. 
+ * Si hay error de validación o falta de permisos, devuelve un array vacío [].
+ * * @example URL: .../wsBuscaUsuariosPorDescripcion.php?api_key=TU_CLAVE&descUsuario=pas
+ * * @author Gonzalo Junquera Lorenzo
+ * @since 07/02/2026
+ * @version 1.0
+ */
 require_once 'confApi.php';
 
 if (isset($_REQUEST['api_key']) && in_array($_REQUEST['api_key'],API_KEYS_NUESTRAS)) {
@@ -40,7 +52,7 @@ if (isset($_REQUEST['api_key']) && in_array($_REQUEST['api_key'],API_KEYS_NUESTR
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($aArchivoExportar,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-        /* http://daw205.local.ieslossauces.es/GJLDWESAplicacionFinal/api/wsBuscaUsuariosPorDescripcion.php?descUsuario=vero */
+        
     } else {
         echo json_encode([],JSON_PRETTY_PRINT);
     }
