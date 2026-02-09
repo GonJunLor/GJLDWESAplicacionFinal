@@ -68,7 +68,7 @@
         // Función para inicializar la carga al entrar en la página
         async function inicio() {
             // Intentamos recuperar el valor guardado y de existir lo ponemos en el cuadro de busqueda 
-            cuadroBusqueda.value = sessionStorage.getItem('buscarDescUsuarioActual')!== null?localStorage.getItem('buscarDescUsuarioActual'):'';
+            cuadroBusqueda.value = sessionStorage.getItem('buscarDescUsuarioActual')!== null?sessionStorage.getItem('buscarDescUsuarioActual'):'';
 
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         }
