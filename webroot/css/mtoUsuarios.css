@@ -156,13 +156,22 @@
     } 
 }
 #vMtoUsuarios .columnaEliminar{
+    position: absolute;
+    top: -50px;
+    left: 0;
     height: 69dvh;
+    width: 100dvw;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* display: grid;
+    place-items: center; */
 }
-#vMtoUsuarios #tarjetaEliminarUsuario p{
+#vMtoUsuarios #tarjetaEliminarUsuario{
     display: block;
     text-align: center;
-    color: red;
+}
+#vMtoUsuarios .inhabilitar{
+    pointer-events: none;
+    opacity: 0.6;
 }
