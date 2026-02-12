@@ -1,7 +1,7 @@
 <?php
 /**
  * Servicio Web: Búsqueda de Usuarios por Descripción.
- * * Este endpoint permite consultar la base de datos para obtener información de usuarios 
+ * * Esta API permite consultar la base de datos para obtener información de usuarios 
  * cuya descripción coincida con el criterio de búsqueda proporcionado. Requiere 
  * autenticación mediante una API KEY válida.
  * * @url http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsBuscaUsuariosPorDescripcion.php

@@ -87,7 +87,7 @@ if ($entradaOK) {
     $oUsuarioActual = $_SESSION['usuarioGJLDWESAplicacionFinal'];
 
     // modificamos la contraseña en la BBDD 
-    $oUsuarioActual = UsuarioPDO::cambiarPassword($oUsuarioActual, $_REQUEST['contrasenaNueva']);
+    $oUsuarioActual = UsuarioPDO::cambiarPassword($oUsuarioActual->getCodUsuario(), $_REQUEST['contrasenaNueva']);
 
     // cambiarPassword devuelve el objeto usuario modificado y lo guardamos de nuevo en la sesion
     $_SESSION['usuarioGJLDWESAplicacionFinal'] = $oUsuarioActual;

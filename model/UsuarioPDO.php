@@ -159,11 +159,11 @@ final class UsuarioPDO {
 
     /**
      * Cambia la contraseña de un usuario existente
-     * @param Usuario $oUsuario Objeto del usuario actual
+     * @param Usuario $codUsuario Codigo del usuario a cambiar contraseña
      * @param string $nuevaPassword Nueva contraseña sin encriptar
      * @return Usuario|null El objeto usuario actualizado o null si falla
      */
-    public static function cambiarPassword($oUsuario, $nuevaPassword){
+    public static function cambiarPassword($codUsuario, $nuevaPassword){
         $sql = <<<SQL
             UPDATE T01_Usuario SET 
                 T01_Password = SHA2(:password, 256)
@@ -171,14 +171,13 @@ final class UsuarioPDO {
         SQL;
 
         $consulta = DBPDO::ejecutarConsulta($sql, [
-            ':usuario' => $oUsuario->getCodUsuario(),
-            ':password' => $oUsuario->getCodUsuario() . $nuevaPassword
+            ':usuario' => $codUsuario,
+            ':password' => $codUsuario . $nuevaPassword
         ]);
 
         if ($consulta) {
-            // Se actualiza la contraseña en el objeto existente para que coincida con la BD
-            $oUsuario->setPassword(hash('sha256', $oUsuario->getCodUsuario() . $nuevaPassword));
-            return $oUsuario;
+            // Validamos usuario para devolver un usuario con todos los datos actualizados desde la BBDD
+            return self::validarUsuario($codUsuario,$nuevaPassword);
         }
 
         return null;
@@ -226,8 +225,8 @@ final class UsuarioPDO {
      * @param Usuario $oUsuario Objeto del usuario a eliminar
      * @return boolean True si se borró correctamente, false si no se borró
      */
-    public static function borrarUsuario($oUsuario){
-        $sql = 'DELETE FROM T01_Usuario WHERE T01_CodUsuario = "'.$oUsuario->getCodUsuario().'"';
+    public static function borrarUsuario($codUsuario){
+        $sql = 'DELETE FROM T01_Usuario WHERE T01_CodUsuario = "'.$codUsuario.'"';
 
         return DBPDO::ejecutarConsulta($sql)->rowCount() > 0;
     }

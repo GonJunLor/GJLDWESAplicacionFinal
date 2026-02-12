@@ -17,7 +17,8 @@
                 <span>
                     <label for="DescUsuarioBuscado">Introduce Usuario a Buscar: </label>
                     <input type="text" name="DescUsuarioBuscado" id="DescUsuarioBuscado" value="">
-                </span>  
+                </span>
+                <span id="mensajesGenerales"></span> 
             </div>
         </div>
         <div class="tarjeta">
@@ -47,6 +48,10 @@
                 this.numAccesos = datos.numAccesos;
                 this.fechaHoraUltimaConexion = datos.fechaHoraUltimaConexion;
                 this.perfil = datos.perfil;
+                this.contrasenaNueva = "";
+                this.repiteContrasena = "";
+                this.errorContrasenaNueva = "";
+                this.errorRepiteContrasena = "";
             }
 
             getFechaFormateada(){
@@ -58,6 +63,21 @@
                 }
                 return "";
             }
+
+            setContrasenaNueva(mensaje){
+                this.errorContrasenaNueva = mensaje;
+            }
+            setRepiteContrasena(mensaje){
+                this.errorRepiteContrasena = mensaje;
+            }
+
+            setErrorContrasenaNueva(mensaje){
+                this.errorContrasenaNueva = mensaje;
+            }
+            setErrorRepiteContrasena(mensaje){
+                this.errorRepiteContrasena = mensaje;
+            }
+
         }
         var cuadroBusqueda = document.getElementById('DescUsuarioBuscado');
         var tbody = document.getElementById('tablaResultado');
@@ -78,9 +98,13 @@
         cuadroBusqueda.addEventListener("input", async (e)=>{
             // Guardamos el valor en el almacenamiento local
             sessionStorage.setItem('buscarDescUsuarioActual', cuadroBusqueda.value);
+            document.getElementById("mensajesGenerales").value = "";
 
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         })
+
+        
+
         
         function recarga() {
             location.reload();
@@ -120,7 +144,7 @@
 
                 const btnPassword = document.createElement('button');
                 btnPassword.innerHTML = '<span>Password</span>';
-                btnPassword.addEventListener("click",() => cambiarPasswordUsuario(oUsuario));
+                btnPassword.addEventListener("click",() => vistaCambiarPasswordUsuario(oUsuario));
                 tdAcciones.appendChild(btnPassword);
                 
                 fila.appendChild(tdAcciones);
@@ -146,25 +170,26 @@
             `;
         }
 
-        async function cambiarPasswordUsuario(usuario) {
+        async function vistaCambiarPasswordUsuario(usuario) {
             let divBuscarTabla = document.getElementsByClassName("columna1")[0];
             divBuscarTabla.classList.add("inhabilitar");
             main.innerHTML += `
-            <div id="cambiarPasswordUsuario">
-                <h2>Cambiar Contraseña</h2>
-                <form class="contenido" action="" method="post"> 
-                    <label for="contrasenaActual">Contraseña actual</label>
-                    <input type="text" class="obligatorio" id="contrasenaActual" name="contrasenaActual" value="<?php echo $_REQUEST['contrasenaActual']??''; ?>">
-                    <span class="error rojo"><?php echo $aErrores['contrasenaActual'] ?></span>
-                    <label for="contrasenaNueva">Nueva contraseña</label>
-                    <input type="password" class="obligatorio" id="contrasenaNueva" name="contrasenaNueva" value="<?php echo $_REQUEST['contrasenaNueva']??''; ?>">
-                    <span class="error rojo"><?php echo $aErrores['contrasenaNueva'] ?></span>
-                    <label for="repiteContrasena">Repite contraseña</label>
-                    <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena" value="<?php echo $_REQUEST['repiteContrasena']??''; ?>">
-                    <span class="error rojo"><?php echo $aErrores['repiteContrasena'] ?></span>
-                    <button name="guardar" class="boton" id="guardar"><span>GUARDAR</span></button>
-                    <button name="cancelar" class="boton" id="cancelar"><span>Cancelar</span></button>
-                </form>
+            <div class="columna1 columnaPassword">
+            <div>
+                <div class="tarjeta" id="tarjetaPasswordUsuario">
+                    <div><h2>Cambiar contraseña de <strong class="rojo">${usuario.descUsuario}</strong></h2></div>
+                    <div>
+                        <label for="contrasenaNueva">Nueva contraseña</label>
+                        <input type="password" class="obligatorio" id="contrasenaNueva" name="contrasenaNueva">
+                        <span class="error rojo" id="errorContrasenaNueva"></span>
+                        <label for="repiteContrasena">Repite contraseña</label>
+                        <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena">
+                        <span class="error rojo" id="errorRepiteContrasena"></span>
+                        <button onclick="cambiarPasswordUsuario('${usuario.codUsuario}')"><span>GUARDAR</span></button>
+                        <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>  
+                    </div>
+                </div>
+            </div>
             </div>
             `;
 
@@ -200,6 +225,34 @@
             } catch (error) { 
                 document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
             }         
+        }
+
+        async function cambiarPasswordUsuario(codUsuario) {
+            let cuadroContrasenaNueva = document.getElementById("contrasenaNueva");
+            let cuadroRepiteContrasena = document.getElementById("repiteContrasena");
+            let spanErrorContrasenaNueva = document.getElementById("errorContrasenaNueva");
+            let spanErrorRepiteContrasena = document.getElementById("errorRepiteContrasena");
+
+            try {  
+                const respuesta = await fetch(
+                    servidor + "/api/wsCambiarPasswordUsuario.php"+
+                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario +
+                    "&contrasenaNueva=" + cuadroContrasenaNueva.value +
+                    "&repiteContrasena=" + cuadroRepiteContrasena.value
+                );
+
+                datosJSON = await respuesta.json();
+                
+                if(datosJSON.estadoCambioPassword===true){
+                    location.reload();
+                }else{
+                    spanErrorContrasenaNueva.innerHTML = datosJSON.ErrorContrasenaNueva;
+                    spanErrorRepiteContrasena.innerHTML = datosJSON.ErrorRepiteContrasena;
+                }
+   
+            } catch (error) {
+                spanErrorContrasenaNueva.innerHTML = "Error de conexion con la api"
+            }        
         }
         
     </script>
