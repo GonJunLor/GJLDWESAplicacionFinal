@@ -17,7 +17,8 @@
                 <span>
                     <label for="DescUsuarioBuscado">Introduce Usuario a Buscar: </label>
                     <input type="text" name="DescUsuarioBuscado" id="DescUsuarioBuscado" value="">
-                </span>  
+                </span>
+                <span id="mensajesGenerales"></span> 
             </div>
         </div>
         <div class="tarjeta">
@@ -47,6 +48,10 @@
                 this.numAccesos = datos.numAccesos;
                 this.fechaHoraUltimaConexion = datos.fechaHoraUltimaConexion;
                 this.perfil = datos.perfil;
+                this.contrasenaNueva = "";
+                this.repiteContrasena = "";
+                this.errorContrasenaNueva = "";
+                this.errorRepiteContrasena = "";
             }
 
             getFechaFormateada(){
@@ -58,6 +63,21 @@
                 }
                 return "";
             }
+
+            setContrasenaNueva(mensaje){
+                this.errorContrasenaNueva = mensaje;
+            }
+            setRepiteContrasena(mensaje){
+                this.errorRepiteContrasena = mensaje;
+            }
+
+            setErrorContrasenaNueva(mensaje){
+                this.errorContrasenaNueva = mensaje;
+            }
+            setErrorRepiteContrasena(mensaje){
+                this.errorRepiteContrasena = mensaje;
+            }
+
         }
         var cuadroBusqueda = document.getElementById('DescUsuarioBuscado');
         var tbody = document.getElementById('tablaResultado');
@@ -78,75 +98,19 @@
         cuadroBusqueda.addEventListener("input", async (e)=>{
             // Guardamos el valor en el almacenamiento local
             sessionStorage.setItem('buscarDescUsuarioActual', cuadroBusqueda.value);
+            document.getElementById("mensajesGenerales").value = "";
 
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         })
+
         
 
-        async function mostrarDatosUsuario(usuario) {
-
-            main.innerHTML = `
-            <div id="mostrarDatosUsuario">
-                <h2>DATOS PERSONALES</h2>
-                <span><button class="boton" onclick="recarga()"><span>Volver</span></button></span>
-                <div class="contenido">
-                    <label for="codUsuario">Usuario</label>
-                    <input type="text" value="${usuario.codUsuario}" disabled>
-                    <label for="descUsuario">Nombre y Apellidos</label>
-                    <input type="text" value="${usuario.descUsuario}" disabled>
-                    <label for="numConexiones">Número de accesos</label>
-                    <input type="text" value="${usuario.numAccesos}" disabled>
-                    <label for="fechaHoraUltimaConexion">Fecha de última conexion</label>
-                    <input type="text" value="${usuario.getFechaFormateada()}" disabled>
-                    <label for="perfil">Perfil</label>
-                    <input type="text" value="${usuario.perfil}" disabled>
-                </div>
-            </div>
-            `;
-
-        }
-
-        function vistaEliminarUsuario(usuario) {
-            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
-            divBuscarTabla.classList.add("inhabilitar");
-            main.innerHTML += `
-                <div class="columna1 columnaEliminar">
-                <div>
-                    <div class="tarjeta" id="tarjetaEliminarUsuario">
-                        <div><h2>¿Estás seguro de que quieres eliminar el usuario <strong class="rojo">${usuario.descUsuario}</strong>?</h2></div>
-                        <div>
-                            <button onclick="eliminarUsuario('${usuario.codUsuario}')"><span>ACEPTAR</span></button>
-                            <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>     
-                        </div>
-                    </div>
-                </div>
-                </div>
-            `;
-        }
-
+        
         function recarga() {
             location.reload();
         }
 
-        async function eliminarUsuario(codUsuario) {
-            try {
-                const respuesta = await fetch(
-                    servidor + "/api/wsEliminaUsuarioPorCodUsuario.php"+
-                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario
-                );
-
-                datosJSON = await respuesta.json();
-                if(datosJSON.estadoEliminarUsuario===true){
-                    location.reload();
-                }else{
-                    document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
-                }
-   
-            } catch (error) { 
-                document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
-            }         
-        }
-        
+        /* VISTAS */
         function mostrarUsuarios(aUsuarios) {
             tbody.innerHTML = '';
             
@@ -173,21 +137,65 @@
                 // Celda de acciones (Botones)
                 const tdAcciones = document.createElement('td');
 
-                // const btnConsultar = document.createElement('button');
-                // btnConsultar.innerHTML = '<span>Consultar</span>';
-                // btnConsultar.addEventListener("click",() => mostrarDatosUsuario(oUsuario));
-                // tdAcciones.appendChild(btnConsultar);
-
                 const btnEliminar = document.createElement('button');
                 btnEliminar.innerHTML = '<span>Eliminar</span>';
                 btnEliminar.addEventListener("click",() => vistaEliminarUsuario(oUsuario));
                 tdAcciones.appendChild(btnEliminar);
+
+                const btnPassword = document.createElement('button');
+                btnPassword.innerHTML = '<span>Password</span>';
+                btnPassword.addEventListener("click",() => vistaCambiarPasswordUsuario(oUsuario));
+                tdAcciones.appendChild(btnPassword);
                 
                 fila.appendChild(tdAcciones);
                 tbody.appendChild(fila);
             }
         }
 
+        function vistaEliminarUsuario(usuario) {
+            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
+            divBuscarTabla.classList.add("inhabilitar");
+            main.innerHTML += `
+                <div class="columna1 columnaEliminar">
+                <div>
+                    <div class="tarjeta" id="tarjetaEliminarUsuario">
+                        <div><h2>¿Estás seguro de que quieres eliminar el usuario <strong class="rojo">${usuario.descUsuario}</strong>?</h2></div>
+                        <div>
+                            <button onclick="eliminarUsuario('${usuario.codUsuario}')"><span>ACEPTAR</span></button>
+                            <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>     
+                        </div>
+                    </div>
+                </div>
+                </div>
+            `;
+        }
+
+        async function vistaCambiarPasswordUsuario(usuario) {
+            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
+            divBuscarTabla.classList.add("inhabilitar");
+            main.innerHTML += `
+            <div class="columna1 columnaPassword">
+            <div>
+                <div class="tarjeta" id="tarjetaPasswordUsuario">
+                    <div><h2>Cambiar contraseña de <strong class="rojo">${usuario.descUsuario}</strong></h2></div>
+                    <div>
+                        <label for="contrasenaNueva">Nueva contraseña</label>
+                        <input type="password" class="obligatorio" id="contrasenaNueva" name="contrasenaNueva">
+                        <span class="error rojo" id="errorContrasenaNueva"></span>
+                        <label for="repiteContrasena">Repite contraseña</label>
+                        <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena">
+                        <span class="error rojo" id="errorRepiteContrasena"></span>
+                        <button onclick="cambiarPasswordUsuario('${usuario.codUsuario}')"><span>GUARDAR</span></button>
+                        <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>  
+                    </div>
+                </div>
+            </div>
+            </div>
+            `;
+
+        }
+
+        /* LLAMADAS A APIS */
         async function pedirUsuarios(descUsuario) {
             try {
                 const respuesta = await fetch(
@@ -200,5 +208,52 @@
             }
         }
 
+        async function eliminarUsuario(codUsuario) {
+            try {
+                const respuesta = await fetch(
+                    servidor + "/api/wsEliminaUsuarioPorCodUsuario.php"+
+                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario
+                );
+
+                datosJSON = await respuesta.json();
+                if(datosJSON.estadoEliminarUsuario===true){
+                    location.reload();
+                }else{
+                    document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
+                }
+   
+            } catch (error) { 
+                document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
+            }         
+        }
+
+        async function cambiarPasswordUsuario(codUsuario) {
+            let cuadroContrasenaNueva = document.getElementById("contrasenaNueva");
+            let cuadroRepiteContrasena = document.getElementById("repiteContrasena");
+            let spanErrorContrasenaNueva = document.getElementById("errorContrasenaNueva");
+            let spanErrorRepiteContrasena = document.getElementById("errorRepiteContrasena");
+
+            try {  
+                const respuesta = await fetch(
+                    servidor + "/api/wsCambiarPasswordUsuario.php"+
+                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario +
+                    "&contrasenaNueva=" + cuadroContrasenaNueva.value +
+                    "&repiteContrasena=" + cuadroRepiteContrasena.value
+                );
+
+                datosJSON = await respuesta.json();
+                
+                if(datosJSON.estadoCambioPassword===true){
+                    location.reload();
+                }else{
+                    spanErrorContrasenaNueva.innerHTML = datosJSON.ErrorContrasenaNueva;
+                    spanErrorRepiteContrasena.innerHTML = datosJSON.ErrorRepiteContrasena;
+                }
+   
+            } catch (error) {
+                spanErrorContrasenaNueva.innerHTML = "Error de conexion con la api"
+            }        
+        }
+        
     </script>
 </main>

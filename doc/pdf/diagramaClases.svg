@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="42cm" height="49cm" viewBox="56 -1 830 978" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="40cm" height="49cm" viewBox="56 0 793 976" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #deefff" x="409.798" y="236.812" width="426.45" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="409.798" y="236.812" width="426.45" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="623.023" y="256.212">UsuarioPDO</text>
-    <rect style="fill: #deefff" x="409.798" y="266.812" width="426.45" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="409.798" y="266.812" width="426.45" height="8"/>
-    <rect style="fill: #deefff" x="409.798" y="274.812" width="426.45" height="166"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="409.798" y="274.812" width="426.45" height="166"/>
+    <rect style="fill: #deefff" x="409.798" y="236.812" width="399.9" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="409.798" y="236.812" width="399.9" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="609.748" y="256.212">UsuarioPDO</text>
+    <rect style="fill: #deefff" x="409.798" y="266.812" width="399.9" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="409.798" y="266.812" width="399.9" height="8"/>
+    <rect style="fill: #deefff" x="409.798" y="274.812" width="399.9" height="166"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="409.798" y="274.812" width="399.9" height="166"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="289.412">+static validarUsuario(codUsuario,password)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="307.412">+static registrarUltimaConexion(oUsuario)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="325.412">+static altaUsuario(codUsuario,password,descUsuario)</text>
-    <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="343.412">+static cambiarPassword(oUsuario,nuevaPassword)</text>
+    <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="343.412">+static cambiarPassword(codUsuario,nuevaPassword)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="361.412">+static modificarUsuario(oUsuario,nuevoDescUsuario,nuevoPerfil,</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="379.412">                         contenidoImagen)</text>
-    <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="397.412">+static borrarUsuario(oUsuario)</text>
+    <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="397.412">+static borrarUsuario(codUsuario)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="415.412">+static validarCodNoExiste(codUsuario)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="412.298" y="433.412">+static buscaUsuariosPorDesc(descUsuario)</text>
   </g>
   <g>
-    <rect style="fill: #deefff" x="57" y="245" width="229.45" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="57" y="245" width="229.45" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="171.725" y="264.4">Usuario</text>
-    <rect style="fill: #deefff" x="57" y="275" width="229.45" height="148"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="57" y="275" width="229.45" height="148"/>
+    <rect style="fill: #deefff" x="57" y="245" width="222.95" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="57" y="245" width="222.95" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="168.475" y="264.4">Usuario</text>
+    <rect style="fill: #deefff" x="57" y="275" width="222.95" height="148"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="57" y="275" width="222.95" height="148"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="59.5" y="289.6">-codUsuario</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="59.5" y="307.6">-password</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="59.5" y="325.6">-descUsuario</text>
@@ -33,30 +33,30 @@
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="59.5" y="379.6">-fechaHoraUltimaConexionAnterior</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="59.5" y="397.6">-perfil</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="59.5" y="415.6">-imagenUsuario</text>
-    <rect style="fill: #deefff" x="57" y="423" width="229.45" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="57" y="423" width="229.45" height="8"/>
+    <rect style="fill: #deefff" x="57" y="423" width="222.95" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="57" y="423" width="222.95" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffd6dd" x="191.827" y="68.7032" width="88.9" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="191.827" y="68.7032" width="88.9" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="236.277" y="88.1032">ErrorApp</text>
-    <rect style="fill: #ffd6dd" x="191.827" y="98.7032" width="88.9" height="76"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="191.827" y="98.7032" width="88.9" height="76"/>
+    <rect style="fill: #ffd6dd" x="191.827" y="68.7032" width="86.35" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="191.827" y="68.7032" width="86.35" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="235.002" y="88.1032">ErrorApp</text>
+    <rect style="fill: #ffd6dd" x="191.827" y="98.7032" width="86.35" height="76"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="191.827" y="98.7032" width="86.35" height="76"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="194.327" y="113.303">-Code</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="194.327" y="131.303">-Message</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="194.327" y="149.303">-File</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="194.327" y="167.303">-Line</text>
-    <rect style="fill: #ffd6dd" x="191.827" y="174.703" width="88.9" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="191.827" y="174.703" width="88.9" height="8"/>
+    <rect style="fill: #ffd6dd" x="191.827" y="174.703" width="86.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="191.827" y="174.703" width="86.35" height="8"/>
   </g>
   <g>
-    <rect style="fill: #e6e6fa" x="450.404" y="59" width="343.2" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="450.404" y="59" width="343.2" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="622.004" y="78.4">DBPDO</text>
-    <rect style="fill: #e6e6fa" x="450.404" y="89" width="343.2" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="450.404" y="89" width="343.2" height="8"/>
-    <rect style="fill: #e6e6fa" x="450.404" y="97" width="343.2" height="94"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="450.404" y="97" width="343.2" height="94"/>
+    <rect style="fill: #e6e6fa" x="450.404" y="59" width="319.05" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="450.404" y="59" width="319.05" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="609.929" y="78.4">DBPDO</text>
+    <rect style="fill: #e6e6fa" x="450.404" y="89" width="319.05" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="450.404" y="89" width="319.05" height="8"/>
+    <rect style="fill: #e6e6fa" x="450.404" y="97" width="319.05" height="94"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="450.404" y="97" width="319.05" height="94"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="452.904" y="111.6">+static ejecutarConsulta(sentenciaSQL,parametros)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="452.904" y="129.6">+static ejecutarConsultasTransaccion(sentenciaSQL,</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="452.904" y="147.6">                                     aParametros)</text>
@@ -64,42 +64,42 @@
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="452.904" y="183.6">                             masInformacion)</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="623.023,236.306 623.023,217.907 622.004,217.907 622.004,198.213 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="627.004,210.861 622.004,194.861 617.004,210.861 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="609.748,236.306 609.748,217.907 609.929,217.907 609.929,198.213 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="614.929,210.861 609.929,194.861 604.929,210.861 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="409.291,338.812 352.124,338.812 352.124,338 293.662,338 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="306.31,333 290.31,338 306.31,343 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="409.292,338.812 348.874,338.812 348.874,338 287.162,338 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="299.809,333 283.809,338 299.809,343 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="449.909,125 359.788,125 359.788,125.703 287.927,125.703 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="300.574,120.703 284.574,125.703 300.574,130.703 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="449.911,125 359.788,125 359.788,125.703 285.364,125.703 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="298.012,120.703 282.012,125.703 298.012,130.703 "/>
   </g>
   <text font-size="19.7556" style="fill: #1e90ff;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="316" y="19">
     <tspan x="316" y="19">DIAGRAMA DE CLASES - ACTUAL</tspan>
   </text>
   <g>
-    <rect style="fill: #e6ffe6" x="96.102" y="588" width="195.25" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="96.102" y="588" width="195.25" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="193.727" y="607.4">Departamento</text>
-    <rect style="fill: #e6ffe6" x="96.102" y="618" width="195.25" height="94"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="96.102" y="618" width="195.25" height="94"/>
+    <rect style="fill: #e6ffe6" x="96.102" y="588" width="183.35" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="96.102" y="588" width="183.35" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="187.777" y="607.4">Departamento</text>
+    <rect style="fill: #e6ffe6" x="96.102" y="618" width="183.35" height="94"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="96.102" y="618" width="183.35" height="94"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="98.602" y="632.6">-codDepartamento</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="98.602" y="650.6">-descDepartamento</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="98.602" y="668.6">-fechaCreacionDepartamento</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="98.602" y="686.6">-volumenDeNegocio</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="98.602" y="704.6">-fechaBajaDepartamento</text>
-    <rect style="fill: #e6ffe6" x="96.102" y="712" width="195.25" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="96.102" y="712" width="195.25" height="8"/>
+    <rect style="fill: #e6ffe6" x="96.102" y="712" width="183.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="96.102" y="712" width="183.35" height="8"/>
   </g>
   <g>
-    <rect style="fill: #e6ffe6" x="373.056" y="471.156" width="489.75" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="373.056" y="471.156" width="489.75" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="617.931" y="490.556">DepartamentoPDO</text>
-    <rect style="fill: #e6ffe6" x="373.056" y="501.156" width="489.75" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="373.056" y="501.156" width="489.75" height="8"/>
-    <rect style="fill: #e6ffe6" x="373.056" y="509.156" width="489.75" height="328"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="373.056" y="509.156" width="489.75" height="328"/>
+    <rect style="fill: #e6ffe6" x="373.056" y="471.156" width="452.75" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="373.056" y="471.156" width="452.75" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="599.431" y="490.556">DepartamentoPDO</text>
+    <rect style="fill: #e6ffe6" x="373.056" y="501.156" width="452.75" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="373.056" y="501.156" width="452.75" height="8"/>
+    <rect style="fill: #e6ffe6" x="373.056" y="509.156" width="452.75" height="328"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="373.056" y="509.156" width="452.75" height="328"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="375.556" y="523.756">+static buscaDepartamentosPorDesc(descDepartamento)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="375.556" y="541.756">+static buscaDepartamentoPorCod(codDepartamento)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="375.556" y="559.756">+static modificaDepartamento(codDepartamento,nuevoDescDepartamento,</text>
@@ -120,41 +120,41 @@
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="375.556" y="829.756">                                                paginaActual)</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="372.549,654.156 336.203,654.156 336.203,654 298.563,654 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="311.211,649 295.211,654 311.211,659 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="372.549,654.156 330.253,654.156 330.253,654 286.663,654 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="299.31,649 283.31,654 299.31,659 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="863.313,654.156 884.313,654.156 884.313,108 800.309,108 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="812.957,103 796.957,108 812.957,113 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="826.313,654.156 847.313,654.156 847.313,108 776.159,108 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="788.807,103 772.807,108 788.807,113 "/>
   </g>
   <g>
-    <rect style="fill: #fcfccf" x="174.97" y="844.12" width="92.95" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="174.97" y="844.12" width="92.95" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="221.445" y="863.52">FotoNasa</text>
-    <rect style="fill: #fcfccf" x="174.97" y="874.12" width="92.95" height="94"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="174.97" y="874.12" width="92.95" height="94"/>
+    <rect style="fill: #fcfccf" x="174.97" y="844.12" width="83.5" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="174.97" y="844.12" width="83.5" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:700" x="216.72" y="863.52">FotoNasa</text>
+    <rect style="fill: #fcfccf" x="174.97" y="874.12" width="83.5" height="94"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="174.97" y="874.12" width="83.5" height="94"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="177.47" y="888.72">-fecha</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="177.47" y="906.72">-descripcion</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="177.47" y="924.72">-urlHD</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="177.47" y="942.72">-titulo</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="177.47" y="960.72">-url</text>
-    <rect style="fill: #fcfccf" x="174.97" y="968.12" width="92.95" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="174.97" y="968.12" width="92.95" height="8"/>
+    <rect style="fill: #fcfccf" x="174.97" y="968.12" width="83.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="174.97" y="968.12" width="83.5" height="8"/>
   </g>
   <g>
-    <rect style="fill: #fcfccf" x="454.688" y="863.542" width="203.2" height="30"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="454.688" y="863.542" width="203.2" height="30"/>
-    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="556.288" y="882.942">REST</text>
-    <rect style="fill: #fcfccf" x="454.688" y="893.542" width="203.2" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="454.688" y="893.542" width="203.2" height="8"/>
-    <rect style="fill: #fcfccf" x="454.688" y="901.542" width="203.2" height="58"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="454.688" y="901.542" width="203.2" height="58"/>
+    <rect style="fill: #fcfccf" x="454.688" y="863.542" width="187.65" height="30"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="454.688" y="863.542" width="187.65" height="30"/>
+    <text font-size="17.6" style="fill: #000000;text-anchor:middle;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="548.513" y="882.942">REST</text>
+    <rect style="fill: #fcfccf" x="454.688" y="893.542" width="187.65" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="454.688" y="893.542" width="187.65" height="8"/>
+    <rect style="fill: #fcfccf" x="454.688" y="901.542" width="187.65" height="58"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="454.688" y="901.542" width="187.65" height="58"/>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="457.188" y="916.142">+apiNasa(fecha)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="457.188" y="934.142">-serializarImagen(url)</text>
     <text font-size="14.4" style="fill: #000000;text-anchor:start;font-family:Linux Libertine G;font-style:normal;font-weight:normal" x="457.188" y="952.142">+apiPropia(codDepartamento)</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="454.182,911.542 365.304,911.542 365.304,910.12 275.131,910.12 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="287.778,905.12 271.778,910.12 287.778,915.12 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #848484" points="454.182,911.542 360.579,911.542 360.579,910.12 265.68,910.12 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #848484" points="278.328,905.12 262.328,910.12 278.328,915.12 "/>
   </g>
 </svg>

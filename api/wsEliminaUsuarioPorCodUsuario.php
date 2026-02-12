@@ -1,7 +1,7 @@
 <?php
 /**
  * Servicio Web: Eliminar Usuarios por Descripción.
- * * Este endpoint permite eliminar de la base de datos un usuario cuyo codigo coincida con el parámetro pasado. 
+ * * Esta API permite eliminar de la base de datos un usuario cuyo codigo coincida con el parámetro pasado. 
  * Requiere autenticación mediante una API KEY válida.
  * * @url http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsEliminaUsuarioPorCodUsuario.php
  * @method GET|POST
@@ -30,7 +30,7 @@ if (isset($_REQUEST['api_key']) && in_array($_REQUEST['api_key'],API_KEYS_NUESTR
         // recuperamos de la BBDD lo que ha buscado el usuario
         if (UsuarioPDO::validarCodNoExiste($_REQUEST['codUsuario'])) {
             // Si elimina al usuario devolvemos un json con true, sino false
-            echo json_encode(['estadoEliminarUsuario'=>UsuarioPDO::borrarUsuario(new Usuario($_REQUEST['codUsuario']))],JSON_PRETTY_PRINT);
+            echo json_encode(['estadoEliminarUsuario'=>UsuarioPDO::borrarUsuario($_REQUEST['codUsuario'])],JSON_PRETTY_PRINT);
         } else {
             echo json_encode(['estadoEliminarUsuario'=>'codigo no existe'],JSON_PRETTY_PRINT);
         }

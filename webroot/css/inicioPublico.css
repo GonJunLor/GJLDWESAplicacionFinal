@@ -53,6 +53,10 @@
     max-width: 889px;
     max-height: 703px;
 }
+#vInicioPublico #vInicioPublico08{
+    max-width: 200px;
+    max-height: 567px;
+}
 
 /* Ocultar los inputs radio de la vista */
 #vInicioPublico input[type="radio"] {
@@ -66,7 +70,8 @@
 #btn4:checked ~ .menu label[for="btn4"],
 #btn5:checked ~ .menu label[for="btn5"],
 #btn6:checked ~ .menu label[for="btn6"],
-#btn7:checked ~ .menu label[for="btn7"] {
+#btn7:checked ~ .menu label[for="btn7"],
+#btn8:checked ~ .menu label[for="btn8"] {
     color: var(--colorTexto2);
     font-weight: bold;
 }
@@ -78,6 +83,7 @@
 #btn4:checked ~ .imagenesCentrales #vInicioPublico04,
 #btn5:checked ~ .imagenesCentrales #vInicioPublico05,
 #btn6:checked ~ .imagenesCentrales #vInicioPublico06,
-#btn7:checked ~ .imagenesCentrales #vInicioPublico07 {
+#btn7:checked ~ .imagenesCentrales #vInicioPublico07,
+#btn8:checked ~ .imagenesCentrales #vInicioPublico08 {
     display: block;
 }

@@ -1,12 +1,12 @@
 <?php
 /**
  * Servicio Web: Consulta el volumen de negocio de un departamento por su código.
- * * Este endpoint permite obtener el volumen de negocio de la base de datos de un departamento cuyo codigo coincida con el parámetro pasado. 
+ * * Esta API permite obtener el volumen de negocio de la base de datos de un departamento cuyo codigo coincida con el parámetro pasado. 
  * Requiere autenticación mediante una API KEY válida.
  * * @url http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php
  * @method GET|POST
  * * @param string api_key Clave de acceso obligatoria.
- * @param string codUsuario Código del departamento a consultar.
+ * @param string codDepartamento Código del departamento a consultar.
  * * @return json Devuelve un array con el volumen de negocio en formato JSON. 
  * Si hay error de validación o falta de permisos, devuelve un array vacío [].
  * * @example URL: .../wsConsultarVolumenDeNegocio.php?api_key=TU_CLAVE&codDepartamento=pas
