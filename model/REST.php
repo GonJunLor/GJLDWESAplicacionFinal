@@ -118,7 +118,7 @@ class REST {
      */
     public static function apiPropia($codDepartamento){
         $volumen = 0;
-        $url = "http://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
+        $url = "https://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal/api/wsConsultarVolumenDeNegocio.php?codDepartamento=$codDepartamento&api_key=" . API_KEY_PROPIA;
 
         $ch = curl_init();
 
@@ -132,8 +132,10 @@ class REST {
         $resultado = curl_exec($ch);
         
         if (curl_errno($ch)) {
-            curl_close($ch);
-            return 0;
+            // curl_close($ch);
+            // return 0;
+            echo 'Error de cURL: ' . curl_error($ch); // Esto te dará la respuesta definitiva
+            die();
         }
 
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);

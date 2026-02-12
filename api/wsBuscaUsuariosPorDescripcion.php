@@ -15,6 +15,12 @@
  * @since 07/02/2026
  * @version 1.0
  */
+
+// Cabecera necesaria para poder usar la api al subirla al explotación.
+// sin esto el navegador no es capaz de leer el json por politicas CORS
+// https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin
+header("Access-Control-Allow-Origin: *");
+
 require_once 'confApi.php';
 
 if (isset($_REQUEST['api_key']) && in_array($_REQUEST['api_key'],API_KEYS_NUESTRAS)) {

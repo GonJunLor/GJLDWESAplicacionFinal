@@ -68,7 +68,7 @@
         // Función para inicializar la carga al entrar en la página
         async function inicio() {
             // Intentamos recuperar el valor guardado y de existir lo ponemos en el cuadro de busqueda 
-            cuadroBusqueda.value = sessionStorage.getItem('buscarDescUsuarioActual')!== null?localStorage.getItem('buscarDescUsuarioActual'):'';
+            cuadroBusqueda.value = sessionStorage.getItem('buscarDescUsuarioActual')!== null?sessionStorage.getItem('buscarDescUsuarioActual'):'';
 
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         }
@@ -107,16 +107,19 @@
         }
 
         function vistaEliminarUsuario(usuario) {
-            main.innerHTML = `
+            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
+            divBuscarTabla.classList.add("inhabilitar");
+            main.innerHTML += `
                 <div class="columna1 columnaEliminar">
+                <div>
                     <div class="tarjeta" id="tarjetaEliminarUsuario">
-                        <div><h2>¿Estás seguro de que quieres eliminar el usuario ${usuario.codUsuario} ?</h2></div>
+                        <div><h2>¿Estás seguro de que quieres eliminar el usuario <strong class="rojo">${usuario.descUsuario}</strong>?</h2></div>
                         <div>
                             <button onclick="eliminarUsuario('${usuario.codUsuario}')"><span>ACEPTAR</span></button>
                             <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>     
                         </div>
                     </div>
-                    
+                </div>
                 </div>
             `;
         }
@@ -170,10 +173,10 @@
                 // Celda de acciones (Botones)
                 const tdAcciones = document.createElement('td');
 
-                const btnConsultar = document.createElement('button');
-                btnConsultar.innerHTML = '<span>Consultar</span>';
-                btnConsultar.addEventListener("click",() => mostrarDatosUsuario(oUsuario));
-                tdAcciones.appendChild(btnConsultar);
+                // const btnConsultar = document.createElement('button');
+                // btnConsultar.innerHTML = '<span>Consultar</span>';
+                // btnConsultar.addEventListener("click",() => mostrarDatosUsuario(oUsuario));
+                // tdAcciones.appendChild(btnConsultar);
 
                 const btnEliminar = document.createElement('button');
                 btnEliminar.innerHTML = '<span>Eliminar</span>';
