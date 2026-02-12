@@ -82,71 +82,11 @@
             mostrarUsuarios(await pedirUsuarios(cuadroBusqueda.value));
         })
         
-
-        async function mostrarDatosUsuario(usuario) {
-
-            main.innerHTML = `
-            <div id="mostrarDatosUsuario">
-                <h2>DATOS PERSONALES</h2>
-                <span><button class="boton" onclick="recarga()"><span>Volver</span></button></span>
-                <div class="contenido">
-                    <label for="codUsuario">Usuario</label>
-                    <input type="text" value="${usuario.codUsuario}" disabled>
-                    <label for="descUsuario">Nombre y Apellidos</label>
-                    <input type="text" value="${usuario.descUsuario}" disabled>
-                    <label for="numConexiones">Número de accesos</label>
-                    <input type="text" value="${usuario.numAccesos}" disabled>
-                    <label for="fechaHoraUltimaConexion">Fecha de última conexion</label>
-                    <input type="text" value="${usuario.getFechaFormateada()}" disabled>
-                    <label for="perfil">Perfil</label>
-                    <input type="text" value="${usuario.perfil}" disabled>
-                </div>
-            </div>
-            `;
-
-        }
-
-        function vistaEliminarUsuario(usuario) {
-            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
-            divBuscarTabla.classList.add("inhabilitar");
-            main.innerHTML += `
-                <div class="columna1 columnaEliminar">
-                <div>
-                    <div class="tarjeta" id="tarjetaEliminarUsuario">
-                        <div><h2>¿Estás seguro de que quieres eliminar el usuario <strong class="rojo">${usuario.descUsuario}</strong>?</h2></div>
-                        <div>
-                            <button onclick="eliminarUsuario('${usuario.codUsuario}')"><span>ACEPTAR</span></button>
-                            <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>     
-                        </div>
-                    </div>
-                </div>
-                </div>
-            `;
-        }
-
         function recarga() {
             location.reload();
         }
 
-        async function eliminarUsuario(codUsuario) {
-            try {
-                const respuesta = await fetch(
-                    servidor + "/api/wsEliminaUsuarioPorCodUsuario.php"+
-                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario
-                );
-
-                datosJSON = await respuesta.json();
-                if(datosJSON.estadoEliminarUsuario===true){
-                    location.reload();
-                }else{
-                    document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
-                }
-   
-            } catch (error) { 
-                document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
-            }         
-        }
-        
+        /* VISTAS */
         function mostrarUsuarios(aUsuarios) {
             tbody.innerHTML = '';
             
@@ -173,21 +113,64 @@
                 // Celda de acciones (Botones)
                 const tdAcciones = document.createElement('td');
 
-                // const btnConsultar = document.createElement('button');
-                // btnConsultar.innerHTML = '<span>Consultar</span>';
-                // btnConsultar.addEventListener("click",() => mostrarDatosUsuario(oUsuario));
-                // tdAcciones.appendChild(btnConsultar);
-
                 const btnEliminar = document.createElement('button');
                 btnEliminar.innerHTML = '<span>Eliminar</span>';
                 btnEliminar.addEventListener("click",() => vistaEliminarUsuario(oUsuario));
                 tdAcciones.appendChild(btnEliminar);
+
+                const btnPassword = document.createElement('button');
+                btnPassword.innerHTML = '<span>Password</span>';
+                btnPassword.addEventListener("click",() => cambiarPasswordUsuario(oUsuario));
+                tdAcciones.appendChild(btnPassword);
                 
                 fila.appendChild(tdAcciones);
                 tbody.appendChild(fila);
             }
         }
 
+        function vistaEliminarUsuario(usuario) {
+            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
+            divBuscarTabla.classList.add("inhabilitar");
+            main.innerHTML += `
+                <div class="columna1 columnaEliminar">
+                <div>
+                    <div class="tarjeta" id="tarjetaEliminarUsuario">
+                        <div><h2>¿Estás seguro de que quieres eliminar el usuario <strong class="rojo">${usuario.descUsuario}</strong>?</h2></div>
+                        <div>
+                            <button onclick="eliminarUsuario('${usuario.codUsuario}')"><span>ACEPTAR</span></button>
+                            <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>     
+                        </div>
+                    </div>
+                </div>
+                </div>
+            `;
+        }
+
+        async function cambiarPasswordUsuario(usuario) {
+            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
+            divBuscarTabla.classList.add("inhabilitar");
+            main.innerHTML += `
+            <div id="cambiarPasswordUsuario">
+                <h2>Cambiar Contraseña</h2>
+                <form class="contenido" action="" method="post"> 
+                    <label for="contrasenaActual">Contraseña actual</label>
+                    <input type="text" class="obligatorio" id="contrasenaActual" name="contrasenaActual" value="<?php echo $_REQUEST['contrasenaActual']??''; ?>">
+                    <span class="error rojo"><?php echo $aErrores['contrasenaActual'] ?></span>
+                    <label for="contrasenaNueva">Nueva contraseña</label>
+                    <input type="password" class="obligatorio" id="contrasenaNueva" name="contrasenaNueva" value="<?php echo $_REQUEST['contrasenaNueva']??''; ?>">
+                    <span class="error rojo"><?php echo $aErrores['contrasenaNueva'] ?></span>
+                    <label for="repiteContrasena">Repite contraseña</label>
+                    <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena" value="<?php echo $_REQUEST['repiteContrasena']??''; ?>">
+                    <span class="error rojo"><?php echo $aErrores['repiteContrasena'] ?></span>
+                    <button name="guardar" class="boton" id="guardar"><span>GUARDAR</span></button>
+                    <button name="cancelar" class="boton" id="cancelar"><span>Cancelar</span></button>
+                </form>
+            </div>
+            `;
+
+        }
+
+        /* LLAMADAS A APIS */
         async function pedirUsuarios(descUsuario) {
             try {
                 const respuesta = await fetch(
@@ -200,5 +183,24 @@
             }
         }
 
+        async function eliminarUsuario(codUsuario) {
+            try {
+                const respuesta = await fetch(
+                    servidor + "/api/wsEliminaUsuarioPorCodUsuario.php"+
+                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario
+                );
+
+                datosJSON = await respuesta.json();
+                if(datosJSON.estadoEliminarUsuario===true){
+                    location.reload();
+                }else{
+                    document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
+                }
+   
+            } catch (error) { 
+                document.getElementById('tarjetaEliminarUsuario').innerHTML += "<p>Error al eliminar usuario</p>";
+            }         
+        }
+        
     </script>
 </main>
