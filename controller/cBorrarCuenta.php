@@ -23,7 +23,7 @@ if (isset($_REQUEST['cancelar'])) {
 if (isset($_REQUEST['eliminar'])) {
     
     // Borramos el usuario de la BBDD pasandole el objeto usuario de la sesion
-    if (UsuarioPDO::borrarUsuario($_SESSION['usuarioGJLDWESAplicacionFinal'])) {
+    if (UsuarioPDO::borrarUsuario($_SESSION['usuarioGJLDWESAplicacionFinal']->getCodUsuario())) {
         // Destruye la sesión
         session_destroy();
         $_SESSION['paginaEnCurso'] = 'inicioPublico';
