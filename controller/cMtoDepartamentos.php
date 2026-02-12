@@ -18,7 +18,10 @@ if (isset($_REQUEST['altaDepartamento'])) {
 
 if (isset($_REQUEST['exportar'])) {
     // recuperamos de la BBDD lo que ha buscado el usuario
-    $aDepartamentosExportar = DepartamentoPDO::buscaDepartamentosPorDesc($_SESSION['descDepartamentoBuscadaEnCurso']??'');
+    $aDepartamentosExportar = DepartamentoPDO::buscaDepartamentosPorDescEstado(
+        $_SESSION['descDepartamentoBuscadaEnCurso']??'',
+        $_SESSION['estadoDepartamentoBuscadoEnCurso'] ?? 'radioAlta'
+    );
 
     $aArchivoExportar=[];
     if (!is_null($aDepartamentosExportar) && is_array($aDepartamentosExportar)) {

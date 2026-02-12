@@ -56,7 +56,7 @@ if ($entradaOK) {
 
     // modificamos los datos del departamento en la BBDD 
     $oDepartamento = DepartamentoPDO::modificaDepartamento(
-        $oDepartamento, 
+        $oDepartamento->getCodDepartamento(), 
         'Departamento de '.$_REQUEST['descDepartamento'], 
         // compruebo si el input esta vacio para asignarle 0 para evitar error en ejecutar consulta
         str_replace(',', '.', $_REQUEST['volumenDeNegocio']==''?0:$_REQUEST['volumenDeNegocio'])

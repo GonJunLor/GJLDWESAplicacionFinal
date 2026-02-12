@@ -18,10 +18,10 @@
             <input type="text" class="obligatorio" id="contrasenaActual" name="contrasenaActual" value="<?php echo $_REQUEST['contrasenaActual']??''; ?>">
             <span class="error rojo"><?php echo $aErrores['contrasenaActual'] ?></span>
             <label for="contrasenaNueva">Nueva contraseña</label>
-            <input type="text" class="obligatorio" id="contrasenaNueva" name="contrasenaNueva" value="<?php echo $_REQUEST['contrasenaNueva']??''; ?>">
+            <input type="password" class="obligatorio" id="contrasenaNueva" name="contrasenaNueva" value="<?php echo $_REQUEST['contrasenaNueva']??''; ?>">
             <span class="error rojo"><?php echo $aErrores['contrasenaNueva'] ?></span>
             <label for="repiteContrasena">Repite contraseña</label>
-            <input type="text" class="obligatorio" id="repiteContrasena" name="repiteContrasena" value="<?php echo $_REQUEST['repiteContrasena']??''; ?>">
+            <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena" value="<?php echo $_REQUEST['repiteContrasena']??''; ?>">
             <span class="error rojo"><?php echo $aErrores['repiteContrasena'] ?></span>
             <button name="guardar" class="boton" id="guardar"><span>GUARDAR</span></button>
             <button name="cancelar" class="boton" id="cancelar"><span>Cancelar</span></button>
