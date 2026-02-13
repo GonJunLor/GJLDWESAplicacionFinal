@@ -6,7 +6,11 @@
 
 ?>
 <main id="vCuenta">
+    <form action="" method="post">
+        <button name="cancelar" class="boton"><span>Volver</span></button>
+    </form>
     <div id="cuenta">
+        
         <h2>DATOS PERSONALES</h2>
         <form id="cambiarContrasena" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
             <button name="cambiarContrasena" class="boton" >

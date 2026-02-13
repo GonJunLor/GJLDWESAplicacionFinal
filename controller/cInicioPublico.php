@@ -11,7 +11,6 @@ if (isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
 
     // si está la sesión iniciada redirigimos directamente al inicio privado
     if (isset($_REQUEST['iniciarSesion']) || isset($_REQUEST['miCuenta'])) {
-        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso'] = 'inicioPrivado';
         header('Location: index.php');
         exit;
@@ -20,14 +19,12 @@ if (isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
 
 
 if (isset($_REQUEST['iniciarSesion'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
     exit;
 }
 
 if (isset($_REQUEST['registrarse'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'registro';
     header('Location: index.php');
     exit;

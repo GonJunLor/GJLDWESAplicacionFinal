@@ -59,7 +59,7 @@ class REST {
 
         if (isset($archivoApi) && !isset($archivoApi['error'])) {
             if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
-                $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];
+                $hdurl = $archivoApi['url'] ?? $archivoApi['url'];
                 
                 $imagenSerializada = self::serializarImagen($hdurl);
 

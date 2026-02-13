@@ -95,6 +95,12 @@
 #vMtoDepartamentos .alta{
     color: lightgray;
 }
+#vMtoDepartamentos .botonbaja{
+    display: block;
+}
+#vMtoDepartamentos .botonalta{
+    display: none;
+}
 #vMtoDepartamentos .error{
     color: red;
     display: block;

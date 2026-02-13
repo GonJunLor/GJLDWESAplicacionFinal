@@ -84,6 +84,7 @@
         var main = document.getElementById('vMtoUsuarios');
         const API_KEY_NUESTRA = 'XZuVZLROAF6FyluURwSTaJOLesWQZYrFZ9JX7E8n';
         var servidor = "https://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal";
+        var servidor = "https://192.168.1.205/GJLDWESAplicacionFinal";
 
         // Función para inicializar la carga al entrar en la página
         async function inicio() {
@@ -193,6 +194,19 @@
             </div>
             `;
 
+            // Eventos para que al darle enter desde uno de los dos inputs sea como si le ha dado a guardar
+            document.getElementById("contrasenaNueva").addEventListener("keydown", (e) =>{
+                if (event.key === "Enter") {
+                    // event.preventDefault();
+                    cambiarPasswordUsuario(usuario.codUsuario);
+                }
+            });
+            document.getElementById("repiteContrasena").addEventListener("keydown", (e) => {
+                if (event.key === "Enter") {
+                    // event.preventDefault();
+                    cambiarPasswordUsuario(usuario.codUsuario);
+                }
+            });
         }
 
         /* LLAMADAS A APIS */
@@ -237,9 +251,11 @@
                 const respuesta = await fetch(
                     servidor + "/api/wsCambiarPasswordUsuario.php"+
                     "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario +
-                    "&contrasenaNueva=" + cuadroContrasenaNueva.value +
-                    "&repiteContrasena=" + cuadroRepiteContrasena.value
+                    "&contrasenaNueva=" + encodeURIComponent(cuadroContrasenaNueva.value) +
+                    "&repiteContrasena=" + encodeURIComponent(cuadroRepiteContrasena.value)
                 );
+                /* encodeURIComponent() sirve para que se envie bien la contraseña si hay simbolos como +
+                ya que sino se envia un espacio y hace que se guarde mal en la bbdd */
 
                 datosJSON = await respuesta.json();
                 
@@ -255,5 +271,7 @@
             }        
         }
         
+        /* OTRAS FUNCIONES */
+
     </script>
 </main>

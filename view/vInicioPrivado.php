@@ -12,6 +12,10 @@
         <button name="error" class="boton"><span>Error</span></button>
         <button name="departamento" class="boton"><span>Mantenimiento de Departamento</span></button>
         <button name="rest" class="boton"><span>REST</span></button>  
+        <button name="cuenta" class="boton"><span>Cuenta</span></button>  
+        <?php if(in_array($avInicioPrivado['perfil'],$permisos['mtoUsuarios'])): ?>
+        <button name="mtoUsuarios" class="boton"><span>Mantenimiento de Usuarios</span></button>  
+        <?php endif; ?>
     </div>
     <div class="columna1">
         <div class="tarjeta">

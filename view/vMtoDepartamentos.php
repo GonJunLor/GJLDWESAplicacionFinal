@@ -69,7 +69,7 @@
                         echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['fechaCreacionDepartamento'] . '</td>';
                         echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['volumenDeNegocio'] . '</td>';
                         echo '<td class="'.$aDepartamento['estadoDepartamento'].'">' . $aDepartamento['fechaBajaDepartamento'] . '</td>';
-                        echo '<td><button name="editar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="editar"><span>Editar</span></button></td>';
+                        echo '<td><button name="editar" value="'.$aDepartamento['codDepartamento'].'" class="boton'.$aDepartamento['estadoDepartamento'].'" id="editar"><span>Editar</span></button></td>';
                         echo '<td><button name="mostrar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="mostrar"><span>Mostrar</span></button></td>';
                         echo '<td><button name="borrar" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="borrar"><span>Borrar</span></button></td>';
                         echo '<td><button name="bajaAlta" value="'.$aDepartamento['codDepartamento'].'" class="boton" id="bajaAlta"><span>'.$aDepartamento['estadoDepartamento'].'</span></button></td>';
@@ -82,7 +82,7 @@
             <form id="paginacionTabla" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                 <button name="paginaInicial" class="boton" id="paginaInicial">|<</button>
                 <button name="paginaAnterior" class="boton" id="paginaAnterior"><</button>
-                <p><?php echo $paginaActual ?></p>
+                <p><?php echo $totalPaginas==0?0:$paginaActual ?></p>
                 <p>de</p>
                 <p><?php echo $totalPaginas ?></p>
                 <button name="paginaSiguiente" class="boton" id="paginaSiguiente">></button>
