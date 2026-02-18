@@ -6,7 +6,6 @@
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
 if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
     exit;
@@ -14,7 +13,6 @@ if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
 
 // vamos a la página detalle
 if (isset($_REQUEST['detalle'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'detalle';
     header('Location: index.php');
     exit;
@@ -23,7 +21,6 @@ if (isset($_REQUEST['detalle'])) {
 
 // vamos a la página error
 if (isset($_REQUEST['error'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $consultaError = "SELECT * FROM T03_Cuestion";
     DBPDO::ejecutarConsulta($consultaError);
     $_SESSION['paginaEnCurso'] = 'error';
@@ -33,7 +30,6 @@ if (isset($_REQUEST['error'])) {
 
 // vamos a la página mantenimiento de departamento
 if (isset($_REQUEST['departamento'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     // como no la tenemos vamos a la pagina en construcción
     $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
     header('Location: index.php');
@@ -42,7 +38,6 @@ if (isset($_REQUEST['departamento'])) {
 
 // vamos a la página detalle
 if (isset($_REQUEST['rest'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'rest';
     header('Location: index.php');
     exit;
@@ -50,7 +45,6 @@ if (isset($_REQUEST['rest'])) {
 
 // vamos a la página de cuenta del usuario
 if (isset($_REQUEST['cuenta'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'cuenta';
     header('Location: index.php');
     exit;
@@ -58,7 +52,6 @@ if (isset($_REQUEST['cuenta'])) {
 
 // vamos a la página de cuenta del usuario
 if (isset($_REQUEST['mtoUsuarios'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'mtoUsuarios';
     header('Location: index.php');
     exit;

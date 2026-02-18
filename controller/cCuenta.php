@@ -6,14 +6,12 @@
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
 if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
     exit;
 }
 
 if (isset($_REQUEST['cancelar'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     header('Location: index.php');
     exit;
@@ -21,7 +19,6 @@ if (isset($_REQUEST['cancelar'])) {
 
 // Vamos a pagina de cambiar contraseña, de momento a pag en construccion
 if (isset($_REQUEST['cambiarContrasena'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'cambiarContrasena';
     header('Location: index.php');
     exit;
@@ -29,7 +26,6 @@ if (isset($_REQUEST['cambiarContrasena'])) {
 
 // vamos a ventana de elimnar cuenta
 if (isset($_REQUEST['borrarCuenta'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'borrarCuenta';
     header('Location: index.php');
     exit;
@@ -87,12 +83,11 @@ if ($entradaOK) {
     }
     
     // modificamos los datos del usuario en la BBDD 
-    $oUsuario = UsuarioPDO::modificarUsuario($oUsuario, $_REQUEST['descUsuario'], $oUsuario->getPerfil(), $contenidoImagen);
+    $oUsuario = UsuarioPDO::modificarUsuario($oUsuario->getCodUsuario(), $_REQUEST['descUsuario'], $oUsuario->getPerfil(), $contenidoImagen);
 
     // modificarUsuario devuelve el objeto usuario modificado y lo guardamos de nuevo en la sesion
     $_SESSION['usuarioGJLDWESAplicacionFinal'] = $oUsuario;
 
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     header('Location: index.php');
     exit;

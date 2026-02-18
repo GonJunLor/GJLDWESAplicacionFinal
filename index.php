@@ -7,7 +7,6 @@
 // cargamos los archivos de configuración
 require_once  'conf/confApp.php';
 
-
 // iniciamos session
 session_start();
 
@@ -18,7 +17,6 @@ if (!isset($_SESSION['paginaEnCurso'])) {
 
 // Volvemoa al inicio público pero sin cerrar sesión
 if (isset($_REQUEST['inicio'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPublico';
     header('Location: index.php');
     exit;
@@ -49,12 +47,10 @@ if (isset($_REQUEST['cerrarSesion'])) {
 }
 
 if (isset($_REQUEST['miCuenta'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     header('Location: index.php');
     exit;
 }
-
 
 // cargamos el controlador de la pagina en curso
 require_once $controller[$_SESSION['paginaEnCurso']];

@@ -35,7 +35,7 @@ add column T02_Usuario varchar(10),
 add column T02_Timestamp datetime;
 
 ALTER TABLE T02_Departamento 
-MODIFY T02_VolumenDeNegocio DECIMAL(15, 2);
+MODIFY T02_VolumenDeNegocio DECIMAL(65, 2);
 
 create table if not exists DBGJLDWESAplicacionFinal.T03_Trazabilidad(
     T03_Usuario varchar(10),

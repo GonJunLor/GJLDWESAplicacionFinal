@@ -6,14 +6,12 @@
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
 if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
     exit;
 }
 
 if (isset($_REQUEST['cancelar'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     header('Location: index.php');
     exit;
@@ -21,7 +19,6 @@ if (isset($_REQUEST['cancelar'])) {
 
 // Vamos a pagina de cambiar contraseña, de momento a pag en construccion
 if (isset($_REQUEST['datosPersonales'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'cuenta';
     header('Location: index.php');
     exit;
@@ -92,7 +89,6 @@ if ($entradaOK) {
     // cambiarPassword devuelve el objeto usuario modificado y lo guardamos de nuevo en la sesion
     $_SESSION['usuarioGJLDWESAplicacionFinal'] = $oUsuarioActual;
 
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'cuenta';
     header('Location: index.php');
     exit;

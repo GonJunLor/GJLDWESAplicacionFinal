@@ -6,7 +6,6 @@
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
 if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
     exit;
@@ -108,6 +107,18 @@ $_SESSION['fechaNasaEnCurso'] = $oFechaNasaEnCurso;
 
 
 /* ***************************************************************** */
+/* ******************* SECCION API themoviedb ********************** */
+/* ***************************************************************** */
+if (isset($_REQUEST["buscarTMDB"])) {//Código que se ejecuta cuando se envía el formulario
+    $_SESSION['descripcionTMBDenCurso'] = $_REQUEST["descripcionTMBD"];
+} 
+$athemoviedb = Rest::apithemoviedb($_SESSION['descripcionTMBDenCurso']??"");
+
+/* ***************************************************************** */
+/* ***************************************************************** */
+
+
+/* ***************************************************************** */
 /* ********************* SECCION API PROPIA ************************ */
 /* ***************************************************************** */
 $aDepartamentosObjetos = DepartamentoPDO::buscaDepartamentosPorDesc("");
@@ -137,7 +148,9 @@ $avRest = [
     'fotoNasaEnCursoUrl' => $oFotoNasaEnCurso->getUrl(),
     'fotoNasaEnCursoUrlHD' => $oFotoNasaEnCurso->getUrlHD(),
     'codDepartamentoEnCursoRest' => $_SESSION['codDepartamentoEnCursoRest']??'',
-    'volumenDeNegocio' => $volumenDeNegocio
+    'volumenDeNegocio' => $volumenDeNegocio,
+    'tituloSeriePelicula' => $athemoviedb['titulo'],
+    'imagenSeriePelicula' => $athemoviedb['imagen']
 ];
 
 $estadoBotonSalir = 'activo';

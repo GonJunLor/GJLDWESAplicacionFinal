@@ -51,6 +51,19 @@
         <div class="tarjeta">
             <div><h2>Otra API</h2></div>
             <div>
+                <div><img src="webroot/media/images/tmdb.svg" alt="icono the movie db"></div>
+                <form action="" method="post">
+                    <div>
+                        <label for="descripcionTMBD">Título de serie o película a buscar:</label>
+                    </div>
+                    <input type="text" name="descripcionTMBD" id="descripcionTMBD" value="<?php echo $_SESSION['descripcionTMBDenCurso']??""?>">
+                    <button name="buscarTMDB" class="boton" id="buscarTMDB"><span>Buscar</span></button>
+                </form>
+                <hr>
+                <div id="resultadosTMDB">
+                    <h2><?php echo $avRest['tituloSeriePelicula'] ?></h2>
+                    <h2><img src="<?php echo $avRest['imagenSeriePelicula'] ?>" alt=""></h2>
+                </div>
                 <p></p>
             </div>
         </div>

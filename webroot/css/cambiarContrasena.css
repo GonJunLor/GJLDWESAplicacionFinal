@@ -1,5 +1,22 @@
+#vCambiarPassword>form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vCambiarPassword>form button{
+    background-color: var(--colorBoton3);
+    padding: 10px;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+    & span{
+        color: var(--colorTexto4);
+    } 
+}
+#vCambiarPassword>form button:hover{
+    background-color: var(--colorBotonMarcado1);
+}
 #vCambiarPassword #cambiarPassword{
-    margin: 50px calc((100dvw - 550px)/2);
+    margin: 10px calc((100dvw - 550px)/2);
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }

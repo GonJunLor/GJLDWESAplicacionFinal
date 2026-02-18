@@ -75,7 +75,6 @@ if (isset($_REQUEST['mostrar'])) {
     $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['mostrar'];
     
     // Cambiamos la página en curso y redirigimos
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'consultarDepartamento';
     
     header('Location: index.php');
@@ -88,7 +87,6 @@ if (isset($_REQUEST['borrar'])) {
     $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['borrar'];
     
     // Cambiamos la página en curso y redirigimos
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'eliminarDepartamento';
     
     header('Location: index.php');
@@ -110,7 +108,6 @@ if (isset($_REQUEST['bajaAlta'])) {
     }
 
     // Cambiamos la página en curso y redirigimos
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
     
     header('Location: index.php');

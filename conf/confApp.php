@@ -20,8 +20,11 @@ require_once 'model/DepartamentoPDO.php';
 
 // constante para acceder a la api de la nasa con una clave privada mia
 const API_KEY_NASA = 'uwcgeJsRXJe8JY2SPm26LWceI9GHg8bNXynfkq9s';
+const API_KEY_themoviedb = '58a822d9caa561a156f90ba25b078113';
+const API_TOKEN_themoviedb = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGE4MjJkOWNhYTU2MWExNTZmOTBiYTI1YjA3ODExMyIsIm5iZiI6MTUyNDA1NzYxNS42MTMsInN1YiI6IjVhZDc0NjBmMGUwYTI2NzRjNDAwZTJkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.J_YLdBLzP24MiW9S63CrZD_P0EtblM_JfemABsn_vG8';
 const API_KEY_PROPIA = 'XZuVZLROAF6FyluURwSTaJOLesWQZYrFZ9JX7E8n';
 const PALABRASEGURIDAD = 'pimentel';
+
 
 // constante para la paginación de resultados de consulta sobre la BBDD
 const RESULTADOSPORPAGINA = 5;

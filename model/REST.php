@@ -59,7 +59,7 @@ class REST {
 
         if (isset($archivoApi) && !isset($archivoApi['error'])) {
             if (isset($archivoApi['date'], $archivoApi['explanation'], $archivoApi['title'], $archivoApi['url'])) {
-                $hdurl = $archivoApi['hdurl'] ?? $archivoApi['url'];
+                $hdurl = $archivoApi['url'] ?? $archivoApi['url'];
                 
                 $imagenSerializada = self::serializarImagen($hdurl);
 
@@ -108,6 +108,83 @@ class REST {
         
         // Retornamos el formato listo para el atributo 'src' de una <img>
         return "data:$tipoMime;base64,$base64";
+    }
+
+        /**
+     * Consulta el volumen de negocio de un departamento a través de una API propia.
+     *
+     * @param string $codDepartamento Código identificador del departamento.
+     * @return float|int El volumen de negocio obtenido o 0 en caso de error.
+     */
+    public static function apithemoviedb($descripción){
+        
+        
+        // Codificamos el nombre para que los espacios y tildes no rompan la URL
+        $query = urlencode($descripción); 
+        
+        // Usamos search/multi para buscar tanto series como películas, en español
+        $url = "https://api.themoviedb.org/3/search/multi?query={$query}&language=es-ES&page=1";
+
+        // API_KEY_themoviedb
+        // API_TOKEN_themoviedb 
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+        // Añadimos el Token de autenticación en las cabeceras
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: Bearer ".API_TOKEN_themoviedb,
+            "accept: application/json"
+        ]);
+
+        $resultado = curl_exec($ch);
+        
+        if (curl_errno($ch)) {
+            // curl_close($ch);
+            // return 0;
+            echo 'Error de cURL: ' . curl_error($ch); // Esto te dará la respuesta definitiva
+            die();
+        }
+
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode !== 200) {
+            return 0;
+        }
+
+        $archivoApi = json_decode($resultado, true);
+
+        $aDatos = [
+            'titulo' => 'No hay Serie/Pelicula',
+            'imagen' => 'webroot/media/images/banderaEs.png'
+        ];
+
+        // Verificar si hay resultados
+        if (!empty($archivoApi['results'])) {
+            // Cogemos el resultado más relevante (el primero)
+            $primerResultado = $archivoApi['results'][0];
+
+            // Las películas usan 'title', las series usan 'name'
+            $tituloCorrecto = $primerResultado['title'] ?? $primerResultado['name'] ?? 'Título desconocido';
+            
+            // Construir la URL completa de la imagen (w500 es el ancho de la imagen en píxeles)
+            $posterPath = $primerResultado['poster_path'] ?? null;
+            $urlImagen = $posterPath ? "https://image.tmdb.org/t/p/w500" . $posterPath : 'webroot/media/images/banderaEs.png';
+
+            // Devolvemos un array asociativo con los datos
+            $aDatos = [
+                'titulo' => $tituloCorrecto,
+                'imagen' => $urlImagen
+            ];
+        }
+
+        return $aDatos;
     }
 
     /**

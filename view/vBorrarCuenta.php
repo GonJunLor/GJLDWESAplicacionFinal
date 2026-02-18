@@ -6,6 +6,9 @@
 
 ?>
 <main id="vBorrarCuenta">
+    <form action="" method="post">
+        <button name="cancelar" class="boton"><span>Volver</span></button>
+    </form>
     <div id="borrarCuenta">
         <h2>DATOS PERSONALES</h2>
         <span></span>

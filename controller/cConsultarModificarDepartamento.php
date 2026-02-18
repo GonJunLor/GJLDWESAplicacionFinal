@@ -6,14 +6,12 @@
 
 // comprobamos que existe la sesion para este usuario, sino redirige al login
 if (!isset($_SESSION["usuarioGJLDWESAplicacionFinal"])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: index.php');
     exit;
 }
 
 if (isset($_REQUEST['volver'])) {
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
     header('Location: index.php');
     exit;
@@ -37,7 +35,7 @@ if (isset($_REQUEST["modificar"])) {//Código que se ejecuta cuando se envía el
 
     // Reemplazar la coma por un punto para estandarizar el formato numérico
     $volumenNegocioPunto = str_replace(',', '.', $_REQUEST['volumenDeNegocio']);
-    $aErrores['volumenDeNegocio']= validacionFormularios::comprobarFloat($volumenNegocioPunto);
+    $aErrores['volumenDeNegocio']= validacionFormularios::comprobarFloat($volumenNegocioPunto,PHP_FLOAT_MAX,0);
     
     foreach($aErrores as $campo => $valor){
         if(!empty($valor)){ // Comprobar si el valor es válido
@@ -62,7 +60,6 @@ if ($entradaOK) {
         str_replace(',', '.', $_REQUEST['volumenDeNegocio']==''?0:$_REQUEST['volumenDeNegocio'])
     );
 
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'mtoDepartamentos';
     header('Location: index.php');
     exit;
