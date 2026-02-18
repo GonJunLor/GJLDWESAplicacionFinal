@@ -84,7 +84,6 @@
         var main = document.getElementById('vMtoUsuarios');
         const API_KEY_NUESTRA = 'XZuVZLROAF6FyluURwSTaJOLesWQZYrFZ9JX7E8n';
         var servidor = "https://gonzalojunlor.ieslossauces.es/GJLDWESAplicacionFinal";
-        var servidor = "https://192.168.1.205/GJLDWESAplicacionFinal";
 
         // Función para inicializar la carga al entrar en la página
         async function inicio() {
