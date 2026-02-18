@@ -99,11 +99,21 @@
     padding: 16px;
     border-radius: var(--radioBorde);
 }
-#vRest .columna3 form{
+#vRest .columna2 form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+#vRest .columna2 #resultadosTMDB{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
 }
 #vRest .columna3 form{
     display: flex;

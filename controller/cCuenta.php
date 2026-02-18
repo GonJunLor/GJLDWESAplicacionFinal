@@ -83,7 +83,7 @@ if ($entradaOK) {
     }
     
     // modificamos los datos del usuario en la BBDD 
-    $oUsuario = UsuarioPDO::modificarUsuario($oUsuario, $_REQUEST['descUsuario'], $oUsuario->getPerfil(), $contenidoImagen);
+    $oUsuario = UsuarioPDO::modificarUsuario($oUsuario->getCodUsuario(), $_REQUEST['descUsuario'], $oUsuario->getPerfil(), $contenidoImagen);
 
     // modificarUsuario devuelve el objeto usuario modificado y lo guardamos de nuevo en la sesion
     $_SESSION['usuarioGJLDWESAplicacionFinal'] = $oUsuario;

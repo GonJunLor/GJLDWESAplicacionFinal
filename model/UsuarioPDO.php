@@ -58,6 +58,49 @@ final class UsuarioPDO {
     }
 
     /**
+     * Busca un usuario y devuelve un objeto Usuario si encuentra el codigo
+     * * Comprueba el código de usuario.
+     * * @param string $codUsuario Código del usuario
+     * @return Usuario|null Objeto Usuario si el codigo es correcto, null si no
+     */
+    public static function buscaUsuarioPorCod($codUsuario){
+        $oUsuario = null;
+
+        $sql = <<<SQL
+            SELECT * FROM T01_Usuario
+            WHERE T01_CodUsuario = :usuario
+        SQL;
+        
+        $parametros = [
+            ':usuario' => $codUsuario
+        ];
+
+        $consulta = DBPDO::ejecutarConsulta($sql,$parametros);
+        $usuarioBD = $consulta->fetchObject();
+
+        // si encuentra el usuario en la BBDD creamos el objeto usuario
+        if ($usuarioBD) {
+            // Se convierte la fecha en datetime
+            $fechaBD = $usuarioBD->T01_FechaHoraUltimaConexion;
+            $oFechaValida = ($fechaBD) ? new DateTime($fechaBD) : null;
+
+            $oUsuario = new Usuario(
+                $usuarioBD->T01_CodUsuario,
+                $usuarioBD->T01_Password,
+                $usuarioBD->T01_DescUsuario,
+                $usuarioBD->T01_NumConexiones,
+                $oFechaValida,
+                null,
+                $usuarioBD->T01_Perfil,
+                $usuarioBD->T01_ImagenUsuario
+            );
+
+        }
+
+        return $oUsuario;
+    }
+
+    /**
      * Busca usuarios existente en la BBDD por la descripción.
      * @param string $descUsuario Descripción de los usuarios a buscar.
      * @return Usuario[] Array de objeto usuario encontrados en la BBDD. Vacío si no encuentra ninguno.
@@ -190,7 +233,7 @@ final class UsuarioPDO {
      * @param string $nuevoPerfil Nuevo perfil
      * @return Usuario|null El objeto usuario actualizado o null si falla
      */
-    public static function modificarUsuario($oUsuario, $nuevoDescUsuario, $nuevoPerfil, $contenidoImagen=null){
+    public static function modificarUsuario($codUsuario, $nuevoDescUsuario, $nuevoPerfil, $contenidoImagen=null){
         $sql = <<<SQL
             UPDATE T01_Usuario SET 
                 T01_DescUsuario = :nuevoDescUsuario,
@@ -206,15 +249,12 @@ final class UsuarioPDO {
             ':nuevoDescUsuario' => $nuevoDescUsuario,
             ':nuevoPerfil' => $nuevoPerfil,
             ':imagenUsuario' => $contenidoImagen,
-            ':codUsuarioAntiguo' => $oUsuario->getCodUsuario()
+            ':codUsuarioAntiguo' => $codUsuario
         ];
         $consulta = DBPDO::ejecutarConsulta($sql, $parametros);
 
         if ($consulta) {
-            $oUsuario->setDescUsuario($nuevoDescUsuario);
-            $oUsuario->setPerfil($nuevoPerfil);
-            $oUsuario->setImagenUsuario($contenidoImagen);
-            return $oUsuario;
+            return self::buscaUsuarioPorCod($codUsuario);
         }
 
         return null;
