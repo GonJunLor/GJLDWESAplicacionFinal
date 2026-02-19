@@ -146,6 +146,11 @@
                 btnPassword.innerHTML = '<span>Password</span>';
                 btnPassword.addEventListener("click",() => vistaCambiarPasswordUsuario(oUsuario));
                 tdAcciones.appendChild(btnPassword);
+
+                const btnPerfil = document.createElement('button');
+                btnPerfil.innerHTML = '<span>Perfil</span>';
+                btnPerfil.addEventListener("click",() => vistaCambiarPerfilUsuario(oUsuario));
+                tdAcciones.appendChild(btnPerfil);
                 
                 fila.appendChild(tdAcciones);
                 tbody.appendChild(fila);
@@ -186,6 +191,44 @@
                         <input type="password" class="obligatorio" id="repiteContrasena" name="repiteContrasena">
                         <span class="error rojo" id="errorRepiteContrasena"></span>
                         <button onclick="cambiarPasswordUsuario('${usuario.codUsuario}')"><span>GUARDAR</span></button>
+                        <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>  
+                    </div>
+                </div>
+            </div>
+            </div>
+            `;
+
+            // Eventos para que al darle enter desde uno de los dos inputs sea como si le ha dado a guardar
+            document.getElementById("contrasenaNueva").addEventListener("keydown", (e) =>{
+                if (event.key === "Enter") {
+                    // event.preventDefault();
+                    cambiarPasswordUsuario(usuario.codUsuario);
+                }
+            });
+            document.getElementById("repiteContrasena").addEventListener("keydown", (e) => {
+                if (event.key === "Enter") {
+                    // event.preventDefault();
+                    cambiarPasswordUsuario(usuario.codUsuario);
+                }
+            });
+        }
+
+        async function vistaCambiarPerfilUsuario(usuario) {
+            let divBuscarTabla = document.getElementsByClassName("columna1")[0];
+            divBuscarTabla.classList.add("inhabilitar");
+            main.innerHTML += `
+            <div class="columna1 columnaPerfil">
+            <div>
+                <div class="tarjeta" id="tarjetaPerfilUsuario">
+                    <div><h2>Cambiar perfil de <strong class="rojo">${usuario.descUsuario}</strong></h2></div>
+                    <div>
+                        <label for="perfil">Selecciona perfil nuevo</label>
+                        <select id="perfil" >
+                            <option value="usuario">Usuario</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                        <span class="error rojo" id="errorPerfil"></span>
+                        <button onclick="cambiarPerfilUsuario('${usuario.codUsuario}')"><span>GUARDAR</span></button>
                         <button id="cancelarEliminar" onclick="recarga()"><span>CANCELAR</span></button>  
                     </div>
                 </div>
@@ -270,6 +313,28 @@
             }        
         }
         
+        async function cambiarPerfilUsuario(codUsuario) {
+            let nuevoPerfil = document.getElementById("perfil");
+            let spanErrorPerfil = document.getElementById("errorPerfil");
+            console.log("nuevo perfil:" + nuevoPerfil.value)
+
+            try {  
+                const respuesta = await fetch(
+                    servidor + "/api/wsCambiarPerfilUsuario.php"+
+                    "?api_key="+API_KEY_NUESTRA+"&codUsuario=" + codUsuario +
+                    "&perfil=" + nuevoPerfil.value
+                );
+
+                datosJSON = await respuesta.json();
+                
+                if(datosJSON.estadoCambioPerfil===true){
+                    location.reload();
+                }
+   
+            } catch (error) {
+                spanErrorPerfil.innerHTML = "Error de conexion con la api"
+            }        
+        }
         /* OTRAS FUNCIONES */
 
     </script>

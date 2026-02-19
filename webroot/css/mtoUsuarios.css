@@ -201,3 +201,30 @@
 #vMtoUsuarios #tarjetaPasswordUsuario div:nth-of-type(2) button{
     margin: 10px 0;
 }
+
+#vMtoUsuarios .columnaPerfil{
+    position: fixed;
+    top: -100px;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#vMtoUsuarios #tarjetaPerfilUsuario{
+    display: block;
+    text-align: center;
+}
+#vMtoUsuarios #tarjetaPerfilUsuario div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#vMtoUsuarios #tarjetaPerfilUsuario div:nth-of-type(2) input{
+    margin: 0;
+    margin-bottom: 10px;
+}
+#vMtoUsuarios #tarjetaPerfilUsuario div:nth-of-type(2) button{
+    margin: 10px 0;
+}

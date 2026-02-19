@@ -227,6 +227,32 @@ final class UsuarioPDO {
     }
 
     /**
+     * Cambia el perfil de un usuario existente
+     * @param Usuario $codUsuario Codigo del usuario a cambiar contraseña
+     * @param string $nuevoPerfil Nuevo perfil
+     * @return Usuario|null El objeto usuario actualizado o null si falla
+     */
+    public static function cambiarPerfil($codUsuario, $nuevoPerfil){
+        $sql = <<<SQL
+            UPDATE T01_Usuario SET 
+                T01_Perfil = :nuevoPerfil
+            WHERE T01_CodUsuario = :usuario
+        SQL;
+
+        $consulta = DBPDO::ejecutarConsulta($sql, [
+            ':usuario' => $codUsuario,
+            ':nuevoPerfil' => $nuevoPerfil
+        ]);
+
+        if ($consulta) {
+            // Buscamos usuario para devolver un usuario con todos los datos actualizados desde la BBDD
+            return self::buscaUsuarioPorCod($codUsuario);
+        }
+
+        return null;
+    }
+
+    /**
      * Cambia datos de un usuario existente
      * @param Usuario $oUsuario Objeto del usuario actual
      * @param string $nuevoDescUsuario Nuevo nombre y apellidos
