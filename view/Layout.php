@@ -91,6 +91,9 @@
             <a id="cv" href="doc/pdf/cv.pdf" target="_blank">          
                 <img src="webroot/media/images/cv.png" alt="cv gonzalo" height="35" >        
             </a>
+            <a id="cv" href="https://github.com/GonJunLor/GJLDAWProyectoDAW" target="_blank">          
+                <img src="webroot/media/images/portada.jpg" alt="tecnologias utilizadas" height="35" >        
+            </a>
         </div>
     </footer>
 </body>
